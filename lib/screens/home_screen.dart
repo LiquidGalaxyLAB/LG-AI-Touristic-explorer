@@ -19,21 +19,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool connectionStatus = false;
-  // late LGConnection lg;
+  late LGConnection lg;
   TextEditingController _textEditingController = TextEditingController();
   bool isCity = false;
-  // Future<void> _connectToLG() async {
-  //   bool? result = await lg.connectToLG();
-  //   setState(() {
-  //     connectionStatus = result!;
-  //   });
-  // }
+  Future<void> _connectToLG() async {
+    bool? result = await lg.connectToLG();
+    setState(() {
+      connectionStatus = result!;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    // lg = LGConnection();
-    // _connectToLG();
+    lg = LGConnection();
+    _connectToLG();
   }
 
   @override
