@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
+import 'package:lg_ai_touristic_explorer/components/recommended_cities.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
@@ -278,7 +279,11 @@ class _HomePageState extends State<HomePage> {
                   "Recommended Locations",
                   style: googleTextStyle(48.sp, FontWeight.w600, white),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 55.h,
+              ),
+              const RecomendCities()
             ],
           ),
         )));
