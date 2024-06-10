@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
+import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/components/recommended_cities.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
@@ -44,7 +45,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: darkBackgroundColor,
-        endDrawer: Container(),
+        endDrawer: AppDrawer(
+          size: size,
+        ),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(140.0),
           child: Container(
@@ -65,18 +68,18 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         padding: EdgeInsets.only(
-                          left: 30.h,
-                          bottom: 45.h,
+                          left: 50.h,
+                          bottom: 55.h,
                         ),
                         child: Image.asset(
-                          logo,
-                          scale: 9,
+                          "assets/images/rame_170.png",
+                          scale: 3.5,
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 50.w, top: 45.h),
+                    padding: EdgeInsets.only(left: 5.w, top: 45.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
