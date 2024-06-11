@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
-                        googleAPIKey: "AIzaSyBZbtg1kE7d_yKHoOPfDzWoaeY9gKymz3Y",
+                        googleAPIKey: "",
                         boxDecoration:
                             BoxDecoration(border: Border.all(width: 0)),
                         textStyle: GoogleFonts.raleway(

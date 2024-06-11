@@ -7,7 +7,7 @@ class ConnectionFlag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = status ? Colors.green : Colors.red;
+    Color color = status ? const Color.fromARGB(255, 0, 255, 8) : Colors.red;
     String label1 = status ? 'LG CONNECTED' : 'LG DISCONNECTED';
     String label2 = status ? 'AI SERVER CONNECTED' : 'AI SERVER DISCONNECTED';
     return Container(
@@ -26,7 +26,7 @@ class ConnectionFlag extends StatelessWidget {
           Text(
             label1,
             style: TextStyle(
-                color: color, fontWeight: FontWeight.w700, fontSize: 18.sp),
+                color: color, fontWeight: FontWeight.w700, fontSize: 19.sp),
           ),
           SizedBox(
             width: 15.0,
@@ -42,7 +42,7 @@ class ConnectionFlag extends StatelessWidget {
           Text(
             label2,
             style: TextStyle(
-                color: color, fontWeight: FontWeight.w700, fontSize: 18.sp),
+                color: color, fontWeight: FontWeight.w700, fontSize: 19.sp),
           )
         ],
       ),
