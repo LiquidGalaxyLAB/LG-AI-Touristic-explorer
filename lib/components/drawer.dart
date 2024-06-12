@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/screens/home_screen.dart';
+import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import '../constants/text_styles.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({
     super.key,
     required this.size,
@@ -14,9 +15,15 @@ class AppDrawer extends StatelessWidget {
   final Size size;
 
   @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  @override
   Widget build(BuildContext context) {
+    String? dropDownValue = '';
     return Drawer(
-      width: size.width * .35,
+      width: widget.size.width * .35,
       backgroundColor: darkSecondaryColor,
       child: ListView(
         children: [
@@ -125,7 +132,10 @@ class AppDrawer extends StatelessWidget {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  const Icon(Icons.settings, color: Colors.cyan, size: 25),
+                  // const Icon(Icons.settings, color: Colors.cyan, size: 25),
+                  Image.asset(
+                    settingsIcon,
+                  ),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -134,6 +144,108 @@ class AppDrawer extends StatelessWidget {
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
+                ],
+              ),
+            ),
+            onTap: () {},
+          ),
+          Divider(
+            color: Colors.white.withOpacity(0.5),
+            indent: 50,
+            thickness: 0.5,
+            endIndent: 50,
+          ),
+          ListTile(
+            title: Container(
+              padding: const EdgeInsets.only(left: 80),
+              child: Row(
+                children: [
+                  Text(
+                    'Language Selected :',
+                    style:
+                        googleTextStyle(30.sp, FontWeight.w500, Colors.white),
+                  ),
+                  15.pw,
+                  Container(
+                      width: 120.w,
+                      child: DropdownButtonFormField(
+                        items: [
+                          DropdownMenuItem(
+                            value: "EN",
+                            child: Text(
+                              "🇬🇧 EN",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "FR",
+                            child: Text(
+                              "🇫🇷 FR",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "ES",
+                            child: Text(
+                              "🇪🇸 ES",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "DE",
+                            child: Text(
+                              "🇩🇪 DE",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "IT",
+                            child: Text(
+                              "🇮🇹 IT",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "JP",
+                            child: Text(
+                              "🇯🇵 JP",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "CN",
+                            child: Text(
+                              "🇨🇳 CN",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "RU",
+                            child: Text(
+                              "🇷🇺 RU",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "IN",
+                            child: Text(
+                              "🇮🇳 IN",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                        ],
+                        onChanged: (String) {},
+                        dropdownColor: darkBackgroundColor,
+                      ))
                 ],
               ),
             ),

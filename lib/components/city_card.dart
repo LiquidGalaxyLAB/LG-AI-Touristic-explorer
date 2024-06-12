@@ -34,7 +34,7 @@ class CityCard extends StatelessWidget {
               ),
             ],
           ),
-          width: 475.w,
+          width: 515.w,
           height: 300.h,
           child: Image.asset(imageName, fit: BoxFit.cover),
         ),
@@ -48,7 +48,7 @@ class CityCard extends StatelessWidget {
               colors: [Colors.black, Colors.transparent],
             ),
           ),
-          width: 475.w,
+          width: 515.w,
           height: 300.h,
         ),
         Positioned(
