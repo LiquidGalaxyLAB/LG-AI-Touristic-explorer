@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
+import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
 import 'package:lg_ai_touristic_explorer/screens/home_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
@@ -124,7 +125,11 @@ class _AppDrawerState extends State<AppDrawer> {
                 ],
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => ConnectionManager(),
+              ));
+            },
           ),
           Divider(
             color: Colors.white.withOpacity(0.5),
