@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
@@ -10,6 +11,7 @@ import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/screens/city_information.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -217,6 +219,16 @@ class _HomePageState extends State<HomePage> {
                             print("City Name: $cityName");
                             double cityLat = double.parse(prediction.lat!);
                             double cityLong = double.parse(prediction.lng!);
+                            LatLng coordinates = LatLng(cityLat, cityLong);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CityInformationScreen(
+                                    cityName: cityName,
+                                    countryName: secondName,
+                                    coordinates: coordinates,
+                                  ),
+                                ));
                           } else {
                             // ToastService.showErrorToast(
                             //   context,

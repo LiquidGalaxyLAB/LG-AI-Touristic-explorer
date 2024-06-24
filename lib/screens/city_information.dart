@@ -15,8 +15,12 @@ import '../constants/text_styles.dart';
 class CityInformationScreen extends StatefulWidget {
   final String cityName;
   final String countryName;
+  final LatLng coordinates;
   const CityInformationScreen(
-      {super.key, required this.cityName, required this.countryName});
+      {super.key,
+      required this.cityName,
+      required this.countryName,
+      required this.coordinates});
 
   @override
   State<CityInformationScreen> createState() => _CityInformationScreenState();
@@ -26,10 +30,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool connectionStatus = false;
   late LGConnection lg;
   List<Widget> carouselCards = [];
-  CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(19, 72),
-    zoom: 11,
-  );
 
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
@@ -60,6 +60,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    CameraPosition _kGooglePlex = CameraPosition(
+      target: widget.coordinates,
+      zoom: 11,
+    );
     var size = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
