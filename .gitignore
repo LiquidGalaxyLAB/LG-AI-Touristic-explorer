@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-
+/python_scripts/.env
 # IntelliJ related
 *.iml
 *.ipr

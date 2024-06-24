@@ -6,6 +6,10 @@ import wikipedia
 import re
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -143,6 +147,6 @@ def getCityInformation():
 if __name__ == '__main__':
 
     client = Groq(
-        api_key="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",
+        api_key=os.getenv('GROQ_API_KEY'),
     )
     app.run(debug=True)
