@@ -18,7 +18,7 @@ def removeMarkdown(responseText):
 
 def wikiData(city_name):
     try:
-        wikipedia_page = wikipedia.page(city_name, auto_suggest=False)
+        wikipedia_page = wikipedia.page(city_name, auto_suggest=True)
         wikipedia_content = wikipedia_page.content
         print("Got content for city_name")
         return wikipedia_content
@@ -36,7 +36,7 @@ def getHeadings(wikipedia_content):
 def categorize(headings):
     headings_string = ", ".join(headings)
     prompt = "Take the given headings: "+headings_string + \
-        ". Can you categorize these headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural':['heading1','heading2',...etc],'historical':['heading1','heading2',...etc],'geographical':['heading1','heading2',...etc]}. Please provide the categorization, without any markdown and only using the given headings. Also the max no of headings for any category should be 5. So choose atmost 5 most relevant headings for each category."
+        ". Can you categorize these headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural':['heading1','heading2',...etc],'historical':['heading1','heading2',...etc],'geographical':['heading1','heading2',...etc]}. Please provide the categorization, without any markdown and only using the given headings. Also the max no of headings for any category should be 5. So choose at most 5 most relevant headings for each category."
 
     chat_completion = client.chat.completions.create(
         messages=[
@@ -91,10 +91,8 @@ def extract_sections(wikipedia_content, cultural, historical, geographical):
     return culturalData, historicalData, geographicalData
 
 
-def generateHistorical(information):
-    prompt = "You’re an experienced data analyst responsible for compiling 4-5 very detailed historical facts about various cities worldwide. Your task here is to create a JSON object that includes detailed historical facts about the city using the information provided below. . Details: " + \
-        information + \
-        " Task: Create a JSON object that includes detailed historical facts about the city using the information provided below. The JSON object should be structured as follows: {'historical_facts': [{'fact':'detailed information about fact'}, {'fact':'detailed information about fact'}, ...]}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information.  Do not add sensitive data."
+def generateFacts(information, fact_type):
+    prompt = f"You’re an experienced data analyst responsible for compiling 4-5 very detailed {fact_type} facts about various cities worldwide. Your task here is to create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. Details: {information} Task: Create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. The JSON object should be structured as follows: {{{fact_type}_facts': [{{'fact':'detailed information about fact'}}, {{'fact':'detailed information about fact'}}, ...]}}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. Do not add any sensitive data."
     print(prompt)
     payload = {
         "model": "gemma:2b",
@@ -110,17 +108,17 @@ def generateHistorical(information):
             response_data = response.text
             cleaned_string = removeMarkdown(response_data)
             parsed_data = json.loads(cleaned_string)
-            return (parsed_data)
+            return parsed_data
         else:
-            return jsonify({'error': 'An error occurred with the external request'}), response.status_code
+            return {'error': 'An error occurred with the external request'}, response.status_code
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        return jsonify({'error': 'An error occurred during generation'}), 500
+        return {'error': 'An error occurred during generation'}, 500
 
 
-@app.route('/get', methods=['POST'])
-def get():
+@app.route('/getCityInformation', methods=['POST'])
+def getCityInformation():
     city_name = request.json.get('text')
     wikipedia_content = wikiData(city_name)
     if wikipedia_content != "no_content":
@@ -128,9 +126,16 @@ def get():
         cultural, historical, geographical = categorize(headings)
         culturalData, historicalData, geographicalData = extract_sections(wikipedia_content,
                                                                           cultural, historical, geographical)
-        return generateHistorical(historicalData)
-        # return jsonify({"status": "success", "culturalData": culturalData,
-        # "historicalData": historicalData, "geographicalData": geographicalData})
+
+        historical_facts = generateFacts(historicalData, "historical")
+        cultural_facts = generateFacts(culturalData, "cultural")
+        geographical_facts = generateFacts(geographicalData, "geographical")
+
+        return jsonify({
+            "historical_facts": historical_facts["response"],
+            "cultural_facts": cultural_facts["response"],
+            "geographical_facts": geographical_facts["response"]
+        })
     else:
         return jsonify({"status": "error", "message": "Failed to fetch content"})
 
@@ -138,6 +143,6 @@ def get():
 if __name__ == '__main__':
 
     client = Groq(
-        api_key="",
+        api_key="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",
     )
     app.run(debug=True)
