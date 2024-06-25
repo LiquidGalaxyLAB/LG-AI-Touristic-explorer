@@ -11,7 +11,7 @@ import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
-import 'package:lg_ai_touristic_explorer/screens/city_information.dart';
+import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
