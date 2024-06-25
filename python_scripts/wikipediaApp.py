@@ -40,7 +40,7 @@ def getHeadings(wikipedia_content):
 def categorize(headings):
     headings_string = ", ".join(headings)
     prompt = "Take the given headings: "+headings_string + \
-        ". Can you categorize these headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural':['heading1','heading2',...etc],'historical':['heading1','heading2',...etc],'geographical':['heading1','heading2',...etc]}. Please provide the categorization, without any markdown and only using the given headings. Also the max no of headings for any category should be 5. So choose at most 5 most relevant headings for each category."
+        ". Can you categorize these headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural':['heading1','heading2',...etc],'historical':['heading1','heading2',...etc],'geographical':['heading1','heading2',...etc]}. Please provide the categorization, without any markdown and only using the given headings. Also the max no of headings for any category should be 3. So choose at most 3 most relevant headings for each category."
 
     chat_completion = client.chat.completions.create(
         messages=[
@@ -92,11 +92,11 @@ def extract_sections(wikipedia_content, cultural, historical, geographical):
             geographicalData += section_info
         else:
             print(f"{heading} section not found.")
-    return culturalData, historicalData, geographicalData
+    return culturalData.replace('"', '').replace("'", ""), historicalData.replace('"', '').replace("'", ""), geographicalData.replace('"', '').replace("'", "")
 
 
 def generateFacts(information, fact_type):
-    prompt = f"You’re an experienced data analyst responsible for compiling 4-5 very detailed {fact_type} facts about various cities worldwide. Your task here is to create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. Details: {information} Task: Create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. The JSON object should be structured as follows: {{{fact_type}_facts': [{{'fact':'detailed information about fact'}}, {{'fact':'detailed information about fact'}}, ...]}}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. Do not add any sensitive data."
+    prompt = f"You’re an experienced data analyst responsible for compiling 4-5 very detailed {fact_type} facts about various cities worldwide. Your task here is to create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. Details: {information} Task: Create a JSON object that includes detailed {fact_type} facts about the city using the information provided below. The JSON object should be structured as follows: {{{fact_type}_facts': [{{'fact':'detailed information about fact'}}, {{'fact':'detailed information about fact'}}, ...]}}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. Ensure that no sensitive data related to deaths, terrorism, or other similar subjects is included."
     print(prompt)
     payload = {
         "model": "gemma:2b",
