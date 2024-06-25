@@ -8,3 +8,4 @@ const aboutIcon = 'assets/images/about.png';
 const connectionIcon = 'assets/images/connection.png';
 const tasksIcon = 'assets/images/tasks.png';
 const settingsIcon = 'assets/images/settings.png';
+const downloadIcon = 'assets/images/download.png';
