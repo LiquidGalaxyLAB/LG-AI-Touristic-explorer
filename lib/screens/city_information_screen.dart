@@ -175,7 +175,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                 SingleChildScrollView(
                   child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 30, 0, 15),
-                      child:  Column(
+                      child: !isExtra
+                          ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // City Name
@@ -218,7 +219,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: darkSecondaryColor,
+                                              color: isHistory
+                                                  ? darkSecondaryColor
+                                                  : darkSecondaryColor
+                                                      .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
                                             width: size.width * 0.12,
@@ -241,7 +245,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: darkSecondaryColor,
+                                              color: isGeography
+                                                  ? darkSecondaryColor
+                                                  : darkSecondaryColor
+                                                      .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
                                             width: size.width * 0.12,
@@ -264,7 +271,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: darkSecondaryColor,
+                                              color: isCulture
+                                                  ? darkSecondaryColor
+                                                  : darkSecondaryColor
+                                                      .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
                                             width: size.width * 0.12,
@@ -345,7 +355,159 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 )
                               ],
                             )
-                           ),
+                          : Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // City Name
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.location_pin,
+                                          color: Colors.red,
+                                          size: 45.h,
+                                        ),
+                                        8.pw,
+                                        Container(
+                                          width: size.width * 0.30,
+                                          child: Text(
+                                            "${widget.cityName}, ${widget.countryName}",
+                                            style: googleTextStyle(
+                                                48.sp, FontWeight.w700, white),
+                                            overflow: TextOverflow.clip,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    35.ph,
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isExtra = !isExtra;
+                                        });
+                                      },
+                                      child: Container(
+                                          alignment: Alignment.center,
+                                          height: size.height * .055,
+                                          width: size.width * 0.046,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: greenShade,
+                                          ),
+                                          child: Icon(
+                                              Icons.arrow_back_ios_rounded)),
+                                    ),
+                                    35.ph,
+                                    Container(
+                                      padding: const EdgeInsets.only(left: 50),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Extra Visualisations",
+                                            style: googleTextStyle(48.sp,
+                                                FontWeight.w700, greenShade),
+                                            overflow: TextOverflow.clip,
+                                          ),
+                                          30.ph,
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: Row(
+                                              children: [
+                                                Image.asset(downloadIcon),
+                                                20.pw,
+                                                Text(
+                                                  "Historical Fact",
+                                                  style: googleTextStyle(40.sp,
+                                                      FontWeight.w600, white),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          20.ph,
+                                          Container(
+                                            height: 1,
+                                            width: size.width * 0.33,
+                                            color: white.withOpacity(0.4),
+                                          ),
+                                          20.ph,
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: Row(
+                                              children: [
+                                                Image.asset(downloadIcon),
+                                                20.pw,
+                                                Text(
+                                                  "3D Contour Terrain",
+                                                  style: googleTextStyle(40.sp,
+                                                      FontWeight.w600, white),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          20.ph,
+                                          Container(
+                                            height: 1,
+                                            width: size.width * 0.33,
+                                            color: white.withOpacity(0.4),
+                                          ),
+                                          20.ph,
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: Row(
+                                              children: [
+                                                Image.asset(downloadIcon),
+                                                20.pw,
+                                                Text(
+                                                  "Outline",
+                                                  style: googleTextStyle(40.sp,
+                                                      FontWeight.w600, white),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          20.ph,
+                                          Container(
+                                            height: 1,
+                                            width: size.width * 0.33,
+                                            color: white.withOpacity(0.4),
+                                          ),
+                                          20.ph,
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: Row(
+                                              children: [
+                                                Image.asset(downloadIcon),
+                                                20.pw,
+                                                Text(
+                                                  "Climate Heatmap",
+                                                  style: googleTextStyle(40.sp,
+                                                      FontWeight.w600, white),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          20.ph,
+                                          Container(
+                                            height: 1,
+                                            width: size.width * 0.33,
+                                            color: white.withOpacity(0.4),
+                                          ),
+                                          20.ph,
+                                        ],
+                                      ),
+                                    ),
+                                    15.ph,
+                                  ],
+                                ),
+                              ),
+                            )),
                 ),
                 // Right side of the Application
 
