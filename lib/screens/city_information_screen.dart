@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
@@ -8,6 +9,7 @@ import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/models/city.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../components/connection_flag.dart';
 import '../constants/constants.dart';
 import '../constants/images.dart';
@@ -30,9 +32,28 @@ class CityInformationScreen extends StatefulWidget {
 class _CityInformationScreenState extends State<CityInformationScreen> {
   bool connectionStatus = false;
   late LGConnection lg;
-  List<Widget> historyCarouselCards = [];
-  List<Widget> cultureCarouselCards = [];
-  List<Widget> geographyCarouselCards = [];
+
+  List<Widget> historyCarouselCards = [
+    const CarouselCard(
+      factTitle: "Geographical Fact",
+      factDesc:
+          "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+    )
+  ];
+  List<Widget> cultureCarouselCards = [
+    const CarouselCard(
+      factTitle: "Geographical Fact",
+      factDesc:
+          "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+    )
+  ];
+  List<Widget> geographyCarouselCards = [
+    const CarouselCard(
+      factTitle: "Geographical Fact",
+      factDesc:
+          "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+    )
+  ];
   late City city;
   bool isLoading = true;
   Future<void> _connectToLG() async {
@@ -94,7 +115,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  bool anim = true;
   @override
   Widget build(BuildContext context) {
     CameraPosition _kGooglePlex = CameraPosition(
@@ -288,71 +309,90 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 ),
                                 55.ph,
                                 // Carousel
-                                Container(
-                                  width: size.width * .45,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      isHistory
-                                          ? Container(
-                                              height: size.height * 0.45,
-                                              width: size.width * 0.38,
-                                              child: CarouselSlider(
-                                                  items: historyCarouselCards,
-                                                  options: CarouselOptions(
-                                                    enlargeCenterPage: true,
-                                                    height: 700,
-                                                    initialPage: 0,
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    autoPlayInterval:
-                                                        const Duration(
-                                                            milliseconds: 5000),
-                                                    autoPlay: false,
-                                                  )),
-                                            )
-                                          : isCulture
-                                              ? Container(
-                                                  height: size.height * 0.45,
-                                                  width: size.width * 0.38,
-                                                  child: CarouselSlider(
-                                                      items:
-                                                          cultureCarouselCards,
-                                                      options: CarouselOptions(
-                                                        enlargeCenterPage: true,
-                                                        height: 700,
-                                                        initialPage: 0,
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        autoPlayInterval:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    5000),
-                                                        autoPlay: false,
-                                                      )),
-                                                )
-                                              : Container(
-                                                  height: size.height * 0.45,
-                                                  width: size.width * 0.38,
-                                                  child: CarouselSlider(
-                                                      items:
-                                                          geographyCarouselCards,
-                                                      options: CarouselOptions(
-                                                        enlargeCenterPage: true,
-                                                        height: 700,
-                                                        initialPage: 0,
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        autoPlayInterval:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    5000),
-                                                        autoPlay: false,
-                                                      )),
-                                                ),
-                                    ],
-                                  ),
-                                )
+                                AnimatedSwitcher(
+                                  duration: Duration(seconds: 2),
+                                  child: Skeletonizer(
+                                      enabled: isLoading,
+                                      enableSwitchAnimation: true,
+                                      child: Container(
+                                        width: size.width * .45,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            isHistory
+                                                ? Container(
+                                                    height: size.height * 0.45,
+                                                    width: size.width * 0.38,
+                                                    child: CarouselSlider(
+                                                        items:
+                                                            historyCarouselCards,
+                                                        options:
+                                                            CarouselOptions(
+                                                          enlargeCenterPage:
+                                                              true,
+                                                          height: 700,
+                                                          initialPage: 0,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          autoPlayInterval:
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      5000),
+                                                          autoPlay: false,
+                                                        )),
+                                                  )
+                                                : isCulture
+                                                    ? Container(
+                                                        height:
+                                                            size.height * 0.45,
+                                                        width:
+                                                            size.width * 0.38,
+                                                        child: CarouselSlider(
+                                                            items:
+                                                                cultureCarouselCards,
+                                                            options:
+                                                                CarouselOptions(
+                                                              enlargeCenterPage:
+                                                                  true,
+                                                              height: 700,
+                                                              initialPage: 0,
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              autoPlayInterval:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          5000),
+                                                              autoPlay: false,
+                                                            )),
+                                                      )
+                                                    : Container(
+                                                        height:
+                                                            size.height * 0.45,
+                                                        width:
+                                                            size.width * 0.38,
+                                                        child: CarouselSlider(
+                                                            items:
+                                                                geographyCarouselCards,
+                                                            options:
+                                                                CarouselOptions(
+                                                              enlargeCenterPage:
+                                                                  true,
+                                                              height: 700,
+                                                              initialPage: 0,
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              autoPlayInterval:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          5000),
+                                                              autoPlay: false,
+                                                            )),
+                                                      ),
+                                          ],
+                                        ),
+                                      )),
+                                ),
                               ],
                             )
                           : Padding(

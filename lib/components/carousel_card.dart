@@ -16,31 +16,36 @@ class CarouselCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-          color: greenShade,
-          borderRadius: BorderRadiusDirectional.circular(25)),
+    return GestureDetector(
+      onTap: (){
+        //open a popup to show the contents
+      },
       child: Container(
-        width: size.width * 0.35,
-        padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
-            Text(
-              factTitle,
-              style: googleTextStyle(40.sp, FontWeight.w700, fontGreen),
-            ),
-            20.ph,
-            Container(
-              width: size.width * 0.35,
-              child: Text(
-                factDesc,
-                style: googleTextStyle(28.sp, FontWeight.w500, Colors.black),
-                overflow: TextOverflow.clip,
-                textAlign: TextAlign.justify,
+        decoration: BoxDecoration(
+            color: greenShade,
+            borderRadius: BorderRadiusDirectional.circular(25)),
+        child: Container(
+          width: size.width * 0.35,
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Text(
+                factTitle,
+                style: googleTextStyle(40.sp, FontWeight.w700, fontGreen),
               ),
-            ),
-            2.ph
-          ],
+              20.ph,
+              Container(
+                width: size.width * 0.35,
+                child: Text(
+                  factDesc,
+                  style: googleTextStyle(28.sp, FontWeight.w500, Colors.black),
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              2.ph
+            ],
+          ),
         ),
       ),
     );
