@@ -8,6 +8,7 @@ import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/models/city.dart';
+import 'package:lg_ai_touristic_explorer/models/flyto.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../components/connection_flag.dart';
@@ -61,6 +62,18 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     setState(() {
       connectionStatus = result!;
     });
+    double longitude = widget.coordinates.longitude;
+    double latitude = widget.coordinates.latitude;
+    double range = 5000;
+    double tilt = 0;
+    double heading = 0;
+    FlyToView city = FlyToView(
+        longitude: longitude,
+        latitude: latitude,
+        range: range,
+        tilt: tilt,
+        heading: heading);
+    await lg.flyTo(city.getCommand());
   }
 
   bool isHistory = true;
