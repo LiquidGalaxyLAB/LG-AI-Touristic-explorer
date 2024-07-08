@@ -197,7 +197,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       child: Text(
                         "LG Rig",
                         style: googleTextStyle(
-                            50.sp, FontWeight.w600, Colors.black),
+                            40.sp, FontWeight.w600, Colors.black),
                       ),
                     ),
                   ),
@@ -220,7 +220,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       child: Text(
                         "AI Server",
                         style: googleTextStyle(
-                            50.sp, FontWeight.w600, Colors.black),
+                            40.sp, FontWeight.w600, Colors.black),
                       ),
                     ),
                   ),

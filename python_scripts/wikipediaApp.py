@@ -121,7 +121,6 @@ def generateFacts(information, fact_type):
         return {'error': 'An error occurred during generation'}, 500
 
 
-
 @app.route('/generatePOI', methods=['POST'])
 def generatePOI():
     city_name = request.json.get('text')
@@ -145,6 +144,12 @@ def generatePOI():
     except Exception as e:
         print(f"An error occurred: {e}")
         return jsonify({'error': 'An error occurred during generation'}), 500
+
+
+@app.route('/hello', methods=['GET'])
+def check():
+    return jsonify({"status": "ok"})
+
 
 @app.route('/getCityInformation', methods=['POST'])
 def getCityInformation():
