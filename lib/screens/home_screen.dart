@@ -12,6 +12,7 @@ import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,10 +41,72 @@ class _HomePageState extends State<HomePage> {
     _connectToLG();
   }
 
+  showDialogIfFirstLoaded(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? isFirstLoaded = prefs.getBool("keyIsFirstLoaded");
+    if (isFirstLoaded == null) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Important Notice",
+                style:
+                    googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text("Be aware of AI hallucinations.",
+                      style: googleTextStyle(
+                          35.sp, FontWeight.w500, Colors.black)),
+                  const SizedBox(height: 10),
+                  Text(
+                      "The state of the art of most AI tools as of 2024 can sometimes give you incorrect answers, or even the so-called Hallucinations. AI hallucinations are incorrect or misleading results that AI models generate. These errors can be caused by a variety of factors, including insufficient training data, incorrect assumptions made by the model, or biases in the data used to train the model.",
+                      style: googleTextStyle(
+                          28.sp, FontWeight.w400, Colors.black)),
+                  const SizedBox(height: 15),
+                  Text(
+                      "The Liquid Galaxy project has no control over this, and the contents responsibility is of the owners of the respective Large Language models used.",
+                      style: GoogleFonts.raleway(
+                        textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25.sp,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic),
+                      )),
+                ],
+              ),
+            ),
+            backgroundColor: Colors.white,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: Text("Agree",
+                    style:
+                        googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  prefs.setBool("keyIsFirstLoaded", false);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
+    Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: darkBackgroundColor,
