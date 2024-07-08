@@ -134,6 +134,17 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     getCityData();
   }
 
+  clean() async {
+    await lg.cleanBalloon();
+    await lg.cleanVisualization();
+  }
+
+  @override
+  void dispose() {
+    clean();
+    super.dispose();
+  }
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool anim = true;
   @override
