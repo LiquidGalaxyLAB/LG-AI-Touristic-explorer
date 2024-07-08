@@ -1,9 +1,13 @@
 import 'dart:convert';
 import 'package:geocoding/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 
-Future<Map<String, double>> _getCoordinates(String landmark) async {
+import '../models/place.dart';
+
+Future<Map<String, double>> _getCoordinates(
+    String landmark, LatLng coordinates) async {
   try {
     List<Location> locations = await locationFromAddress(landmark);
     return {
@@ -13,13 +17,13 @@ Future<Map<String, double>> _getCoordinates(String landmark) async {
   } catch (e) {
     print('Error: $e');
     return {
-      'latitude': 0.0,
-      'longitude': 0.0,
+      'latitude': coordinates.latitude,
+      'longitude': coordinates.longitude,
     };
   }
 }
 
-Future<String> generatePOI(String city) async {
+Future<List<Place>> generatePOI(String city, LatLng coordinates) async {
   const url = 'http://127.0.0.1:5000/generatePOI';
 
   final response = await http.post(
@@ -30,29 +34,36 @@ Future<String> generatePOI(String city) async {
 
   if (response.statusCode == 200) {
     String responseText = response.body;
-
     String cleanedString = removeMarkdown(responseText);
-
-    const JsonDecoder decoder = JsonDecoder();
-    final Map<String, dynamic> object = decoder.convert(cleanedString);
+    final Map<String, dynamic> object = jsonDecode(cleanedString);
+    print(cleanedString);
 
     if (object.containsKey('response')) {
       final dynamic responseObject = object['response'];
       if (responseObject is String) {
-        final Map<String, dynamic> pointsOfInterest =
-            decoder.convert(responseObject);
+        final Map<String, dynamic> jsonObject = jsonDecode(responseObject);
 
-        for (var point in pointsOfInterest['points_of_interest']) {
-          var coordinates = await _getCoordinates(point['name']);
-          point['coordinates'] = coordinates;
+        for (var point in jsonObject['points_of_interest']) {
+          var coords = await _getCoordinates(point['name'], coordinates);
+          point['coordinates'] = coords;
         }
-        print(pointsOfInterest);
-        return pointsOfInterest.toString();
+
+        final List<dynamic> pointsOfInterest = jsonObject['points_of_interest'];
+        final List<Place> places =
+            pointsOfInterest.map((poi) => Place.fromJson(poi)).toList();
+
+        for (var place in places) {
+          print('Name: ${place.name}');
+          print('Details: ${place.details}');
+          print('Latitude: ${place.latitude}');
+          print('Longitude: ${place.longitude}');
+        }
+        return places;
       } else {
-        return ('Error: "response" is not a string');
+        throw Exception('Error: "response" is not a string');
       }
     } else {
-      return ('Error: "response" key not found');
+      throw Exception('Error: "response" key not found');
     }
   } else {
     throw Exception(
