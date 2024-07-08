@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,8 +8,11 @@ import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
+import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
 import 'package:lg_ai_touristic_explorer/models/city.dart';
 import 'package:lg_ai_touristic_explorer/models/flyto.dart';
+import 'package:lg_ai_touristic_explorer/models/orbit.dart';
+import 'package:lg_ai_touristic_explorer/models/place.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../components/connection_flag.dart';
@@ -31,7 +35,8 @@ class CityInformationScreen extends StatefulWidget {
 }
 
 class _CityInformationScreenState extends State<CityInformationScreen> {
-  bool connectionStatus = false;
+  bool lgStatus = false;
+  bool aiStatus = false;
   late LGConnection lg;
 
   List<Widget> historyCarouselCards = [
@@ -60,7 +65,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
     setState(() {
-      connectionStatus = result!;
+      lgStatus = result!;
     });
     double longitude = widget.coordinates.longitude;
     double latitude = widget.coordinates.latitude;
@@ -76,6 +81,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     await lg.flyTo(city.getCommand());
   }
 
+  late List<Place> places;
+  bool isPlaceGenerated = false;
   bool isHistory = true;
   bool isCulture = false;
   bool isGeography = false;
@@ -180,7 +187,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                         style: googleTextStyle(35, FontWeight.w700, white),
                       ),
                       ConnectionFlag(
-                        status: connectionStatus,
+                        lgStatus: lgStatus,
+                        aiStatus: aiStatus,
                       ),
                     ],
                   ),
@@ -624,18 +632,54 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                       15.ph,
                       Row(
                         children: [
-                          Container(
-                            alignment: Alignment.center,
-                            height: size.height * .15,
-                            width: size.width * 0.24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: darkSecondaryColor,
-                            ),
-                            child: Text(
-                              "Start Orbit",
-                              style: googleTextStyle(
-                                  37.sp, FontWeight.w500, white),
+                          GestureDetector(
+                            onTap: () async {
+                              if (!isPlaceGenerated) {
+                                print("not generated");
+                                places = await generatePOI(
+                                    widget.cityName, widget.coordinates);
+                                print(places.toString());
+                                isPlaceGenerated = true;
+                              } else {
+                                print("generated");
+
+                                for (var i = 0; i < 2; i++) {
+                                  String placesdata =
+                                      Orbit().generateOrbit(places);
+                                  String content =
+                                      Orbit().buildOrbit(placesdata);
+                                  print(content);
+                                  await lg.buildOrbit(content);
+                                  await Future.delayed(Duration(seconds: 1));
+                                }
+
+                                for (int i = 0; i < places.length; i++) {
+                                  await lg.openBalloon(
+                                      "orbitballoon",
+                                      places[i].name,
+                                      widget.cityName,
+                                      500,
+                                      places[i].details,
+                                      places[i].latitude,
+                                      places[i].longitude);
+                                  await Future.delayed(Duration(seconds: 20));
+                                  //  Future.delayed(Duration(seconds: 4));
+                                }
+                              }
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: size.height * .15,
+                              width: size.width * 0.24,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: darkSecondaryColor,
+                              ),
+                              child: Text(
+                                "Start Orbit",
+                                style: googleTextStyle(
+                                    37.sp, FontWeight.w500, white),
+                              ),
                             ),
                           ),
                           20.pw,
