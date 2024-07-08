@@ -245,54 +245,96 @@ class LGConnection {
     }
   }
 
+//  '''
+// <?xml version="1.0" encoding="UTF-8"?>
+// <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+// <Document>
+// 	<name>$name.kml</name>
+// 	<Style id="purple_paddle">
+// 		<BalloonStyle>
+// 			<text>\$[description]</text>
+//       <bgColor>2b2b2b1e</bgColor>
+// 		</BalloonStyle>
+// 	</Style>
+// 	<Placemark id="0A7ACC68BF23CB81B354">
+// 		<name>$track</name>
+// 		<Snippet maxLines="0"></Snippet>
+// 		<description><![CDATA[
+// <div style="display: flex; justify-content: center;">
+//   <div style="width: 400px; padding: 10px; font-family: Arial, sans-serif;">
+//     <div style="background-color: #2b2b2b; padding: 10px; border-radius: 10px; text-align: center;">
+//       <img src="https://myapp33bucket.s3.amazonaws.com/Frame+171.png" alt="picture" width="350" height="100" />
+//     </div>
+//     <div style="background-color: #2b2b2b; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
+//       <h1 style="color: #3399CC; font-size: 24px; font-weight: bold; margin: 0;">$track</h1>
+//       <h1 style="color: #3399CC; font-size: 18px; margin: 5px 0;">$time</h1>
+//     </div>
+//     <div style="background-color: #2b2b2b; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
+//       <h2 style="color: #3399CC; font-size: 16px; font-weight: bold; margin: 0;">$description</h2>
+//     </div>
+//   </div>
+// </div>
+// ]]></description>
+// 		<LookAt>
+// 			<longitude>${cityLng}</longitude>
+// 			<latitude>${cityLat}</latitude>
+// 			<altitude>0</altitude>
+// 			<heading>0</heading>
+// 			<tilt>0</tilt>
+// 			<range>24000</range>
+// 		</LookAt>
+// 		<styleUrl>#purple_paddle</styleUrl>
+// 		<gx:balloonVisibility>1</gx:balloonVisibility>
+// 		<Point>
+// 			<coordinates>${cityLat},${cityLng},0</coordinates>
+// 		</Point>
+// 	</Placemark>
+// </Document>
+// </kml>
+// ''';
+
   openBalloon(String name, String track, String time, int height,
       String description, double cityLat, double cityLng) async {
     int rigs = (int.parse(_numberOfRigs) / 2).floor() + 1;
-    String openBalloonKML = '''
-<?xml version="1.0" encoding="UTF-8"?>
+    String openBalloonKML = '''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>$name.kml</name>
-	<Style id="purple_paddle">
-		<BalloonStyle>
-			<text>\$[description]</text>
-      <bgColor>4169E11e</bgColor>
-		</BalloonStyle>
-	</Style>
-	<Placemark id="0A7ACC68BF23CB81B354">
-		<name>$track</name>
-		<Snippet maxLines="0"></Snippet>
-		<description><![CDATA[
-<div style="display: flex; justify-content: center;">
-  <div style="width: 400px; padding: 10px; font-family: Arial, sans-serif;">
-    <div style="background-color: #f5f5f5; padding: 10px; border-radius: 10px; text-align: center;">
-      <img src="https://myapp33bucket.s3.amazonaws.com/geo-tale-high-resolution-logo-transparent.png" alt="picture" width="350" height="100" />
+ <name>$name.kml</name>
+ <Style id="about_style">
+   <BalloonStyle>
+     <textColor>ffffffff</textColor>
+     <text>
+        <![CDATA[
+        <div style="width: 280px; padding: 10px; font-family: Arial, sans-serif;">
+          <img src="https://myapp33bucket.s3.amazonaws.com/Frame+171.png" alt="picture" width="250" height="250" style="margin-bottom: 10px;"/>
+          <h1 style="margin: 0; font-size: 18px; text-align: center;">$track</h1>
+          <h2 style="margin: 5px 0; font-size: 14px; color: #888; text-align: center;">$time</h2>
+           <div style="background-color: #2E2E2E; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
+      <p style="font-size: 14px;margin: 0;">$description</p>
     </div>
-    <div style="background-color: #f5f5f5; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
-      <h1 style="color: #00CC99; font-size: 24px; font-weight: bold; margin: 0;">$track</h1>
-      <h1 style="color: #00CC99; font-size: 18px; margin: 5px 0;">$time</h1>
-    </div>
-    <div style="background-color: #f5f5f5; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
-      <h2 style="color: #3399CC; font-size: 16px; font-weight: bold; margin: 0;">$description</h2>
-    </div>
-  </div>
-</div>
-
-]]></description>
-		<LookAt>
-			<longitude>${cityLng}</longitude>
-			<latitude>${cityLat}</latitude>
-			<altitude>0</altitude>
-			<heading>0</heading>
-			<tilt>0</tilt>
-			<range>24000</range>
-		</LookAt>
-		<styleUrl>#purple_paddle</styleUrl>
-		<gx:balloonVisibility>1</gx:balloonVisibility>
-		<Point>
-			<coordinates>${cityLat},${cityLng},0</coordinates>
-		</Point>
-	</Placemark>
+        </div>
+        ]]>
+     </text>
+     <bgColor>ff15151a</bgColor>
+   </BalloonStyle>
+ </Style>
+ <Placemark id="ab">
+   <description>
+   </description>
+   <LookAt>
+     <longitude>${cityLng}</longitude>
+     <latitude>${cityLat}</latitude>
+     <altitude>0</altitude>
+     <heading>0</heading>
+     <tilt>0</tilt>
+     <range>24000</range>
+   </LookAt>
+   <styleUrl>#about_style</styleUrl>
+   <gx:balloonVisibility>1</gx:balloonVisibility>
+   <Point>
+    <coordinates>${cityLat},${cityLng},0</coordinates>
+   </Point>
+ </Placemark>
 </Document>
 </kml>
 ''';
