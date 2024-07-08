@@ -97,7 +97,7 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
+              Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => LGTasks(),
               ));
             },
@@ -126,7 +126,7 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
+              Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ConnectionManager(),
               ));
             },

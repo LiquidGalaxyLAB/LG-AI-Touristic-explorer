@@ -23,15 +23,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool connectionStatus = false;
+  bool lgStatus = false;
+  bool aiStatus = false;
   late LGConnection lg;
   TextEditingController _textEditingController = TextEditingController();
   bool isCity = false;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
     setState(() {
-      connectionStatus = result!;
+      lgStatus = result!;
     });
+    await lg.logosLG(logosLG, factorLogo);
   }
 
   @override
@@ -153,7 +155,8 @@ class _HomePageState extends State<HomePage> {
                           style: googleTextStyle(35, FontWeight.w700, white),
                         ),
                         ConnectionFlag(
-                          status: connectionStatus,
+                          lgStatus: lgStatus,
+                          aiStatus: aiStatus,
                         ),
                       ],
                     ),

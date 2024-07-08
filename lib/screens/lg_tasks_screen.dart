@@ -18,14 +18,17 @@ class LGTasks extends StatefulWidget {
 class _LGTasksState extends State<LGTasks> {
   @override
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool connectionStatus = false;
+  bool lgStatus = false;
+  bool aiStatus = false;
   late LGConnection lg;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
     setState(() {
-      connectionStatus = result!;
+      lgStatus = result!;
     });
   }
+  
+  
 
   @override
   void initState() {
@@ -81,8 +84,7 @@ class _LGTasksState extends State<LGTasks> {
                       "AI Touristic Explorer",
                       style: googleTextStyle(35, FontWeight.w700, white),
                     ),
-                    ConnectionFlag(
-                      status: connectionStatus,
+                    ConnectionFlag(lgStatus: lgStatus,aiStatus: aiStatus,
                     ),
                   ],
                 ),

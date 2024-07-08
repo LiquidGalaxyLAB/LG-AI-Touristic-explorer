@@ -16,13 +16,14 @@ class ConnectionManager extends StatefulWidget {
 }
 
 class _ConnectionManagerState extends State<ConnectionManager> {
-  bool connectionStatus = false;
+  bool lgStatus = false;
+  bool aiStatus = false;
 
   late LGConnection lg;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
     setState(() {
-      connectionStatus = result!;
+      lgStatus = result!;
     });
   }
 
@@ -130,7 +131,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       style: googleTextStyle(35, FontWeight.w700, white),
                     ),
                     ConnectionFlag(
-                      status: connectionStatus,
+                      lgStatus: lgStatus,
+                      aiStatus: aiStatus,
                     ),
                   ],
                 ),
@@ -463,7 +465,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
           print(result);
           if (result == true) {
             setState(() {
-              connectionStatus = true;
+              lgStatus = true;
             });
 
             print('Connected to LG successfully');
