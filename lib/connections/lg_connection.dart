@@ -155,10 +155,41 @@ class LGConnection {
   </Document>
 </kml>''';
     int rigs = (int.parse(_numberOfRigs) / 2).floor() + 1;
+    int leftRig = (int.parse(_numberOfRigs) / 2).floor() + 2;
+    try {
+      connectToLG();
+      await _client!
+          .execute("echo '$blank' > /var/www/html/kml/slave_$rigs.kml");
+      return await _client!
+          .execute("echo '$blank' > /var/www/html/kml/slave_$leftRig.kml");
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  logosLG(String imageUrl, double factor) async {
+    int leftRig = (int.parse(_numberOfRigs) / 2).floor() + 2;
+    String kml = '''<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+    <Document id ="logo">
+         <name>Smart City Dashboard</name>
+             <Folder>
+                  <name>Splash Screen</name>
+                  <ScreenOverlay>
+                      <name>Logo</name>
+                      <Icon><href>$imageUrl</href> </Icon>
+                      <overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+                      <screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+                      <rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
+                      <size x="450" y="${450 * factor}" xunits="pixels" yunits="pixels"/>
+                  </ScreenOverlay>
+             </Folder>
+    </Document>
+</kml>''';
     try {
       connectToLG();
       return await _client!
-          .execute("echo '$blank' > /var/www/html/kml/slave_$rigs.kml");
+          .execute("echo '$kml' > /var/www/html/kml/slave_$leftRig.kml");
     } catch (e) {
       return Future.error(e);
     }
