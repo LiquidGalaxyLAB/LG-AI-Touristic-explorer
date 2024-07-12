@@ -11,7 +11,7 @@ String removeMarkdown(String responseText) {
 }
 
 Future<City> getCityInformation(String city, LatLng coordinates) async {
-  const url = 'http://127.0.0.1:5000/getCityInformation';
+  const url = 'http://127.0.0.1:8107/getCityInformation';
 
   final response = await http.post(
     Uri.parse(url),
@@ -35,7 +35,7 @@ Future<City> getCityInformation(String city, LatLng coordinates) async {
 Future<bool> checkAIServerConnection() async {
   try {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String ipAIServer = prefs.getString("ipAIServer") ?? "192.169.0.1";
+    String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
     String portAIServer = prefs.getString("portAIServer") ?? "8107";
     String apiURL = "http://$ipAIServer:$portAIServer/hello";
     http.Response response = await http.get(Uri.parse(apiURL));

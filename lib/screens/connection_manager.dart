@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
+import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
@@ -726,6 +727,10 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                         child: GestureDetector(
                           onTap: () async {
                             await _saveAISettings();
+                            aiStatus = await checkAIServerConnection();
+                            setState(() {
+                              aiStatus = aiStatus;
+                            });
                           },
                           child: Container(
                             alignment: Alignment.center,

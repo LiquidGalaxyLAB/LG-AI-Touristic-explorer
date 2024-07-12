@@ -24,7 +24,7 @@ Future<Map<String, double>> _getCoordinates(
 }
 
 Future<List<Place>> generatePOI(String city, LatLng coordinates) async {
-  const url = 'http://127.0.0.1:5000/generatePOI';
+  const url = 'http://127.0.0.1:8107/generatePOI';
 
   final response = await http.post(
     Uri.parse(url),
