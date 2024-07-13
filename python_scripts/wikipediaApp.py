@@ -7,11 +7,11 @@ import re
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = Flask(__name__)
+client = Groq(
+    api_key= os.getenv("GROQ_API_KEY"),
+)
 
 
 def removeMarkdown(responseText):
@@ -106,7 +106,7 @@ def generateFacts(information, fact_type):
 
     try:
         response = requests.post(
-            "http://localhost:11434/api/generate", json=payload)
+            "http://127.0.0.1:11434/api/generate", json=payload)
 
         if response.status_code == 200:
             response_data = response.text
@@ -131,7 +131,7 @@ def generatePOI():
     }
     try:
         response = requests.post(
-            "http://localhost:11434/api/generate", json=payload)
+            "http://127.0.0.1:11434/api/generate", json=payload)
 
         if response.status_code == 200:
             response_data = response.text
@@ -149,6 +149,31 @@ def generatePOI():
 @app.route('/hello', methods=['GET'])
 def check():
     return jsonify({"status": "ok"})
+
+
+@app.route('/checkLocal', methods=['GET'])
+def checkLocal():
+    payload = {
+        "model": "gemma:2b",
+        "prompt": "hello, gemma!!",
+        "stream": False,
+    }
+    try:
+        response = requests.post(
+            "http://127.0.0.1:11434/api/generate", json=payload)
+
+        if response.status_code == 200:
+            response_data = response.text
+            cleaned_string = removeMarkdown(response_data)
+            parsed_data = json.loads(cleaned_string)
+            return jsonify({"response": parsed_data['response']})
+
+        else:
+            return jsonify({'error': 'An error occurred with the external request'}), response.status_code
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({'error': 'An error occurred during generation'}), 500
 
 
 @app.route('/getCityInformation', methods=['POST'])
@@ -175,8 +200,4 @@ def getCityInformation():
 
 
 if __name__ == '__main__':
-
-    client = Groq(
-        api_key=os.getenv('GROQ_API_KEY'),
-    )
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8107)

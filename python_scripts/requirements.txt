@@ -1,0 +1,6 @@
+Flask
+groq
+python-dotenv
+requests
+urllib3
+wikipedia
