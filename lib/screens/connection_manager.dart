@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
@@ -20,7 +21,7 @@ class ConnectionManager extends StatefulWidget {
 class _ConnectionManagerState extends State<ConnectionManager> {
   bool lgStatus = false;
   bool aiStatus = false;
-
+  bool passwordVisible = false;
   late LGConnection lg;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
@@ -500,38 +501,65 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                     SizedBox(
                                       height: 25,
                                     ),
-                                    TextField(
-                                      obscureText: true,
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
-                                      controller: _passwordController,
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        prefixIcon: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 5.0,
-                                          ),
-                                          child: Icon(
-                                            Icons.lock,
-                                            color: Colors.cyan,
-                                            size: 25,
-                                          ),
-                                        ),
-                                        hintText: 'Enter your password',
-                                        hintStyle: googleTextStyle(
+                                    Stack(children: [
+                                      TextField(
+                                        obscureText: !passwordVisible,
+                                        style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
                                             darkBackgroundColor),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 30, horizontal: 30),
+                                        controller: _passwordController,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          prefixIcon: Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 5.0,
+                                            ),
+                                            child: Icon(
+                                              Icons.lock,
+                                              color: Colors.cyan,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          hintText: 'Enter your password',
+                                          hintStyle: googleTextStyle(
+                                              25.sp,
+                                              FontWeight.w500,
+                                              darkBackgroundColor),
+                                          isDense: true,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 30, horizontal: 30),
+                                        ),
                                       ),
-                                    ),
+                                      Container(
+                                        alignment: Alignment.bottomRight,
+                                        padding: EdgeInsets.only(
+                                            top: 23.h, right: 20.w),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                passwordVisible =
+                                                    !passwordVisible;
+                                              });
+                                            },
+                                            icon: passwordVisible
+                                                ? Icon(
+                                                    size: 30,
+                                                    Icons.visibility_off,
+                                                    color: Colors.cyan,
+                                                  )
+                                                : Icon(
+                                                    size: 30,
+                                                    Icons.visibility,
+                                                    color: Colors.cyan,
+                                                  )),
+                                      ),
+                                    ]),
                                   ],
                                 ),
                               ),
