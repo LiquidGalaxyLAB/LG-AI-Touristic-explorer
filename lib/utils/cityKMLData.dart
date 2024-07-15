@@ -1,3 +1,11 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:lg_ai_touristic_explorer/models/city.dart';
+import 'package:lg_ai_touristic_explorer/models/culture_fact.dart';
+import 'package:lg_ai_touristic_explorer/models/geographic_fact.dart';
+import 'package:lg_ai_touristic_explorer/models/history_fact.dart';
+
+import '../models/place.dart';
+
 String cityOutline = 'city_outline';
 String historicalMap = 'historical_map';
 Map<String, List<String>> cityFiles = {
@@ -329,343 +337,284 @@ var data = {
     }
   ]
 };
-var newYorkFacts = {
-  "historical_facts": [
-    {
-      "fact":
-          "New York City was originally called New Amsterdam when it was founded by the Dutch in 1624. It was renamed New York in 1664 after the English took control of the colony and named it after the Duke of York."
-    },
-    {
-      "fact":
-          "The Statue of Liberty, a gift from France, was dedicated on October 28, 1886. It has since become a symbol of freedom and democracy."
-    },
-    {
-      "fact":
-          "In 1898, New York City consolidated with Brooklyn, Queens, the Bronx, and Staten Island to form the five boroughs that make up the city today."
-    },
-    {
-      "fact":
-          "Ellis Island, opened in 1892, served as the primary immigration station for the United States until 1954, processing over 12 million immigrants."
-    },
-    {
-      "fact":
-          "The Empire State Building, completed in 1931, was the tallest building in the world until 1970. It remains one of the most iconic skyscrapers in the city."
-    },
-    {
-      "fact":
-          "The Great Fire of 1835 in New York City destroyed much of Lower Manhattan, leading to significant rebuilding and modernization of the city's infrastructure."
-    }
+
+City newYork = City(
+  culturalFacts: [
+    CulturalFact(
+        fact:
+            "New York City is known for its diverse cultural landscape, with over 800 languages spoken, making it one of the most linguistically diverse cities in the world."),
+    CulturalFact(
+        fact:
+            "Broadway, located in Manhattan, is considered the pinnacle of American theater, attracting millions of visitors each year to its shows and performances."),
+    CulturalFact(
+        fact:
+            "The annual New York City Marathon, established in 1970, is the largest marathon in the world, attracting over 50,000 runners from around the globe."),
+    CulturalFact(
+        fact:
+            "New York City is home to the Metropolitan Museum of Art, the largest art museum in the United States, with a collection spanning over 5,000 years of art."),
+    CulturalFact(
+        fact:
+            "The city hosts the Tribeca Film Festival, founded in 2002 by Robert De Niro and Jane Rosenthal, which has become a major platform for independent films."),
+    CulturalFact(
+        fact:
+            "The New York Philharmonic, founded in 1842, is one of the oldest symphony orchestras in the world and has been a cornerstone of the city's cultural scene."),
   ],
-  "cultural_facts": [
-    {
-      "fact":
-          "New York City is known for its diverse cultural landscape, with over 800 languages spoken, making it one of the most linguistically diverse cities in the world."
-    },
-    {
-      "fact":
-          "Broadway, located in Manhattan, is considered the pinnacle of American theater, attracting millions of visitors each year to its shows and performances."
-    },
-    {
-      "fact":
-          "The annual New York City Marathon, established in 1970, is the largest marathon in the world, attracting over 50,000 runners from around the globe."
-    },
-    {
-      "fact":
-          "New York City is home to the Metropolitan Museum of Art, the largest art museum in the United States, with a collection spanning over 5,000 years of art."
-    },
-    {
-      "fact":
-          "The city hosts the Tribeca Film Festival, founded in 2002 by Robert De Niro and Jane Rosenthal, which has become a major platform for independent films."
-    },
-    {
-      "fact":
-          "The New York Philharmonic, founded in 1842, is one of the oldest symphony orchestras in the world and has been a cornerstone of the city's cultural scene."
-    }
+  geographicalFacts: [
+    GeographicalFact(
+        fact:
+            "New York City is located on the eastern coast of the United States, at the mouth of the Hudson River, which flows into New York Harbor."),
+    GeographicalFact(
+        fact:
+            "Central Park, an 843-acre park in the heart of Manhattan, was designed by Frederick Law Olmsted and Calvert Vaux, and opened in 1858. It is one of the most visited urban parks in the United States."),
+    GeographicalFact(
+        fact:
+            "New York City's five boroughs—Manhattan, Brooklyn, Queens, The Bronx, and Staten Island—each have their own unique character and neighborhoods, contributing to the city's rich and varied geography."),
+    GeographicalFact(
+        fact:
+            "The city's extensive subway system, which began operation in 1904, is one of the largest and oldest public transit systems in the world, with 472 stations."),
+    GeographicalFact(
+        fact:
+            "New York Harbor is one of the largest natural harbors in the world and has played a critical role in the city's development as a major port and trade center."),
+    GeographicalFact(
+        fact:
+            "The Bronx is home to the New York Botanical Garden, which spans 250 acres and includes a diverse collection of plants from around the world."),
   ],
-  "geographical_facts": [
-    {
-      "fact":
-          "New York City is located on the eastern coast of the United States, at the mouth of the Hudson River, which flows into New York Harbor."
-    },
-    {
-      "fact":
-          "Central Park, an 843-acre park in the heart of Manhattan, was designed by Frederick Law Olmsted and Calvert Vaux, and opened in 1858. It is one of the most visited urban parks in the United States."
-    },
-    {
-      "fact":
-          "New York City's five boroughs—Manhattan, Brooklyn, Queens, The Bronx, and Staten Island—each have their own unique character and neighborhoods, contributing to the city's rich and varied geography."
-    },
-    {
-      "fact":
-          "The city's extensive subway system, which began operation in 1904, is one of the largest and oldest public transit systems in the world, with 472 stations."
-    },
-    {
-      "fact":
-          "New York Harbor is one of the largest natural harbors in the world and has played a critical role in the city's development as a major port and trade center."
-    },
-    {
-      "fact":
-          "The Bronx is home to the New York Botanical Garden, which spans 250 acres and includes a diverse collection of plants from around the world."
-    }
-  ]
-};
-var parisFacts = {
-  "historical_facts": [
-    {
-      "fact":
-          "Paris was originally a Roman city called 'Lutetia'. It was established on the Île de la Cité around the 1st century BC and gradually expanded over the centuries. The name 'Lutetia' was changed to 'Paris' in the 4th century, derived from the Parisii, a Celtic tribe that inhabited the region."
-    },
-    {
-      "fact":
-          "The storming of the Bastille on July 14, 1789, marked the beginning of the French Revolution. The Bastille was a medieval fortress and prison in Paris, symbolizing the tyranny of the Bourbon monarchy. Its fall is commemorated annually as Bastille Day, a national holiday in France, celebrated with parades, fireworks, and parties."
-    },
-    {
-      "fact":
-          "The Eiffel Tower, built by engineer Gustave Eiffel for the 1889 Exposition Universelle (World's Fair), was initially intended to be dismantled after 20 years. Standing at 324 meters (1,063 feet) tall, it was the tallest man-made structure in the world until the completion of the Chrysler Building in New York in 1930."
-    },
-    {
-      "fact":
-          "Notre-Dame Cathedral, a masterpiece of French Gothic architecture, began construction in 1163 and was completed in 1345. The cathedral is famous for its stunning facade, intricate sculptures, and beautiful stained glass windows. In 2019, a devastating fire caused significant damage to the structure, sparking a global effort to restore it."
-    },
-    {
-      "fact":
-          "The Treaty of Versailles, signed on June 28, 1919, in the Hall of Mirrors at the Palace of Versailles, officially ended World War I. The treaty imposed heavy reparations and territorial losses on Germany, which contributed to the economic and political instability that led to World War II."
-    }
+  historicalFacts: [
+    HistoricalFact(
+        fact:
+            "New York City was originally called New Amsterdam when it was founded by the Dutch in 1624. It was renamed New York in 1664 after the English took control of the colony and named it after the Duke of York."),
+    HistoricalFact(
+        fact:
+            "The Statue of Liberty, a gift from France, was dedicated on October 28, 1886. It has since become a symbol of freedom and democracy."),
+    HistoricalFact(
+        fact:
+            "In 1898, New York City consolidated with Brooklyn, Queens, the Bronx, and Staten Island to form the five boroughs that make up the city today."),
+    HistoricalFact(
+        fact:
+            "Ellis Island, opened in 1892, served as the primary immigration station for the United States until 1954, processing over 12 million immigrants."),
+    HistoricalFact(
+        fact:
+            "The Empire State Building, completed in 1931, was the tallest building in the world until 1970. It remains one of the most iconic skyscrapers in the city."),
+    HistoricalFact(
+        fact:
+            "The Great Fire of 1835 in New York City destroyed much of Lower Manhattan, leading to significant rebuilding and modernization of the city's infrastructure."),
   ],
-  "cultural_facts": [
-    {
-      "fact":
-          "Paris is home to the Louvre, the world's largest and most visited art museum. It houses approximately 38,000 objects from prehistory to the 21st century, including masterpieces like the Mona Lisa, the Venus de Milo, and the Winged Victory of Samothrace. The museum is housed in the historic Louvre Palace, originally built as a fortress in the late 12th century."
-    },
-    {
-      "fact":
-          "The city is known for its café culture, with iconic cafes like Café de Flore and Les Deux Magots. These cafes have been frequented by famous intellectuals, writers, and artists such as Jean-Paul Sartre, Simone de Beauvoir, Ernest Hemingway, and Pablo Picasso. They have become symbols of Parisian social and cultural life."
-    },
-    {
-      "fact":
-          "Paris Fashion Week, held biannually in spring and fall, is one of the most important events in the fashion industry. It showcases the latest collections from top designers and fashion houses such as Chanel, Louis Vuitton, and Dior. The event attracts designers, models, celebrities, and fashion enthusiasts from around the world."
-    },
-    {
-      "fact":
-          "The Paris Opera, founded in 1669 by King Louis XIV, is one of the oldest and most prestigious opera companies in the world. It operates two historic venues: the Palais Garnier, a 19th-century architectural masterpiece, and the modern Opéra Bastille, which opened in 1989. The Paris Opera is renowned for its world-class productions of opera and ballet."
-    },
-    {
-      "fact":
-          "The annual Fête de la Musique, held on June 21st, is a city-wide celebration of music. Founded in Paris in 1982 by the French Ministry of Culture, the festival encourages musicians of all levels and genres to perform in public spaces. The event has since spread to cities around the world, promoting the joy of music and cultural exchange."
-    }
-  ],
-  "geographical_facts": [
-    {
-      "fact":
-          "Paris is situated on the River Seine, which flows for 777 kilometers (483 miles) from eastern France through the city and into the English Channel. The river divides Paris into the Left Bank (Rive Gauche) and the Right Bank (Rive Droite), each with its own distinct character and cultural landmarks."
-    },
-    {
-      "fact":
-          "The city covers an area of 105 square kilometers (41 square miles) and is relatively flat, with its highest point being Montmartre at 130 meters (427 feet) above sea level. Montmartre is famous for its bohemian atmosphere, historic windmills, and the iconic Sacré-Cœur Basilica, which offers panoramic views of the city."
-    },
-    {
-      "fact":
-          "Paris is divided into 20 administrative districts called 'arrondissements', each with its own unique character and attractions. The arrondissements are numbered in a spiral pattern starting from the center of the city, with the 1st arrondissement containing the Louvre and the 18th arrondissement housing Montmartre."
-    },
-    {
-      "fact":
-          "The Bois de Boulogne and Bois de Vincennes are two large parks located on the western and eastern edges of Paris, respectively. The Bois de Boulogne covers 845 hectares (2,090 acres) and features lakes, gardens, and sporting facilities, while the Bois de Vincennes, covering 995 hectares (2,459 acres), includes a zoo, a botanical garden, and a medieval fortress."
-    },
-    {
-      "fact":
-          "The Île de la Cité and Île Saint-Louis are two natural islands in the Seine River at the heart of Paris. Île de la Cité is home to historic landmarks such as Notre-Dame Cathedral and the Sainte-Chapelle, while Île Saint-Louis is known for its elegant 17th-century townhouses and charming, narrow streets."
-    }
-  ]
-};
-var londonFacts = {
-  "historical_facts": [
-    {
-      "fact":
-          "London was founded by the Romans, who called it Londinium, around AD 50. It became an important commercial center and eventually grew to be the capital of Roman Britain."
-    },
-    {
-      "fact":
-          "The Great Fire of London in 1666 destroyed a large part of the city. It started in a bakery on Pudding Lane and lasted for four days, leading to the reconstruction of many buildings and the creation of modern fire-fighting techniques."
-    },
-    {
-      "fact":
-          "During the Blitz in World War II, London was heavily bombed by the German Luftwaffe. The city endured 57 consecutive nights of bombing from September 1940 to May 1941, resulting in significant destruction and loss of life."
-    },
-    {
-      "fact":
-          "The Tower of London, established by William the Conqueror in 1066, has served variously as a royal palace, prison, and treasury. It is also home to the Crown Jewels."
-    },
-    {
-      "fact":
-          "The British Museum, founded in 1753, houses a vast collection of world art and artifacts, including the Rosetta Stone and the Elgin Marbles. It was the first public national museum in the world."
-    }
-  ],
-  "cultural_facts": [
-    {
-      "fact":
-          "London is renowned for its theater scene, centered around the West End, where famous theaters like the Royal Opera House and the Globe Theatre are located. The West End is often compared to Broadway in New York City."
-    },
-    {
-      "fact":
-          "The Notting Hill Carnival, held annually in August, is Europe's largest street festival. It celebrates Caribbean culture with vibrant parades, music, dancing, and food."
-    },
-    {
-      "fact":
-          "London has a diverse culinary scene, featuring cuisine from all over the world. Borough Market, one of the city's oldest food markets, is a popular destination for gourmet food lovers."
-    },
-    {
-      "fact":
-          "The city is home to numerous world-class museums and galleries, including the Tate Modern, the National Gallery, and the Victoria and Albert Museum, all of which offer free admission to their permanent collections."
-    },
-    {
-      "fact":
-          "London hosts a variety of prestigious cultural events, such as the Proms, an annual eight-week summer season of daily orchestral classical music concerts held at the Royal Albert Hall."
-    }
-  ],
-  "geographical_facts": [
-    {
-      "fact":
-          "London is situated on the River Thames in southeastern England. The river has historically been a major trade route and the reason for the city's initial settlement and growth."
-    },
-    {
-      "fact":
-          "The Greater London area is divided into 32 boroughs, each with its own local government. Notable boroughs include Westminster, Camden, and Kensington and Chelsea."
-    },
-    {
-      "fact":
-          "Hyde Park, one of London's largest parks, covers 350 acres and is home to the Serpentine Lake, Speakers' Corner, and numerous memorials and statues."
-    },
-    {
-      "fact":
-          "London's climate is classified as temperate maritime, with mild temperatures and moderate rainfall throughout the year. The city experiences occasional heatwaves in the summer and rare snowfall in the winter."
-    },
-    {
-      "fact":
-          "London's skyline features a mix of historic and modern architecture. Iconic landmarks include the Houses of Parliament, the Shard, the Gherkin, and St. Paul's Cathedral."
-    }
-  ]
-};
-var newYorkPOI = {
-  "points_of_interest": [
-    {
-      "name": "Statue of Liberty",
-      "details":
-          "A colossal neoclassical sculpture on Liberty Island in New York Harbor, it is a symbol of freedom and democracy.",
-      "latitude": 40.6892,
-      "longitude": -74.0445
-    },
-    {
-      "name": "Central Park",
-      "details":
-          "A large public park in New York City, featuring various attractions such as the Central Park Zoo, boating, and numerous walking trails.",
-      "latitude": 40.7851,
-      "longitude": -73.9683
-    },
-    {
-      "name": "Times Square",
-      "details":
-          "A major commercial intersection and neighborhood in Midtown Manhattan, known for its bright lights, Broadway theaters, and electronic billboards.",
-      "latitude": 40.7580,
-      "longitude": -73.9855
-    },
-    {
-      "name": "Empire State Building",
-      "details":
-          "A 102-story Art Deco skyscraper in Midtown Manhattan, it offers stunning views of the city from its observation decks.",
-      "latitude": 40.7488,
-      "longitude": -73.9857
-    },
-    {
-      "name": "Brooklyn Bridge",
-      "details":
-          "A hybrid cable-stayed/suspension bridge connecting the boroughs of Manhattan and Brooklyn, it is an iconic part of the New York City skyline.",
-      "latitude": 40.7061,
-      "longitude": -73.9969
-    },
-    {
-      "name": "Metropolitan Museum of Art",
-      "details":
-          "The largest art museum in the United States, it has an extensive collection of art from around the world, spanning 5,000 years.",
-      "latitude": 40.7794,
-      "longitude": -73.9632
-    }
-  ]
-};
-var parisPOI = {
-  "points_of_interest": [
-    {
-      "name": "Eiffel Tower",
-      "details":
-          "The Eiffel Tower is a wrought iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.",
-      "latitude": 48.8584,
-      "longitude": 2.2945
-    },
-    {
-      "name": "Louvre Museum",
-      "details":
-          "The Louvre is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city, it is located on the Right Bank of the Seine in the 1st arrondissement.",
-      "latitude": 48.8606,
-      "longitude": 2.3376
-    },
-    {
-      "name": "Notre-Dame Cathedral",
-      "details":
-          "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement of Paris. The cathedral is considered to be one of the finest examples of French Gothic architecture.",
-      "latitude": 48.8530,
-      "longitude": 2.3499
-    },
-    {
-      "name": "Montmartre",
-      "details":
-          "Montmartre is a large hill in Paris's 18th arrondissement. It is known for its artistic history, the white-domed Basilica of the Sacré-Cœur on its summit, and as a nightclub district.",
-      "latitude": 48.8867,
-      "longitude": 2.3431
-    },
-    {
-      "name": "Champs-Élysées",
-      "details":
-          "The Avenue des Champs-Élysées is an avenue in the 8th arrondissement of Paris, France, running between the Place de la Concorde and the Place Charles de Gaulle, where the Arc de Triomphe is located.",
-      "latitude": 48.8698,
-      "longitude": 2.3075
-    }
-  ]
-};
-var londonPOI = {
-  "points_of_interest": [
-    {
-      "name": "Tower of London",
-      "details":
-          "A historic castle located on the north bank of the River Thames. It has served variously as a royal palace, prison, and treasury. The Tower is home to the Crown Jewels of England.",
-      "latitude": 51.5081,
-      "longitude": -0.0759
-    },
-    {
-      "name": "Buckingham Palace",
-      "details":
-          "The London residence and administrative headquarters of the monarch of the United Kingdom. It has been a focal point for the British people at times of national rejoicing and mourning.",
-      "latitude": 51.5014,
-      "longitude": -0.1419
-    },
-    {
-      "name": "The British Museum",
-      "details":
-          "One of the largest and most comprehensive museums in the world, dedicated to human history, art, and culture. It houses a vast collection of works spanning over two million years of history.",
-      "latitude": 51.5194,
-      "longitude": -0.1270
-    },
-    {
-      "name": "Big Ben and the Houses of Parliament",
-      "details":
-          "The iconic clock tower of the Palace of Westminster, known as Big Ben, is a symbol of London. The Houses of Parliament are where the UK's government meets.",
-      "latitude": 51.5007,
-      "longitude": -0.1246
-    },
-    {
-      "name": "The London Eye",
-      "details":
-          "A giant Ferris wheel situated on the South Bank of the River Thames. It offers stunning views of the London skyline and is one of the most popular tourist attractions in the city.",
-      "latitude": 51.5033,
-      "longitude": -0.1195
-    }
-  ]
-};
+  coordinates: const LatLng(40.7128, -74.0060),
+);
+City paris = City(culturalFacts: [
+  CulturalFact(
+      fact:
+          "Paris is home to the Louvre, the world's largest and most visited art museum. It houses approximately 38,000 objects from prehistory to the 21st century, including masterpieces like the Mona Lisa, the Venus de Milo, and the Winged Victory of Samothrace. The museum is housed in the historic Louvre Palace, originally built as a fortress in the late 12th century."),
+  CulturalFact(
+      fact:
+          "The city is known for its café culture, with iconic cafes like Café de Flore and Les Deux Magots. These cafes have been frequented by famous intellectuals, writers, and artists such as Jean-Paul Sartre, Simone de Beauvoir, Ernest Hemingway, and Pablo Picasso. They have become symbols of Parisian social and cultural life."),
+  CulturalFact(
+      fact:
+          "Paris Fashion Week, held biannually in spring and fall, is one of the most important events in the fashion industry. It showcases the latest collections from top designers and fashion houses such as Chanel, Louis Vuitton, and Dior. The event attracts designers, models, celebrities, and fashion enthusiasts from around the world."),
+  CulturalFact(
+      fact:
+          "The Paris Opera, founded in 1669 by King Louis XIV, is one of the oldest and most prestigious opera companies in the world. It operates two historic venues: the Palais Garnier, a 19th-century architectural masterpiece, and the modern Opéra Bastille, which opened in 1989. The Paris Opera is renowned for its world-class productions of opera and ballet."),
+  CulturalFact(
+      fact:
+          "The annual Fête de la Musique, held on June 21st, is a city-wide celebration of music. Founded in Paris in 1982 by the French Ministry of Culture, the festival encourages musicians of all levels and genres to perform in public spaces. The event has since spread to cities around the world, promoting the joy of music and cultural exchange.")
+], geographicalFacts: [
+  GeographicalFact(
+      fact:
+          "Paris is situated on the River Seine, which flows for 777 kilometers (483 miles) from eastern France through the city and into the English Channel. The river divides Paris into the Left Bank (Rive Gauche) and the Right Bank (Rive Droite), each with its own distinct character and cultural landmarks."),
+  GeographicalFact(
+      fact:
+          "The city covers an area of 105 square kilometers (41 square miles) and is relatively flat, with its highest point being Montmartre at 130 meters (427 feet) above sea level. Montmartre is famous for its bohemian atmosphere, historic windmills, and the iconic Sacré-Cœur Basilica, which offers panoramic views of the city."),
+  GeographicalFact(
+      fact:
+          "Paris is divided into 20 administrative districts called 'arrondissements', each with its own unique character and attractions. The arrondissements are numbered in a spiral pattern starting from the center of the city, with the 1st arrondissement containing the Louvre and the 18th arrondissement housing Montmartre."),
+  GeographicalFact(
+      fact:
+          "The Bois de Boulogne and Bois de Vincennes are two large parks located on the western and eastern edges of Paris, respectively. The Bois de Boulogne covers 845 hectares (2,090 acres) and features lakes, gardens, and sporting facilities, while the Bois de Vincennes, covering 995 hectares (2,459 acres), includes a zoo, a botanical garden, and a medieval fortress."),
+  GeographicalFact(
+      fact:
+          "The Île de la Cité and Île Saint-Louis are two natural islands in the Seine River at the heart of Paris. Île de la Cité is home to historic landmarks such as Notre-Dame Cathedral and the Sainte-Chapelle, while Île Saint-Louis is known for its elegant 17th-century townhouses and charming, narrow streets.")
+], historicalFacts: [
+  HistoricalFact(
+      fact:
+          "Paris was originally a Roman city called 'Lutetia'. It was established on the Île de la Cité around the 1st century BC and gradually expanded over the centuries. The name 'Lutetia' was changed to 'Paris' in the 4th century, derived from the Parisii, a Celtic tribe that inhabited the region."),
+  HistoricalFact(
+      fact:
+          "The storming of the Bastille on July 14, 1789, marked the beginning of the French Revolution. The Bastille was a medieval fortress and prison in Paris, symbolizing the tyranny of the Bourbon monarchy. Its fall is commemorated annually as Bastille Day, a national holiday in France, celebrated with parades, fireworks, and parties."),
+  HistoricalFact(
+      fact:
+          "The Eiffel Tower, built by engineer Gustave Eiffel for the 1889 Exposition Universelle (World's Fair), was initially intended to be dismantled after 20 years. Standing at 324 meters (1,063 feet) tall, it was the tallest man-made structure in the world until the completion of the Chrysler Building in New York in 1930."),
+  HistoricalFact(
+      fact:
+          "Notre-Dame Cathedral, a masterpiece of French Gothic architecture, began construction in 1163 and was completed in 1345. The cathedral is famous for its stunning facade, intricate sculptures, and beautiful stained glass windows. In 2019, a devastating fire caused significant damage to the structure, sparking a global effort to restore it."),
+  HistoricalFact(
+      fact:
+          "The Treaty of Versailles, signed on June 28, 1919, in the Hall of Mirrors at the Palace of Versailles, officially ended World War I. The treaty imposed heavy reparations and territorial losses on Germany, which contributed to the economic and political instability that led to World War II.")
+], coordinates: LatLng(48.8566, 2.3522));
+City london = City(culturalFacts: [
+  CulturalFact(
+      fact:
+          "London is renowned for its theater scene, centered around the West End, where famous theaters like the Royal Opera House and the Globe Theatre are located. The West End is often compared to Broadway in New York City."),
+  CulturalFact(
+      fact:
+          "The Notting Hill Carnival, held annually in August, is Europe's largest street festival. It celebrates Caribbean culture with vibrant parades, music, dancing, and food."),
+  CulturalFact(
+      fact:
+          "London has a diverse culinary scene, featuring cuisine from all over the world. Borough Market, one of the city's oldest food markets, is a popular destination for gourmet food lovers."),
+  CulturalFact(
+      fact:
+          "The city is home to numerous world-class museums and galleries, including the Tate Modern, the National Gallery, and the Victoria and Albert Museum, all of which offer free admission to their permanent collections."),
+  CulturalFact(
+      fact:
+          "London hosts a variety of prestigious cultural events, such as the Proms, an annual eight-week summer season of daily orchestral classical music concerts held at the Royal Albert Hall.")
+], geographicalFacts: [
+  GeographicalFact(
+      fact:
+          "London is situated on the River Thames in southeastern England. The river has historically been a major trade route and the reason for the city's initial settlement and growth."),
+  GeographicalFact(
+      fact:
+          "The Greater London area is divided into 32 boroughs, each with its own local government. Notable boroughs include Westminster, Camden, and Kensington and Chelsea."),
+  GeographicalFact(
+      fact:
+          "Hyde Park, one of London's largest parks, covers 350 acres and is home to the Serpentine Lake, Speakers' Corner, and numerous memorials and statues."),
+  GeographicalFact(
+      fact:
+          "London's climate is classified as temperate maritime, with mild temperatures and moderate rainfall throughout the year. The city experiences occasional heatwaves in the summer and rare snowfall in the winter."),
+  GeographicalFact(
+      fact:
+          "London's skyline features a mix of historic and modern architecture. Iconic landmarks include the Houses of Parliament, the Shard, the Gherkin, and St. Paul's Cathedral.")
+], historicalFacts: [
+  HistoricalFact(
+      fact:
+          "London was founded by the Romans, who called it Londinium, around AD 50. It became an important commercial center and eventually grew to be the capital of Roman Britain."),
+  HistoricalFact(
+      fact:
+          "The Great Fire of London in 1666 destroyed a large part of the city. It started in a bakery on Pudding Lane and lasted for four days, leading to the reconstruction of many buildings and the creation of modern fire-fighting techniques."),
+  HistoricalFact(
+      fact:
+          "During the Blitz in World War II, London was heavily bombed by the German Luftwaffe. The city endured 57 consecutive nights of bombing from September 1940 to May 1941, resulting in significant destruction and loss of life."),
+  HistoricalFact(
+      fact:
+          "The Tower of London, established by William the Conqueror in 1066, has served variously as a royal palace, prison, and treasury. It is also home to the Crown Jewels."),
+  HistoricalFact(
+      fact:
+          "The British Museum, founded in 1753, houses a vast collection of world art and artifacts, including the Rosetta Stone and the Elgin Marbles. It was the first public national museum in the world.")
+], coordinates: LatLng(51.5074, -0.1278));
+
+List<Place> newYorkPOI = [
+  Place(
+    name: "Statue of Liberty",
+    details:
+        "A colossal neoclassical sculpture on Liberty Island in New York Harbor, it is a symbol of freedom and democracy.",
+    latitude: 40.6892,
+    longitude: -74.0445,
+  ),
+  Place(
+    name: "Central Park",
+    details:
+        "A large public park in New York City, featuring various attractions such as the Central Park Zoo, boating, and numerous walking trails.",
+    latitude: 40.7851,
+    longitude: -73.9683,
+  ),
+  Place(
+    name: "Times Square",
+    details:
+        "A major commercial intersection and neighborhood in Midtown Manhattan, known for its bright lights, Broadway theaters, and electronic billboards.",
+    latitude: 40.7580,
+    longitude: -73.9855,
+  ),
+  Place(
+    name: "Empire State Building",
+    details:
+        "A 102-story Art Deco skyscraper in Midtown Manhattan, it offers stunning views of the city from its observation decks.",
+    latitude: 40.7488,
+    longitude: -73.9857,
+  ),
+  Place(
+    name: "Brooklyn Bridge",
+    details:
+        "A hybrid cable-stayed/suspension bridge connecting the boroughs of Manhattan and Brooklyn, it is an iconic part of the New York City skyline.",
+    latitude: 40.7061,
+    longitude: -73.9969,
+  ),
+  Place(
+    name: "Metropolitan Museum of Art",
+    details:
+        "The largest art museum in the United States, it has an extensive collection of art from around the world, spanning 5,000 years.",
+    latitude: 40.7794,
+    longitude: -73.9632,
+  ),
+];
+List<Place> parisPOI = [
+  Place(
+    name: "Eiffel Tower",
+    details:
+        "The Eiffel Tower is a wrought iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.",
+    latitude: 48.8584,
+    longitude: 2.2945,
+  ),
+  Place(
+    name: "Louvre Museum",
+    details:
+        "The Louvre is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city, it is located on the Right Bank of the Seine in the 1st arrondissement.",
+    latitude: 48.8606,
+    longitude: 2.3376,
+  ),
+  Place(
+    name: "Notre-Dame Cathedral",
+    details:
+        "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement of Paris. The cathedral is considered to be one of the finest examples of French Gothic architecture.",
+    latitude: 48.8530,
+    longitude: 2.3499,
+  ),
+  Place(
+    name: "Montmartre",
+    details:
+        "Montmartre is a large hill in Paris's 18th arrondissement. It is known for its artistic history, the white-domed Basilica of the Sacré-Cœur on its summit, and as a nightclub district.",
+    latitude: 48.8867,
+    longitude: 2.3431,
+  ),
+  Place(
+    name: "Champs-Élysées",
+    details:
+        "The Avenue des Champs-Élysées is an avenue in the 8th arrondissement of Paris, France, running between the Place de la Concorde and the Place Charles de Gaulle, where the Arc de Triomphe is located.",
+    latitude: 48.8698,
+    longitude: 2.3075,
+  ),
+];
+List<Place> londonPOI = [
+  Place(
+    name: "Tower of London",
+    details:
+        "A historic castle located on the north bank of the River Thames. It has served variously as a royal palace, prison, and treasury. The Tower is home to the Crown Jewels of England.",
+    latitude: 51.5081,
+    longitude: -0.0759,
+  ),
+  Place(
+    name: "Buckingham Palace",
+    details:
+        "The London residence and administrative headquarters of the monarch of the United Kingdom. It has been a focal point for the British people at times of national rejoicing and mourning.",
+    latitude: 51.5014,
+    longitude: -0.1419,
+  ),
+  Place(
+    name: "The British Museum",
+    details:
+        "One of the largest and most comprehensive museums in the world, dedicated to human history, art, and culture. It houses a vast collection of works spanning over two million years of history.",
+    latitude: 51.5194,
+    longitude: -0.1270,
+  ),
+  Place(
+    name: "Big Ben and the Houses of Parliament",
+    details:
+        "The iconic clock tower of the Palace of Westminster, known as Big Ben, is a symbol of London. The Houses of Parliament are where the UK's government meets.",
+    latitude: 51.5007,
+    longitude: -0.1246,
+  ),
+  Place(
+    name: "The London Eye",
+    details:
+        "A giant Ferris wheel situated on the South Bank of the River Thames. It offers stunning views of the London skyline and is one of the most popular tourist attractions in the city.",
+    latitude: 51.5033,
+    longitude: -0.1195,
+  ),
+];
