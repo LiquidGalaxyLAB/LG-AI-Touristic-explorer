@@ -23,14 +23,17 @@ import '../constants/text_styles.dart';
 import 'package:http/http.dart' as http;
 
 class CityInformationScreen extends StatefulWidget {
+  final City? cityGiven;
+  final List<Place>? cityPOI;
   final String cityName;
   final String countryName;
   final LatLng coordinates;
   const CityInformationScreen(
-      {super.key,
-      required this.cityName,
+      {required this.cityName,
       required this.countryName,
-      required this.coordinates});
+      required this.coordinates,
+      this.cityGiven,
+      this.cityPOI});
 
   @override
   State<CityInformationScreen> createState() => _CityInformationScreenState();
@@ -91,6 +94,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isExtra = false;
 
   void initCards(City city) {
+    print("GOT IT");
     historyCarouselCards.clear();
     cultureCarouselCards.clear();
     geographyCarouselCards.clear();
@@ -146,13 +150,28 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
+  _checkGiven() {
+    if (widget.cityGiven != null && widget.cityPOI != null) {
+      city = widget.cityGiven!;
+      places = widget.cityPOI!;
+      initCards(city);
+      setState(() {
+        isLoading = false;
+        isPlaceGenerated = true;
+      });
+    } else {
+      getCityData();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _connectToLG();
-    getCityData();
     _connectToAIServer();
+    _checkGiven();
+    // getCityData();
   }
 
   clean() async {

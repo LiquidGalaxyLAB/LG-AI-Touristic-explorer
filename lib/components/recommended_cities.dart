@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/city_card.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
+import 'package:lg_ai_touristic_explorer/utils/cityKMLData.dart';
 
 class RecomendCities extends StatelessWidget {
   const RecomendCities({
@@ -16,10 +18,12 @@ class RecomendCities extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const CityCard(
+            CityCard(
               cityName: "London",
               countryName: "England",
               imageName: londonImage,
+              city: london,
+              cityPOI: londonPOI,
             ),
             SizedBox(
               height: 40.h,
@@ -36,10 +40,12 @@ class RecomendCities extends StatelessWidget {
         ),
         Column(
           children: [
-            const CityCard(
+            CityCard(
               cityName: "New York",
               countryName: "America",
               imageName: newYorkImage,
+              city: newYork,
+              cityPOI: newYorkPOI,
             ),
             SizedBox(
               height: 40.h,
@@ -56,10 +62,12 @@ class RecomendCities extends StatelessWidget {
         ),
         Column(
           children: [
-            const CityCard(
+            CityCard(
               cityName: "Paris",
               countryName: "France",
               imageName: parisImage,
+              city: paris,
+              cityPOI: parisPOI,
             ),
             SizedBox(
               height: 40.h,

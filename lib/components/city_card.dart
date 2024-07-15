@@ -1,24 +1,45 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/models/city.dart';
+import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
+
+import '../models/place.dart';
 
 class CityCard extends StatelessWidget {
   final String cityName;
   final String imageName;
   final String countryName;
-
+  final City city;
+  final List<Place> cityPOI;
   const CityCard({
-    super.key,
     required this.cityName,
-    required this.countryName,
     required this.imageName,
+    required this.countryName,
+    required this.city,
+    required this.cityPOI,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CityInformationScreen(
+            cityGiven: city,
+            cityPOI: cityPOI,
+            cityName: cityName,
+            countryName: countryName,
+            coordinates: city.coordinates,
+          ),
+        ));
+        ///////////////
+        print("hello");
+      },
       child: Stack(children: [
         Container(
           clipBehavior: Clip.hardEdge,
