@@ -50,6 +50,17 @@ class City {
     List<dynamic> facts = json['historical_facts'];
     return facts.map((fact) => HistoricalFact.fromJson(fact)).toList();
   }
+  static List<CulturalFact> _parseJSONCulturalFacts(List<dynamic> facts) {
+    return facts.map((fact) => CulturalFact.fromJson(fact)).toList();
+  }
+
+  static List<GeographicalFact> _parseJSONGeographicalFacts(List<dynamic> facts) {
+    return facts.map((fact) => GeographicalFact.fromJson(fact)).toList();
+  }
+
+  static List<HistoricalFact> _parseJSONHistoricalFacts(List<dynamic> facts) {
+    return facts.map((fact) => HistoricalFact.fromJson(fact)).toList();
+  }
 }
 
 
