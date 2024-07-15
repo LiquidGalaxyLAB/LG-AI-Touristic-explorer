@@ -5,6 +5,8 @@ import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/drawer.dart';
 
@@ -28,13 +30,30 @@ class _LGTasksState extends State<LGTasks> {
     });
   }
   
-  
+  _connectToAIServer() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
+      String portAIServer = prefs.getString("portAIServer") ?? "8107";
+      String apiURL = "http://$ipAIServer:$portAIServer/hello";
+      http.Response response = await http.get(Uri.parse(apiURL));
+      if (response.statusCode == 200) {
+        setState(() {
+          aiStatus = true;
+        });
+      } else {}
+    } catch (e) {
+      print('Error checking AI server connection: $e');
+      return false;
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _connectToLG();
+    _connectToAIServer();
   }
 
   Widget build(BuildContext context) {

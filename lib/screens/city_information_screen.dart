@@ -14,11 +14,13 @@ import 'package:lg_ai_touristic_explorer/models/flyto.dart';
 import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/models/place.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../components/connection_flag.dart';
 import '../constants/constants.dart';
 import '../constants/images.dart';
 import '../constants/text_styles.dart';
+import 'package:http/http.dart' as http;
 
 class CityInformationScreen extends StatefulWidget {
   final String cityName;
@@ -126,12 +128,31 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     initCards(city);
   }
 
+  _connectToAIServer() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
+      String portAIServer = prefs.getString("portAIServer") ?? "8107";
+      String apiURL = "http://$ipAIServer:$portAIServer/hello";
+      http.Response response = await http.get(Uri.parse(apiURL));
+      if (response.statusCode == 200) {
+        setState(() {
+          aiStatus = true;
+        });
+      } else {}
+    } catch (e) {
+      print('Error checking AI server connection: $e');
+      return false;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _connectToLG();
     getCityData();
+    _connectToAIServer();
   }
 
   clean() async {
