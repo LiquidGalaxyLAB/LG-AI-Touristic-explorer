@@ -37,7 +37,6 @@ Map<String, List<String>> cityFiles = {
   'mumbai': [historicalMap],
   'washingtondc': [historicalMap],
 };
-
 var data = {
   "amsterdam": [
     {
@@ -330,7 +329,6 @@ var data = {
     }
   ]
 };
-
 var newYorkFacts = {
   "historical_facts": [
     {

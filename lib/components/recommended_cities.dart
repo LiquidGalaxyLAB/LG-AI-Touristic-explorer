@@ -19,16 +19,16 @@ class RecomendCities extends StatelessWidget {
             const CityCard(
               cityName: "London",
               countryName: "England",
-              imageName: image,
+              imageName: londonImage,
             ),
             SizedBox(
               height: 40.h,
             ),
-            const CityCard(
-              cityName: "Tokyo",
-              countryName: "Japan",
-              imageName: image,
-            ),
+            // const CityCard(
+            //   cityName: "Tokyo",
+            //   countryName: "Japan",
+            //   imageName: image,
+            // ),
           ],
         ),
         SizedBox(
@@ -39,16 +39,16 @@ class RecomendCities extends StatelessWidget {
             const CityCard(
               cityName: "New York",
               countryName: "America",
-              imageName: image,
+              imageName: newYorkImage,
             ),
             SizedBox(
               height: 40.h,
             ),
-            const CityCard(
-              cityName: "San Francisco",
-              countryName: "America",
-              imageName: image,
-            ),
+            // const CityCard(
+            //   cityName: "San Francisco",
+            //   countryName: "America",
+            //   imageName: image,
+            // ),
           ],
         ),
         SizedBox(
@@ -59,16 +59,16 @@ class RecomendCities extends StatelessWidget {
             const CityCard(
               cityName: "Paris",
               countryName: "France",
-              imageName: image,
+              imageName: parisImage,
             ),
             SizedBox(
               height: 40.h,
             ),
-            const CityCard(
-              cityName: "Delhi",
-              countryName: "India",
-              imageName: image,
-            ),
+            // const CityCard(
+            //   cityName: "Delhi",
+            //   countryName: "India",
+            //   imageName: image,
+            // ),
           ],
         )
       ],
