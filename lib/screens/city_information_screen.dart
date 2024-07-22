@@ -177,6 +177,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   clean() async {
     await lg.cleanBalloon();
     await lg.cleanVisualization();
+    await lg.logosLG(logosLG, factorLogo);
+  }
+
+  Future<void> wait20Seconds() async {
+    await Future.delayed(Duration(seconds: 20));
   }
 
   @override

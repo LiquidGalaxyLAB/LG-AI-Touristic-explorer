@@ -553,18 +553,18 @@ List<Place> parisPOI = [
     longitude: 2.2945,
   ),
   Place(
-    name: "Louvre Museum",
-    details:
-        "The Louvre is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city, it is located on the Right Bank of the Seine in the 1st arrondissement.",
-    latitude: 48.8606,
-    longitude: 2.3376,
-  ),
-  Place(
     name: "Notre-Dame Cathedral",
     details:
         "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement of Paris. The cathedral is considered to be one of the finest examples of French Gothic architecture.",
     latitude: 48.8530,
     longitude: 2.3499,
+  ),
+  Place(
+    name: "Louvre Museum",
+    details:
+        "The Louvre is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city, it is located on the Right Bank of the Seine in the 1st arrondissement.",
+    latitude: 48.8606,
+    longitude: 2.3376,
   ),
   Place(
     name: "Montmartre",

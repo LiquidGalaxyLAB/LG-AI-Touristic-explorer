@@ -35,7 +35,7 @@ class _AppDrawerState extends State<AppDrawer> {
           Column(
             children: [
               Image.asset(
-                mainLogo,
+                'assets/images/rame_173.png',
                 scale: 2,
               ),
               SizedBox(
@@ -157,9 +157,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 ],
               ),
             ),
-            onTap: () {
-              
-            },
+            onTap: () {},
           ),
           Divider(
             color: Colors.white.withOpacity(0.5),
