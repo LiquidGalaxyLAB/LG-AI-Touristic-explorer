@@ -199,6 +199,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       target: widget.coordinates,
       zoom: 12,
     );
+    late CameraPosition changedMapPosition;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
@@ -613,6 +614,19 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           mapType: MapType.satellite,
                           myLocationButtonEnabled: false,
                           initialCameraPosition: _kGooglePlex,
+                          onCameraMove: (position) =>
+                              setState(() => changedMapPosition = position),
+                          onCameraIdle: () async {
+                            await lg.stopOrbit();
+
+                            FlyToView newPosition = FlyToView(
+                                longitude: changedMapPosition.target.longitude,
+                                latitude: changedMapPosition.target.latitude,
+                                range: changedMapPosition.zoom.zoomLG,
+                                tilt: changedMapPosition.tilt,
+                                heading: changedMapPosition.bearing);
+                            await lg.flyTo(newPosition.getCommand());
+                          },
                           onMapCreated: (GoogleMapController controller) {
                             // _controllerGoogleMap.complete(controller);
                             // newGoogleMapController = controller;

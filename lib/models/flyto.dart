@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class FlyToView {
   double longitude;
   double latitude;
@@ -20,4 +22,9 @@ class FlyToView {
 
 String generateQueryString(FlyToView flyToView) {
   return flyToView.getCommand();
+}
+
+extension  ZoomInLG on num {
+  double get zoomLG =>
+      130000000.0 / pow(2, this); 
 }
