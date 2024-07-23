@@ -167,6 +167,25 @@ class LGConnection {
     }
   }
 
+  Future cleanRightBalloon() async {
+    String blank = '''
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+  </Document>
+</kml>''';
+
+    int rightRig = (int.parse(_numberOfRigs) / 2).floor() + 1;
+    try {
+      connectToLG();
+
+      return await _client!
+          .execute("echo '$blank' > /var/www/html/kml/slave_$rightRig.kml");
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
   logosLG(String imageUrl, double factor) async {
     int leftRig = (int.parse(_numberOfRigs) / 2).floor() + 2;
     String kml = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -181,7 +200,7 @@ class LGConnection {
                       <overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
                       <screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
                       <rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
-                      <size x="450" y="${450 * factor}" xunits="pixels" yunits="pixels"/>
+                      <size x="900" y="${900 * factor}" xunits="pixels" yunits="pixels"/>
                   </ScreenOverlay>
              </Folder>
     </Document>
@@ -241,6 +260,43 @@ class LGConnection {
       return await _client!.execute('echo "" > /tmp/query.txt');
     } catch (e) {
       print('Could not connect to host LG');
+      return Future.error(e);
+    }
+  }
+
+  Future<void> sendStaticBalloon(String name, String placeName, String cityName,
+      int height, String description) async {
+    int rigs = (int.parse(_numberOfRigs) / 2).floor() + 1;
+    String sentence = "chmod 777 /var/www/html/kml/slave_$rigs.kml; echo '" +
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n" +
+        "  <Document>\n" +
+        "    <name>historic.kml</name>\n" +
+        "    <ScreenOverlay>\n" +
+        "      <name><![CDATA[<div style=\"text-align: center; font-size: 20px; font-weight: bold; vertical-align: middle;\">$cityName</div>]]></name>\n" +
+        "      <description>\n" +
+        "        <![CDATA[\n" +
+        "        <div style=\"width: 280px; padding: 10px; font-family: Arial, sans-serif; background-color: #15151a; border: 2px solid #cccccc; border-radius: 10px;\">\n" +
+        "          <img src=\"https://myapp33bucket.s3.amazonaws.com/Frame+171.png\" alt=\"picture\" width=\"250\" height=\"250\" style=\"margin-bottom: 10px;\"/>\n" +
+        "          <h1 style=\"margin: 0; font-size: 18px; color: white; text-align: center;\">$placeName</h1>\n" +
+        "          <div style=\"background-color: #2E2E2E; color: white; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;\">\n" +
+        "            <p style=\"font-size: 14px; margin: 0;\">$description</p>\n" +
+        "          </div>\n" +
+        "        </div>\n" +
+        "        ]]>\n" +
+        "      </description>\n" +
+        "      <overlayXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <screenXY x=\"1\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <rotationXY x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <size x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <gx:balloonVisibility>1</gx:balloonVisibility>\n" +
+        "    </ScreenOverlay>\n" +
+        "  </Document>\n" +
+        "</kml>\n' > /var/www/html/kml/slave_$rigs.kml";
+    try {
+      connectToLG();
+      await _client!.execute(sentence);
+    } catch (e) {
       return Future.error(e);
     }
   }
