@@ -73,6 +73,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
     )
   ];
+  CarouselController carouselController = CarouselController();
   late City city;
   bool isLoading = true;
   Future<void> _connectToLG() async {
@@ -378,6 +379,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                           size.height * 0.45,
                                                       width: size.width * 0.38,
                                                       child: CarouselSlider(
+                                                          carouselController:
+                                                              carouselController,
                                                           items:
                                                               poiCarouselCards,
                                                           options:
@@ -776,6 +779,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 //   await wait20Seconds();
                                 // }
                               } else {
+                                setState(() {
+                                  isPOI = true;
+                                });
                                 print("generated");
                                 await lg.cleanVisualization();
                                 for (var i = 0; i < 2; i++) {
@@ -790,14 +796,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
                                 for (int i = 0; i < places.length; i++) {
                                   print(i);
-                                  await lg.openBalloon(
-                                      "orbitballoon",
-                                      places[i].name,
-                                      widget.cityName,
-                                      500,
-                                      places[i].details,
-                                      places[i].latitude,
-                                      places[i].longitude);
+                                  // carouselController.nextPage();
+                                  await lg.sendStaticBalloon(
+                                    "orbitballoon",
+                                    places[i].name,
+                                    widget.cityName,
+                                    500,
+                                    places[i].details,
+                                  );
                                   await wait20Seconds();
                                 }
                               }
