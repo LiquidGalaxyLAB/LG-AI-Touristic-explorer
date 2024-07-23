@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
@@ -12,13 +13,131 @@ class CarouselCard extends StatelessWidget {
     required this.factTitle,
     required this.factDesc,
   });
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: (){
-        //open a popup to show the contents
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              backgroundColor: greenShade,
+              child: Container(
+                width: size.width * 0.5, // Adjust the width to make it a square
+                height:
+                    size.width * 0.5, // Adjust the height to make it a square
+                padding: EdgeInsets.all(40),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(height: 20),
+                    Text(
+                      factTitle,
+                      style: googleTextStyle(50.sp, FontWeight.w700, fontGreen),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: size.height * .15,
+                            width: size.width * 0.15,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromARGB(70, 106, 150, 118),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 15),
+                                Icon(
+                                  Icons.public,
+                                  color: darkBackgroundColor,
+                                  size: 50,
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  "Show in LG",
+                                  style: googleTextStyle(
+                                      35.sp, FontWeight.w700, fontGreen),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: size.height * .15,
+                            width: size.width * 0.15,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromARGB(70, 106, 150, 118),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 15),
+                                Icon(
+                                  Icons.cleaning_services_outlined,
+                                  color: darkBackgroundColor,
+                                  size: 50,
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  "Clean Balloon",
+                                  style: googleTextStyle(
+                                      35.sp, FontWeight.w700, fontGreen),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          factDesc,
+                          style: googleTextStyle(
+                              38.sp, FontWeight.w500, Colors.black),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: 150,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: fontGreen,
+                        ),
+                        child: Text(
+                          'Close',
+                          style: googleTextStyle(30.sp, FontWeight.w500, white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -33,7 +152,7 @@ class CarouselCard extends StatelessWidget {
                 factTitle,
                 style: googleTextStyle(40.sp, FontWeight.w700, fontGreen),
               ),
-              20.ph,
+              SizedBox(height: 20),
               Container(
                 width: size.width * 0.35,
                 child: Text(
@@ -43,7 +162,7 @@ class CarouselCard extends StatelessWidget {
                   textAlign: TextAlign.justify,
                 ),
               ),
-              2.ph
+              SizedBox(height: 2),
             ],
           ),
         ),
