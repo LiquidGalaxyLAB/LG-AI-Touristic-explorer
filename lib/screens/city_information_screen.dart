@@ -66,6 +66,13 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
     )
   ];
+  List<Widget> poiCarouselCards = [
+    const CarouselCard(
+      factTitle: "cityName",
+      factDesc:
+          "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+    )
+  ];
   late City city;
   bool isLoading = true;
   Future<void> _connectToLG() async {
@@ -93,12 +100,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isCulture = false;
   bool isGeography = false;
   bool isExtra = false;
+  bool isPOI = false;
 
-  void initCards(City city) {
+  void initCards(City city, List<Place> pois) {
     print("GOT IT");
     historyCarouselCards.clear();
     cultureCarouselCards.clear();
     geographyCarouselCards.clear();
+    poiCarouselCards.clear();
 
     for (var culturalFact in city.culturalFacts) {
       cultureCarouselCards.add(CarouselCard(
@@ -120,6 +129,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         factDesc: historicalFact.fact,
       ));
     }
+    for (Place places in pois) {
+      poiCarouselCards.add(CarouselCard(
+        factTitle: places.name,
+        factDesc: places.details,
+      ));
+    }
   }
 
   getCityData() async {
@@ -130,7 +145,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     setState(() {
       isLoading = false;
     });
-    initCards(city);
+    List<Place> data = await generatePlaces();
+    initCards(city, data);
   }
 
   _connectToAIServer() async {
@@ -155,7 +171,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     if (widget.cityGiven != null && widget.cityPOI != null) {
       city = widget.cityGiven!;
       places = widget.cityPOI!;
-      initCards(city);
+      initCards(city, places);
       setState(() {
         isLoading = false;
         isPlaceGenerated = true;
@@ -163,6 +179,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     } else {
       getCityData();
     }
+  }
+
+  Future<List<Place>> generatePlaces() async {
+    places = await generatePOI(widget.cityName, widget.coordinates);
+    print(places.toString());
+    return places;
   }
 
   @override
@@ -176,9 +198,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   clean() async {
-    await lg.cleanBalloon();
+    await lg.cleanRightBalloon();
     await lg.cleanVisualization();
-    await lg.logosLG(logosLG, factorLogo);
   }
 
   Future<void> wait20Seconds() async {
@@ -258,6 +279,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           setState(() {
                                             isHistory = true;
                                             isCulture = false;
+                                            isPOI = false;
                                             isGeography = false;
                                           });
                                         },
@@ -265,7 +287,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: isHistory
+                                              color: isHistory && !isPOI
                                                   ? darkSecondaryColor
                                                   : darkSecondaryColor
                                                       .withOpacity(0.4),
@@ -284,6 +306,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           setState(() {
                                             isHistory = false;
                                             isCulture = false;
+                                            isPOI = false;
                                             isGeography = true;
                                           });
                                         },
@@ -291,7 +314,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: isGeography
+                                              color: isGeography && !isPOI
                                                   ? darkSecondaryColor
                                                   : darkSecondaryColor
                                                       .withOpacity(0.4),
@@ -311,13 +334,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             isHistory = false;
                                             isCulture = true;
                                             isGeography = false;
+                                            isPOI = false;
                                           });
                                         },
                                         child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: isCulture
+                                              color: isCulture && !isPOI
                                                   ? darkSecondaryColor
                                                   : darkSecondaryColor
                                                       .withOpacity(0.4),
@@ -345,7 +369,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            isHistory
+                                            isPOI
                                                 ? AnimatedSwitcher(
                                                     duration:
                                                         Duration(seconds: 1),
@@ -355,7 +379,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                       width: size.width * 0.38,
                                                       child: CarouselSlider(
                                                           items:
-                                                              historyCarouselCards,
+                                                              poiCarouselCards,
                                                           options:
                                                               CarouselOptions(
                                                             enlargeCenterPage:
@@ -372,69 +396,100 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                           )),
                                                     ),
                                                   )
-                                                : AnimatedSwitcher(
-                                                    duration:
-                                                        Duration(seconds: 1),
-                                                    child: isCulture
-                                                        ? Container(
-                                                            height:
-                                                                size.height *
-                                                                    0.45,
-                                                            width: size.width *
-                                                                0.38,
-                                                            child:
-                                                                CarouselSlider(
-                                                                    items:
-                                                                        cultureCarouselCards,
-                                                                    options:
-                                                                        CarouselOptions(
-                                                                      enlargeCenterPage:
-                                                                          true,
-                                                                      height:
-                                                                          700,
-                                                                      initialPage:
-                                                                          0,
-                                                                      scrollDirection:
-                                                                          Axis.horizontal,
-                                                                      autoPlayInterval:
-                                                                          const Duration(
-                                                                              milliseconds: 5000),
-                                                                      autoPlay:
-                                                                          false,
-                                                                    )),
-                                                          )
-                                                        : AnimatedSwitcher(
-                                                            duration: Duration(
-                                                                seconds: 1),
-                                                            child: Container(
-                                                              height:
-                                                                  size.height *
-                                                                      0.45,
-                                                              width:
-                                                                  size.width *
-                                                                      0.38,
-                                                              child:
-                                                                  CarouselSlider(
-                                                                      items:
-                                                                          geographyCarouselCards,
-                                                                      options:
-                                                                          CarouselOptions(
-                                                                        enlargeCenterPage:
-                                                                            true,
-                                                                        height:
-                                                                            700,
-                                                                        initialPage:
-                                                                            0,
-                                                                        scrollDirection:
-                                                                            Axis.horizontal,
-                                                                        autoPlayInterval:
-                                                                            const Duration(milliseconds: 5000),
-                                                                        autoPlay:
-                                                                            false,
-                                                                      )),
-                                                            ),
-                                                          ),
-                                                  ),
+                                                : isHistory
+                                                    ? AnimatedSwitcher(
+                                                        duration: Duration(
+                                                            seconds: 1),
+                                                        child: Container(
+                                                          height: size.height *
+                                                              0.45,
+                                                          width:
+                                                              size.width * 0.38,
+                                                          child: CarouselSlider(
+                                                              items:
+                                                                  historyCarouselCards,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                height: 700,
+                                                                initialPage: 0,
+                                                                scrollDirection:
+                                                                    Axis.horizontal,
+                                                                autoPlayInterval:
+                                                                    const Duration(
+                                                                        milliseconds:
+                                                                            5000),
+                                                                autoPlay: false,
+                                                              )),
+                                                        ),
+                                                      )
+                                                    : AnimatedSwitcher(
+                                                        duration: Duration(
+                                                            seconds: 1),
+                                                        child: isCulture
+                                                            ? Container(
+                                                                height:
+                                                                    size.height *
+                                                                        0.45,
+                                                                width:
+                                                                    size.width *
+                                                                        0.38,
+                                                                child:
+                                                                    CarouselSlider(
+                                                                        items:
+                                                                            cultureCarouselCards,
+                                                                        options:
+                                                                            CarouselOptions(
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          height:
+                                                                              700,
+                                                                          initialPage:
+                                                                              0,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlayInterval:
+                                                                              const Duration(milliseconds: 5000),
+                                                                          autoPlay:
+                                                                              false,
+                                                                        )),
+                                                              )
+                                                            : AnimatedSwitcher(
+                                                                duration:
+                                                                    Duration(
+                                                                        seconds:
+                                                                            1),
+                                                                child:
+                                                                    Container(
+                                                                  height:
+                                                                      size.height *
+                                                                          0.45,
+                                                                  width:
+                                                                      size.width *
+                                                                          0.38,
+                                                                  child:
+                                                                      CarouselSlider(
+                                                                          items:
+                                                                              geographyCarouselCards,
+                                                                          options:
+                                                                              CarouselOptions(
+                                                                            enlargeCenterPage:
+                                                                                true,
+                                                                            height:
+                                                                                700,
+                                                                            initialPage:
+                                                                                0,
+                                                                            scrollDirection:
+                                                                                Axis.horizontal,
+                                                                            autoPlayInterval:
+                                                                                const Duration(milliseconds: 5000),
+                                                                            autoPlay:
+                                                                                false,
+                                                                          )),
+                                                                ),
+                                                              ),
+                                                      ),
                                           ],
                                         ),
                                       )),
@@ -618,7 +673,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                               setState(() => changedMapPosition = position),
                           onCameraIdle: () async {
                             await lg.stopOrbit();
-
                             FlyToView newPosition = FlyToView(
                                 longitude: changedMapPosition.target.longitude,
                                 latitude: changedMapPosition.target.latitude,
@@ -637,61 +691,105 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            "Some Commands:",
-                            style:
-                                googleTextStyle(40.sp, FontWeight.w600, white),
-                          ),
-                          220.pw,
+                          // Text(
+                          //   "Some Commands:",
+                          //   style:
+                          //       googleTextStyle(40.sp, FontWeight.w600, white),
+                          // ),
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                isExtra = !isExtra;
+                                isPOI = !isPOI;
+                                isExtra = false;
                               });
                             },
                             child: Container(
                               alignment: Alignment.center,
-                              height: size.height * .055,
-                              width: size.width * 0.1,
+                              height: size.height * .07,
+                              width: size.width * 0.24,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: greenShade,
+                                borderRadius: BorderRadius.circular(20),
+                                color: isPOI ? greenShade : darkSecondaryColor,
                               ),
                               child: Text(
-                                "Extra",
-                                style: googleTextStyle(
-                                    33.sp, FontWeight.w500, Colors.black),
+                                "Points of Interest",
+                                style: googleTextStyle(33.sp, FontWeight.w500,
+                                    isPOI ? fontGreen : white),
                               ),
                             ),
                           ),
-                          30.pw
+                          20.pw,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isExtra = !isExtra;
+                                isPOI = false;
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: size.height * .07,
+                              width: size.width * 0.24,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color:
+                                    isExtra ? greenShade : darkSecondaryColor,
+                              ),
+                              child: Text(
+                                "Extra",
+                                style: googleTextStyle(30.sp, FontWeight.w500,
+                                    isExtra ? fontGreen : white),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                      15.ph,
+                      10.ph,
                       Row(
                         children: [
                           GestureDetector(
                             onTap: () async {
                               if (!isPlaceGenerated) {
                                 print("not generated");
-                                places = await generatePOI(
-                                    widget.cityName, widget.coordinates);
-                                print(places.toString());
-                                isPlaceGenerated = true;
+                                // places = await generatePOI(
+                                //     widget.cityName, widget.coordinates);
+                                // print(places.toString());
+                                // isPlaceGenerated = true;
+                                // for (var i = 0; i < 2; i++) {
+                                //   String placesdata =
+                                //       Orbit().generateOrbit(places);
+                                //   String content =
+                                //       Orbit().buildOrbit(placesdata, places);
+                                //   print(content);
+                                //   await lg.buildOrbit(content);
+                                //   await Future.delayed(Duration(seconds: 1));
+                                // }
+                                // for (int i = 0; i < places.length; i++) {
+                                //   await lg.openBalloon(
+                                //       "orbitballoon",
+                                //       places[i].name,
+                                //       widget.cityName,
+                                //       500,
+                                //       places[i].details,
+                                //       places[i].latitude,
+                                //       places[i].longitude);
+                                //   await wait20Seconds();
+                                // }
                               } else {
                                 print("generated");
-
+                                await lg.cleanVisualization();
                                 for (var i = 0; i < 2; i++) {
                                   String placesdata =
                                       Orbit().generateOrbit(places);
                                   String content =
-                                      Orbit().buildOrbit(placesdata);
+                                      Orbit().buildOrbit(placesdata, places);
                                   print(content);
                                   await lg.buildOrbit(content);
                                   await Future.delayed(Duration(seconds: 1));
                                 }
 
                                 for (int i = 0; i < places.length; i++) {
+                                  print(i);
                                   await lg.openBalloon(
                                       "orbitballoon",
                                       places[i].name,
@@ -700,8 +798,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                       places[i].details,
                                       places[i].latitude,
                                       places[i].longitude);
-                                  await Future.delayed(Duration(seconds: 20));
-                                  //  Future.delayed(Duration(seconds: 4));
+                                  await wait20Seconds();
                                 }
                               }
                             },
