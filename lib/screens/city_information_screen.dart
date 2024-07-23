@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
+import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
@@ -204,65 +205,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       endDrawer: AppDrawer(size: size),
       backgroundColor: darkBackgroundColor,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(140.0),
-        child: Container(
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: darkSecondaryColor,
-            toolbarHeight: 150,
-            elevation: 0,
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 60.h,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: 50.h,
-                        bottom: 55.h,
-                      ),
-                      child: Image.asset(
-                        "assets/images/rame_170.png",
-                        scale: 3.5,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 5.w, top: 45.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "AI Touristic Explorer",
-                        style: googleTextStyle(35, FontWeight.w700, white),
-                      ),
-                      ConnectionFlag(
-                        lgStatus: lgStatus,
-                        aiStatus: aiStatus,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    _scaffoldKey.currentState!.openEndDrawer();
-                  },
-                  icon: Container(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 45, 0),
-                      child: Image.asset(drawerLogo)))
-            ],
-          ),
-        ),
-      ),
+          preferredSize: const Size.fromHeight(140.0),
+          child: UpperBar(
+              lgStatus: lgStatus,
+              aiStatus: aiStatus,
+              scaffoldKey: _scaffoldKey)),
       body: Container(
         child: Column(
           children: [

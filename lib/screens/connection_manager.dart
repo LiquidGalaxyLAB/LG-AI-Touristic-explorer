@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
+import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
@@ -134,63 +135,11 @@ class _ConnectionManagerState extends State<ConnectionManager> {
         size: size,
       ),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(140.0),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: darkSecondaryColor,
-          toolbarHeight: 150,
-          elevation: 0,
-          title: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 60.h,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: 50.h,
-                      bottom: 55.h,
-                    ),
-                    child: Image.asset(
-                      "assets/images/rame_170.png",
-                      scale: 3.5,
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 5.w, top: 45.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "AI Touristic Explorer",
-                      style: googleTextStyle(35, FontWeight.w700, white),
-                    ),
-                    ConnectionFlag(
-                      lgStatus: lgStatus,
-                      aiStatus: aiStatus,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  _scaffoldKey.currentState!.openEndDrawer();
-                },
-                icon: Container(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 45, 0),
-                    child: Image.asset(drawerLogo)))
-          ],
-        ),
-      ),
+          preferredSize: const Size.fromHeight(140.0),
+          child: UpperBar(
+              lgStatus: lgStatus,
+              aiStatus: aiStatus,
+              scaffoldKey: _scaffoldKey)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -394,7 +343,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "No. of LG rigs",
+                                      "No. of LG screens",
                                       style: googleTextStyle(
                                           35.sp, FontWeight.w600, Colors.white),
                                     ),
@@ -422,7 +371,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: 'Enter the number of rigs',
+                                        hintText: 'Enter the number of screens',
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -733,7 +682,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                     TextField(
                                       style: googleTextStyle(25.sp,
                                           FontWeight.w500, darkBackgroundColor),
-                                      controller: _sshPortController,
+                                      controller: _portAIServerController,
                                       decoration: InputDecoration(
                                         filled: true,
                                         fillColor: Colors.white,
