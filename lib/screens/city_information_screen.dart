@@ -143,10 +143,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     LatLng coordinates = widget.coordinates;
     city = await getCityInformation(
         "${cityName}, ${widget.countryName}", coordinates);
+
+    List<Place> data = await generatePlaces();
     setState(() {
       isLoading = false;
+      isPlaceGenerated = true;
     });
-    List<Place> data = await generatePlaces();
     initCards(city, data);
   }
 
@@ -391,10 +393,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                             initialPage: 0,
                                                             scrollDirection:
                                                                 Axis.horizontal,
-                                                            autoPlayInterval:
-                                                                const Duration(
-                                                                    milliseconds:
-                                                                        5000),
                                                             autoPlay: false,
                                                           )),
                                                     ),
@@ -796,7 +794,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
                                 for (int i = 0; i < places.length; i++) {
                                   print(i);
-                                  // carouselController.nextPage();
+                                  carouselController.nextPage();
+
+                                  // Iterable<int>.generate(
+                                  //         poiCarouselCards.length)
+                                  //     .map(
+                                  //   (int pageIndex) => carouselController
+                                  //       .animateToPage(pageIndex),
+                                  // );
                                   await lg.sendStaticBalloon(
                                     "orbitballoon",
                                     places[i].name,

@@ -13,7 +13,7 @@ class ConnectionFlag extends StatelessWidget {
     Color colorAI =
         aiStatus ? const Color.fromARGB(255, 0, 255, 8) : Colors.red;
     String label1 = lgStatus ? 'LG CONNECTED' : 'LG DISCONNECTED';
-    String label2 = lgStatus ? 'AI SERVER CONNECTED' : 'AI SERVER DISCONNECTED';
+    String label2 = aiStatus ? 'AI SERVER CONNECTED' : 'AI SERVER DISCONNECTED';
     return Container(
       padding: EdgeInsets.only(left: 77),
       height: 50,
