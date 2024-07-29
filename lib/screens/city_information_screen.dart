@@ -14,6 +14,7 @@ import 'package:lg_ai_touristic_explorer/models/city.dart';
 import 'package:lg_ai_touristic_explorer/models/flyto.dart';
 import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/models/place.dart';
+import 'package:lg_ai_touristic_explorer/utils/cityKMLData.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -101,6 +102,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isCulture = false;
   bool isGeography = false;
   bool isExtra = false;
+  bool isPresent = false;
   bool isPOI = false;
 
   void initCards(City city, List<Place> pois) {
@@ -138,6 +140,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
+  bool isURL = false;
+  String img = "";
   getCityData() async {
     String cityName = widget.cityName;
     LatLng coordinates = widget.coordinates;
@@ -150,6 +154,19 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       isPlaceGenerated = true;
     });
     initCards(city, data);
+  }
+
+  var visualisationOptions = [];
+  checkForExtra() {
+    bool present = checkIsExtra(widget.cityName);
+    setState(() {
+      isPresent = present;
+    });
+    if (isPresent) {
+      setState(() {
+        visualisationOptions = getVisualisationOptions(widget.cityName);
+      });
+    }
   }
 
   _connectToAIServer() async {
@@ -174,12 +191,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     if (widget.cityGiven != null && widget.cityPOI != null) {
       city = widget.cityGiven!;
       places = widget.cityPOI!;
+      checkForExtra();
       initCards(city, places);
       setState(() {
         isLoading = false;
         isPlaceGenerated = true;
       });
     } else {
+      checkForExtra();
       getCityData();
     }
   }
@@ -250,6 +269,20 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // City Name
+                                // ElevatedButton(
+                                //     onPressed: () async {
+                                //       print(checkIsExtra(widget.cityName));
+
+                                //       // String imgURL = await getPlaceIdFromName(
+                                //       //     "bollywood mumbai");
+                                //       // print("this is : $imgURL");
+                                //       setState(() {
+                                //         isURL = false;
+                                //         // img = imgURL;
+                                //       });
+                                //     },
+                                //     child: Text("Hello")),
+                                // isURL ? Image.network(img) : Container(),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -558,89 +591,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             overflow: TextOverflow.clip,
                                           ),
                                           30.ph,
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Row(
-                                              children: [
-                                                Image.asset(downloadIcon),
-                                                20.pw,
-                                                Text(
-                                                  "Historical Fact",
-                                                  style: googleTextStyle(40.sp,
-                                                      FontWeight.w600, white),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          20.ph,
-                                          Container(
-                                            height: 1,
-                                            width: size.width * 0.33,
-                                            color: white.withOpacity(0.4),
-                                          ),
-                                          20.ph,
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Row(
-                                              children: [
-                                                Image.asset(downloadIcon),
-                                                20.pw,
-                                                Text(
-                                                  "3D Contour Terrain",
-                                                  style: googleTextStyle(40.sp,
-                                                      FontWeight.w600, white),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          20.ph,
-                                          Container(
-                                            height: 1,
-                                            width: size.width * 0.33,
-                                            color: white.withOpacity(0.4),
-                                          ),
-                                          20.ph,
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Row(
-                                              children: [
-                                                Image.asset(downloadIcon),
-                                                20.pw,
-                                                Text(
-                                                  "Outline",
-                                                  style: googleTextStyle(40.sp,
-                                                      FontWeight.w600, white),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          20.ph,
-                                          Container(
-                                            height: 1,
-                                            width: size.width * 0.33,
-                                            color: white.withOpacity(0.4),
-                                          ),
-                                          20.ph,
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Row(
-                                              children: [
-                                                Image.asset(downloadIcon),
-                                                20.pw,
-                                                Text(
-                                                  "Climate Heatmap",
-                                                  style: googleTextStyle(40.sp,
-                                                      FontWeight.w600, white),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          20.ph,
-                                          Container(
-                                            height: 1,
-                                            width: size.width * 0.33,
-                                            color: white.withOpacity(0.4),
-                                          ),
+                                          ...visualisationOptions
+                                              .map((option) =>
+                                                  buildOption(option, size))
+                                              .toList(),
                                           20.ph,
                                         ],
                                       ),
@@ -707,7 +661,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                             child: Container(
                               alignment: Alignment.center,
                               height: size.height * .07,
-                              width: size.width * 0.24,
+                              width: isPresent
+                                  ? size.width * 0.24
+                                  : size.width * 0.495,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: isPOI ? greenShade : darkSecondaryColor,
@@ -719,30 +675,35 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                               ),
                             ),
                           ),
-                          20.pw,
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isExtra = !isExtra;
-                                isPOI = false;
-                              });
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              height: size.height * .07,
-                              width: size.width * 0.24,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color:
-                                    isExtra ? greenShade : darkSecondaryColor,
-                              ),
-                              child: Text(
-                                "Extra",
-                                style: googleTextStyle(30.sp, FontWeight.w500,
-                                    isExtra ? fontGreen : white),
-                              ),
-                            ),
-                          ),
+                          isPresent ? 20.pw : Container(),
+                          isPresent
+                              ? GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isExtra = !isExtra;
+                                      isPOI = false;
+                                    });
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: size.height * .07,
+                                    width: size.width * 0.24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: isExtra
+                                          ? greenShade
+                                          : darkSecondaryColor,
+                                    ),
+                                    child: Text(
+                                      "Extra",
+                                      style: googleTextStyle(
+                                          30.sp,
+                                          FontWeight.w500,
+                                          isExtra ? fontGreen : white),
+                                    ),
+                                  ),
+                                )
+                              : Container()
                         ],
                       ),
                       10.ph,
@@ -855,4 +816,32 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       ),
     );
   }
+}
+
+Widget buildOption(String option, var size) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      GestureDetector(
+        onTap: () {},
+        child: Row(
+          children: [
+            Image.asset(downloadIcon),
+            20.pw,
+            Text(
+              option,
+              style: googleTextStyle(40.sp, FontWeight.w600, white),
+            ),
+          ],
+        ),
+      ),
+      20.ph,
+      Container(
+        height: 1,
+        width: size.width * 0.33,
+        color: white.withOpacity(0.4),
+      ),
+      20.ph,
+    ],
+  );
 }
