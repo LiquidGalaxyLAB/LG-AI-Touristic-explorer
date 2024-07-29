@@ -421,6 +421,22 @@ checkIsExtra(String cityName) {
     return true;
   }
 }
+
+List<String> getVisualisationOptions(String cityName) {
+  cityName = cityName.replaceAll(" ", "").toLowerCase();
+  if (cityFiles.containsKey(cityName)) {
+    return cityFiles[cityName]!.map((file) {
+      if (file == cityOutline) {
+        return "Outline";
+      } else if (file == historicalMap) {
+        return "Historical Fact";
+      }
+      return "";
+    }).toList();
+  }
+  return [];
+}
+
 City newYork = City(
   culturalFacts: [
     CulturalFact(
