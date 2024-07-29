@@ -4,6 +4,7 @@ import 'package:lg_ai_touristic_explorer/models/culture_fact.dart';
 import 'package:lg_ai_touristic_explorer/models/geographic_fact.dart';
 import 'package:lg_ai_touristic_explorer/models/history_fact.dart';
 
+import '../constants/images.dart';
 import '../models/place.dart';
 
 String cityOutline = 'city_outline';
@@ -601,6 +602,7 @@ City london = City(culturalFacts: [
 
 List<Place> newYorkPOI = [
   Place(
+    imageUrl: mainLogoAWS,
     name: "Statue of Liberty",
     details:
         "A colossal neoclassical sculpture on Liberty Island in New York Harbor, it is a symbol of freedom and democracy.",
@@ -608,6 +610,7 @@ List<Place> newYorkPOI = [
     longitude: -74.0445,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Central Park",
     details:
         "A large public park in New York City, featuring various attractions such as the Central Park Zoo, boating, and numerous walking trails.",
@@ -615,6 +618,7 @@ List<Place> newYorkPOI = [
     longitude: -73.9683,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Times Square",
     details:
         "A major commercial intersection and neighborhood in Midtown Manhattan, known for its bright lights, Broadway theaters, and electronic billboards.",
@@ -622,6 +626,7 @@ List<Place> newYorkPOI = [
     longitude: -73.9855,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Empire State Building",
     details:
         "A 102-story Art Deco skyscraper in Midtown Manhattan, it offers stunning views of the city from its observation decks.",
@@ -629,6 +634,7 @@ List<Place> newYorkPOI = [
     longitude: -73.9857,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Brooklyn Bridge",
     details:
         "A hybrid cable-stayed/suspension bridge connecting the boroughs of Manhattan and Brooklyn, it is an iconic part of the New York City skyline.",
@@ -636,6 +642,7 @@ List<Place> newYorkPOI = [
     longitude: -73.9969,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Metropolitan Museum of Art",
     details:
         "The largest art museum in the United States, it has an extensive collection of art from around the world, spanning 5,000 years.",
@@ -645,6 +652,7 @@ List<Place> newYorkPOI = [
 ];
 List<Place> parisPOI = [
   Place(
+    imageUrl: mainLogoAWS,
     name: "Eiffel Tower",
     details:
         "The Eiffel Tower is a wrought iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.",
@@ -652,6 +660,7 @@ List<Place> parisPOI = [
     longitude: 2.2945,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Notre-Dame Cathedral",
     details:
         "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement of Paris. The cathedral is considered to be one of the finest examples of French Gothic architecture.",
@@ -659,6 +668,7 @@ List<Place> parisPOI = [
     longitude: 2.3499,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Louvre Museum",
     details:
         "The Louvre is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city, it is located on the Right Bank of the Seine in the 1st arrondissement.",
@@ -666,6 +676,7 @@ List<Place> parisPOI = [
     longitude: 2.3376,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Montmartre",
     details:
         "Montmartre is a large hill in Paris's 18th arrondissement. It is known for its artistic history, the white-domed Basilica of the Sacré-Cœur on its summit, and as a nightclub district.",
@@ -673,6 +684,7 @@ List<Place> parisPOI = [
     longitude: 2.3431,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Champs-Élysées",
     details:
         "The Avenue des Champs-Élysées is an avenue in the 8th arrondissement of Paris, France, running between the Place de la Concorde and the Place Charles de Gaulle, where the Arc de Triomphe is located.",
@@ -682,6 +694,7 @@ List<Place> parisPOI = [
 ];
 List<Place> londonPOI = [
   Place(
+    imageUrl: mainLogoAWS,
     name: "Tower of London",
     details:
         "A historic castle located on the north bank of the River Thames. It has served variously as a royal palace, prison, and treasury. The Tower is home to the Crown Jewels of England.",
@@ -689,6 +702,7 @@ List<Place> londonPOI = [
     longitude: -0.0759,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Buckingham Palace",
     details:
         "The London residence and administrative headquarters of the monarch of the United Kingdom. It has been a focal point for the British people at times of national rejoicing and mourning.",
@@ -696,6 +710,7 @@ List<Place> londonPOI = [
     longitude: -0.1419,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "The British Museum",
     details:
         "One of the largest and most comprehensive museums in the world, dedicated to human history, art, and culture. It houses a vast collection of works spanning over two million years of history.",
@@ -703,6 +718,7 @@ List<Place> londonPOI = [
     longitude: -0.1270,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "Big Ben and the Houses of Parliament",
     details:
         "The iconic clock tower of the Palace of Westminster, known as Big Ben, is a symbol of London. The Houses of Parliament are where the UK's government meets.",
@@ -710,6 +726,7 @@ List<Place> londonPOI = [
     longitude: -0.1246,
   ),
   Place(
+    imageUrl: mainLogoAWS,
     name: "The London Eye",
     details:
         "A giant Ferris wheel situated on the South Bank of the River Thames. It offers stunning views of the London skyline and is one of the most popular tourist attractions in the city.",
