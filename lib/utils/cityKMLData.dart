@@ -30,7 +30,7 @@ Map<String, List<String>> cityFiles = {
   'miami': [cityOutline, historicalMap],
   'milan': [cityOutline],
   'moscow': [cityOutline],
-  'newyork': [cityOutline],
+  'newyork': [cityOutline, historicalMap],
   'nice': [cityOutline],
   'paris': [cityOutline, historicalMap],
   'sanfrancisco': [cityOutline, historicalMap],
@@ -48,6 +48,8 @@ Map<String, List<String>> cityFiles = {
 var data = {
   "amsterdam": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1PloiQN9rAg710XaFnqvDEK300IFxee_p",
       "type": "cityOutline",
       "description":
           "Amsterdam, the capital of the Netherlands, is known for its artistic heritage, elaborate canal system, and narrow houses with gabled facades, legacies of the city’s 17th-century Golden Age. Its Museum District houses the Van Gogh Museum, works by Rembrandt and Vermeer at the Rijksmuseum, and modern art at the Stedelijk. Cycling is key to the city’s character, and there are numerous bike paths."
@@ -55,11 +57,14 @@ var data = {
   ],
   "anchorage": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=18QQePt_ltVvwWKHQDYQcr2ERYCrtQ1xn",
       "type": "cityOutline",
       "description":
           "Anchorage is Alaska’s largest city and a gateway to the wilderness beyond. The city blends the best of nature and urban life, offering easy access to hiking trails, wildlife viewing, and cultural attractions. It’s surrounded by mountains and water, with stunning views of glaciers and wildlife like bears and moose."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Anchorage. Founded in 1914 as a railroad construction port for the Alaska Railroad, Anchorage has grown into a thriving urban center. It played a significant role during World War II as a strategic air transport hub. The city has evolved from a small tent city to a bustling metropolis while maintaining its strong ties to its native Alaskan roots."
@@ -67,6 +72,8 @@ var data = {
   ],
   "atlanta": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1YIcNuZ1KIRGG6jVvoJId5pGpC2-EnQll",
       "type": "cityOutline",
       "description":
           "Atlanta, the capital of Georgia, is known for its role in the Civil Rights Movement. The cityscape includes modern skyscrapers, historic buildings, and green spaces like Piedmont Park. Atlanta is also home to prestigious institutions such as the Georgia Aquarium, the High Museum of Art, and the Martin Luther King Jr. National Historical Park."
@@ -74,11 +81,14 @@ var data = {
   ],
   "austin": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1FkfHR2v5-GP8-GntOkN-83Rsv07F8qlm",
       "type": "cityOutline",
       "description":
           "Austin is the capital city of Texas, known for its live music scene centered around country, blues, and rock. Its many parks and lakes are popular for hiking, biking, swimming, and boating. South of the city, Formula One's Circuit of the Americas raceway has hosted the United States Grand Prix."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Austin. Founded in 1839, Austin has a rich history tied to its origins as a frontier town. It became the capital of the Republic of Texas in 1846 and later the state capital of Texas. Over the years, Austin has grown into a vibrant cultural and economic hub, known for its tech industry, festivals like SXSW, and eclectic food scene."
@@ -86,11 +96,14 @@ var data = {
   ],
   "bangalore": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1dzR4e9Kx1xhqXwARrRWsi8ff8Ml30rKE",
       "type": "cityOutline",
       "description":
           "Bangalore, officially known as Bengaluru, is the capital of the Indian state of Karnataka. It is known as the Silicon Valley of India due to its role as a leading IT exporter. The city is famous for its pleasant climate, parks, and nightlife. Landmarks include Lalbagh Botanical Garden, Cubbon Park, and the Bangalore Palace."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Bangalore. Founded in the 16th century, Bangalore has a rich historical background as a key administrative and military center of various empires. It became an important commercial and military center under British rule. Today, Bangalore is a cosmopolitan city known for its IT industry and vibrant cultural scene."
@@ -98,6 +111,8 @@ var data = {
   ],
   "barcelona": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1mnP9YzOIo3PEeu6eAB_6Y6Mlu6v8yfrT",
       "type": "cityOutline",
       "description":
           "Barcelona is the capital city of Catalonia, known for its unique architecture, including the Sagrada Familia basilica and Park Güell. The city has a rich cultural heritage, with museums, galleries, and historic neighborhoods like the Gothic Quarter. Barcelona is also famous for its Mediterranean cuisine and vibrant nightlife."
@@ -105,6 +120,8 @@ var data = {
   ],
   "berlin": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1-YGNZzaxiZKThDtNsR092YU4Qgd4bMAG",
       "type": "cityOutline",
       "description":
           "Berlin, the capital of Germany, is known for its diverse architecture, historical significance, and cultural attractions. Landmarks include the Brandenburg Gate, Berlin Wall Memorial, and Museum Island. The city is renowned for its arts scene, nightlife, and modern urban development."
@@ -112,6 +129,8 @@ var data = {
   ],
   "boston": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=16N7pMspBSdd5GBzvlA0lavKmaAunUI0e",
       "type": "cityOutline",
       "description":
           "Boston is the capital city of Massachusetts and one of the oldest cities in the United States. It is known for its historic landmarks like the Freedom Trail, Boston Common, and Harvard University. Boston is a center of education, culture, and innovation, with a vibrant waterfront and rich maritime history."
@@ -119,6 +138,8 @@ var data = {
   ],
   "dallas": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1whlsNF9tagL1bL5Tw7asA1B1tfcQaF92",
       "type": "cityOutline",
       "description":
           "Dallas is a major city in Texas known for its modern architecture, cultural attractions, and bustling business district. The city offers a mix of arts, entertainment, and outdoor activities, with attractions like the Dallas Arts District, Dallas Zoo, and Klyde Warren Park."
@@ -126,6 +147,8 @@ var data = {
   ],
   "dubai": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1irDtCi7AcyFbxmUtz5dHONNgDKoZ9HVY",
       "type": "cityOutline",
       "description":
           "Dubai is a city and emirate in the United Arab Emirates known for its ultramodern architecture, luxury shopping, and lively nightlife scene. The city is home to iconic landmarks like the Burj Khalifa, the world’s tallest building, and the Palm Jumeirah, a man-made island. Dubai is a global business hub and a popular tourist destination."
@@ -133,6 +156,8 @@ var data = {
   ],
   "dublin": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1qKqbuKOcZ51-10VbYqlfToBlDRfgIUsm",
       "type": "cityOutline",
       "description":
           "Dublin is the capital and largest city of Ireland, known for its literary heritage, lively pub culture, and historic landmarks. The city’s attractions include Trinity College, Dublin Castle, and the Guinness Storehouse. Dublin is a vibrant city with a mix of old-world charm and modern amenities."
@@ -140,6 +165,8 @@ var data = {
   ],
   "geneva": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1BSypqBUPJeVkXlPoDuNaUvlWcT8sOY02",
       "type": "cityOutline",
       "description":
           "Geneva is a city in Switzerland known for its humanitarian tradition, international diplomacy, and picturesque setting along Lake Geneva. The city is home to numerous international organizations, museums, and cultural events. Geneva is also a gateway to the Swiss Alps and offers stunning views of Mont Blanc."
@@ -147,6 +174,8 @@ var data = {
   ],
   "honolulu": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1h2Gf_ioudv8a9jBGRqt3eb6VdBf9SO2U",
       "type": "cityOutline",
       "description":
           "Honolulu is the capital city of Hawaii, located on the island of Oahu. It is known for its beautiful beaches, surfing, and cultural attractions like Pearl Harbor and the Bishop Museum. Honolulu blends the traditions of Hawaiian culture with the amenities of a modern city."
@@ -154,6 +183,8 @@ var data = {
   ],
   "london": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1mlqcQ6L53oE5ozBHBV7I1WDJkm771OfP",
       "type": "cityOutline",
       "description":
           "London, the capital of England and the United Kingdom, is a global city known for its historical landmarks, cultural institutions, and diverse population. Attractions include the British Museum, Buckingham Palace, and the Tower of London. London is a leading financial center and a hub for arts, fashion, and entertainment."
@@ -161,11 +192,14 @@ var data = {
   ],
   "losangeles": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1Uf4HkmKmu-IVd8SUqka_fR93hgmUb0nd",
       "type": "cityOutline",
       "description":
           "Los Angeles is a sprawling Southern California city known for its entertainment industry, ethnic diversity, and Mediterranean climate. The city is famous for its film studios, Hollywood Walk of Fame, and cultural attractions like the Getty Center. Los Angeles offers a blend of beaches, mountains, and vibrant urban life."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Los Angeles. Founded in 1781, Los Angeles has grown from a small Spanish pueblo into a major global city. It played a crucial role in the development of the film industry and became a center of cultural and artistic innovation. The city has a rich multicultural heritage and continues to evolve as a dynamic metropolis."
@@ -173,6 +207,8 @@ var data = {
   ],
   "madrid": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1fDbRUj2qvBcBd9jphGQkbBlsSxHv2lSH",
       "type": "cityOutline",
       "description":
           "Madrid is the capital and largest city of Spain, known for its rich cultural heritage, art museums like the Prado and Reina Sofía, and lively nightlife. The city’s landmarks include the Royal Palace of Madrid and Plaza Mayor. Madrid is famous for its culinary scene and vibrant festivals."
@@ -180,6 +216,8 @@ var data = {
   ],
   "manila": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1vb3ceYRK_ZxK8_-QeAs2DkUn39JsMZWf",
       "type": "cityOutline",
       "description":
           "Manila is the capital city of the Philippines, known for its historic landmarks, shopping centers, and vibrant street life. The city blends Spanish colonial architecture with modern skyscrapers and is home to cultural attractions like Rizal Park and the National Museum of the Philippines."
@@ -187,6 +225,8 @@ var data = {
   ],
   "melbourne": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1k3-hlP5mvSFZNILu_qMBbYUnandSp1B3",
       "type": "cityOutline",
       "description":
           "Melbourne is the capital city of the Australian state of Victoria, known for its cultural diversity, sports events, and arts scene. The city’s attractions include Federation Square, Melbourne Cricket Ground, and the Royal Botanic Gardens. Melbourne is also renowned for its coffee culture and vibrant street art."
@@ -194,11 +234,14 @@ var data = {
   ],
   "miami": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1DBr1tkhVoT-BXiwmwLLvoPuW2SWRy0r1",
       "type": "cityOutline",
       "description":
           "Miami is a vibrant city in southeastern Florida known for its beaches, art deco architecture, and Latin American cultural influences. The city’s attractions include South Beach, the Art Deco Historic District, and the Wynwood Walls. Miami is a hub for finance, commerce, culture, and international trade."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Founded in 1896, Miami has a history shaped by immigration, development, and cultural diversity. It grew rapidly during the Florida land boom of the 1920s and became a major center for tourism and international trade. Miami’s unique blend of cultures has influenced its architecture, cuisine, and vibrant social scene."
@@ -206,6 +249,8 @@ var data = {
   ],
   "milan": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=11gdo8tEQ40czqCA8ZS3x6wrtPmHnsXRi",
       "type": "cityOutline",
       "description":
           "Milan is a global capital of fashion and design, known for its historical landmarks, high-end shopping, and artistic heritage. The city’s attractions include the Gothic Duomo di Milano cathedral, Leonardo da Vinci's mural \"The Last Supper,\" and the Teatro alla Scala opera house. Milan is also a hub for finance, commerce, and culture."
@@ -213,18 +258,23 @@ var data = {
   ],
   "moscow": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1ES_KL8R8ksRnkBt_Dfh9NNkev2xbV04h",
       "type": "cityOutline",
       "description":
           "Moscow is the capital city of Russia, known for its iconic architecture, historic landmarks, and cultural institutions. The city’s attractions include Red Square, the Kremlin, and the Bolshoi Theatre. Moscow is a center of political, economic, and cultural life in Russia, with a rich history that spans centuries."
     }
   ],
-  "newyorkcity": [
+  "newyork": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1ILaUBKw2DrsA0YsiO0iF1T2OrjF92wlZ",
       "type": "cityOutline",
       "description":
           "New York City is a global metropolis known for its iconic landmarks, arts scene, and diverse neighborhoods. Attractions include Times Square, Central Park, and the Statue of Liberty. New York City is a hub for finance, media, fashion, and culture, with a vibrant energy that attracts millions of visitors each year."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Harlem, a neighborhood in Upper Manhattan, New York City, has played a central role in African American culture and history. It became a cultural and artistic hub during the Harlem Renaissance of the 1920s, fostering creativity in literature, music, and the arts. Harlem continues to be a symbol of African American heritage and urban life."
@@ -232,6 +282,8 @@ var data = {
   ],
   "nice": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1u6ly_nxhZom4XKoH8M3kFFrpG2ftIHDi",
       "type": "cityOutline",
       "description":
           "Nice is a city on the French Riviera known for its stunning waterfront, pebble beaches, and vibrant markets. The city’s attractions include the Promenade des Anglais, Castle Hill, and the Matisse Museum. Nice has a Mediterranean climate and is a popular destination for tourists seeking sun, sea, and culture."
@@ -239,11 +291,14 @@ var data = {
   ],
   "paris": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1soj8_ZzsSeslEuXPgFo3btZTNVApkIb-",
       "type": "cityOutline",
       "description":
           "Paris, the capital city of France, is renowned for its art, fashion, gastronomy, and culture. The city’s landmarks include the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral. Paris is a global center for art, fashion, and commerce, with a rich history that dates back to ancient times."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Paris. Founded in the 3rd century BC, Paris has evolved from a Roman city to a medieval trading hub and a center of European culture and politics. The city played a pivotal role in the French Revolution and has been a beacon of artistic and intellectual achievement. Paris remains a symbol of elegance, romance, and innovation."
@@ -251,11 +306,14 @@ var data = {
   ],
   "sanfrancisco": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1mTtaHrzXVSWDi-M70MPn9_8r56CPxJxo",
       "type": "cityOutline",
       "description":
           "San Francisco is a city in northern California known for its iconic landmarks, diverse neighborhoods, and scenic beauty. Attractions include the Golden Gate Bridge, Alcatraz Island, and Fisherman's Wharf. San Francisco is a cultural and financial center with a thriving arts scene, tech industry, and culinary diversity."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "San Francisco. Founded in 1776, San Francisco has a rich history shaped by the Gold Rush, earthquakes, and waves of immigration. The city has been a hub of innovation and counterculture, with a legacy that includes the Summer of Love, Silicon Valley, and the LGBTQ+ rights movement. San Francisco continues to evolve as a dynamic global city."
@@ -263,11 +321,14 @@ var data = {
   ],
   "seattle": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1TWmIUm2EvQRmQMmeimQHnJeCQf1j2YOx",
       "type": "cityOutline",
       "description":
           "Seattle is a city in the Pacific Northwest known for its tech industry, vibrant arts scene, and outdoor recreation opportunities. Attractions include the Space Needle, Pike Place Market, and the Seattle Art Museum. Seattle is surrounded by water, mountains, and forests, offering stunning views and outdoor activities."
     },
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Seattle. Founded in 1851, Seattle grew rapidly due to its strategic location for trade and shipping. It became a center for timber, fishing, and later technology, with companies like Microsoft and Amazon headquartered in the region. Seattle’s cultural diversity and natural beauty have shaped its identity as a dynamic urban center."
@@ -275,6 +336,8 @@ var data = {
   ],
   "sydney": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1_3fgnFnBozHXXiaIMAsXd5uTNuuFO0is",
       "type": "cityOutline",
       "description":
           "Sydney is the capital city of New South Wales and one of Australia’s largest cities. It is known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge. Sydney offers a mix of urban sophistication, natural beauty, and outdoor activities, with beaches, parks, and cultural institutions."
@@ -282,6 +345,8 @@ var data = {
   ],
   "toronto": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1GLo9-AVrNpgpKCxTtMJMbR6ei4w7gs4C",
       "type": "cityOutline",
       "description":
           "Toronto is the capital city of the Canadian province of Ontario, known for its diverse population, cultural attractions, and vibrant arts scene. The city’s landmarks include the CN Tower, Royal Ontario Museum, and St. Lawrence Market. Toronto is a global city with a strong economy and a reputation for innovation and inclusivity."
@@ -289,6 +354,8 @@ var data = {
   ],
   "vienna": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1IuhCLehHEdGQjjpKfC_rnJwWzCyGUQaU",
       "type": "cityOutline",
       "description":
           "Vienna is the capital city of Austria, known for its imperial palaces, cultural events, and classical music heritage. The city’s landmarks include Schönbrunn Palace, St. Stephen's Cathedral, and the Vienna State Opera. Vienna is a UNESCO World Heritage site and a center of European history, art, and cuisine."
@@ -296,6 +363,8 @@ var data = {
   ],
   "zurich": [
     {
+      "link":
+          "https://drive.google.com/uc?export=download&id=1vHz8brMan-qsHnh4i4NarZ4bDWRqDF0d",
       "type": "cityOutline",
       "description":
           "Zurich is the largest city in Switzerland and a global financial center known for its banking sector and high standard of living. The city is situated on Lake Zurich and offers a mix of historic architecture, modern amenities, and cultural attractions. Zurich is also known for its vibrant arts scene and outdoor activities."
@@ -303,6 +372,7 @@ var data = {
   ],
   "baltimore": [
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Baltimore. Founded in 1729, Baltimore played a key role in American history as a major seaport and industrial center. It was a key player in the War of 1812 and later became a hub of immigration and manufacturing. Baltimore’s diverse neighborhoods and rich cultural heritage have shaped its identity as a dynamic urban center."
@@ -310,6 +380,7 @@ var data = {
   ],
   "chicago": [
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Chicago. Founded in the 1830s, Chicago grew rapidly due to its strategic location for trade and transportation. It became a major center for industry, finance, and culture, known for its architecture, jazz music, and deep-dish pizza. Chicago’s history includes the Great Fire of 1871 and its rebirth as a modern metropolis."
@@ -317,6 +388,7 @@ var data = {
   ],
   "detroit": [
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Detroit. Founded in 1701, Detroit became a major industrial center known for its automotive industry and Motown sound. The city played a crucial role in World War II production and later faced economic challenges and urban decay. Detroit’s cultural diversity and resilience have shaped its ongoing revitalization efforts."
@@ -324,6 +396,7 @@ var data = {
   ],
   "mumbai": [
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Mumbai, formerly known as Bombay, is the financial and entertainment capital of India. It has a rich history as a trading port and cultural melting pot, influenced by its colonial past and diverse population. Mumbai is known for Bollywood films, historic landmarks like the Gateway of India, and vibrant street life."
@@ -331,6 +404,7 @@ var data = {
   ],
   "washingtondc": [
     {
+      "link": "",
       "type": "historicalMap",
       "description":
           "Washington, D.C., the capital of the United States, has a rich history as a center of politics, government, and culture. The city’s landmarks include the White House, Capitol Hill, and National Mall. Washington, D.C. played a pivotal role in the American Revolution, Civil War, and civil rights movement."
@@ -338,6 +412,15 @@ var data = {
   ]
 };
 
+checkIsExtra(String cityName) {
+  cityName = cityName.replaceAll(" ", "").toLowerCase();
+  print("this is $cityName");
+  if (!data.containsKey(cityName)) {
+    return false;
+  } else {
+    return true;
+  }
+}
 City newYork = City(
   culturalFacts: [
     CulturalFact(
