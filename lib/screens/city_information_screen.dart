@@ -764,12 +764,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                   //       .animateToPage(pageIndex),
                                   // );
                                   await lg.sendStaticBalloon(
-                                    "orbitballoon",
-                                    places[i].name,
-                                    widget.cityName,
-                                    500,
-                                    places[i].details,
-                                  );
+                                      "orbitballoon",
+                                      places[i].name,
+                                      widget.cityName,
+                                      500,
+                                      places[i].details,
+                                      places[i].imageUrl);
                                   await wait20Seconds();
                                 }
                               }

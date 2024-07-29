@@ -115,7 +115,7 @@ class Orbit {
               <gx:flyToMode>smooth</gx:flyToMode>
               <LookAt>
                   <longitude>${places[i].longitude - 0.0}</longitude>
-                  <latitude>${places[i].latitude - 0.0}</latitude>
+                  <latitude>${places[i].latitude - 0.0}</latitude>d
                   <heading>$heading</heading>
                   <tilt>60</tilt>
                   <range>${range}</range>

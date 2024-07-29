@@ -265,7 +265,7 @@ class LGConnection {
   }
 
   Future<void> sendStaticBalloon(String name, String placeName, String cityName,
-      int height, String description) async {
+      int height, String description, String imageURL) async {
     int rigs = (int.parse(_numberOfRigs) / 2).floor() + 1;
     String sentence = "chmod 777 /var/www/html/kml/slave_$rigs.kml; echo '" +
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -277,7 +277,7 @@ class LGConnection {
         "      <description>\n" +
         "        <![CDATA[\n" +
         "        <div style=\"width: 280px; padding: 10px; font-family: Arial, sans-serif; background-color: #15151a; border: 2px solid #cccccc; border-radius: 10px;\">\n" +
-        "          <img src=\"https://myapp33bucket.s3.amazonaws.com/Frame+171.png\" alt=\"picture\" width=\"250\" height=\"250\" style=\"margin-bottom: 10px;\"/>\n" +
+        "          <img src=\"$imageURL\" alt=\"picture\" width=\"250\" height=\"250\" style=\"margin-bottom: 10px;\"/>\n" +
         "          <h1 style=\"margin: 0; font-size: 18px; color: white; text-align: center;\">$placeName</h1>\n" +
         "          <div style=\"background-color: #2E2E2E; color: white; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;\">\n" +
         "            <p style=\"font-size: 14px; margin: 0;\">$description</p>\n" +
