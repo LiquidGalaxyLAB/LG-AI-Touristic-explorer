@@ -104,7 +104,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isExtra = false;
   bool isPresent = false;
   bool isPOI = false;
-
+  bool isRunning = false;
   void initCards(City city, List<Place> pois) {
     print("GOT IT");
     historyCarouselCards.clear();
@@ -709,86 +709,113 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                       10.ph,
                       Row(
                         children: [
-                          GestureDetector(
-                            onTap: () async {
-                              if (!isPlaceGenerated) {
-                                print("not generated");
-                                // places = await generatePOI(
-                                //     widget.cityName, widget.coordinates);
-                                // print(places.toString());
-                                // isPlaceGenerated = true;
-                                // for (var i = 0; i < 2; i++) {
-                                //   String placesdata =
-                                //       Orbit().generateOrbit(places);
-                                //   String content =
-                                //       Orbit().buildOrbit(placesdata, places);
-                                //   print(content);
-                                //   await lg.buildOrbit(content);
-                                //   await Future.delayed(Duration(seconds: 1));
-                                // }
-                                // for (int i = 0; i < places.length; i++) {
-                                //   await lg.openBalloon(
-                                //       "orbitballoon",
-                                //       places[i].name,
-                                //       widget.cityName,
-                                //       500,
-                                //       places[i].details,
-                                //       places[i].latitude,
-                                //       places[i].longitude);
-                                //   await wait20Seconds();
-                                // }
-                              } else {
-                                setState(() {
-                                  isPOI = true;
-                                });
-                                print("generated");
-                                await lg.cleanVisualization();
-                                for (var i = 0; i < 2; i++) {
-                                  String placesdata =
-                                      Orbit().generateOrbit(places);
-                                  String content =
-                                      Orbit().buildOrbit(placesdata, places);
-                                  print(content);
-                                  await lg.buildOrbit(content);
-                                  await Future.delayed(Duration(seconds: 1));
-                                }
+                          !isRunning
+                              ? GestureDetector(
+                                  onTap: () async {
+                                    if (!isPlaceGenerated) {
+                                      print("not generated");
+                                      // places = await generatePOI(
+                                      //     widget.cityName, widget.coordinates);
+                                      // print(places.toString());
+                                      // isPlaceGenerated = true;
+                                      // for (var i = 0; i < 2; i++) {
+                                      //   String placesdata =
+                                      //       Orbit().generateOrbit(places);
+                                      //   String content =
+                                      //       Orbit().buildOrbit(placesdata, places);
+                                      //   print(content);
+                                      //   await lg.buildOrbit(content);
+                                      //   await Future.delayed(Duration(seconds: 1));
+                                      // }
+                                      // for (int i = 0; i < places.length; i++) {
+                                      //   await lg.openBalloon(
+                                      //       "orbitballoon",
+                                      //       places[i].name,
+                                      //       widget.cityName,
+                                      //       500,
+                                      //       places[i].details,
+                                      //       places[i].latitude,
+                                      //       places[i].longitude);
+                                      //   await wait20Seconds();
+                                      // }
+                                    } else {
+                                      setState(() {
+                                        isPOI = true;
+                                        isRunning = true;
+                                      });
+                                      print("generated");
+                                      await lg.cleanVisualization();
+                                      for (var i = 0; i < 2; i++) {
+                                        String placesdata =
+                                            Orbit().generateOrbit(places);
+                                        String content = Orbit()
+                                            .buildOrbit(placesdata, places);
+                                        print(content);
+                                        await lg.buildOrbit(content);
+                                        await Future.delayed(
+                                            Duration(seconds: 1));
+                                      }
+                                      for (int i = 0; i < places.length; i++) {
+                                        print(i);
+                                        carouselController.nextPage();
 
-                                for (int i = 0; i < places.length; i++) {
-                                  print(i);
-                                  carouselController.nextPage();
-
-                                  // Iterable<int>.generate(
-                                  //         poiCarouselCards.length)
-                                  //     .map(
-                                  //   (int pageIndex) => carouselController
-                                  //       .animateToPage(pageIndex),
-                                  // );
-                                  await lg.sendStaticBalloon(
-                                      "orbitballoon",
-                                      places[i].name,
-                                      widget.cityName,
-                                      500,
-                                      places[i].details,
-                                      places[i].imageUrl);
-                                  await wait20Seconds();
-                                }
-                              }
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              height: size.height * .15,
-                              width: size.width * 0.24,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: darkSecondaryColor,
-                              ),
-                              child: Text(
-                                "Start Orbit",
-                                style: googleTextStyle(
-                                    37.sp, FontWeight.w500, white),
-                              ),
-                            ),
-                          ),
+                                        // Iterable<int>.generate(
+                                        //         poiCarouselCards.length)
+                                        //     .map(
+                                        //   (int pageIndex) => carouselController
+                                        //       .animateToPage(pageIndex),
+                                        // );
+                                        print(isRunning);
+                                        if (isRunning) {
+                                          await lg.sendStaticBalloon(
+                                              "orbitballoon",
+                                              places[i].name,
+                                              widget.cityName,
+                                              500,
+                                              places[i].details,
+                                              places[i].imageUrl);
+                                          await wait20Seconds();
+                                        }
+                                      }
+                                    }
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: size.height * .15,
+                                    width: size.width * 0.24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: darkSecondaryColor,
+                                    ),
+                                    child: Text(
+                                      "Start Orbit",
+                                      style: googleTextStyle(
+                                          37.sp, FontWeight.w500, white),
+                                    ),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () async {
+                                    await lg.stopOrbit();
+                                    setState(() {
+                                      isRunning = false;
+                                    });
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: size.height * .15,
+                                    width: size.width * 0.24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.amber,
+                                    ),
+                                    child: Text(
+                                      "Stop Orbit",
+                                      style: googleTextStyle(
+                                          37.sp, FontWeight.w600, Colors.black),
+                                    ),
+                                  ),
+                                ),
                           20.pw,
                           Container(
                             alignment: Alignment.center,
