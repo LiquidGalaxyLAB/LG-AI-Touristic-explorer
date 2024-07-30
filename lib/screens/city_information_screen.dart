@@ -810,6 +810,22 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     setState(() {
                                       isRunning = false;
                                     });
+                                    await lg.cleanRightBalloon();
+                                    double longitude =
+                                        widget.coordinates.longitude;
+                                    double latitude =
+                                        widget.coordinates.latitude;
+                                    double range = 5000;
+                                    double tilt = 0;
+                                    double heading = 0;
+                                    FlyToView city = FlyToView(
+                                        longitude: longitude,
+                                        latitude: latitude,
+                                        range: range,
+                                        tilt: tilt,
+                                        heading: heading);
+                                    await lg.cleanVisualization();
+                                    await lg.flyTo(city.getCommand());
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
