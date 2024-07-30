@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dartssh2/dartssh2.dart';
@@ -301,6 +302,55 @@ class LGConnection {
     }
   }
 
+  sendKMLFile(File inputFile, String kmlName) async {
+    try {
+      bool uploading = true;
+      final sftp = await _client?.sftp();
+      final file = await sftp?.open('/var/www/html/$kmlName.kml',
+          mode: SftpFileOpenMode.create |
+              SftpFileOpenMode.truncate |
+              SftpFileOpenMode.write);
+      var fileSize = await inputFile.length();
+      print(fileSize);
+      file?.write(inputFile.openRead().cast(), onProgress: (progress) {
+        if (fileSize == progress) {
+          uploading = false;
+        }
+        print(progress);
+      });
+      if (file == null) {
+        return;
+      }
+      await waitWhile(() => uploading);
+    } catch (error) {}
+  }
+
+  Future waitWhile(bool Function() test,
+      [Duration pollInterval = Duration.zero]) {
+    var completer = Completer();
+    check() {
+      if (!test()) {
+        completer.complete();
+      } else {
+        Timer(pollInterval, check);
+      }
+    }
+
+    check();
+    return completer.future;
+  }
+
+  runKMLFile(String kmlName) async {
+    try {
+      print(kmlName);
+      await _client!.run('echo "" > /tmp/query.txt');
+      await _client
+          ?.run("echo 'http://lg1:81/$kmlName.kml' > /var/www/html/kmls.txt");
+    } catch (error) {
+      print(error);
+      await runKMLFile(kmlName);
+    }
+  }
 //  '''
 // <?xml version="1.0" encoding="UTF-8"?>
 // <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
