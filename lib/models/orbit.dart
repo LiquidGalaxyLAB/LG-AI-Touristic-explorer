@@ -89,7 +89,7 @@ class Orbit {
     int orbit = 0;
     String content = '';
     String range = '500';
-    int altitude = 200;
+    int altitude = 250;
     for (int i = 0; i < places.length; i++) {
       content += '''
             <gx:FlyTo>
@@ -101,7 +101,7 @@ class Orbit {
                   <heading>$heading</heading>
                   <tilt>60</tilt>
                   <range>${range}</range>
-                  <gx:fovy>00</gx:fovy> 
+                  <gx:fovy>60</gx:fovy> 
                   <altitude>$altitude</altitude> 
                   <gx:altitudeMode>absolute</gx:altitudeMode>
               </LookAt>
