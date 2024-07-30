@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
+import 'package:lg_ai_touristic_explorer/components/download_option.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
 import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
@@ -16,6 +19,7 @@ import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/models/place.dart';
 import 'package:lg_ai_touristic_explorer/utils/cityKMLData.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../components/connection_flag.dart';
@@ -592,8 +596,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           ),
                                           30.ph,
                                           ...visualisationOptions
-                                              .map((option) =>
-                                                  buildOption(option, size))
+                                              .map((option) => DownloadWidget(
+                                                    option: option,
+                                                    size: size,
+                                                    cityName: widget.cityName,
+                                                    coordinates:
+                                                        widget.coordinates,
+                                                    country: widget.countryName,
+                                                  ))
                                               .toList(),
                                           20.ph,
                                         ],
@@ -843,32 +853,4 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       ),
     );
   }
-}
-
-Widget buildOption(String option, var size) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      GestureDetector(
-        onTap: () {},
-        child: Row(
-          children: [
-            Image.asset(downloadIcon),
-            20.pw,
-            Text(
-              option,
-              style: googleTextStyle(40.sp, FontWeight.w600, white),
-            ),
-          ],
-        ),
-      ),
-      20.ph,
-      Container(
-        height: 1,
-        width: size.width * 0.33,
-        color: white.withOpacity(0.4),
-      ),
-      20.ph,
-    ],
-  );
 }
