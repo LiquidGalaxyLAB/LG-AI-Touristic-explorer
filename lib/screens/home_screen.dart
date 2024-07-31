@@ -17,6 +17,7 @@ import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -294,6 +295,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
+                    key: searchBarKey,
                     width: size.width * .82,
                     height: 75,
                     padding: EdgeInsets.fromLTRB(0, 0, 125.w, 0),
@@ -302,11 +304,12 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Container(
+                      clipBehavior: Clip.hardEdge,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: Colors.white,
                       ),
-                      padding: const EdgeInsets.all(8.0),
+                      // padding: const EdgeInsets.all(8.0),
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
                         googleAPIKey: "",
@@ -351,6 +354,7 @@ class _HomePageState extends State<HomePage> {
                               print("Mic");
                             },
                             child: Container(
+                                key: micKey,
                                 margin:
                                     EdgeInsets.fromLTRB(26.w, 12.h, 26.w, 12.h),
                                 child: const Icon(
@@ -379,6 +383,7 @@ class _HomePageState extends State<HomePage> {
                           if (isCity) {
                             await Future.delayed(Duration(seconds: 1));
                             print("It is a city");
+                            print(prediction.placeId);
                             print("placeDetails 2nd ${prediction.description}");
                             List<String> components =
                                 prediction.description!.split(',');
