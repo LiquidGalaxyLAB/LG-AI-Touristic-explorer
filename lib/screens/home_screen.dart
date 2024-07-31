@@ -61,8 +61,12 @@ class _HomePageState extends State<HomePage> {
 
   late TutorialCoachMark tutorialCoachMark;
 
-  void showTutorial() {
-    tutorialCoachMark.show(context: context);
+  void showTutorial() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstLoaded = prefs.getBool("keyIsFirstLoaded") ?? false;
+    if (isFirstLoaded) {
+      tutorialCoachMark.show(context: context);
+    }
   }
 
   void createTutorial() {
