@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,12 +58,149 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  late TutorialCoachMark tutorialCoachMark;
+
+  void showTutorial() {
+    tutorialCoachMark.show(context: context);
+  }
+
+  void createTutorial() {
+    tutorialCoachMark = TutorialCoachMark(
+      targets: _createTargets(),
+      colorShadow: Colors.black,
+      textSkip: "SKIP",
+      // paddingFocus: 10,
+      opacityShadow: 0.7,
+      // imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+      onFinish: () {
+        print("finish");
+      },
+      onClickTarget: (target) {
+        print('onClickTarget: ${target.identify}');
+      },
+      onClickTargetWithTapPosition: (target, tapDetails) {
+        print("target: ${target.identify}");
+        // print(
+        //     "clicked at position local: ${tapDetails.localPosition} - global: ${tapDetails.globalPosition}");
+      },
+      onClickOverlay: (target) {
+        print('onClickOverlay: ${target.identify}');
+      },
+      onSkip: () {
+        print("skip");
+        return true;
+      },
+    );
+  }
+
+  GlobalKey searchBarKey = GlobalKey();
+  GlobalKey micKey = GlobalKey();
+
+  List<TargetFocus> _createTargets() {
+    List<TargetFocus> targets = [];
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "searchBarKey",
+        keyTarget: searchBarKey,
+        alignSkip: Alignment.topRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Search for cities using this search bar",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        // shape: ShapeLightFocus.RRect,
+        identify: "micKey",
+        keyTarget: micKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.right,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Use this button to use voice for search.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    return targets;
+  }
+
+  _showTour() {
+    createTutorial();
+    Future.delayed(Duration.zero, showTutorial);
+  }
+
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _connectToLG();
     _connectToAIServer();
+    _showTour();
   }
 
   showDialogIfFirstLoaded(BuildContext context) async {
