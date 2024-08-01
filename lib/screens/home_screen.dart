@@ -1351,7 +1351,31 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 55.h,
               ),
-              const RecomendCities()
+              // SizedBox(
+              //   // key: searchBarKey,
+              //   child: ElevatedButton(
+              //       onPressed: () async {
+              //         // await downloadKml(
+              //         //     "https://drive.google.com/uc?export=download&id=1PloiQN9rAg710XaFnqvDEK300IFxee_p",
+              //         //     "amsterdamOutline",
+              //         //     "amsterdam");
+              //         // var option = data['amsterdam']?[0]['type'];
+              //         // if (option == "cityOutline") {
+              //         //   var url = data['amsterdam']?[0]['link'] ?? "";
+              //         //   await downloadKml(url, "amsterdamOutline", "amsterdam");
+              //         // } else if (option == "historicalMap") {}
+              //         // String imgURL =
+              //         //     await getPlaceIdFromName("bollywood mumbai");
+              //         // print("this is : $imgURL");
+              //         // setState(() {
+              //         //   isURL = true;
+              //         //   img = imgURL;
+              //         // });
+              //       },
+              //       child: Text("Hello")),
+              // ),
+              // isURL ? Image.network(img) : Container(),
+              Container(key: cityCardKey, child: RecomendCities())
             ],
           ),
         )));
