@@ -15,6 +15,9 @@ import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
+import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
+import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
+import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
@@ -90,6 +93,14 @@ class _HomePageState extends State<HomePage> {
       },
       onClickOverlay: (target) {
         print('onClickOverlay: ${target.identify}');
+        if (target.identify == "connectionAIStatusKey") {
+          _scaffoldKey.currentState!.openEndDrawer();
+        
+        }
+        if (target.identify == "aboutKey") {
+          // pop
+          Navigator.of(context).pop();
+        }
       },
       onSkip: () {
         print("skip");
@@ -100,6 +111,16 @@ class _HomePageState extends State<HomePage> {
 
   GlobalKey searchBarKey = GlobalKey();
   GlobalKey micKey = GlobalKey();
+  GlobalKey cityCardKey = GlobalKey();
+  GlobalKey drawerIconKey = GlobalKey();
+  GlobalKey connectionLGStatusKey = GlobalKey();
+  GlobalKey connectionAIStatusKey = GlobalKey();
+  GlobalKey tasksKey = GlobalKey();
+  GlobalKey connectionManagerKey = GlobalKey();
+  GlobalKey apiKeysKey = GlobalKey();
+  GlobalKey languageKey = GlobalKey();
+  GlobalKey aboutKey = GlobalKey();
+  GlobalKey helpKey = GlobalKey();
 
   List<TargetFocus> _createTargets() {
     List<TargetFocus> targets = [];
@@ -147,9 +168,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+
     targets.add(
       TargetFocus(
-        // shape: ShapeLightFocus.RRect,
         identify: "micKey",
         keyTarget: micKey,
         alignSkip: Alignment.bottomRight,
@@ -178,6 +199,446 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Text(
                       "Use this button to use voice for search.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "cityCardKey",
+        keyTarget: cityCardKey,
+        alignSkip: Alignment.topRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Here you can see the details of the selected city.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.Circle,
+        identify: "drawerIconKey",
+        keyTarget: drawerIconKey,
+        alignSkip: Alignment.topLeft,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Open the app drawer from here.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "connectionLGStatusKey",
+        keyTarget: connectionLGStatusKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "This shows the connection status with the Liquid Galaxy Rig.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "connectionAIStatusKey",
+        keyTarget: connectionAIStatusKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "This shows the connection status with the AI server.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "tasksKey",
+        keyTarget: tasksKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "This contains different function to control the Liquid Galaxy Rig.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "connectionManagerKey",
+        keyTarget: connectionManagerKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Enter the details to connect to the Liquid Galxy Rig and AI Server here.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "apiKeysKey",
+        keyTarget: apiKeysKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Enter the API key of Deepgram.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "languageKey",
+        keyTarget: languageKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "You can change the language of the app using this dropdown.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "aboutKey",
+        keyTarget: aboutKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Get to know more about the Application.",
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "helpKey",
+        keyTarget: helpKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Get Help regarding running the application.",
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -270,6 +731,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  String? dropDownValue = '';
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -277,16 +739,425 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: darkBackgroundColor,
-        endDrawer: AppDrawer(
-          size: size,
+        endDrawer: Drawer(
+          width: size.width * .35,
+          backgroundColor: darkSecondaryColor,
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 60.h,
+              ),
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/rame_173.png',
+                    scale: 2,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    "AI Touristic Explorer",
+                    style: googleTextStyle(40.sp, FontWeight.w600, white),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 70.h,
+              ),
+              ListTile(
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Image.asset(homeIcon),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Text(
+                        'Home',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ));
+                },
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
+                key: tasksKey,
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Image.asset(tasksIcon),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Text(
+                        'Liquid Galaxy Tasks',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LGTasks(),
+                  ));
+                },
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
+                key: connectionManagerKey,
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Image.asset(connectionIcon),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Text(
+                        'Connection Manager',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ConnectionManager(),
+                  ));
+                },
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
+                key: apiKeysKey,
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      // const Icon(Icons.settings, color: Colors.cyan, size: 25),
+                      Image.asset(
+                        settingsIcon,
+                      ),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Text(
+                        'Set API Keys',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Language Selected :',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                      15.pw,
+                      Container(
+                          width: 120.w,
+                          child: DropdownButtonFormField(
+                            key: languageKey,
+                            items: [
+                              DropdownMenuItem(
+                                value: "EN",
+                                child: Text(
+                                  "🇬🇧 EN",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "FR",
+                                child: Text(
+                                  "🇫🇷 FR",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "ES",
+                                child: Text(
+                                  "🇪🇸 ES",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "DE",
+                                child: Text(
+                                  "🇩🇪 DE",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "IT",
+                                child: Text(
+                                  "🇮🇹 IT",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "JP",
+                                child: Text(
+                                  "🇯🇵 JP",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "CN",
+                                child: Text(
+                                  "🇨🇳 CN",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "RU",
+                                child: Text(
+                                  "🇷🇺 RU",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "IN",
+                                child: Text(
+                                  "🇮🇳 IN",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                            ],
+                            onChanged: (String) {},
+                            dropdownColor: darkBackgroundColor,
+                          ))
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
+                key: aboutKey,
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Image.asset(aboutIcon),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Text(
+                        'About',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+            ],
+          ),
         ),
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(140.0),
-          child: UpperBar(
-              lgStatus: lgStatus,
-              aiStatus: aiStatus,
-              scaffoldKey: _scaffoldKey),
-        ),
+            preferredSize: const Size.fromHeight(140.0),
+            child: Container(
+              child: AppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: darkSecondaryColor,
+                toolbarHeight: 150,
+                elevation: 0,
+                title: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                            left: 50.h,
+                            bottom: 55.h,
+                          ),
+                          child: Image.asset(
+                            "assets/images/rame_173.png",
+                            scale: 3.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 5.w, top: 45.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "AI Touristic Explorer",
+                            style: googleTextStyle(35, FontWeight.w700, white),
+                          ),
+                          Container(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 77),
+                              height: 50,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    color: lgStatus
+                                        ? const Color.fromARGB(255, 0, 255, 8)
+                                        : Colors.red,
+                                    size: 14,
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    key: connectionLGStatusKey,
+                                    lgStatus
+                                        ? 'LG CONNECTED'
+                                        : 'LG DISCONNECTED',
+                                    style: TextStyle(
+                                        color: lgStatus
+                                            ? const Color.fromARGB(
+                                                255, 0, 255, 8)
+                                            : Colors.red,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 19.sp),
+                                  ),
+                                  SizedBox(
+                                    width: 15.0,
+                                  ),
+                                  Icon(
+                                    Icons.circle,
+                                    color: aiStatus
+                                        ? const Color.fromARGB(255, 0, 255, 8)
+                                        : Colors.red,
+                                    size: 14,
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    key: connectionAIStatusKey,
+                                    aiStatus
+                                        ? 'AI SERVER CONNECTED'
+                                        : 'AI SERVER DISCONNECTED',
+                                    style: TextStyle(
+                                        color: aiStatus
+                                            ? const Color.fromARGB(
+                                                255, 0, 255, 8)
+                                            : Colors.red,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 19.sp),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 250.w,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(top: 55.h),
+                          child: Text(
+                            "Made with",
+                            style:
+                                googleTextStyle(28.sp, FontWeight.w600, white),
+                          ),
+                        ),
+                        Image.asset(
+                          "assets/images/gemma1.png",
+                          scale: 15,
+                          // color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        _scaffoldKey.currentState!.openEndDrawer();
+                      },
+                      icon: Container(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 45, 0),
+                          child: Image.asset(
+                            drawerLogo,
+                            key: drawerIconKey,
+                          )))
+                ],
+              ),
+            )
+
+            // UpperBar(
+            //     lgStatus: lgStatus,
+            //     aiStatus: aiStatus,
+            //     scaffoldKey: _scaffoldKey),
+            ),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
