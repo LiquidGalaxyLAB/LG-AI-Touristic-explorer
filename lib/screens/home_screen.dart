@@ -95,7 +95,6 @@ class _HomePageState extends State<HomePage> {
         print('onClickOverlay: ${target.identify}');
         if (target.identify == "connectionAIStatusKey") {
           _scaffoldKey.currentState!.openEndDrawer();
-        
         }
         if (target.identify == "aboutKey") {
           // pop
@@ -730,7 +729,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
   }
-
+  FocusNode textFocus = FocusNode();
   String? dropDownValue = '';
   @override
   Widget build(BuildContext context) {
@@ -1187,6 +1186,7 @@ class _HomePageState extends State<HomePage> {
                       // padding: const EdgeInsets.all(8.0),
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
+                        focusNode: textFocus,
                         googleAPIKey: "",
                         boxDecoration:
                             BoxDecoration(border: Border.all(width: 0)),
@@ -1252,6 +1252,7 @@ class _HomePageState extends State<HomePage> {
                             if (type == "locality" ||
                                 type == "administrative_area_level_3") {
                               isCity = true;
+                              textFocus.unfocus();
                               break;
                             }
                           }
@@ -1289,6 +1290,7 @@ class _HomePageState extends State<HomePage> {
                             //   expandedHeight: 100,
                             //   message: "It is not a city, try again!",
                             // );
+                            _textEditingController.clear();
                             print("It is not a city, try again later");
                           }
                           setState(() {
