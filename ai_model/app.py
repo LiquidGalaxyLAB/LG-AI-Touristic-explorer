@@ -9,9 +9,6 @@ from urllib3.util.retry import Retry
 import os
 
 app = Flask(__name__)
-client = Groq(
-    api_key= os.getenv("KEY"),
-)
 
 
 def removeMarkdown(responseText):
@@ -39,29 +36,41 @@ def getHeadings(wikipedia_content):
 
 def categorize(headings):
     headings_string = ", ".join(headings)
-    prompt = "Take the given headings: "+headings_string + \
-        ". Can you categorize these headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural':['heading1','heading2',...etc],'historical':['heading1','heading2',...etc],'geographical':['heading1','heading2',...etc]}. Please provide the categorization, without any markdown and only using the given headings. Also the max no of headings for any category should be 3. So choose at most 3 most relevant headings for each category."
-
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ],
-        model="gemma-7b-it",
+    prompt = (
+        "Can you categorize the headings into three categories: 'cultural', 'historical', and 'geographical' in a JSON object structure? The JSON object should have the following format: {'cultural': ['heading1', 'heading2', ...], 'historical': ['heading1', 'heading2', ...], 'geographical': ['heading1', 'heading2', ...]}. Ensure that you only use the given headings and that each category contains a maximum of 3 headings. If there are more than 3 relevant headings for a category. Provide the categorization without any additional text or formatting. *PLEASE DO NOT ADD YOUR OWN HEADINGS*. Given the following headings: [ " + headings_string+" ]"
     )
-    groq_response = removeMarkdown(chat_completion.choices[0].message.content)
-    print(groq_response)
-    categories_dict = json.loads(groq_response)
 
-    cultural = categories_dict.get('cultural', [])
-    historical = categories_dict.get('historical', [])
-    geographical = categories_dict.get('geographical', [])
-    print(cultural)
-    print(historical)
-    print(geographical)
-    return cultural, historical, geographical
+    print(prompt)
+    payload = {
+        "model": "gemma:2b",
+        "prompt": prompt,
+        "stream": False,
+    }
+    try:
+        response = requests.post(
+            "http://127.0.0.1:11434/api/generate", json=payload)
+
+        if response.status_code == 200:
+            response_data = response.json()
+            nested_json_str = response_data.get('response', '{}')
+            cleaned_string = removeMarkdown(nested_json_str)
+            categories_dict = json.loads(cleaned_string)
+
+            cultural = categories_dict.get('cultural', [])
+            historical = categories_dict.get('historical', [])
+            geographical = categories_dict.get('geographical', [])
+
+            print(cultural)
+            print(historical)
+            print(geographical)
+
+            return cultural, historical, geographical
+        else:
+            return {'error': 'An error occurred with the external request'}, response.status_code
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return {'error': 'An error occurred during generation'}, 500
 
 
 def extract_sections(wikipedia_content, cultural, historical, geographical):
