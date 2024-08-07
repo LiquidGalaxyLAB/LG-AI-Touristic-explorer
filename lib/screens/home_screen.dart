@@ -8,6 +8,8 @@ import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
+import 'package:lg_ai_touristic_explorer/components/historical_cities.dart';
+import 'package:lg_ai_touristic_explorer/components/outline_cities.dart';
 import 'package:lg_ai_touristic_explorer/components/recommended_cities.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
@@ -1354,7 +1356,40 @@ class _HomePageState extends State<HomePage> {
               //       child: Text("Hello")),
               // ),
               // isURL ? Image.network(img) : Container(),
-              Container(key: cityCardKey, child: RecomendCities())
+              Container(key: cityCardKey, child: RecomendCities()),
+              SizedBox(
+                height: 20.h,
+              ),
+              Container(
+                alignment: Alignment.bottomLeft,
+                width: size.width * .82,
+                child: Text(
+                  "Outline Cities",
+                  style: googleTextStyle(48.sp, FontWeight.w600, white),
+                ),
+              ),
+              SizedBox(
+                height: 55.h,
+              ),
+              Container(child: OutlineCities()),
+              SizedBox(
+                height: 50.h,
+              ),
+              Container(
+                alignment: Alignment.bottomLeft,
+                width: size.width * .82,
+                child: Text(
+                  "Explore Historical Origin",
+                  style: googleTextStyle(48.sp, FontWeight.w600, white),
+                ),
+              ),
+              SizedBox(
+                height: 55.h,
+              ),
+              Container(child: HistoricalCities()),
+              SizedBox(
+                height: 55.h,
+              ),
             ],
           ),
         )));
