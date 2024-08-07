@@ -57,7 +57,7 @@ class CityCard extends StatelessWidget {
           ),
           width: 515.w,
           height: 300.h,
-          child: Image.asset(imageName, fit: BoxFit.cover),
+          child: Image.network(imageName, fit: BoxFit.cover),
         ),
         Container(
           clipBehavior: Clip.hardEdge,

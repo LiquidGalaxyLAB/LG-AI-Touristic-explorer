@@ -19,6 +19,36 @@ class OutlineCities extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           CityCard(
+            cityName: "Amsterdam",
+            countryName: "Netherlands",
+            imageName: amsterdamImage,
+            city: newYork,
+            cityPOI: parisPOI,
+          ),
+          SizedBox(
+            width: 40.0,
+          ),
+          CityCard(
+            cityName: "Barcelona",
+            countryName: "Spain",
+            imageName: barcelonaImage,
+            city: newYork,
+            cityPOI: parisPOI,
+          ),
+          SizedBox(
+            width: 40.0,
+          ),
+          CityCard(
+            cityName: "Berlin",
+            countryName: "Germany",
+            imageName: berlinImage,
+            city: newYork,
+            cityPOI: parisPOI,
+          ),
+          SizedBox(
+            width: 40.0,
+          ),
+          CityCard(
             cityName: "London",
             countryName: "England",
             imageName: londonImage,
@@ -29,8 +59,18 @@ class OutlineCities extends StatelessWidget {
             width: 40.0,
           ),
           CityCard(
+            cityName: "Los Angeles",
+            countryName: "USA",
+            imageName: losangelesImage,
+            city: newYork,
+            cityPOI: parisPOI,
+          ),
+          SizedBox(
+            width: 40.0,
+          ),
+          CityCard(
             cityName: "New York",
-            countryName: "America",
+            countryName: "USA",
             imageName: newYorkImage,
             city: newYork,
             cityPOI: newYorkPOI,
@@ -49,60 +89,30 @@ class OutlineCities extends StatelessWidget {
             width: 40.0,
           ),
           CityCard(
-            cityName: "London",
-            countryName: "England",
-            imageName: londonImage,
-            city: london,
-            cityPOI: londonPOI,
-          ),
-          SizedBox(
-            width: 40.0,
-          ),
-          CityCard(
-            cityName: "New York",
-            countryName: "America",
-            imageName: newYorkImage,
+            cityName: "San Francisco",
+            countryName: "USA",
+            imageName: sanfranciscoImage,
             city: newYork,
-            cityPOI: newYorkPOI,
-          ),
-          SizedBox(
-            width: 40.0,
-          ),
-          CityCard(
-            cityName: "Paris",
-            countryName: "France",
-            imageName: parisImage,
-            city: paris,
             cityPOI: parisPOI,
           ),
           SizedBox(
             width: 40.0,
           ),
           CityCard(
-            cityName: "London",
-            countryName: "England",
-            imageName: londonImage,
-            city: london,
-            cityPOI: londonPOI,
-          ),
-          SizedBox(
-            width: 40.0,
-          ),
-          CityCard(
-            cityName: "New York",
-            countryName: "America",
-            imageName: newYorkImage,
+            cityName: "Sydney",
+            countryName: "Australia",
+            imageName: sydneyImage,
             city: newYork,
-            cityPOI: newYorkPOI,
+            cityPOI: parisPOI,
           ),
           SizedBox(
             width: 40.0,
           ),
           CityCard(
-            cityName: "Paris",
-            countryName: "France",
-            imageName: parisImage,
-            city: paris,
+            cityName: "Toronto",
+            countryName: "Canada",
+            imageName: torontoImage,
+            city: newYork,
             cityPOI: parisPOI,
           ),
           SizedBox(
