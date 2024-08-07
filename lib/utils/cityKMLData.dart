@@ -1429,6 +1429,178 @@ City toronto = City(
   coordinates: const LatLng(43.651070, -79.347015),
 );
 
+List<Place> losAngelesPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Hollywood Sign",
+    details:
+        "An iconic landmark and American cultural icon located in Los Angeles. It is situated on Mount Lee in the Hollywood Hills area of the Santa Monica Mountains.",
+    latitude: 34.1341,
+    longitude: -118.3215,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Griffith Observatory",
+    details:
+        "An observatory, museum, and planetarium situated on the southern slope of Mount Hollywood in Griffith Park. It offers stunning views of the Los Angeles Basin, including Downtown LA.",
+    latitude: 34.1184,
+    longitude: -118.3004,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Santa Monica Pier",
+    details:
+        "A large double-jointed pier at the foot of Colorado Avenue in Santa Monica. It is a popular destination that features an amusement park, aquarium, and restaurants.",
+    latitude: 34.0094,
+    longitude: -118.4973,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "The Getty Center",
+    details:
+        "A campus of the Getty Museum and other programs of the Getty Trust. It is located in the Brentwood neighborhood and is known for its architecture, gardens, and views.",
+    latitude: 34.0780,
+    longitude: -118.4741,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Rodeo Drive",
+    details:
+        "A famous, high-end shopping street in Beverly Hills. It is known for its luxury goods stores and fashion boutiques.",
+    latitude: 34.0671,
+    longitude: -118.4011,
+  ),
+];
+
+List<Place> miamiPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "South Beach",
+    details:
+        "A neighborhood in the city of Miami Beach known for its beaches, nightlife, and art deco architecture. It is a major entertainment destination.",
+    latitude: 25.7826,
+    longitude: -80.1341,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Vizcaya Museum and Gardens",
+    details:
+        "A historic estate that was the former villa and estate of businessman James Deering. It features extensive Italian Renaissance gardens, native woodland landscape, and a historic village outbuildings compound.",
+    latitude: 25.7449,
+    longitude: -80.2102,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Wynwood Walls",
+    details:
+        "An outdoor museum featuring large-scale works by some of the world’s best-known street artists. It has become a haven for aspiring painters, graffiti artists, and muralists.",
+    latitude: 25.8003,
+    longitude: -80.1994,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Miami Seaquarium",
+    details:
+        "A 38-acre oceanarium located on Virginia Key in Biscayne Bay. It features marine mammal shows, exhibits, and a large variety of ocean creatures.",
+    latitude: 25.7310,
+    longitude: -80.1628,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Little Havana",
+    details:
+        "A neighborhood in Miami known for its Cuban influence and culture. It features Latin American art galleries, cafes, and restaurants, and is home to many Cuban exiles.",
+    latitude: 25.7653,
+    longitude: -80.2198,
+  ),
+];
+
+List<Place> miamiPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "South Beach",
+    details:
+        "A neighborhood in the city of Miami Beach known for its beaches, nightlife, and art deco architecture. It is a major entertainment destination.",
+    latitude: 25.7826,
+    longitude: -80.1341,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Vizcaya Museum and Gardens",
+    details:
+        "A historic estate that was the former villa and estate of businessman James Deering. It features extensive Italian Renaissance gardens, native woodland landscape, and a historic village outbuildings compound.",
+    latitude: 25.7449,
+    longitude: -80.2102,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Wynwood Walls",
+    details:
+        "An outdoor museum featuring large-scale works by some of the world’s best-known street artists. It has become a haven for aspiring painters, graffiti artists, and muralists.",
+    latitude: 25.8003,
+    longitude: -80.1994,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Miami Seaquarium",
+    details:
+        "A 38-acre oceanarium located on Virginia Key in Biscayne Bay. It features marine mammal shows, exhibits, and a large variety of ocean creatures.",
+    latitude: 25.7310,
+    longitude: -80.1628,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Little Havana",
+    details:
+        "A neighborhood in Miami known for its Cuban influence and culture. It features Latin American art galleries, cafes, and restaurants, and is home to many Cuban exiles.",
+    latitude: 25.7653,
+    longitude: -80.2198,
+  ),
+];
+
+List<Place> sanFranciscoPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Golden Gate Bridge",
+    details:
+        "A suspension bridge spanning the Golden Gate, the one-mile-wide strait connecting San Francisco Bay and the Pacific Ocean. It is an internationally recognized symbol of San Francisco.",
+    latitude: 37.8199,
+    longitude: -122.4783,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Alcatraz Island",
+    details:
+        "A small island located in San Francisco Bay. It was developed as a military fortification, a military prison, and a federal prison. Now, it is a popular tourist destination.",
+    latitude: 37.8270,
+    longitude: -122.4230,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Fisherman's Wharf",
+    details:
+        "A neighborhood and popular tourist attraction in San Francisco. It is known for its historic waterfront, seafood restaurants, and the famous Pier 39.",
+    latitude: 37.8080,
+    longitude: -122.4177,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Chinatown",
+    details:
+        "The oldest Chinatown in North America and the largest Chinese enclave outside Asia. It is a major tourist attraction and is known for its temples, teahouses, and traditional markets.",
+    latitude: 37.7941,
+    longitude: -122.4078,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Lombard Street",
+    details:
+        "A street famous for a steep, one-block section with eight hairpin turns. It is known as the 'crookedest street in the world' and is a popular tourist destination.",
+    latitude: 37.8021,
+    longitude: -122.4187,
+  ),
+];
+
 
 List<Place> newYorkPOI = [
   Place(
