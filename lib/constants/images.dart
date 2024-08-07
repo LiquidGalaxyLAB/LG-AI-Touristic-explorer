@@ -20,7 +20,7 @@ const amsterdamImage =
 const anchorageImage =
     "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/10/2d/b6/anchorage.jpg?w=1400&h=1400&s=1";
 const austinImage =
-    "https://www.statesman.com/gcdn/presto/2022/05/30/NAAS/dfe0b099-98f5-4cdb-9df9-85b8a206d44f-AEM_Austin_Skyline_052922-3.jpg";
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/View_of_Downtown_Austin_from_Pfluger_Pedestrian_Bridge_October_2022.jpg/640px-View_of_Downtown_Austin_from_Pfluger_Pedestrian_Bridge_October_2022.jpg";
 const bangaloreImage =
     "https://lp-cms-production.imgix.net/2019-06/9483508eeee2b78a7356a15ed9c337a1-bengaluru-bangalore.jpg";
 const barcelonaImage =

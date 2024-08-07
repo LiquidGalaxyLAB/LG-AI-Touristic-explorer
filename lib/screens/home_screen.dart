@@ -69,8 +69,8 @@ class _HomePageState extends State<HomePage> {
 
   void showTutorial() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isFirstLoaded = prefs.getBool("keyIsFirstLoaded") ?? false;
-    if (isFirstLoaded) {
+    bool? isFirstLoaded = prefs.getBool("keyIsFirstLoaded");
+    if (isFirstLoaded == null || isFirstLoaded == false) {
       tutorialCoachMark.show(context: context);
     }
   }
@@ -668,14 +668,15 @@ class _HomePageState extends State<HomePage> {
     lg = LGConnection();
     _connectToLG();
     _connectToAIServer();
-    _showTour();
   }
 
+  bool agreed = false;
   showDialogIfFirstLoaded(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isFirstLoaded = prefs.getBool("keyIsFirstLoaded");
     if (isFirstLoaded == null) {
       showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -724,6 +725,9 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.of(context).pop();
                   prefs.setBool("keyIsFirstLoaded", false);
+                  setState(() {
+                    agreed = true;
+                  });
                 },
               ),
             ],
@@ -739,6 +743,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
+    if (agreed) {
+      Future.delayed(Duration.zero, () => _showTour());
+    }
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: darkBackgroundColor,

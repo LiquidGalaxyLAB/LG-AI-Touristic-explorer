@@ -46,9 +46,10 @@ class CityCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black, width: 0.5),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.1),
+                color: Colors.black.withOpacity(0.2),
                 spreadRadius: 4,
                 blurRadius: 5,
                 offset: const Offset(0, 0), // changes position of shadow
