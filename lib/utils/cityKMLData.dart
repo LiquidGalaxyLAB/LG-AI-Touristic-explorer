@@ -1816,6 +1816,220 @@ List<Place> mumbaiPOI = [
   ),
 ];
 
+List<Place> amsterdamPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Rijksmuseum",
+    details:
+      "A Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South.",
+    latitude: 52.359998,
+    longitude: 4.885219,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Anne Frank House",
+    details:
+      "A museum dedicated to Jewish wartime diarist Anne Frank. The building is located on a canal called the Prinsengracht, close to the Westerkerk, in central Amsterdam.",
+    latitude: 52.375218,
+    longitude: 4.883977,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Van Gogh Museum",
+    details:
+      "An art museum dedicated to the works of Vincent van Gogh and his contemporaries. It is located at the Museum Square in Amsterdam.",
+    latitude: 52.358418,
+    longitude: 4.881062,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Vondelpark",
+    details:
+      "A public urban park of 47 hectares (120 acres) in Amsterdam, Netherlands. It is located west from the Leidseplein and the Museumplein.",
+    latitude: 52.358416,
+    longitude: 4.868547,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Dam Square",
+    details:
+      "A town square in Amsterdam, the capital of the Netherlands. Its notable buildings and frequent events make it one of the most well-known and important locations in the city and the country.",
+    latitude: 52.373169,
+    longitude: 4.892452,
+  ),
+];
+
+List<Place> barcelonaPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Sagrada Família",
+    details:
+      "A large unfinished Roman Catholic minor basilica in Barcelona, designed by Catalan architect Antoni Gaudí. It is a UNESCO World Heritage Site.",
+    latitude: 41.403629,
+    longitude: 2.174356,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Park Güell",
+    details:
+      "A public park system composed of gardens and architectonic elements located on Carmel Hill, designed by Antoni Gaudí.",
+    latitude: 41.414495,
+    longitude: 2.152694,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "La Rambla",
+    details:
+      "A street in central Barcelona, popular with tourists and locals alike. It is renowned for its street markets, shops, and vibrant atmosphere.",
+    latitude: 41.380898,
+    longitude: 2.173784,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Casa Batlló",
+    details:
+      "A renowned building located in the center of Barcelona and is one of Antoni Gaudí’s masterpieces. It is considered one of his most creative and innovative works.",
+    latitude: 41.391640,
+    longitude: 2.164853,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Gothic Quarter",
+    details:
+      "A part of the old city of Barcelona. It stretches from La Rambla to Via Laietana, and from the Mediterranean seafront to Ronda de Sant Pere.",
+    latitude: 41.382559,
+    longitude: 2.177135,
+  ),
+];
+
+List<Place> berlinPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Brandenburg Gate",
+    details:
+      "An 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II. It is one of the most well-known landmarks of Germany.",
+    latitude: 52.516275,
+    longitude: 13.377704,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Berlin Wall Memorial",
+    details:
+      "The central memorial site of German division, located in the middle of the capital. It extends along 1.4 kilometers of the former border strip.",
+    latitude: 52.535069,
+    longitude: 13.390428,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Museum Island",
+    details:
+      "A complex of five internationally significant museums, all part of the Berlin State Museums, located on the northern part of an island in the Spree River.",
+    latitude: 52.516934,
+    longitude: 13.401837,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Reichstag Building",
+    details:
+      "A historic edifice in Berlin, constructed to house the Imperial Diet of the German Empire. It is now the seat of the German parliament, the Bundestag.",
+    latitude: 52.518620,
+    longitude: 13.376198,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Checkpoint Charlie",
+    details:
+      "The best-known Berlin Wall crossing point between East Berlin and West Berlin during the Cold War, located in Friedrichstraße.",
+    latitude: 52.507456,
+    longitude: 13.390391,
+  ),
+];
+
+List<Place> sydneyPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Sydney Opera House",
+    details:
+      "A multi-venue performing arts centre in Sydney. It is one of the 20th century's most famous and distinctive buildings.",
+    latitude: -33.856784,
+    longitude: 151.215297,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Sydney Harbour Bridge",
+    details:
+      "A heritage-listed steel through arch bridge across Sydney Harbour that carries rail, vehicular, bicycle, and pedestrian traffic.",
+    latitude: -33.852306,
+    longitude: 151.210787,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Bondi Beach",
+    details:
+      "A popular beach and the name of the surrounding suburb in Sydney. Bondi Beach is one of the most visited tourist sites in Australia.",
+    latitude: -33.890843,
+    longitude: 151.274292,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Royal Botanic Garden",
+    details:
+      "A major botanical garden located in the heart of Sydney. The garden is the oldest scientific institution in Australia and one of the most important historic botanical institutions in the world.",
+    latitude: -33.864167,
+    longitude: 151.216389,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Taronga Zoo",
+    details:
+      "A zoo located on the shores of Sydney Harbour in the suburb of Mosman. The zoo is a leading wildlife park with stunning views of the city.",
+    latitude: -33.843001,
+    longitude: 151.241433,
+  ),
+];
+
+List<Place> torontoPOI = [
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "CN Tower",
+    details:
+      "A 553.3 m-high concrete communications and observation tower located in Downtown Toronto. It was completed in 1976, becoming the world's tallest free-standing structure and world's tallest tower at the time.",
+    latitude: 43.642566,
+    longitude: -79.387057,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Royal Ontario Museum",
+    details:
+      "A museum of art, world culture, and natural history in Toronto. It is one of the largest museums in North America and the largest in Canada.",
+    latitude: 43.667710,
+    longitude: -79.394777,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Toronto Islands",
+    details:
+      "A group of 15 small islands in Lake Ontario, south of mainland Toronto. They are the only group of islands in the western part of Lake Ontario, and provide shelter for Toronto Harbour.",
+    latitude: 43.620500,
+    longitude: -79.378300,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "St. Lawrence Market",
+    details:
+      "A major public market in Toronto. It is one of two locations of the St. Lawrence Market Complex and has served as Toronto's social center since 1803.",
+    latitude: 43.648700,
+    longitude: -79.371500,
+  ),
+  Place(
+    imageUrl: mainLogoAWS,
+    name: "Distillery District",
+    details:
+      "A commercial and residential district in Toronto. It contains numerous cafes, restaurants, and shops housed within heritage buildings of the former Gooderham and Worts Distillery.",
+    latitude: 43.650800,
+    longitude: -79.359600,
+  ),
+];
 
 
 List<Place> newYorkPOI = [
