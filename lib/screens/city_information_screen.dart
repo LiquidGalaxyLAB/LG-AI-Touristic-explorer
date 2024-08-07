@@ -24,6 +24,8 @@ import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 import '../components/connection_flag.dart';
 import '../constants/constants.dart';
 import '../constants/images.dart';
@@ -749,71 +751,79 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           !isRunning
                               ? GestureDetector(
                                   onTap: () async {
-                                    if (!isPlaceGenerated) {
-                                      print("not generated");
-                                      // places = await generatePOI(
-                                      //     widget.cityName, widget.coordinates);
-                                      // print(places.toString());
-                                      // isPlaceGenerated = true;
-                                      // for (var i = 0; i < 2; i++) {
-                                      //   String placesdata =
-                                      //       Orbit().generateOrbit(places);
-                                      //   String content =
-                                      //       Orbit().buildOrbit(placesdata, places);
-                                      //   print(content);
-                                      //   await lg.buildOrbit(content);
-                                      //   await Future.delayed(Duration(seconds: 1));
-                                      // }
-                                      // for (int i = 0; i < places.length; i++) {
-                                      //   await lg.openBalloon(
-                                      //       "orbitballoon",
-                                      //       places[i].name,
-                                      //       widget.cityName,
-                                      //       500,
-                                      //       places[i].details,
-                                      //       places[i].latitude,
-                                      //       places[i].longitude);
-                                      //   await wait20Seconds();
-                                      // }
-                                    } else {
-                                      setState(() {
-                                        isPOI = true;
-                                        isRunning = true;
-                                      });
-                                      print("generated");
-                                      await lg.cleanVisualization();
-                                      for (var i = 0; i < 2; i++) {
-                                        String placesdata =
-                                            Orbit().generateOrbit(places);
-                                        String content = Orbit()
-                                            .buildOrbit(placesdata, places);
-                                        print(content);
-                                        await lg.buildOrbit(content);
-                                        await Future.delayed(
-                                            Duration(seconds: 1));
-                                      }
-                                      for (int i = 0; i < places.length; i++) {
-                                        print(i);
-                                        carouselController.nextPage();
-
-                                        // Iterable<int>.generate(
-                                        //         poiCarouselCards.length)
-                                        //     .map(
-                                        //   (int pageIndex) => carouselController
-                                        //       .animateToPage(pageIndex),
-                                        // );
-                                        print(isRunning);
-                                        if (isRunning) {
-                                          await lg.sendStaticBalloon(
-                                              "orbitballoon",
-                                              places[i].name,
-                                              widget.cityName,
-                                              500,
-                                              places[i].details,
-                                              places[i].imageUrl);
-                                          await wait20Seconds();
+                                    if (lgStatus) {
+                                      if (!isPlaceGenerated) {
+                                        print("not generated");
+                                        // places = await generatePOI(
+                                        //     widget.cityName, widget.coordinates);
+                                        // print(places.toString());
+                                        // isPlaceGenerated = true;
+                                        // for (var i = 0; i < 2; i++) {
+                                        //   String placesdata =
+                                        //       Orbit().generateOrbit(places);
+                                        //   String content =
+                                        //       Orbit().buildOrbit(placesdata, places);
+                                        //   print(content);
+                                        //   await lg.buildOrbit(content);
+                                        //   await Future.delayed(Duration(seconds: 1));
+                                        // }
+                                        // for (int i = 0; i < places.length; i++) {
+                                        //   await lg.openBalloon(
+                                        //       "orbitballoon",
+                                        //       places[i].name,
+                                        //       widget.cityName,
+                                        //       500,
+                                        //       places[i].details,
+                                        //       places[i].latitude,
+                                        //       places[i].longitude);
+                                        //   await wait20Seconds();
+                                        // }
+                                      } else {
+                                        setState(() {
+                                          isPOI = true;
+                                          isRunning = true;
+                                        });
+                                        print("generated");
+                                        await lg.cleanVisualization();
+                                        for (var i = 0; i < 2; i++) {
+                                          String placesdata =
+                                              Orbit().generateOrbit(places);
+                                          String content = Orbit()
+                                              .buildOrbit(placesdata, places);
+                                          print(content);
+                                          await lg.buildOrbit(content);
+                                          await Future.delayed(
+                                              Duration(seconds: 1));
+                                        }
+                                        for (int i = 0;
+                                            i < places.length;
+                                            i++) {
+                                          print(i);
+                                          carouselController.nextPage();
+                                          print(isRunning);
+                                          if (isRunning) {
+                                            await lg.sendStaticBalloon(
+                                                "orbitballoon",
+                                                places[i].name,
+                                                widget.cityName,
+                                                500,
+                                                places[i].details,
+                                                places[i].imageUrl);
+                                            await wait20Seconds();
+                                          }
                                         }
                                       }
+                                    } else {
+                                      ToastService.showErrorToast(
+                                        context,
+                                        length: ToastLength.medium,
+                                        expandedHeight: 100,
+                                        child: Text(
+                                          "Device not connected to Liquid Galaxy Rig. Connect it and try again.",
+                                          style: googleTextStyle(
+                                              32.sp, FontWeight.w500, white),
+                                        ),
+                                      );
                                     }
                                   },
                                   child: Container(
@@ -833,26 +843,28 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 )
                               : GestureDetector(
                                   onTap: () async {
-                                    await lg.stopOrbit();
-                                    setState(() {
-                                      isRunning = false;
-                                    });
-                                    await lg.cleanRightBalloon();
-                                    double longitude =
-                                        widget.coordinates.longitude;
-                                    double latitude =
-                                        widget.coordinates.latitude;
-                                    double range = 5000;
-                                    double tilt = 0;
-                                    double heading = 0;
-                                    FlyToView city = FlyToView(
-                                        longitude: longitude,
-                                        latitude: latitude,
-                                        range: range,
-                                        tilt: tilt,
-                                        heading: heading);
-                                    await lg.cleanVisualization();
-                                    await lg.flyTo(city.getCommand());
+                                    if (lgStatus) {
+                                      await lg.stopOrbit();
+                                      setState(() {
+                                        isRunning = false;
+                                      });
+                                      await lg.cleanRightBalloon();
+                                      double longitude =
+                                          widget.coordinates.longitude;
+                                      double latitude =
+                                          widget.coordinates.latitude;
+                                      double range = 5000;
+                                      double tilt = 0;
+                                      double heading = 0;
+                                      FlyToView city = FlyToView(
+                                          longitude: longitude,
+                                          latitude: latitude,
+                                          range: range,
+                                          tilt: tilt,
+                                          heading: heading);
+                                      await lg.cleanVisualization();
+                                      await lg.flyTo(city.getCommand());
+                                    }
                                   },
                                   child: Container(
                                     alignment: Alignment.center,

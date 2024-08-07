@@ -23,6 +23,8 @@ import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class HomePage extends StatefulWidget {
@@ -1270,12 +1272,17 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ));
                           } else {
-                            // ToastService.showErrorToast(
-                            //   context,
-                            //   length: ToastLength.medium,
-                            //   expandedHeight: 100,
-                            //   message: "It is not a city, try again!",
-                            // );
+                            textFocus.unfocus();
+                            ToastService.showErrorToast(
+                              context,
+                              length: ToastLength.medium,
+                              expandedHeight: 100,
+                              child: Text(
+                                "It is not a city, try again",
+                                style: googleTextStyle(
+                                    32.sp, FontWeight.w500, white),
+                              ),
+                            );
                             _textEditingController.clear();
                             print("It is not a city, try again later");
                           }
