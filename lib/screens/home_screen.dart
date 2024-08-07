@@ -14,6 +14,7 @@ import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/screens/about_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
 import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey connectionAIStatusKey = GlobalKey();
   GlobalKey tasksKey = GlobalKey();
   GlobalKey connectionManagerKey = GlobalKey();
-  GlobalKey apiKeysKey = GlobalKey();
+  // GlobalKey apiKeysKey = GlobalKey();
   GlobalKey languageKey = GlobalKey();
   GlobalKey aboutKey = GlobalKey();
   GlobalKey helpKey = GlobalKey();
@@ -475,49 +476,49 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    targets.add(
-      TargetFocus(
-        shape: ShapeLightFocus.RRect,
-        identify: "apiKeysKey",
-        keyTarget: apiKeysKey,
-        alignSkip: Alignment.bottomRight,
-        color: Colors.black,
-        enableOverlayTab: true,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            builder: (context, controller) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(18.0),
-                    width: 400.w,
-                    decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(25.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      "Enter the API key of Deepgram.",
-                      textAlign: TextAlign.center,
-                      style:
-                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    // targets.add(
+    //   TargetFocus(
+    //     shape: ShapeLightFocus.RRect,
+    //     identify: "apiKeysKey",
+    //     keyTarget: apiKeysKey,
+    //     alignSkip: Alignment.bottomRight,
+    //     color: Colors.black,
+    //     enableOverlayTab: true,
+    //     contents: [
+    //       TargetContent(
+    //         align: ContentAlign.bottom,
+    //         builder: (context, controller) {
+    //           return Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             children: <Widget>[
+    //               Container(
+    //                 padding: const EdgeInsets.all(18.0),
+    //                 width: 400.w,
+    //                 decoration: BoxDecoration(
+    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   borderRadius: BorderRadius.circular(25.0),
+    //                   boxShadow: const [
+    //                     BoxShadow(
+    //                       color: Colors.black26,
+    //                       blurRadius: 10.0,
+    //                       offset: Offset(0, 4),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 child: Text(
+    //                   "Enter the API key of Deepgram.",
+    //                   textAlign: TextAlign.center,
+    //                   style:
+    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+    //                 ),
+    //               ),
+    //             ],
+    //           );
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );
 
     targets.add(
       TargetFocus(
@@ -729,6 +730,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
   }
+
   FocusNode textFocus = FocusNode();
   String? dropDownValue = '';
   @override
@@ -846,35 +848,6 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => ConnectionManager(),
                   ));
                 },
-              ),
-              Divider(
-                color: Colors.white.withOpacity(0.5),
-                indent: 50,
-                thickness: 0.5,
-                endIndent: 50,
-              ),
-              ListTile(
-                key: apiKeysKey,
-                title: Container(
-                  padding: const EdgeInsets.only(left: 80),
-                  child: Row(
-                    children: [
-                      // const Icon(Icons.settings, color: Colors.cyan, size: 25),
-                      Image.asset(
-                        settingsIcon,
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Text(
-                        'Set API Keys',
-                        style: googleTextStyle(
-                            30.sp, FontWeight.w500, Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-                onTap: () {},
               ),
               Divider(
                 color: Colors.white.withOpacity(0.5),
@@ -1003,7 +976,11 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AboutScreen(),
+                  ));
+                },
               ),
               Divider(
                 color: Colors.white.withOpacity(0.5),

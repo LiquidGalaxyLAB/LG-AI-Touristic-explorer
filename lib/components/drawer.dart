@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
+import 'package:lg_ai_touristic_explorer/screens/about_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
 import 'package:lg_ai_touristic_explorer/screens/home_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
@@ -142,34 +143,6 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  // const Icon(Icons.settings, color: Colors.cyan, size: 25),
-                  Image.asset(
-                    settingsIcon,
-                  ),
-                  SizedBox(
-                    width: 20.w,
-                  ),
-                  Text(
-                    'Set API Keys',
-                    style:
-                        googleTextStyle(30.sp, FontWeight.w500, Colors.white),
-                  ),
-                ],
-              ),
-            ),
-            onTap: () {},
-          ),
-          Divider(
-            color: Colors.white.withOpacity(0.5),
-            indent: 50,
-            thickness: 0.5,
-            endIndent: 50,
-          ),
-          ListTile(
-            title: Container(
-              padding: const EdgeInsets.only(left: 80),
-              child: Row(
-                children: [
                   Text(
                     'Language Selected :',
                     style:
@@ -284,7 +257,11 @@ class _AppDrawerState extends State<AppDrawer> {
                 ],
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AboutScreen(),
+              ));
+            },
           ),
           Divider(
             color: Colors.white.withOpacity(0.5),
