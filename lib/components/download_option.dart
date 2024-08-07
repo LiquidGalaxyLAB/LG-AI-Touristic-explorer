@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -15,17 +14,18 @@ import '../utils/cityKMLData.dart';
 
 class DownloadWidget extends StatefulWidget {
   final String option;
-  final size;
+  final Size size;
   final String cityName;
   final String country;
   final LatLng coordinates;
 
-  DownloadWidget(
-      {required this.option,
-      required this.size,
-      required this.cityName,
-      required this.coordinates,
-      required this.country});
+  DownloadWidget({
+    required this.option,
+    required this.size,
+    required this.cityName,
+    required this.coordinates,
+    required this.country,
+  });
 
   @override
   _DownloadWidgetState createState() => _DownloadWidgetState();
@@ -33,7 +33,9 @@ class DownloadWidget extends StatefulWidget {
 
 class _DownloadWidgetState extends State<DownloadWidget> {
   bool isDownloaded = false;
+  bool isLoading = false; // Added loading state
   late LGConnection lg;
+
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
   }
@@ -88,6 +90,10 @@ class _DownloadWidgetState extends State<DownloadWidget> {
   }
 
   Future<void> _downloadAndCheck() async {
+    setState(() {
+      isLoading = true; // Start loading
+    });
+
     var localPath = await getApplicationDocumentsDirectory();
     String name = widget.cityName.toLowerCase().replaceAll(" ", "");
     String optionNew = widget.option.toLowerCase().replaceAll(" ", "");
@@ -123,6 +129,10 @@ class _DownloadWidgetState extends State<DownloadWidget> {
 
       print("Already Downloaded");
     }
+
+    setState(() {
+      isLoading = false; // Stop loading
+    });
   }
 
   @override
@@ -134,13 +144,15 @@ class _DownloadWidgetState extends State<DownloadWidget> {
           onTap: _downloadAndCheck,
           child: Row(
             children: [
-              !isDownloaded
-                  ? Image.asset(downloadIcon)
-                  : Icon(
-                      Icons.play_arrow,
-                      color: Colors.green,
-                      size: 30,
-                    ),
+              isLoading
+                  ? CircularProgressIndicator() // Show loader when downloading
+                  : !isDownloaded
+                      ? Image.asset(downloadIcon)
+                      : Icon(
+                          Icons.play_arrow,
+                          color: Colors.green,
+                          size: 30,
+                        ),
               SizedBox(width: 20),
               Text(
                 widget.option,
