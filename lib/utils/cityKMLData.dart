@@ -599,6 +599,195 @@ City london = City(culturalFacts: [
       fact:
           "The British Museum, founded in 1753, houses a vast collection of world art and artifacts, including the Rosetta Stone and the Elgin Marbles. It was the first public national museum in the world.")
 ], coordinates: LatLng(51.5074, -0.1278));
+City losAngeles = City(
+  culturalFacts: [
+    CulturalFact(
+        fact:
+            "Los Angeles is home to Hollywood, the epicenter of the entertainment industry, producing the majority of films, television shows, and music worldwide."),
+    CulturalFact(
+        fact:
+            "The Getty Center, opened in 1997, is a major cultural landmark, housing an extensive collection of European paintings, drawings, sculpture, illuminated manuscripts, and decorative arts."),
+    CulturalFact(
+        fact:
+            "Los Angeles hosts the annual Grammy Awards, the premier music award ceremony in the world, attracting top musicians and celebrities."),
+    CulturalFact(
+        fact:
+            "The city is known for its diverse culinary scene, with a wide range of international cuisines available, reflecting its multicultural population."),
+    CulturalFact(
+        fact:
+            "LA's Venice Beach is famous for its bohemian spirit, street performers, and Muscle Beach outdoor gym."),
+    CulturalFact(
+        fact:
+            "The Los Angeles County Museum of Art (LACMA) is the largest art museum in the western United States, boasting a diverse collection that spans from ancient times to the present."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+        fact:
+            "Los Angeles is located in a large coastal basin, surrounded by mountains on three sides, making it a unique geographic and climatic zone."),
+    GeographicalFact(
+        fact:
+            "The city has a Mediterranean climate with mild, wet winters and hot, dry summers, contributing to its popularity as a year-round destination."),
+    GeographicalFact(
+        fact:
+            "Griffith Park, one of the largest urban parks in North America, offers hiking trails, the Griffith Observatory, and panoramic views of the city."),
+    GeographicalFact(
+        fact:
+            "The LA River, running through the city, has been undergoing revitalization efforts to transform it into a recreational and natural habitat area."),
+    GeographicalFact(
+        fact:
+            "Los Angeles' coastline stretches for 75 miles, featuring famous beaches like Malibu, Santa Monica, and Venice."),
+    GeographicalFact(
+        fact:
+            "The San Gabriel and Santa Monica mountain ranges provide a scenic backdrop and opportunities for outdoor activities."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+        fact:
+            "Los Angeles was founded on September 4, 1781, by Spanish governor Felipe de Neve and was originally named El Pueblo de Nuestra Señora la Reina de los Ángeles de Porciúncula."),
+    HistoricalFact(
+        fact:
+            "The city experienced a massive population boom in the early 20th century, driven by the discovery of oil and the growth of the entertainment industry."),
+    HistoricalFact(
+        fact:
+            "The Hollywood Sign, originally reading 'Hollywoodland,' was erected in 1923 to promote a real estate development. It was later shortened to 'Hollywood' and became an iconic symbol."),
+    HistoricalFact(
+        fact:
+            "The Watts Riots in 1965 were a significant event in LA's history, highlighting racial tensions and leading to major civil rights reforms."),
+    HistoricalFact(
+        fact:
+            "The Los Angeles Aqueduct, completed in 1913, brought water from the Owens Valley to the city, enabling its growth and development."),
+    HistoricalFact(
+        fact:
+            "The 1984 Summer Olympics, held in Los Angeles, were highly successful and are remembered for their financial and operational efficiency."),
+  ],
+  coordinates: const LatLng(34.0522, -118.2437),
+);
+City miami = City(
+  culturalFacts: [
+    CulturalFact(
+        fact:
+            "Miami is known for its vibrant art scene, highlighted by the annual Art Basel Miami Beach, one of the most prestigious art shows in the Americas."),
+    CulturalFact(
+        fact:
+            "The city is a melting pot of cultures, heavily influenced by its large Cuban-American community, and is often called the 'Capital of Latin America.'"),
+    CulturalFact(
+        fact:
+            "Miami's South Beach is renowned for its Art Deco Historic District, featuring pastel-colored buildings and a lively nightlife."),
+    CulturalFact(
+        fact:
+            "The Pérez Art Museum Miami (PAMM) showcases contemporary art from around the world, focusing on the cultures of the Atlantic Rim."),
+    CulturalFact(
+        fact:
+            "The Miami International Film Festival, held annually, draws filmmakers and audiences from around the globe, celebrating cinema in various languages."),
+    CulturalFact(
+        fact:
+            "Little Havana, a neighborhood in Miami, is famous for its Cuban culture, including its vibrant street life, music, and cuisine."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+        fact:
+            "Miami is located on the southeastern coast of Florida, bordered by the Atlantic Ocean to the east and the Everglades to the west."),
+    GeographicalFact(
+        fact:
+            "The city has a tropical monsoon climate, characterized by hot, humid summers and warm, dry winters, making it a popular destination for tourists."),
+    GeographicalFact(
+        fact:
+            "Miami Beach, a separate municipality, is connected to Miami by a series of bridges and is famous for its sandy beaches and glamorous lifestyle."),
+    GeographicalFact(
+        fact:
+            "Biscayne Bay, separating Miami from Miami Beach, is a key feature of the city's geography, providing opportunities for boating, fishing, and water sports."),
+    GeographicalFact(
+        fact:
+            "The Miami River flows through the city and into Biscayne Bay, playing a vital role in the city's history and development as a port."),
+    GeographicalFact(
+        fact:
+            "The city is susceptible to hurricanes due to its coastal location, with hurricane season running from June to November."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+        fact:
+            "Miami was officially incorporated as a city on July 28, 1896, with a population of just over 300. It has since grown to become a major metropolis."),
+    HistoricalFact(
+        fact:
+            "The city experienced a major real estate boom in the 1920s, leading to rapid development and the construction of many historic buildings."),
+    HistoricalFact(
+        fact:
+            "During the 1980s, Miami became a center of drug trafficking and related crime, leading to significant social and economic challenges."),
+    HistoricalFact(
+        fact:
+            "The Mariel boatlift in 1980 saw an influx of Cuban immigrants to Miami, significantly impacting the city's demographics and culture."),
+    HistoricalFact(
+        fact:
+            "In the early 20th century, Miami was a popular destination for wealthy Northerners seeking to escape cold winters, contributing to its development as a tourist hub."),
+    HistoricalFact(
+        fact:
+            "The opening of the Miami International Airport in 1928 helped establish the city as a major gateway to Latin America and the Caribbean."),
+  ],
+  coordinates: const LatLng(25.7617, -80.1918),
+);
+City sanFrancisco = City(
+  culturalFacts: [
+    CulturalFact(
+        fact:
+            "San Francisco is renowned for its vibrant arts and cultural scene, including iconic institutions like the San Francisco Museum of Modern Art (SFMOMA)."),
+    CulturalFact(
+        fact:
+            "The city is famous for its diverse neighborhoods, such as Chinatown, the oldest and one of the largest in North America, and the Mission District, known for its Latino culture and murals."),
+    CulturalFact(
+        fact:
+            "San Francisco hosts the annual San Francisco International Film Festival, the longest-running film festival in the Americas."),
+    CulturalFact(
+        fact:
+            "The Fillmore District is known as the 'Harlem of the West' due to its historic jazz clubs and African American cultural contributions."),
+    CulturalFact(
+        fact:
+            "The city is a major center for the tech industry, with nearby Silicon Valley home to many of the world's largest tech companies."),
+    CulturalFact(
+        fact:
+            "San Francisco's culinary scene is renowned for its innovation and diversity, with a strong emphasis on farm-to-table dining."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+        fact:
+            "San Francisco is located on the northern tip of the San Francisco Peninsula, surrounded by the Pacific Ocean and San Francisco Bay."),
+    GeographicalFact(
+        fact:
+            "The city is famous for its steep hills, with over 50 hills within its limits, including well-known ones like Nob Hill, Russian Hill, and Telegraph Hill."),
+    GeographicalFact(
+        fact:
+            "San Francisco's climate is characterized by cool summers and mild winters, influenced by the cold California Current and frequent coastal fog."),
+    GeographicalFact(
+        fact:
+            "The Golden Gate Bridge, one of the most recognizable landmarks in the world, connects San Francisco to Marin County."),
+    GeographicalFact(
+        fact:
+            "Alcatraz Island, located in San Francisco Bay, is famous for its historic federal prison and is now a popular tourist attraction."),
+    GeographicalFact(
+        fact:
+            "The San Andreas Fault, a major tectonic boundary, runs just to the west of San Francisco, making the city prone to earthquakes."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+        fact:
+            "San Francisco was founded on June 29, 1776, by Spanish colonists who established the Presidio of San Francisco and the Mission San Francisco de Asís."),
+    HistoricalFact(
+        fact:
+            "The California Gold Rush of 1849 brought rapid growth and wealth to San Francisco, transforming it into a bustling city almost overnight."),
+    HistoricalFact(
+        fact:
+            "The 1906 San Francisco earthquake and subsequent fires destroyed much of the city, leading to extensive rebuilding efforts."),
+    HistoricalFact(
+        fact:
+            "The city played a significant role during World War II as a major embarkation point for service members shipping out to the Pacific Theater."),
+    HistoricalFact(
+        fact:
+            "The Summer of Love in 1967, centered in San Francisco's Haight-Ashbury neighborhood, was a defining moment in the counterculture movement."),
+    HistoricalFact(
+        fact:
+            "San Francisco was a pioneer in the LGBT rights movement, with the Castro District becoming a prominent center for LGBT culture and activism."),
+  ],
+  coordinates: const LatLng(37.7749, -122.4194),
+);
 
 List<Place> newYorkPOI = [
   Place(
