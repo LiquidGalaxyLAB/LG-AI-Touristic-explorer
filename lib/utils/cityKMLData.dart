@@ -1109,6 +1109,326 @@ City mumbai = City(
   coordinates: const LatLng(19.0760, 72.8777),
 );
 
+City amsterdam = City(
+  culturalFacts: [
+    CulturalFact(
+      fact:
+        "Amsterdam is known for its artistic heritage, with the Van Gogh Museum housing the largest collection of Van Gogh's paintings and drawings in the world."),
+    CulturalFact(
+      fact:
+        "The city is famous for its extensive canal system, earning it the nickname 'Venice of the North'. The canals are a UNESCO World Heritage Site."),
+    CulturalFact(
+      fact:
+        "Amsterdam hosts the annual Amsterdam Dance Event (ADE), the world's leading electronic music conference and festival."),
+    CulturalFact(
+      fact:
+        "The Rijksmuseum in Amsterdam is the national museum of the Netherlands, showcasing masterpieces by Rembrandt, Vermeer, and other Dutch Golden Age artists."),
+    CulturalFact(
+      fact:
+        "King's Day (Koningsdag), celebrated on April 27th, is the biggest national holiday in the Netherlands, featuring street markets, parties, and concerts throughout Amsterdam."),
+    CulturalFact(
+      fact:
+        "Amsterdam is renowned for its liberal attitudes towards cannabis and its famous red-light district, which are major draws for tourists."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+      fact:
+        "Amsterdam is located in the province of North Holland in the western part of the Netherlands, lying below sea level and featuring an intricate network of canals and dikes."),
+    GeographicalFact(
+      fact:
+        "The city is built on approximately 90 islands connected by more than 1,200 bridges, making it one of the most interconnected cities by waterways in the world."),
+    GeographicalFact(
+      fact:
+        "Amsterdam has a maritime climate influenced by its proximity to the North Sea, characterized by mild winters and cool summers."),
+    GeographicalFact(
+      fact:
+        "Vondelpark, the largest city park in Amsterdam, spans 47 hectares and is a popular spot for both locals and tourists to relax and enjoy outdoor activities."),
+    GeographicalFact(
+      fact:
+        "The city is a major hub for cycling, with an extensive network of bike paths and more bicycles than residents."),
+    GeographicalFact(
+      fact:
+        "Amsterdam's Schiphol Airport, located about 15 kilometers southwest of the city center, is one of the busiest airports in Europe."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+      fact:
+        "Amsterdam was founded as a small fishing village in the late 12th century and grew rapidly during the Dutch Golden Age in the 17th century as a major trade and financial center."),
+    HistoricalFact(
+      fact:
+        "The city played a central role in the Dutch East India Company, the world's first multinational corporation, established in 1602."),
+    HistoricalFact(
+      fact:
+        "Anne Frank, the Jewish diarist who wrote 'The Diary of a Young Girl,' hid from the Nazis in a secret annex in Amsterdam during World War II."),
+    HistoricalFact(
+      fact:
+        "In 1636, the University of Amsterdam was established, becoming one of the most prominent research universities in Europe."),
+    HistoricalFact(
+      fact:
+        "The construction of the Amsterdam Canal Belt (Grachtengordel) began in the early 17th century, shaping the city's distinctive layout."),
+    HistoricalFact(
+      fact:
+        "Amsterdam was occupied by Nazi Germany during World War II from May 1940 until May 1945, suffering significant hardships and resistance."),
+  ],
+  coordinates: const LatLng(52.3676, 4.9041),
+);
+
+City barcelona = City(
+  culturalFacts: [
+    CulturalFact(
+      fact:
+        "Barcelona is renowned for its unique architecture, particularly the works of Antoni Gaudí, including the Sagrada Família, Park Güell, and Casa Batlló."),
+    CulturalFact(
+      fact:
+        "The city is a major center for Catalan culture, with Catalan being one of the official languages alongside Spanish."),
+    CulturalFact(
+      fact:
+        "Barcelona hosts the annual Festa Major de Gràcia, a week-long festival in August featuring decorated streets, music, and cultural activities."),
+    CulturalFact(
+      fact:
+        "The city is home to FC Barcelona, one of the world's most famous football clubs, with Camp Nou being the largest stadium in Europe."),
+    CulturalFact(
+      fact:
+        "Barcelona has a rich tradition of art and literature, with museums dedicated to Picasso and Joan Miró, among other renowned artists."),
+    CulturalFact(
+      fact:
+        "The city's La Rambla street is a vibrant and bustling promenade, known for its shops, restaurants, and street performers."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+      fact:
+        "Barcelona is located on the northeastern coast of the Iberian Peninsula, facing the Mediterranean Sea."),
+    GeographicalFact(
+      fact:
+        "The city is surrounded by mountains, including the Serra de Collserola, which offers scenic views and outdoor activities."),
+    GeographicalFact(
+      fact:
+        "Barcelona enjoys a Mediterranean climate, characterized by hot summers and mild winters, making it a popular destination year-round."),
+    GeographicalFact(
+      fact:
+        "The city boasts several urban beaches, including Barceloneta Beach, which is popular for swimming, sunbathing, and water sports."),
+    GeographicalFact(
+      fact:
+        "Montjuïc Hill is a prominent feature in Barcelona, offering cultural attractions such as the Magic Fountain, Montjuïc Castle, and several museums."),
+    GeographicalFact(
+      fact:
+        "Barcelona's Port Vell is a historic harbor that has been transformed into a modern marina with shops, restaurants, and the Aquarium Barcelona."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+      fact:
+        "Barcelona was founded as a Roman city called Barcino in the late 1st century BC."),
+    HistoricalFact(
+      fact:
+        "The city played a key role during the Spanish Civil War (1936-1939) and was heavily bombed by Franco's forces."),
+    HistoricalFact(
+      fact:
+        "In 1992, Barcelona hosted the Summer Olympics, which led to significant urban development and revitalization of the city's waterfront."),
+    HistoricalFact(
+      fact:
+        "The Gothic Quarter (Barri Gòtic) is the historic center of Barcelona, featuring narrow medieval streets and ancient Roman ruins."),
+    HistoricalFact(
+      fact:
+        "Barcelona was the capital of the Crown of Aragon, a powerful maritime kingdom in the medieval period."),
+    HistoricalFact(
+      fact:
+        "La Mercè, Barcelona's annual festival, dates back to 1902 and honors the city's patron saint, Our Lady of Mercy."),
+  ],
+  coordinates: const LatLng(41.3851, 2.1734),
+);
+
+City berlin = City(
+  culturalFacts: [
+    CulturalFact(
+      fact:
+        "Berlin is known for its vibrant arts scene, with numerous galleries, theaters, and music venues, including the famous Berlin Philharmonic."),
+    CulturalFact(
+      fact:
+        "The city hosts the annual Berlin International Film Festival (Berlinale), one of the most prestigious film festivals in the world."),
+    CulturalFact(
+      fact:
+        "Berlin is famous for its nightlife, particularly its techno clubs such as Berghain, which attract party-goers from around the globe."),
+    CulturalFact(
+      fact:
+        "Museum Island, located in the Spree River, is a UNESCO World Heritage Site and home to five world-renowned museums."),
+    CulturalFact(
+      fact:
+        "The Berlin Wall, which once divided the city, is now a major cultural landmark, with sections preserved as the East Side Gallery featuring murals by artists from around the world."),
+    CulturalFact(
+      fact:
+        "Berlin has a diverse culinary scene, with a strong tradition of street food such as currywurst and doner kebabs."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+      fact:
+        "Berlin is located in northeastern Germany, on the banks of the rivers Spree and Havel."),
+    GeographicalFact(
+      fact:
+        "The city covers an area of 891.8 square kilometers, making it nine times larger than Paris."),
+    GeographicalFact(
+      fact:
+        "Berlin has a temperate seasonal climate, with cold winters and warm summers."),
+    GeographicalFact(
+      fact:
+        "Tiergarten, Berlin's largest park, spans 210 hectares and offers a green oasis in the heart of the city."),
+    GeographicalFact(
+      fact:
+        "Berlin is known for its extensive waterways, including over 180 kilometers of navigable rivers, canals, and lakes."),
+    GeographicalFact(
+      fact:
+        "The city's public transportation system is one of the most efficient in Europe, featuring an extensive network of buses, trams, U-Bahn, and S-Bahn trains."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+      fact:
+        "Berlin became the capital of the Kingdom of Prussia in 1701 and later the capital of the German Empire in 1871."),
+    HistoricalFact(
+      fact:
+        "The city was heavily bombed during World War II, leading to extensive destruction and subsequent rebuilding."),
+    HistoricalFact(
+      fact:
+        "Berlin was divided into East and West Berlin during the Cold War, with the Berlin Wall separating the two halves from 1961 until its fall in 1989."),
+    HistoricalFact(
+      fact:
+        "The Brandenburg Gate, an iconic symbol of Berlin, was completed in 1791 and has witnessed many of the city's key historical events."),
+    HistoricalFact(
+      fact:
+        "The Reichstag building, home to the German parliament, was severely damaged during World War II and later restored, with a modern glass dome added in 1999."),
+    HistoricalFact(
+      fact:
+        "In 1990, Berlin was reunified and became the capital of a reunified Germany, marking the end of the Cold War era."),
+  ],
+  coordinates: const LatLng(52.5200, 13.4050),
+);
+
+City sydney = City(
+  culturalFacts: [
+    CulturalFact(
+      fact:
+        "Sydney is home to the iconic Sydney Opera House, a UNESCO World Heritage Site and one of the most distinctive buildings in the world."),
+    CulturalFact(
+      fact:
+        "The city hosts the annual Sydney Festival, a major cultural event featuring music, dance, theater, and visual arts."),
+    CulturalFact(
+      fact:
+        "Sydney is known for its vibrant multicultural scene, with over a third of its residents born overseas."),
+    CulturalFact(
+      fact:
+        "The Sydney Harbour Bridge, affectionately known as 'The Coathanger,' is a famous landmark and offers a popular bridge climb experience."),
+    CulturalFact(
+      fact:
+        "Bondi Beach, one of the most famous beaches in the world, is located in Sydney and is known for its surf culture."),
+    CulturalFact(
+      fact:
+        "Sydney has a thriving food scene, with a strong emphasis on fresh seafood and multicultural cuisine."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+      fact:
+        "Sydney is located on the southeastern coast of Australia, in the state of New South Wales."),
+    GeographicalFact(
+      fact:
+        "The city is built around Sydney Harbour, which is known for its stunning natural beauty and is often considered one of the world's most beautiful harbors."),
+    GeographicalFact(
+      fact:
+        "Sydney has a temperate climate, with warm summers and mild winters, making it a popular destination year-round."),
+    GeographicalFact(
+      fact:
+        "The Blue Mountains, located to the west of Sydney, are a popular destination for hiking and outdoor activities, offering dramatic scenery and native wildlife."),
+    GeographicalFact(
+      fact:
+        "Sydney is surrounded by national parks, providing ample opportunities for outdoor recreation and nature exploration."),
+    GeographicalFact(
+      fact:
+        "The city is served by Sydney Kingsford Smith Airport, one of the oldest continuously operating airports in the world."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+      fact:
+        "Sydney was established in 1788 as the first British colony in Australia, named after the British Home Secretary, Lord Sydney."),
+    HistoricalFact(
+      fact:
+        "The city grew rapidly during the 19th century, driven by the discovery of gold and subsequent economic boom."),
+    HistoricalFact(
+      fact:
+        "Sydney hosted the 2000 Summer Olympics, which brought international attention and significant development to the city."),
+    HistoricalFact(
+      fact:
+        "The Rocks, a historic area in Sydney, features cobblestone streets and buildings from the early colonial period."),
+    HistoricalFact(
+      fact:
+        "In 1851, the University of Sydney was founded, making it the oldest university in Australia."),
+    HistoricalFact(
+      fact:
+        "The Sydney Harbour Bridge, completed in 1932, was an engineering marvel of its time and remains a key symbol of the city."),
+  ],
+  coordinates: const LatLng(-33.8688, 151.2093),
+);
+
+City toronto = City(
+  culturalFacts: [
+    CulturalFact(
+      fact:
+        "Toronto is known for its diverse cultural landscape, with over 200 ethnic groups and more than 140 languages spoken."),
+    CulturalFact(
+      fact:
+        "The Toronto International Film Festival (TIFF) is one of the largest and most prestigious film festivals in the world, attracting celebrities and filmmakers from around the globe."),
+    CulturalFact(
+      fact:
+        "The city is home to the CN Tower, which was the world's tallest free-standing structure when completed in 1976 and remains a major tourist attraction."),
+    CulturalFact(
+      fact:
+        "Toronto's Distillery District is a popular cultural destination, featuring well-preserved Victorian industrial architecture and a variety of arts, culture, and dining experiences."),
+    CulturalFact(
+      fact:
+        "Toronto has a vibrant music scene, with a rich history of jazz, hip-hop, and indie music, and is the birthplace of artists like Drake and The Weeknd."),
+    CulturalFact(
+      fact:
+        "The Royal Ontario Museum, located in Toronto, is one of the largest museums in North America, showcasing a vast collection of art, world culture, and natural history."),
+  ],
+  geographicalFacts: [
+    GeographicalFact(
+      fact:
+        "Toronto is located in the province of Ontario, on the northwestern shore of Lake Ontario."),
+    GeographicalFact(
+      fact:
+        "The city experiences a humid continental climate, with cold winters and warm, humid summers."),
+    GeographicalFact(
+      fact:
+        "Toronto Islands, a chain of small islands in Lake Ontario, provide recreational spaces and stunning views of the city skyline."),
+    GeographicalFact(
+      fact:
+        "The Don Valley and Humber Valley form significant green corridors through the city, offering extensive parks and trails."),
+    GeographicalFact(
+      fact:
+        "Toronto is characterized by its skyline of modern skyscrapers, including the CN Tower and numerous high-rise buildings."),
+    GeographicalFact(
+      fact:
+        "The city is a major hub for air travel, served by Toronto Pearson International Airport, the busiest airport in Canada."),
+  ],
+  historicalFacts: [
+    HistoricalFact(
+      fact:
+        "Toronto was originally known as York when it was established as a British colonial settlement in 1793."),
+    HistoricalFact(
+      fact:
+        "The city was renamed Toronto in 1834, derived from a Mohawk word meaning 'where there are trees standing in the water'."),
+    HistoricalFact(
+      fact:
+        "Toronto grew rapidly during the 19th and 20th centuries, becoming a major center for industry, commerce, and culture in Canada."),
+    HistoricalFact(
+      fact:
+        "The Great Fire of 1904 destroyed much of downtown Toronto, leading to significant rebuilding and modernization."),
+    HistoricalFact(
+      fact:
+        "In 1976, the CN Tower was completed, symbolizing Toronto's growth and modernity."),
+    HistoricalFact(
+      fact:
+        "Toronto amalgamated with surrounding municipalities in 1998, creating the modern City of Toronto with its current boundaries."),
+  ],
+  coordinates: const LatLng(43.651070, -79.347015),
+);
+
 
 List<Place> newYorkPOI = [
   Place(
