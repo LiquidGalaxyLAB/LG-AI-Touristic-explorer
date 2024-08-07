@@ -57,6 +57,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   List<Widget> historyCarouselCards = [
     const CarouselCard(
+      cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
@@ -64,6 +65,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   ];
   List<Widget> cultureCarouselCards = [
     const CarouselCard(
+      cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
@@ -71,6 +73,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   ];
   List<Widget> geographyCarouselCards = [
     const CarouselCard(
+      cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
@@ -78,6 +81,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   ];
   List<Widget> poiCarouselCards = [
     const CarouselCard(
+      cityname: "city",
       factTitle: "cityName",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
@@ -123,6 +127,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
     for (var culturalFact in city.culturalFacts) {
       cultureCarouselCards.add(CarouselCard(
+        cityname: widget.cityName,
         factTitle: "Cultural Fact",
         factDesc: culturalFact.fact,
       ));
@@ -130,6 +135,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
     for (var geographicalFact in city.geographicalFacts) {
       geographyCarouselCards.add(CarouselCard(
+        cityname: widget.cityName,
         factTitle: "Geographical Fact",
         factDesc: geographicalFact.fact,
       ));
@@ -137,12 +143,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
     for (var historicalFact in city.historicalFacts) {
       historyCarouselCards.add(CarouselCard(
+        cityname: widget.cityName,
         factTitle: "Historical Fact",
         factDesc: historicalFact.fact,
       ));
     }
     for (Place places in pois) {
       poiCarouselCards.add(CarouselCard(
+        cityname: widget.cityName,
         factTitle: places.name,
         factDesc: places.details,
       ));

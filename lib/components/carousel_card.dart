@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
+import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 
-class CarouselCard extends StatelessWidget {
+class CarouselCard extends StatefulWidget {
   final String factTitle;
+  final String cityname;
   final String factDesc;
   const CarouselCard({
     super.key,
     required this.factTitle,
     required this.factDesc,
+    required this.cityname,
   });
+
+  @override
+  State<CarouselCard> createState() => _CarouselCardState();
+}
+
+class _CarouselCardState extends State<CarouselCard> {
+  bool lgStatus = false;
+  late LGConnection lg;
+  Future<void> _connectToLG() async {
+    bool? result = await lg.connectToLG();
+    setState(() {
+      lgStatus = result!;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    lg = LGConnection();
+    _connectToLG();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -36,7 +63,7 @@ class CarouselCard extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Text(
-                      factTitle,
+                      widget.factTitle,
                       style: googleTextStyle(50.sp, FontWeight.w700, fontGreen),
                       textAlign: TextAlign.center,
                     ),
@@ -45,7 +72,16 @@ class CarouselCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            await lg.cleanRightBalloon();
+                            await lg.sendStaticBalloon(
+                                "orbitballoon",
+                                widget.factTitle,
+                                widget.cityname,
+                                500,
+                                widget.factDesc,
+                                mainLogoAWS);
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             height: size.height * .15,
@@ -73,7 +109,9 @@ class CarouselCard extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            await lg.cleanRightBalloon();
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             height: size.height * .15,
@@ -106,7 +144,7 @@ class CarouselCard extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: Text(
-                          factDesc,
+                          widget.factDesc,
                           style: googleTextStyle(
                               38.sp, FontWeight.w500, Colors.black),
                           textAlign: TextAlign.justify,
@@ -149,14 +187,14 @@ class CarouselCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                factTitle,
+                widget.factTitle,
                 style: googleTextStyle(40.sp, FontWeight.w700, fontGreen),
               ),
               SizedBox(height: 20),
               Container(
                 width: size.width * 0.35,
                 child: Text(
-                  factDesc,
+                  widget.factDesc,
                   style: googleTextStyle(28.sp, FontWeight.w500, Colors.black),
                   overflow: TextOverflow.clip,
                   textAlign: TextAlign.justify,

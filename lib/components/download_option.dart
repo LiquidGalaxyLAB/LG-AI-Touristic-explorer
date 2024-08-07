@@ -51,7 +51,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
   void _checkInitialDownloadStatus() async {
     String name = widget.cityName.toLowerCase().replaceAll(" ", "");
     String optionNew = widget.option.toLowerCase().replaceAll(" ", "");
-    if (optionNew == "historical fact") {
+    if (optionNew == "historicalfact") {
       optionNew = "historical";
     }
     if (optionNew == "outline" || optionNew == "historical") {
@@ -99,16 +99,13 @@ class _DownloadWidgetState extends State<DownloadWidget> {
     String optionNew = widget.option.toLowerCase().replaceAll(" ", "");
 
     if (optionNew == "historicalfact") {
-
       optionNew = "historical";
     }
     if (!isDownloaded) {
-
       if (optionNew == "outline") {
         var url = data[name]?[0]['link'] ?? "";
         await downloadKml(url, "$name$optionNew", name);
       } else if (optionNew == "historical") {
-
         var url = data[name]?[1]['link'] ?? "";
         await downloadKml(url, "$name$optionNew", name);
       }
