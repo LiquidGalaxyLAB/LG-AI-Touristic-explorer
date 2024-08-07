@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 String removeMarkdown(String responseText) {
   final pattern = RegExp(
-      r'(\n|\\n|```|``|json|</start_of_turn>|<end_of_turn>|<eos>|<start_of_turn>)|</end_of_turn>');
+      r'(\n|\\n|```|``|json|</start_of_turn>|<end_of_turn>|<eos>|<start_of_turn>)|</end_of_turn>|\u003C/start_of_turn\u003E|\u003E|\u003C|/start_of_turn');
   return responseText.replaceAll(pattern, '');
 }
 
@@ -43,5 +43,23 @@ Future<bool> checkAIServerConnection() async {
   } catch (e) {
     print('Error checking AI server connection: $e');
     return false;
+  }
+}
+
+Future<String> generateStory(String cityName) async {
+  final url = Uri.parse('http://127.0.0.1:8107/generateStory?city=$cityName');
+  try {
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      String responseText = response.body;
+      String cleanedString = removeMarkdown(responseText);
+      final responseData = jsonDecode(cleanedString);
+
+      return responseData['response'] ?? 'No response available';
+    } else {
+      return 'Error: ${response.statusCode} - ${response.reasonPhrase}';
+    }
+  } catch (e) {
+    return 'An error occurred: $e';
   }
 }

@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -160,6 +162,46 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     initCards(city, data);
   }
 
+  bool isStoryGenerated = false;
+  bool isPlaying = false;
+  final player = AudioPlayer();
+  late final dir;
+  late final file;
+  met() async {
+    dir = await getApplicationDocumentsDirectory();
+    file = File('${dir.path}/textToSpeech.wav');
+  }
+
+  _stop() {
+    player.stop();
+  }
+
+  _start() {
+    player.play(DeviceFileSource(file.path));
+  }
+
+  textToVoice(String content) async {
+    await met();
+    final url =
+        Uri.parse("https://api.deepgram.com/v1/speak?model=aura-zeus-en");
+    String voiceApiKey = "";
+    final response = await http.post(url,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token $voiceApiKey"
+        },
+        body: jsonEncode({"text": content}));
+    if (response.statusCode == 200) {
+      final bytes = response.bodyBytes;
+
+      await file.writeAsBytes(bytes);
+
+      await player.play(DeviceFileSource(file.path));
+    }
+  }
+
+  _stopNarration() {}
+
   var visualisationOptions = [];
   checkForExtra() {
     bool present = checkIsExtra(widget.cityName);
@@ -272,21 +314,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // City Name
-                                // ElevatedButton(
-                                //     onPressed: () async {
-                                //       print(checkIsExtra(widget.cityName));
-
-                                //       // String imgURL = await getPlaceIdFromName(
-                                //       //     "bollywood mumbai");
-                                //       // print("this is : $imgURL");
-                                //       setState(() {
-                                //         isURL = false;
-                                //         // img = imgURL;
-                                //       });
-                                //     },
-                                //     child: Text("Hello")),
-                                // isURL ? Image.network(img) : Container(),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -843,20 +870,65 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                   ),
                                 ),
                           20.pw,
-                          Container(
-                            alignment: Alignment.center,
-                            height: size.height * .15,
-                            width: size.width * 0.24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: darkSecondaryColor,
-                            ),
-                            child: Text(
-                              "Narrate as Story!",
-                              style: googleTextStyle(
-                                  37.sp, FontWeight.w500, white),
-                            ),
-                          ),
+                          !isStoryGenerated
+                              ? GestureDetector(
+                                  onTap: () async {
+                                    String content =
+                                        await generateStory("Mumbai");
+                                    print(content);
+                                    await textToVoice(content);
+                                    setState(() {
+                                      isStoryGenerated = true;
+                                      isPlaying = true;
+                                    });
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: size.height * .15,
+                                    width: size.width * 0.24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: darkSecondaryColor,
+                                    ),
+                                    child: Text(
+                                      "Narrate as Story!",
+                                      style: googleTextStyle(
+                                          37.sp, FontWeight.w500, white),
+                                    ),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () async {
+                                    if (isPlaying) {
+                                      _stop();
+                                      setState(() {
+                                        isPlaying = false;
+                                      });
+                                    } else {
+                                      _start();
+                                      setState(() {
+                                        isPlaying = true;
+                                      });
+                                    }
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: size.height * .15,
+                                    width: size.width * 0.24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color:
+                                          isPlaying ? Colors.red : Colors.green,
+                                    ),
+                                    child: Text(
+                                      isPlaying
+                                          ? "Stop Narration"
+                                          : "Start Narration",
+                                      style: googleTextStyle(
+                                          37.sp, FontWeight.w500, white),
+                                    ),
+                                  ),
+                                )
                         ],
                       ),
                     ],
