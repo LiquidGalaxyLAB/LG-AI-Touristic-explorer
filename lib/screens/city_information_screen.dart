@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
 import 'package:lg_ai_touristic_explorer/components/download_option.dart';
@@ -235,8 +236,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
+  bool isStatic = false;
   _checkGiven() {
     if (widget.cityGiven != null && widget.cityPOI != null) {
+      setState(() {
+        isStatic = true;
+      });
       city = widget.cityGiven!;
       places = widget.cityPOI!;
       checkForExtra();
@@ -284,6 +289,66 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool anim = true;
+
+  show(BuildContext context) async {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Important Notice",
+              style:
+                  googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Connect to AI Model First",
+                    style:
+                        googleTextStyle(35.sp, FontWeight.w500, Colors.black)),
+                const SizedBox(height: 10),
+                Text(
+                    "Before searching for the city, please ensure that you are connected to the AI model.",
+                    style:
+                        googleTextStyle(30.sp, FontWeight.w400, Colors.black)),
+                const SizedBox(height: 15),
+                Text(
+                    "Once connected, you can proceed with your search. If there are any issues, please check your connection and try again.",
+                    style: GoogleFonts.raleway(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic),
+                    )),
+              ],
+            ),
+          ),
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              child: Text("Go Back",
+                  style: googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     CameraPosition _kGooglePlex = CameraPosition(
@@ -292,6 +357,13 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     );
     late CameraPosition changedMapPosition;
     var size = MediaQuery.of(context).size;
+    if (isStatic) {
+    } else {
+      if (!aiStatus) {
+        Future.delayed(Duration.zero, () => show(context));
+      }
+    }
+
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: AppDrawer(size: size),
