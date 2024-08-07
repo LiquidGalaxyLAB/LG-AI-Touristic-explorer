@@ -65,7 +65,8 @@ var data = {
           "Anchorage is Alaska’s largest city and a gateway to the wilderness beyond. The city blends the best of nature and urban life, offering easy access to hiking trails, wildlife viewing, and cultural attractions. It’s surrounded by mountains and water, with stunning views of glaciers and wildlife like bears and moose."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=11vpUbEtsrXbB06-T-sVCrq7T_-NuHtmR",
       "type": "historicalMap",
       "description":
           "Anchorage. Founded in 1914 as a railroad construction port for the Alaska Railroad, Anchorage has grown into a thriving urban center. It played a significant role during World War II as a strategic air transport hub. The city has evolved from a small tent city to a bustling metropolis while maintaining its strong ties to its native Alaskan roots."
@@ -89,7 +90,8 @@ var data = {
           "Austin is the capital city of Texas, known for its live music scene centered around country, blues, and rock. Its many parks and lakes are popular for hiking, biking, swimming, and boating. South of the city, Formula One's Circuit of the Americas raceway has hosted the United States Grand Prix."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=13cYEQH_rJ4SvRh8sXkSBfwrdEGAQ3Gqv",
       "type": "historicalMap",
       "description":
           "Austin. Founded in 1839, Austin has a rich history tied to its origins as a frontier town. It became the capital of the Republic of Texas in 1846 and later the state capital of Texas. Over the years, Austin has grown into a vibrant cultural and economic hub, known for its tech industry, festivals like SXSW, and eclectic food scene."
@@ -103,12 +105,6 @@ var data = {
       "description":
           "Bangalore, officially known as Bengaluru, is the capital of the Indian state of Karnataka. It is known as the Silicon Valley of India due to its role as a leading IT exporter. The city is famous for its pleasant climate, parks, and nightlife. Landmarks include Lalbagh Botanical Garden, Cubbon Park, and the Bangalore Palace."
     },
-    {
-      "link": "",
-      "type": "historicalMap",
-      "description":
-          "Bangalore. Founded in the 16th century, Bangalore has a rich historical background as a key administrative and military center of various empires. It became an important commercial and military center under British rule. Today, Bangalore is a cosmopolitan city known for its IT industry and vibrant cultural scene."
-    }
   ],
   "barcelona": [
     {
@@ -200,7 +196,8 @@ var data = {
           "Los Angeles is a sprawling Southern California city known for its entertainment industry, ethnic diversity, and Mediterranean climate. The city is famous for its film studios, Hollywood Walk of Fame, and cultural attractions like the Getty Center. Los Angeles offers a blend of beaches, mountains, and vibrant urban life."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1PuqvLZCK8W4525o1uh5vTEBozdFh0Yx1",
       "type": "historicalMap",
       "description":
           "Los Angeles. Founded in 1781, Los Angeles has grown from a small Spanish pueblo into a major global city. It played a crucial role in the development of the film industry and became a center of cultural and artistic innovation. The city has a rich multicultural heritage and continues to evolve as a dynamic metropolis."
@@ -242,7 +239,8 @@ var data = {
           "Miami is a vibrant city in southeastern Florida known for its beaches, art deco architecture, and Latin American cultural influences. The city’s attractions include South Beach, the Art Deco Historic District, and the Wynwood Walls. Miami is a hub for finance, commerce, culture, and international trade."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1tcaIfzH0eDuw7sRGq1I2h2df6h5S5IQ-",
       "type": "historicalMap",
       "description":
           "Founded in 1896, Miami has a history shaped by immigration, development, and cultural diversity. It grew rapidly during the Florida land boom of the 1920s and became a major center for tourism and international trade. Miami’s unique blend of cultures has influenced its architecture, cuisine, and vibrant social scene."
@@ -275,7 +273,8 @@ var data = {
           "New York City is a global metropolis known for its iconic landmarks, arts scene, and diverse neighborhoods. Attractions include Times Square, Central Park, and the Statue of Liberty. New York City is a hub for finance, media, fashion, and culture, with a vibrant energy that attracts millions of visitors each year."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1oWqqFZS8hJfZ8OOcdhI-vIyj5m5DHx2g",
       "type": "historicalMap",
       "description":
           "Harlem, a neighborhood in Upper Manhattan, New York City, has played a central role in African American culture and history. It became a cultural and artistic hub during the Harlem Renaissance of the 1920s, fostering creativity in literature, music, and the arts. Harlem continues to be a symbol of African American heritage and urban life."
@@ -299,7 +298,8 @@ var data = {
           "Paris, the capital city of France, is renowned for its art, fashion, gastronomy, and culture. The city’s landmarks include the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral. Paris is a global center for art, fashion, and commerce, with a rich history that dates back to ancient times."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=13evsw59yxaTDUO0b3Gxyed7nni_mxAgl",
       "type": "historicalMap",
       "description":
           "Paris. Founded in the 3rd century BC, Paris has evolved from a Roman city to a medieval trading hub and a center of European culture and politics. The city played a pivotal role in the French Revolution and has been a beacon of artistic and intellectual achievement. Paris remains a symbol of elegance, romance, and innovation."
@@ -314,7 +314,8 @@ var data = {
           "San Francisco is a city in northern California known for its iconic landmarks, diverse neighborhoods, and scenic beauty. Attractions include the Golden Gate Bridge, Alcatraz Island, and Fisherman's Wharf. San Francisco is a cultural and financial center with a thriving arts scene, tech industry, and culinary diversity."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1SqqllW1AGMm9w8D0-HZqLe9dfF01CsWk",
       "type": "historicalMap",
       "description":
           "San Francisco. Founded in 1776, San Francisco has a rich history shaped by the Gold Rush, earthquakes, and waves of immigration. The city has been a hub of innovation and counterculture, with a legacy that includes the Summer of Love, Silicon Valley, and the LGBTQ+ rights movement. San Francisco continues to evolve as a dynamic global city."
@@ -329,7 +330,8 @@ var data = {
           "Seattle is a city in the Pacific Northwest known for its tech industry, vibrant arts scene, and outdoor recreation opportunities. Attractions include the Space Needle, Pike Place Market, and the Seattle Art Museum. Seattle is surrounded by water, mountains, and forests, offering stunning views and outdoor activities."
     },
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1UHDL7j_dUdiazajLAd8fdNLqfkC7L7IK",
       "type": "historicalMap",
       "description":
           "Seattle. Founded in 1851, Seattle grew rapidly due to its strategic location for trade and shipping. It became a center for timber, fishing, and later technology, with companies like Microsoft and Amazon headquartered in the region. Seattle’s cultural diversity and natural beauty have shaped its identity as a dynamic urban center."
@@ -373,7 +375,8 @@ var data = {
   ],
   "baltimore": [
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1noJnKdQP7vU-nZt5u2RwrY4-an27kOlr",
       "type": "historicalMap",
       "description":
           "Baltimore. Founded in 1729, Baltimore played a key role in American history as a major seaport and industrial center. It was a key player in the War of 1812 and later became a hub of immigration and manufacturing. Baltimore’s diverse neighborhoods and rich cultural heritage have shaped its identity as a dynamic urban center."
@@ -381,7 +384,8 @@ var data = {
   ],
   "chicago": [
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1xUqvuyrCUT1i-fRN29izDavFAnNo_pkj",
       "type": "historicalMap",
       "description":
           "Chicago. Founded in the 1830s, Chicago grew rapidly due to its strategic location for trade and transportation. It became a major center for industry, finance, and culture, known for its architecture, jazz music, and deep-dish pizza. Chicago’s history includes the Great Fire of 1871 and its rebirth as a modern metropolis."
@@ -389,7 +393,8 @@ var data = {
   ],
   "detroit": [
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1pCQ3Kjkl7jZ3t0-_XZavy8vNA80N0KEl",
       "type": "historicalMap",
       "description":
           "Detroit. Founded in 1701, Detroit became a major industrial center known for its automotive industry and Motown sound. The city played a crucial role in World War II production and later faced economic challenges and urban decay. Detroit’s cultural diversity and resilience have shaped its ongoing revitalization efforts."
@@ -397,7 +402,8 @@ var data = {
   ],
   "mumbai": [
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1_N1XzyCPjOTRGhEo0I0I8uw4SoEwr3mK",
       "type": "historicalMap",
       "description":
           "Mumbai, formerly known as Bombay, is the financial and entertainment capital of India. It has a rich history as a trading port and cultural melting pot, influenced by its colonial past and diverse population. Mumbai is known for Bollywood films, historic landmarks like the Gateway of India, and vibrant street life."
@@ -405,7 +411,8 @@ var data = {
   ],
   "washingtondc": [
     {
-      "link": "",
+      "link":
+          "https://drive.google.com/uc?export=download&id=1-VSisUw36VbtXu5QBtPhFKAdrD8FtFad",
       "type": "historicalMap",
       "description":
           "Washington, D.C., the capital of the United States, has a rich history as a center of politics, government, and culture. The city’s landmarks include the White House, Capitol Hill, and National Mall. Washington, D.C. played a pivotal role in the American Revolution, Civil War, and civil rights movement."
