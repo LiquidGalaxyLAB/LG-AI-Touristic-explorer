@@ -1112,63 +1112,63 @@ City mumbai = City(
 City amsterdam = City(
   culturalFacts: [
     CulturalFact(
-      fact:
-        "Amsterdam is known for its artistic heritage, with the Van Gogh Museum housing the largest collection of Van Gogh's paintings and drawings in the world."),
+        fact:
+            "Amsterdam is known for its artistic heritage, with the Van Gogh Museum housing the largest collection of Van Gogh's paintings and drawings in the world."),
     CulturalFact(
-      fact:
-        "The city is famous for its extensive canal system, earning it the nickname 'Venice of the North'. The canals are a UNESCO World Heritage Site."),
+        fact:
+            "The city is famous for its extensive canal system, earning it the nickname 'Venice of the North'. The canals are a UNESCO World Heritage Site."),
     CulturalFact(
-      fact:
-        "Amsterdam hosts the annual Amsterdam Dance Event (ADE), the world's leading electronic music conference and festival."),
+        fact:
+            "Amsterdam hosts the annual Amsterdam Dance Event (ADE), the world's leading electronic music conference and festival."),
     CulturalFact(
-      fact:
-        "The Rijksmuseum in Amsterdam is the national museum of the Netherlands, showcasing masterpieces by Rembrandt, Vermeer, and other Dutch Golden Age artists."),
+        fact:
+            "The Rijksmuseum in Amsterdam is the national museum of the Netherlands, showcasing masterpieces by Rembrandt, Vermeer, and other Dutch Golden Age artists."),
     CulturalFact(
-      fact:
-        "King's Day (Koningsdag), celebrated on April 27th, is the biggest national holiday in the Netherlands, featuring street markets, parties, and concerts throughout Amsterdam."),
+        fact:
+            "King's Day (Koningsdag), celebrated on April 27th, is the biggest national holiday in the Netherlands, featuring street markets, parties, and concerts throughout Amsterdam."),
     CulturalFact(
-      fact:
-        "Amsterdam is renowned for its liberal attitudes towards cannabis and its famous red-light district, which are major draws for tourists."),
+        fact:
+            "Amsterdam is renowned for its liberal attitudes towards cannabis and its famous red-light district, which are major draws for tourists."),
   ],
   geographicalFacts: [
     GeographicalFact(
-      fact:
-        "Amsterdam is located in the province of North Holland in the western part of the Netherlands, lying below sea level and featuring an intricate network of canals and dikes."),
+        fact:
+            "Amsterdam is located in the province of North Holland in the western part of the Netherlands, lying below sea level and featuring an intricate network of canals and dikes."),
     GeographicalFact(
-      fact:
-        "The city is built on approximately 90 islands connected by more than 1,200 bridges, making it one of the most interconnected cities by waterways in the world."),
+        fact:
+            "The city is built on approximately 90 islands connected by more than 1,200 bridges, making it one of the most interconnected cities by waterways in the world."),
     GeographicalFact(
-      fact:
-        "Amsterdam has a maritime climate influenced by its proximity to the North Sea, characterized by mild winters and cool summers."),
+        fact:
+            "Amsterdam has a maritime climate influenced by its proximity to the North Sea, characterized by mild winters and cool summers."),
     GeographicalFact(
-      fact:
-        "Vondelpark, the largest city park in Amsterdam, spans 47 hectares and is a popular spot for both locals and tourists to relax and enjoy outdoor activities."),
+        fact:
+            "Vondelpark, the largest city park in Amsterdam, spans 47 hectares and is a popular spot for both locals and tourists to relax and enjoy outdoor activities."),
     GeographicalFact(
-      fact:
-        "The city is a major hub for cycling, with an extensive network of bike paths and more bicycles than residents."),
+        fact:
+            "The city is a major hub for cycling, with an extensive network of bike paths and more bicycles than residents."),
     GeographicalFact(
-      fact:
-        "Amsterdam's Schiphol Airport, located about 15 kilometers southwest of the city center, is one of the busiest airports in Europe."),
+        fact:
+            "Amsterdam's Schiphol Airport, located about 15 kilometers southwest of the city center, is one of the busiest airports in Europe."),
   ],
   historicalFacts: [
     HistoricalFact(
-      fact:
-        "Amsterdam was founded as a small fishing village in the late 12th century and grew rapidly during the Dutch Golden Age in the 17th century as a major trade and financial center."),
+        fact:
+            "Amsterdam was founded as a small fishing village in the late 12th century and grew rapidly during the Dutch Golden Age in the 17th century as a major trade and financial center."),
     HistoricalFact(
-      fact:
-        "The city played a central role in the Dutch East India Company, the world's first multinational corporation, established in 1602."),
+        fact:
+            "The city played a central role in the Dutch East India Company, the world's first multinational corporation, established in 1602."),
     HistoricalFact(
-      fact:
-        "Anne Frank, the Jewish diarist who wrote 'The Diary of a Young Girl,' hid from the Nazis in a secret annex in Amsterdam during World War II."),
+        fact:
+            "Anne Frank, the Jewish diarist who wrote 'The Diary of a Young Girl,' hid from the Nazis in a secret annex in Amsterdam during World War II."),
     HistoricalFact(
-      fact:
-        "In 1636, the University of Amsterdam was established, becoming one of the most prominent research universities in Europe."),
+        fact:
+            "In 1636, the University of Amsterdam was established, becoming one of the most prominent research universities in Europe."),
     HistoricalFact(
-      fact:
-        "The construction of the Amsterdam Canal Belt (Grachtengordel) began in the early 17th century, shaping the city's distinctive layout."),
+        fact:
+            "The construction of the Amsterdam Canal Belt (Grachtengordel) began in the early 17th century, shaping the city's distinctive layout."),
     HistoricalFact(
-      fact:
-        "Amsterdam was occupied by Nazi Germany during World War II from May 1940 until May 1945, suffering significant hardships and resistance."),
+        fact:
+            "Amsterdam was occupied by Nazi Germany during World War II from May 1940 until May 1945, suffering significant hardships and resistance."),
   ],
   coordinates: const LatLng(52.3676, 4.9041),
 );
@@ -1176,63 +1176,63 @@ City amsterdam = City(
 City barcelona = City(
   culturalFacts: [
     CulturalFact(
-      fact:
-        "Barcelona is renowned for its unique architecture, particularly the works of Antoni Gaudí, including the Sagrada Família, Park Güell, and Casa Batlló."),
+        fact:
+            "Barcelona is renowned for its unique architecture, particularly the works of Antoni Gaudí, including the Sagrada Família, Park Güell, and Casa Batlló."),
     CulturalFact(
-      fact:
-        "The city is a major center for Catalan culture, with Catalan being one of the official languages alongside Spanish."),
+        fact:
+            "The city is a major center for Catalan culture, with Catalan being one of the official languages alongside Spanish."),
     CulturalFact(
-      fact:
-        "Barcelona hosts the annual Festa Major de Gràcia, a week-long festival in August featuring decorated streets, music, and cultural activities."),
+        fact:
+            "Barcelona hosts the annual Festa Major de Gràcia, a week-long festival in August featuring decorated streets, music, and cultural activities."),
     CulturalFact(
-      fact:
-        "The city is home to FC Barcelona, one of the world's most famous football clubs, with Camp Nou being the largest stadium in Europe."),
+        fact:
+            "The city is home to FC Barcelona, one of the world's most famous football clubs, with Camp Nou being the largest stadium in Europe."),
     CulturalFact(
-      fact:
-        "Barcelona has a rich tradition of art and literature, with museums dedicated to Picasso and Joan Miró, among other renowned artists."),
+        fact:
+            "Barcelona has a rich tradition of art and literature, with museums dedicated to Picasso and Joan Miró, among other renowned artists."),
     CulturalFact(
-      fact:
-        "The city's La Rambla street is a vibrant and bustling promenade, known for its shops, restaurants, and street performers."),
+        fact:
+            "The city's La Rambla street is a vibrant and bustling promenade, known for its shops, restaurants, and street performers."),
   ],
   geographicalFacts: [
     GeographicalFact(
-      fact:
-        "Barcelona is located on the northeastern coast of the Iberian Peninsula, facing the Mediterranean Sea."),
+        fact:
+            "Barcelona is located on the northeastern coast of the Iberian Peninsula, facing the Mediterranean Sea."),
     GeographicalFact(
-      fact:
-        "The city is surrounded by mountains, including the Serra de Collserola, which offers scenic views and outdoor activities."),
+        fact:
+            "The city is surrounded by mountains, including the Serra de Collserola, which offers scenic views and outdoor activities."),
     GeographicalFact(
-      fact:
-        "Barcelona enjoys a Mediterranean climate, characterized by hot summers and mild winters, making it a popular destination year-round."),
+        fact:
+            "Barcelona enjoys a Mediterranean climate, characterized by hot summers and mild winters, making it a popular destination year-round."),
     GeographicalFact(
-      fact:
-        "The city boasts several urban beaches, including Barceloneta Beach, which is popular for swimming, sunbathing, and water sports."),
+        fact:
+            "The city boasts several urban beaches, including Barceloneta Beach, which is popular for swimming, sunbathing, and water sports."),
     GeographicalFact(
-      fact:
-        "Montjuïc Hill is a prominent feature in Barcelona, offering cultural attractions such as the Magic Fountain, Montjuïc Castle, and several museums."),
+        fact:
+            "Montjuïc Hill is a prominent feature in Barcelona, offering cultural attractions such as the Magic Fountain, Montjuïc Castle, and several museums."),
     GeographicalFact(
-      fact:
-        "Barcelona's Port Vell is a historic harbor that has been transformed into a modern marina with shops, restaurants, and the Aquarium Barcelona."),
+        fact:
+            "Barcelona's Port Vell is a historic harbor that has been transformed into a modern marina with shops, restaurants, and the Aquarium Barcelona."),
   ],
   historicalFacts: [
     HistoricalFact(
-      fact:
-        "Barcelona was founded as a Roman city called Barcino in the late 1st century BC."),
+        fact:
+            "Barcelona was founded as a Roman city called Barcino in the late 1st century BC."),
     HistoricalFact(
-      fact:
-        "The city played a key role during the Spanish Civil War (1936-1939) and was heavily bombed by Franco's forces."),
+        fact:
+            "The city played a key role during the Spanish Civil War (1936-1939) and was heavily bombed by Franco's forces."),
     HistoricalFact(
-      fact:
-        "In 1992, Barcelona hosted the Summer Olympics, which led to significant urban development and revitalization of the city's waterfront."),
+        fact:
+            "In 1992, Barcelona hosted the Summer Olympics, which led to significant urban development and revitalization of the city's waterfront."),
     HistoricalFact(
-      fact:
-        "The Gothic Quarter (Barri Gòtic) is the historic center of Barcelona, featuring narrow medieval streets and ancient Roman ruins."),
+        fact:
+            "The Gothic Quarter (Barri Gòtic) is the historic center of Barcelona, featuring narrow medieval streets and ancient Roman ruins."),
     HistoricalFact(
-      fact:
-        "Barcelona was the capital of the Crown of Aragon, a powerful maritime kingdom in the medieval period."),
+        fact:
+            "Barcelona was the capital of the Crown of Aragon, a powerful maritime kingdom in the medieval period."),
     HistoricalFact(
-      fact:
-        "La Mercè, Barcelona's annual festival, dates back to 1902 and honors the city's patron saint, Our Lady of Mercy."),
+        fact:
+            "La Mercè, Barcelona's annual festival, dates back to 1902 and honors the city's patron saint, Our Lady of Mercy."),
   ],
   coordinates: const LatLng(41.3851, 2.1734),
 );
@@ -1240,63 +1240,63 @@ City barcelona = City(
 City berlin = City(
   culturalFacts: [
     CulturalFact(
-      fact:
-        "Berlin is known for its vibrant arts scene, with numerous galleries, theaters, and music venues, including the famous Berlin Philharmonic."),
+        fact:
+            "Berlin is known for its vibrant arts scene, with numerous galleries, theaters, and music venues, including the famous Berlin Philharmonic."),
     CulturalFact(
-      fact:
-        "The city hosts the annual Berlin International Film Festival (Berlinale), one of the most prestigious film festivals in the world."),
+        fact:
+            "The city hosts the annual Berlin International Film Festival (Berlinale), one of the most prestigious film festivals in the world."),
     CulturalFact(
-      fact:
-        "Berlin is famous for its nightlife, particularly its techno clubs such as Berghain, which attract party-goers from around the globe."),
+        fact:
+            "Berlin is famous for its nightlife, particularly its techno clubs such as Berghain, which attract party-goers from around the globe."),
     CulturalFact(
-      fact:
-        "Museum Island, located in the Spree River, is a UNESCO World Heritage Site and home to five world-renowned museums."),
+        fact:
+            "Museum Island, located in the Spree River, is a UNESCO World Heritage Site and home to five world-renowned museums."),
     CulturalFact(
-      fact:
-        "The Berlin Wall, which once divided the city, is now a major cultural landmark, with sections preserved as the East Side Gallery featuring murals by artists from around the world."),
+        fact:
+            "The Berlin Wall, which once divided the city, is now a major cultural landmark, with sections preserved as the East Side Gallery featuring murals by artists from around the world."),
     CulturalFact(
-      fact:
-        "Berlin has a diverse culinary scene, with a strong tradition of street food such as currywurst and doner kebabs."),
+        fact:
+            "Berlin has a diverse culinary scene, with a strong tradition of street food such as currywurst and doner kebabs."),
   ],
   geographicalFacts: [
     GeographicalFact(
-      fact:
-        "Berlin is located in northeastern Germany, on the banks of the rivers Spree and Havel."),
+        fact:
+            "Berlin is located in northeastern Germany, on the banks of the rivers Spree and Havel."),
     GeographicalFact(
-      fact:
-        "The city covers an area of 891.8 square kilometers, making it nine times larger than Paris."),
+        fact:
+            "The city covers an area of 891.8 square kilometers, making it nine times larger than Paris."),
     GeographicalFact(
-      fact:
-        "Berlin has a temperate seasonal climate, with cold winters and warm summers."),
+        fact:
+            "Berlin has a temperate seasonal climate, with cold winters and warm summers."),
     GeographicalFact(
-      fact:
-        "Tiergarten, Berlin's largest park, spans 210 hectares and offers a green oasis in the heart of the city."),
+        fact:
+            "Tiergarten, Berlin's largest park, spans 210 hectares and offers a green oasis in the heart of the city."),
     GeographicalFact(
-      fact:
-        "Berlin is known for its extensive waterways, including over 180 kilometers of navigable rivers, canals, and lakes."),
+        fact:
+            "Berlin is known for its extensive waterways, including over 180 kilometers of navigable rivers, canals, and lakes."),
     GeographicalFact(
-      fact:
-        "The city's public transportation system is one of the most efficient in Europe, featuring an extensive network of buses, trams, U-Bahn, and S-Bahn trains."),
+        fact:
+            "The city's public transportation system is one of the most efficient in Europe, featuring an extensive network of buses, trams, U-Bahn, and S-Bahn trains."),
   ],
   historicalFacts: [
     HistoricalFact(
-      fact:
-        "Berlin became the capital of the Kingdom of Prussia in 1701 and later the capital of the German Empire in 1871."),
+        fact:
+            "Berlin became the capital of the Kingdom of Prussia in 1701 and later the capital of the German Empire in 1871."),
     HistoricalFact(
-      fact:
-        "The city was heavily bombed during World War II, leading to extensive destruction and subsequent rebuilding."),
+        fact:
+            "The city was heavily bombed during World War II, leading to extensive destruction and subsequent rebuilding."),
     HistoricalFact(
-      fact:
-        "Berlin was divided into East and West Berlin during the Cold War, with the Berlin Wall separating the two halves from 1961 until its fall in 1989."),
+        fact:
+            "Berlin was divided into East and West Berlin during the Cold War, with the Berlin Wall separating the two halves from 1961 until its fall in 1989."),
     HistoricalFact(
-      fact:
-        "The Brandenburg Gate, an iconic symbol of Berlin, was completed in 1791 and has witnessed many of the city's key historical events."),
+        fact:
+            "The Brandenburg Gate, an iconic symbol of Berlin, was completed in 1791 and has witnessed many of the city's key historical events."),
     HistoricalFact(
-      fact:
-        "The Reichstag building, home to the German parliament, was severely damaged during World War II and later restored, with a modern glass dome added in 1999."),
+        fact:
+            "The Reichstag building, home to the German parliament, was severely damaged during World War II and later restored, with a modern glass dome added in 1999."),
     HistoricalFact(
-      fact:
-        "In 1990, Berlin was reunified and became the capital of a reunified Germany, marking the end of the Cold War era."),
+        fact:
+            "In 1990, Berlin was reunified and became the capital of a reunified Germany, marking the end of the Cold War era."),
   ],
   coordinates: const LatLng(52.5200, 13.4050),
 );
@@ -1304,63 +1304,63 @@ City berlin = City(
 City sydney = City(
   culturalFacts: [
     CulturalFact(
-      fact:
-        "Sydney is home to the iconic Sydney Opera House, a UNESCO World Heritage Site and one of the most distinctive buildings in the world."),
+        fact:
+            "Sydney is home to the iconic Sydney Opera House, a UNESCO World Heritage Site and one of the most distinctive buildings in the world."),
     CulturalFact(
-      fact:
-        "The city hosts the annual Sydney Festival, a major cultural event featuring music, dance, theater, and visual arts."),
+        fact:
+            "The city hosts the annual Sydney Festival, a major cultural event featuring music, dance, theater, and visual arts."),
     CulturalFact(
-      fact:
-        "Sydney is known for its vibrant multicultural scene, with over a third of its residents born overseas."),
+        fact:
+            "Sydney is known for its vibrant multicultural scene, with over a third of its residents born overseas."),
     CulturalFact(
-      fact:
-        "The Sydney Harbour Bridge, affectionately known as 'The Coathanger,' is a famous landmark and offers a popular bridge climb experience."),
+        fact:
+            "The Sydney Harbour Bridge, affectionately known as 'The Coathanger,' is a famous landmark and offers a popular bridge climb experience."),
     CulturalFact(
-      fact:
-        "Bondi Beach, one of the most famous beaches in the world, is located in Sydney and is known for its surf culture."),
+        fact:
+            "Bondi Beach, one of the most famous beaches in the world, is located in Sydney and is known for its surf culture."),
     CulturalFact(
-      fact:
-        "Sydney has a thriving food scene, with a strong emphasis on fresh seafood and multicultural cuisine."),
+        fact:
+            "Sydney has a thriving food scene, with a strong emphasis on fresh seafood and multicultural cuisine."),
   ],
   geographicalFacts: [
     GeographicalFact(
-      fact:
-        "Sydney is located on the southeastern coast of Australia, in the state of New South Wales."),
+        fact:
+            "Sydney is located on the southeastern coast of Australia, in the state of New South Wales."),
     GeographicalFact(
-      fact:
-        "The city is built around Sydney Harbour, which is known for its stunning natural beauty and is often considered one of the world's most beautiful harbors."),
+        fact:
+            "The city is built around Sydney Harbour, which is known for its stunning natural beauty and is often considered one of the world's most beautiful harbors."),
     GeographicalFact(
-      fact:
-        "Sydney has a temperate climate, with warm summers and mild winters, making it a popular destination year-round."),
+        fact:
+            "Sydney has a temperate climate, with warm summers and mild winters, making it a popular destination year-round."),
     GeographicalFact(
-      fact:
-        "The Blue Mountains, located to the west of Sydney, are a popular destination for hiking and outdoor activities, offering dramatic scenery and native wildlife."),
+        fact:
+            "The Blue Mountains, located to the west of Sydney, are a popular destination for hiking and outdoor activities, offering dramatic scenery and native wildlife."),
     GeographicalFact(
-      fact:
-        "Sydney is surrounded by national parks, providing ample opportunities for outdoor recreation and nature exploration."),
+        fact:
+            "Sydney is surrounded by national parks, providing ample opportunities for outdoor recreation and nature exploration."),
     GeographicalFact(
-      fact:
-        "The city is served by Sydney Kingsford Smith Airport, one of the oldest continuously operating airports in the world."),
+        fact:
+            "The city is served by Sydney Kingsford Smith Airport, one of the oldest continuously operating airports in the world."),
   ],
   historicalFacts: [
     HistoricalFact(
-      fact:
-        "Sydney was established in 1788 as the first British colony in Australia, named after the British Home Secretary, Lord Sydney."),
+        fact:
+            "Sydney was established in 1788 as the first British colony in Australia, named after the British Home Secretary, Lord Sydney."),
     HistoricalFact(
-      fact:
-        "The city grew rapidly during the 19th century, driven by the discovery of gold and subsequent economic boom."),
+        fact:
+            "The city grew rapidly during the 19th century, driven by the discovery of gold and subsequent economic boom."),
     HistoricalFact(
-      fact:
-        "Sydney hosted the 2000 Summer Olympics, which brought international attention and significant development to the city."),
+        fact:
+            "Sydney hosted the 2000 Summer Olympics, which brought international attention and significant development to the city."),
     HistoricalFact(
-      fact:
-        "The Rocks, a historic area in Sydney, features cobblestone streets and buildings from the early colonial period."),
+        fact:
+            "The Rocks, a historic area in Sydney, features cobblestone streets and buildings from the early colonial period."),
     HistoricalFact(
-      fact:
-        "In 1851, the University of Sydney was founded, making it the oldest university in Australia."),
+        fact:
+            "In 1851, the University of Sydney was founded, making it the oldest university in Australia."),
     HistoricalFact(
-      fact:
-        "The Sydney Harbour Bridge, completed in 1932, was an engineering marvel of its time and remains a key symbol of the city."),
+        fact:
+            "The Sydney Harbour Bridge, completed in 1932, was an engineering marvel of its time and remains a key symbol of the city."),
   ],
   coordinates: const LatLng(-33.8688, 151.2093),
 );
@@ -1368,63 +1368,63 @@ City sydney = City(
 City toronto = City(
   culturalFacts: [
     CulturalFact(
-      fact:
-        "Toronto is known for its diverse cultural landscape, with over 200 ethnic groups and more than 140 languages spoken."),
+        fact:
+            "Toronto is known for its diverse cultural landscape, with over 200 ethnic groups and more than 140 languages spoken."),
     CulturalFact(
-      fact:
-        "The Toronto International Film Festival (TIFF) is one of the largest and most prestigious film festivals in the world, attracting celebrities and filmmakers from around the globe."),
+        fact:
+            "The Toronto International Film Festival (TIFF) is one of the largest and most prestigious film festivals in the world, attracting celebrities and filmmakers from around the globe."),
     CulturalFact(
-      fact:
-        "The city is home to the CN Tower, which was the world's tallest free-standing structure when completed in 1976 and remains a major tourist attraction."),
+        fact:
+            "The city is home to the CN Tower, which was the world's tallest free-standing structure when completed in 1976 and remains a major tourist attraction."),
     CulturalFact(
-      fact:
-        "Toronto's Distillery District is a popular cultural destination, featuring well-preserved Victorian industrial architecture and a variety of arts, culture, and dining experiences."),
+        fact:
+            "Toronto's Distillery District is a popular cultural destination, featuring well-preserved Victorian industrial architecture and a variety of arts, culture, and dining experiences."),
     CulturalFact(
-      fact:
-        "Toronto has a vibrant music scene, with a rich history of jazz, hip-hop, and indie music, and is the birthplace of artists like Drake and The Weeknd."),
+        fact:
+            "Toronto has a vibrant music scene, with a rich history of jazz, hip-hop, and indie music, and is the birthplace of artists like Drake and The Weeknd."),
     CulturalFact(
-      fact:
-        "The Royal Ontario Museum, located in Toronto, is one of the largest museums in North America, showcasing a vast collection of art, world culture, and natural history."),
+        fact:
+            "The Royal Ontario Museum, located in Toronto, is one of the largest museums in North America, showcasing a vast collection of art, world culture, and natural history."),
   ],
   geographicalFacts: [
     GeographicalFact(
-      fact:
-        "Toronto is located in the province of Ontario, on the northwestern shore of Lake Ontario."),
+        fact:
+            "Toronto is located in the province of Ontario, on the northwestern shore of Lake Ontario."),
     GeographicalFact(
-      fact:
-        "The city experiences a humid continental climate, with cold winters and warm, humid summers."),
+        fact:
+            "The city experiences a humid continental climate, with cold winters and warm, humid summers."),
     GeographicalFact(
-      fact:
-        "Toronto Islands, a chain of small islands in Lake Ontario, provide recreational spaces and stunning views of the city skyline."),
+        fact:
+            "Toronto Islands, a chain of small islands in Lake Ontario, provide recreational spaces and stunning views of the city skyline."),
     GeographicalFact(
-      fact:
-        "The Don Valley and Humber Valley form significant green corridors through the city, offering extensive parks and trails."),
+        fact:
+            "The Don Valley and Humber Valley form significant green corridors through the city, offering extensive parks and trails."),
     GeographicalFact(
-      fact:
-        "Toronto is characterized by its skyline of modern skyscrapers, including the CN Tower and numerous high-rise buildings."),
+        fact:
+            "Toronto is characterized by its skyline of modern skyscrapers, including the CN Tower and numerous high-rise buildings."),
     GeographicalFact(
-      fact:
-        "The city is a major hub for air travel, served by Toronto Pearson International Airport, the busiest airport in Canada."),
+        fact:
+            "The city is a major hub for air travel, served by Toronto Pearson International Airport, the busiest airport in Canada."),
   ],
   historicalFacts: [
     HistoricalFact(
-      fact:
-        "Toronto was originally known as York when it was established as a British colonial settlement in 1793."),
+        fact:
+            "Toronto was originally known as York when it was established as a British colonial settlement in 1793."),
     HistoricalFact(
-      fact:
-        "The city was renamed Toronto in 1834, derived from a Mohawk word meaning 'where there are trees standing in the water'."),
+        fact:
+            "The city was renamed Toronto in 1834, derived from a Mohawk word meaning 'where there are trees standing in the water'."),
     HistoricalFact(
-      fact:
-        "Toronto grew rapidly during the 19th and 20th centuries, becoming a major center for industry, commerce, and culture in Canada."),
+        fact:
+            "Toronto grew rapidly during the 19th and 20th centuries, becoming a major center for industry, commerce, and culture in Canada."),
     HistoricalFact(
-      fact:
-        "The Great Fire of 1904 destroyed much of downtown Toronto, leading to significant rebuilding and modernization."),
+        fact:
+            "The Great Fire of 1904 destroyed much of downtown Toronto, leading to significant rebuilding and modernization."),
     HistoricalFact(
-      fact:
-        "In 1976, the CN Tower was completed, symbolizing Toronto's growth and modernity."),
+        fact:
+            "In 1976, the CN Tower was completed, symbolizing Toronto's growth and modernity."),
     HistoricalFact(
-      fact:
-        "Toronto amalgamated with surrounding municipalities in 1998, creating the modern City of Toronto with its current boundaries."),
+        fact:
+            "Toronto amalgamated with surrounding municipalities in 1998, creating the modern City of Toronto with its current boundaries."),
   ],
   coordinates: const LatLng(43.651070, -79.347015),
 );
@@ -1469,49 +1469,6 @@ List<Place> losAngelesPOI = [
         "A famous, high-end shopping street in Beverly Hills. It is known for its luxury goods stores and fashion boutiques.",
     latitude: 34.0671,
     longitude: -118.4011,
-  ),
-];
-
-List<Place> miamiPOI = [
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "South Beach",
-    details:
-        "A neighborhood in the city of Miami Beach known for its beaches, nightlife, and art deco architecture. It is a major entertainment destination.",
-    latitude: 25.7826,
-    longitude: -80.1341,
-  ),
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "Vizcaya Museum and Gardens",
-    details:
-        "A historic estate that was the former villa and estate of businessman James Deering. It features extensive Italian Renaissance gardens, native woodland landscape, and a historic village outbuildings compound.",
-    latitude: 25.7449,
-    longitude: -80.2102,
-  ),
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "Wynwood Walls",
-    details:
-        "An outdoor museum featuring large-scale works by some of the world’s best-known street artists. It has become a haven for aspiring painters, graffiti artists, and muralists.",
-    latitude: 25.8003,
-    longitude: -80.1994,
-  ),
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "Miami Seaquarium",
-    details:
-        "A 38-acre oceanarium located on Virginia Key in Biscayne Bay. It features marine mammal shows, exhibits, and a large variety of ocean creatures.",
-    latitude: 25.7310,
-    longitude: -80.1628,
-  ),
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "Little Havana",
-    details:
-        "A neighborhood in Miami known for its Cuban influence and culture. It features Latin American art galleries, cafes, and restaurants, and is home to many Cuban exiles.",
-    latitude: 25.7653,
-    longitude: -80.2198,
   ),
 ];
 
@@ -1603,216 +1560,216 @@ List<Place> sanFranciscoPOI = [
 
 List<Place> seattlePOI = [
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Space Needle",
-	details:
-    	"An iconic observation tower in Seattle, Washington, offering panoramic views of the city and surrounding area. Built for the 1962 World's Fair.",
-	latitude: 47.6205,
-	longitude: -122.3493,
+    imageUrl: mainLogoAWS,
+    name: "Space Needle",
+    details:
+        "An iconic observation tower in Seattle, Washington, offering panoramic views of the city and surrounding area. Built for the 1962 World's Fair.",
+    latitude: 47.6205,
+    longitude: -122.3493,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Pike Place Market",
-	details:
-    	"One of the oldest continuously operated public farmers' markets in the United States, located in Seattle. Known for its fresh produce, specialty foods, and unique shops.",
-	latitude: 47.6097,
-	longitude: -122.3425,
+    imageUrl: mainLogoAWS,
+    name: "Pike Place Market",
+    details:
+        "One of the oldest continuously operated public farmers' markets in the United States, located in Seattle. Known for its fresh produce, specialty foods, and unique shops.",
+    latitude: 47.6097,
+    longitude: -122.3425,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Chihuly Garden and Glass",
-	details:
-    	"An exhibit showcasing the studio glass of Dale Chihuly. Located at the Seattle Center, it includes a garden, a glasshouse, and interior exhibits.",
-	latitude: 47.6206,
-	longitude: -122.3505,
+    imageUrl: mainLogoAWS,
+    name: "Chihuly Garden and Glass",
+    details:
+        "An exhibit showcasing the studio glass of Dale Chihuly. Located at the Seattle Center, it includes a garden, a glasshouse, and interior exhibits.",
+    latitude: 47.6206,
+    longitude: -122.3505,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Museum of Pop Culture",
-	details:
-    	"A nonprofit museum dedicated to contemporary popular culture, founded by Microsoft co-founder Paul Allen. It features exhibits on music, science fiction, and pop culture.",
-	latitude: 47.6215,
-	longitude: -122.3480,
+    imageUrl: mainLogoAWS,
+    name: "Museum of Pop Culture",
+    details:
+        "A nonprofit museum dedicated to contemporary popular culture, founded by Microsoft co-founder Paul Allen. It features exhibits on music, science fiction, and pop culture.",
+    latitude: 47.6215,
+    longitude: -122.3480,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Seattle Aquarium",
-	details:
-    	"Located on Pier 59 on the Elliott Bay waterfront in Seattle. The aquarium features marine life native to the Pacific Northwest.",
-	latitude: 47.6076,
-	longitude: -122.3431,
+    imageUrl: mainLogoAWS,
+    name: "Seattle Aquarium",
+    details:
+        "Located on Pier 59 on the Elliott Bay waterfront in Seattle. The aquarium features marine life native to the Pacific Northwest.",
+    latitude: 47.6076,
+    longitude: -122.3431,
   ),
 ];
 
 List<Place> chicagoPOI = [
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Millennium Park",
-	details:
-    	"A public park located in the Loop community area of Chicago. Known for its iconic Cloud Gate sculpture, also known as 'The Bean'.",
-	latitude: 41.8827,
-	longitude: -87.6233,
+    imageUrl: mainLogoAWS,
+    name: "Millennium Park",
+    details:
+        "A public park located in the Loop community area of Chicago. Known for its iconic Cloud Gate sculpture, also known as 'The Bean'.",
+    latitude: 41.8827,
+    longitude: -87.6233,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Willis Tower",
-	details:
-    	"Also known as the Sears Tower, it is a 110-story skyscraper in Chicago. It was the tallest building in the world for 25 years and remains one of the tallest in the United States.",
-	latitude: 41.8789,
-	longitude: -87.6359,
+    imageUrl: mainLogoAWS,
+    name: "Willis Tower",
+    details:
+        "Also known as the Sears Tower, it is a 110-story skyscraper in Chicago. It was the tallest building in the world for 25 years and remains one of the tallest in the United States.",
+    latitude: 41.8789,
+    longitude: -87.6359,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "The Art Institute of Chicago",
-	details:
-    	"One of the oldest and largest art museums in the United States. It houses a vast collection of artworks from around the world.",
-	latitude: 41.8796,
-	longitude: -87.6237,
+    imageUrl: mainLogoAWS,
+    name: "The Art Institute of Chicago",
+    details:
+        "One of the oldest and largest art museums in the United States. It houses a vast collection of artworks from around the world.",
+    latitude: 41.8796,
+    longitude: -87.6237,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Navy Pier",
-	details:
-    	"A 3,300-foot-long pier on the Chicago shoreline of Lake Michigan. It features attractions like restaurants, shops, and entertainment venues.",
-	latitude: 41.8917,
-	longitude: -87.6097,
+    imageUrl: mainLogoAWS,
+    name: "Navy Pier",
+    details:
+        "A 3,300-foot-long pier on the Chicago shoreline of Lake Michigan. It features attractions like restaurants, shops, and entertainment venues.",
+    latitude: 41.8917,
+    longitude: -87.6097,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Shedd Aquarium",
-	details:
-    	"An indoor public aquarium in Chicago. It was the largest indoor aquarium in the world when it opened and remains one of the largest in the United States.",
-	latitude: 41.8676,
-	longitude: -87.6140,
+    imageUrl: mainLogoAWS,
+    name: "Shedd Aquarium",
+    details:
+        "An indoor public aquarium in Chicago. It was the largest indoor aquarium in the world when it opened and remains one of the largest in the United States.",
+    latitude: 41.8676,
+    longitude: -87.6140,
   ),
 ];
 
 List<Place> washingtonDCPOI = [
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Lincoln Memorial",
-	details:
-    	"A national monument honoring Abraham Lincoln, the 16th President of the United States. Located on the western end of the National Mall.",
-	latitude: 38.8893,
-	longitude: -77.0502,
+    imageUrl: mainLogoAWS,
+    name: "Lincoln Memorial",
+    details:
+        "A national monument honoring Abraham Lincoln, the 16th President of the United States. Located on the western end of the National Mall.",
+    latitude: 38.8893,
+    longitude: -77.0502,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "United States Capitol",
-	details:
-    	"The home of the United States Congress and the seat of the legislative branch of the U.S. federal government.",
-	latitude: 38.8899,
-	longitude: -77.0091,
+    imageUrl: mainLogoAWS,
+    name: "United States Capitol",
+    details:
+        "The home of the United States Congress and the seat of the legislative branch of the U.S. federal government.",
+    latitude: 38.8899,
+    longitude: -77.0091,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Smithsonian National Air and Space Museum",
-	details:
-    	"A museum in Washington, D.C. dedicated to the history of aviation and space exploration. It houses the largest collection of historic aircraft and spacecraft in the world.",
-	latitude: 38.8881,
-	longitude: -77.0199,
+    imageUrl: mainLogoAWS,
+    name: "Smithsonian National Air and Space Museum",
+    details:
+        "A museum in Washington, D.C. dedicated to the history of aviation and space exploration. It houses the largest collection of historic aircraft and spacecraft in the world.",
+    latitude: 38.8881,
+    longitude: -77.0199,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Washington Monument",
-	details:
-    	"An obelisk on the National Mall in Washington, D.C. built to commemorate George Washington, the first President of the United States.",
-	latitude: 38.8895,
-	longitude: -77.0353,
+    imageUrl: mainLogoAWS,
+    name: "Washington Monument",
+    details:
+        "An obelisk on the National Mall in Washington, D.C. built to commemorate George Washington, the first President of the United States.",
+    latitude: 38.8895,
+    longitude: -77.0353,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "White House",
-	details:
-    	"The official residence and workplace of the President of the United States. Located at 1600 Pennsylvania Avenue NW in Washington, D.C.",
-	latitude: 38.8977,
-	longitude: -77.0365,
+    imageUrl: mainLogoAWS,
+    name: "White House",
+    details:
+        "The official residence and workplace of the President of the United States. Located at 1600 Pennsylvania Avenue NW in Washington, D.C.",
+    latitude: 38.8977,
+    longitude: -77.0365,
   ),
 ];
 
 List<Place> austinPOI = [
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Texas State Capitol",
-	details:
-    	"The capitol building and seat of government of the American state of Texas. Located in downtown Austin, it houses the offices and chambers of the Texas Legislature.",
-	latitude: 30.2747,
-	longitude: -97.7403,
+    imageUrl: mainLogoAWS,
+    name: "Texas State Capitol",
+    details:
+        "The capitol building and seat of government of the American state of Texas. Located in downtown Austin, it houses the offices and chambers of the Texas Legislature.",
+    latitude: 30.2747,
+    longitude: -97.7403,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Zilker Metropolitan Park",
-	details:
-    	"A recreational area in the heart of Austin, Texas. The park includes numerous attractions such as Barton Springs Pool and the Zilker Botanical Garden.",
-	latitude: 30.2664,
-	longitude: -97.7729,
+    imageUrl: mainLogoAWS,
+    name: "Zilker Metropolitan Park",
+    details:
+        "A recreational area in the heart of Austin, Texas. The park includes numerous attractions such as Barton Springs Pool and the Zilker Botanical Garden.",
+    latitude: 30.2664,
+    longitude: -97.7729,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "The University of Texas at Austin",
-	details:
-    	"A public research university and the flagship institution of the University of Texas System. Known for its vibrant campus life and academic excellence.",
-	latitude: 30.2849,
-	longitude: -97.7341,
+    imageUrl: mainLogoAWS,
+    name: "The University of Texas at Austin",
+    details:
+        "A public research university and the flagship institution of the University of Texas System. Known for its vibrant campus life and academic excellence.",
+    latitude: 30.2849,
+    longitude: -97.7341,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Lady Bird Lake",
-	details:
-    	"A reservoir on the Colorado River in downtown Austin. It is a popular destination for outdoor activities such as kayaking, paddleboarding, and hiking.",
-	latitude: 30.2500,
-	longitude: -97.7393,
+    imageUrl: mainLogoAWS,
+    name: "Lady Bird Lake",
+    details:
+        "A reservoir on the Colorado River in downtown Austin. It is a popular destination for outdoor activities such as kayaking, paddleboarding, and hiking.",
+    latitude: 30.2500,
+    longitude: -97.7393,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Barton Springs Pool",
-	details:
-    	"A recreational outdoor swimming pool filled with water from nearby natural springs. Located in Zilker Park, it is a popular spot for locals and visitors alike.",
-	latitude: 30.2641,
-	longitude: -97.7713,
+    imageUrl: mainLogoAWS,
+    name: "Barton Springs Pool",
+    details:
+        "A recreational outdoor swimming pool filled with water from nearby natural springs. Located in Zilker Park, it is a popular spot for locals and visitors alike.",
+    latitude: 30.2641,
+    longitude: -97.7713,
   ),
 ];
 
 List<Place> mumbaiPOI = [
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Gateway of India",
-	details:
-    	"An arch-monument built in the early twentieth century in the city of Mumbai. It is located on the waterfront in the Apollo Bunder area.",
-	latitude: 18.9220,
-	longitude: 72.8347,
+    imageUrl: mainLogoAWS,
+    name: "Gateway of India",
+    details:
+        "An arch-monument built in the early twentieth century in the city of Mumbai. It is located on the waterfront in the Apollo Bunder area.",
+    latitude: 18.9220,
+    longitude: 72.8347,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Chhatrapati Shivaji Maharaj Terminus",
-	details:
-    	"A historic railway station and a UNESCO World Heritage Site in Mumbai. It serves as the headquarters of the Central Railways.",
-	latitude: 18.9402,
-	longitude: 72.8356,
+    imageUrl: mainLogoAWS,
+    name: "Chhatrapati Shivaji Maharaj Terminus",
+    details:
+        "A historic railway station and a UNESCO World Heritage Site in Mumbai. It serves as the headquarters of the Central Railways.",
+    latitude: 18.9402,
+    longitude: 72.8356,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Marine Drive",
-	details:
-    	"A 3.6-kilometer-long boulevard in South Mumbai. It is known for its picturesque sunset views and Art Deco buildings.",
-	latitude: 18.9440,
-	longitude: 72.8231,
+    imageUrl: mainLogoAWS,
+    name: "Marine Drive",
+    details:
+        "A 3.6-kilometer-long boulevard in South Mumbai. It is known for its picturesque sunset views and Art Deco buildings.",
+    latitude: 18.9440,
+    longitude: 72.8231,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Siddhivinayak Temple",
-	details:
-    	"A Hindu temple dedicated to Lord Shri Ganesh. It is one of the richest temples in Mumbai and a significant pilgrimage site.",
-	latitude: 19.0176,
-	longitude: 72.8305,
+    imageUrl: mainLogoAWS,
+    name: "Siddhivinayak Temple",
+    details:
+        "A Hindu temple dedicated to Lord Shri Ganesh. It is one of the richest temples in Mumbai and a significant pilgrimage site.",
+    latitude: 19.0176,
+    longitude: 72.8305,
   ),
   Place(
-	imageUrl: mainLogoAWS,
-	name: "Elephanta Caves",
-	details:
-    	"A network of sculpted caves located on Elephanta Island in Mumbai Harbour. The caves contain rock-cut stone sculptures depicting Hindu deities.",
-	latitude: 18.9633,
-	longitude: 72.9313,
+    imageUrl: mainLogoAWS,
+    name: "Elephanta Caves",
+    details:
+        "A network of sculpted caves located on Elephanta Island in Mumbai Harbour. The caves contain rock-cut stone sculptures depicting Hindu deities.",
+    latitude: 18.9633,
+    longitude: 72.9313,
   ),
 ];
 
@@ -1821,7 +1778,7 @@ List<Place> amsterdamPOI = [
     imageUrl: mainLogoAWS,
     name: "Rijksmuseum",
     details:
-      "A Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South.",
+        "A Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South.",
     latitude: 52.359998,
     longitude: 4.885219,
   ),
@@ -1829,7 +1786,7 @@ List<Place> amsterdamPOI = [
     imageUrl: mainLogoAWS,
     name: "Anne Frank House",
     details:
-      "A museum dedicated to Jewish wartime diarist Anne Frank. The building is located on a canal called the Prinsengracht, close to the Westerkerk, in central Amsterdam.",
+        "A museum dedicated to Jewish wartime diarist Anne Frank. The building is located on a canal called the Prinsengracht, close to the Westerkerk, in central Amsterdam.",
     latitude: 52.375218,
     longitude: 4.883977,
   ),
@@ -1837,7 +1794,7 @@ List<Place> amsterdamPOI = [
     imageUrl: mainLogoAWS,
     name: "Van Gogh Museum",
     details:
-      "An art museum dedicated to the works of Vincent van Gogh and his contemporaries. It is located at the Museum Square in Amsterdam.",
+        "An art museum dedicated to the works of Vincent van Gogh and his contemporaries. It is located at the Museum Square in Amsterdam.",
     latitude: 52.358418,
     longitude: 4.881062,
   ),
@@ -1845,7 +1802,7 @@ List<Place> amsterdamPOI = [
     imageUrl: mainLogoAWS,
     name: "Vondelpark",
     details:
-      "A public urban park of 47 hectares (120 acres) in Amsterdam, Netherlands. It is located west from the Leidseplein and the Museumplein.",
+        "A public urban park of 47 hectares (120 acres) in Amsterdam, Netherlands. It is located west from the Leidseplein and the Museumplein.",
     latitude: 52.358416,
     longitude: 4.868547,
   ),
@@ -1853,7 +1810,7 @@ List<Place> amsterdamPOI = [
     imageUrl: mainLogoAWS,
     name: "Dam Square",
     details:
-      "A town square in Amsterdam, the capital of the Netherlands. Its notable buildings and frequent events make it one of the most well-known and important locations in the city and the country.",
+        "A town square in Amsterdam, the capital of the Netherlands. Its notable buildings and frequent events make it one of the most well-known and important locations in the city and the country.",
     latitude: 52.373169,
     longitude: 4.892452,
   ),
@@ -1864,7 +1821,7 @@ List<Place> barcelonaPOI = [
     imageUrl: mainLogoAWS,
     name: "Sagrada Família",
     details:
-      "A large unfinished Roman Catholic minor basilica in Barcelona, designed by Catalan architect Antoni Gaudí. It is a UNESCO World Heritage Site.",
+        "A large unfinished Roman Catholic minor basilica in Barcelona, designed by Catalan architect Antoni Gaudí. It is a UNESCO World Heritage Site.",
     latitude: 41.403629,
     longitude: 2.174356,
   ),
@@ -1872,7 +1829,7 @@ List<Place> barcelonaPOI = [
     imageUrl: mainLogoAWS,
     name: "Park Güell",
     details:
-      "A public park system composed of gardens and architectonic elements located on Carmel Hill, designed by Antoni Gaudí.",
+        "A public park system composed of gardens and architectonic elements located on Carmel Hill, designed by Antoni Gaudí.",
     latitude: 41.414495,
     longitude: 2.152694,
   ),
@@ -1880,7 +1837,7 @@ List<Place> barcelonaPOI = [
     imageUrl: mainLogoAWS,
     name: "La Rambla",
     details:
-      "A street in central Barcelona, popular with tourists and locals alike. It is renowned for its street markets, shops, and vibrant atmosphere.",
+        "A street in central Barcelona, popular with tourists and locals alike. It is renowned for its street markets, shops, and vibrant atmosphere.",
     latitude: 41.380898,
     longitude: 2.173784,
   ),
@@ -1888,7 +1845,7 @@ List<Place> barcelonaPOI = [
     imageUrl: mainLogoAWS,
     name: "Casa Batlló",
     details:
-      "A renowned building located in the center of Barcelona and is one of Antoni Gaudí’s masterpieces. It is considered one of his most creative and innovative works.",
+        "A renowned building located in the center of Barcelona and is one of Antoni Gaudí’s masterpieces. It is considered one of his most creative and innovative works.",
     latitude: 41.391640,
     longitude: 2.164853,
   ),
@@ -1896,7 +1853,7 @@ List<Place> barcelonaPOI = [
     imageUrl: mainLogoAWS,
     name: "Gothic Quarter",
     details:
-      "A part of the old city of Barcelona. It stretches from La Rambla to Via Laietana, and from the Mediterranean seafront to Ronda de Sant Pere.",
+        "A part of the old city of Barcelona. It stretches from La Rambla to Via Laietana, and from the Mediterranean seafront to Ronda de Sant Pere.",
     latitude: 41.382559,
     longitude: 2.177135,
   ),
@@ -1907,7 +1864,7 @@ List<Place> berlinPOI = [
     imageUrl: mainLogoAWS,
     name: "Brandenburg Gate",
     details:
-      "An 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II. It is one of the most well-known landmarks of Germany.",
+        "An 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II. It is one of the most well-known landmarks of Germany.",
     latitude: 52.516275,
     longitude: 13.377704,
   ),
@@ -1915,7 +1872,7 @@ List<Place> berlinPOI = [
     imageUrl: mainLogoAWS,
     name: "Berlin Wall Memorial",
     details:
-      "The central memorial site of German division, located in the middle of the capital. It extends along 1.4 kilometers of the former border strip.",
+        "The central memorial site of German division, located in the middle of the capital. It extends along 1.4 kilometers of the former border strip.",
     latitude: 52.535069,
     longitude: 13.390428,
   ),
@@ -1923,7 +1880,7 @@ List<Place> berlinPOI = [
     imageUrl: mainLogoAWS,
     name: "Museum Island",
     details:
-      "A complex of five internationally significant museums, all part of the Berlin State Museums, located on the northern part of an island in the Spree River.",
+        "A complex of five internationally significant museums, all part of the Berlin State Museums, located on the northern part of an island in the Spree River.",
     latitude: 52.516934,
     longitude: 13.401837,
   ),
@@ -1931,7 +1888,7 @@ List<Place> berlinPOI = [
     imageUrl: mainLogoAWS,
     name: "Reichstag Building",
     details:
-      "A historic edifice in Berlin, constructed to house the Imperial Diet of the German Empire. It is now the seat of the German parliament, the Bundestag.",
+        "A historic edifice in Berlin, constructed to house the Imperial Diet of the German Empire. It is now the seat of the German parliament, the Bundestag.",
     latitude: 52.518620,
     longitude: 13.376198,
   ),
@@ -1939,7 +1896,7 @@ List<Place> berlinPOI = [
     imageUrl: mainLogoAWS,
     name: "Checkpoint Charlie",
     details:
-      "The best-known Berlin Wall crossing point between East Berlin and West Berlin during the Cold War, located in Friedrichstraße.",
+        "The best-known Berlin Wall crossing point between East Berlin and West Berlin during the Cold War, located in Friedrichstraße.",
     latitude: 52.507456,
     longitude: 13.390391,
   ),
@@ -1950,7 +1907,7 @@ List<Place> sydneyPOI = [
     imageUrl: mainLogoAWS,
     name: "Sydney Opera House",
     details:
-      "A multi-venue performing arts centre in Sydney. It is one of the 20th century's most famous and distinctive buildings.",
+        "A multi-venue performing arts centre in Sydney. It is one of the 20th century's most famous and distinctive buildings.",
     latitude: -33.856784,
     longitude: 151.215297,
   ),
@@ -1958,7 +1915,7 @@ List<Place> sydneyPOI = [
     imageUrl: mainLogoAWS,
     name: "Sydney Harbour Bridge",
     details:
-      "A heritage-listed steel through arch bridge across Sydney Harbour that carries rail, vehicular, bicycle, and pedestrian traffic.",
+        "A heritage-listed steel through arch bridge across Sydney Harbour that carries rail, vehicular, bicycle, and pedestrian traffic.",
     latitude: -33.852306,
     longitude: 151.210787,
   ),
@@ -1966,7 +1923,7 @@ List<Place> sydneyPOI = [
     imageUrl: mainLogoAWS,
     name: "Bondi Beach",
     details:
-      "A popular beach and the name of the surrounding suburb in Sydney. Bondi Beach is one of the most visited tourist sites in Australia.",
+        "A popular beach and the name of the surrounding suburb in Sydney. Bondi Beach is one of the most visited tourist sites in Australia.",
     latitude: -33.890843,
     longitude: 151.274292,
   ),
@@ -1974,7 +1931,7 @@ List<Place> sydneyPOI = [
     imageUrl: mainLogoAWS,
     name: "Royal Botanic Garden",
     details:
-      "A major botanical garden located in the heart of Sydney. The garden is the oldest scientific institution in Australia and one of the most important historic botanical institutions in the world.",
+        "A major botanical garden located in the heart of Sydney. The garden is the oldest scientific institution in Australia and one of the most important historic botanical institutions in the world.",
     latitude: -33.864167,
     longitude: 151.216389,
   ),
@@ -1982,7 +1939,7 @@ List<Place> sydneyPOI = [
     imageUrl: mainLogoAWS,
     name: "Taronga Zoo",
     details:
-      "A zoo located on the shores of Sydney Harbour in the suburb of Mosman. The zoo is a leading wildlife park with stunning views of the city.",
+        "A zoo located on the shores of Sydney Harbour in the suburb of Mosman. The zoo is a leading wildlife park with stunning views of the city.",
     latitude: -33.843001,
     longitude: 151.241433,
   ),
@@ -1993,7 +1950,7 @@ List<Place> torontoPOI = [
     imageUrl: mainLogoAWS,
     name: "CN Tower",
     details:
-      "A 553.3 m-high concrete communications and observation tower located in Downtown Toronto. It was completed in 1976, becoming the world's tallest free-standing structure and world's tallest tower at the time.",
+        "A 553.3 m-high concrete communications and observation tower located in Downtown Toronto. It was completed in 1976, becoming the world's tallest free-standing structure and world's tallest tower at the time.",
     latitude: 43.642566,
     longitude: -79.387057,
   ),
@@ -2001,7 +1958,7 @@ List<Place> torontoPOI = [
     imageUrl: mainLogoAWS,
     name: "Royal Ontario Museum",
     details:
-      "A museum of art, world culture, and natural history in Toronto. It is one of the largest museums in North America and the largest in Canada.",
+        "A museum of art, world culture, and natural history in Toronto. It is one of the largest museums in North America and the largest in Canada.",
     latitude: 43.667710,
     longitude: -79.394777,
   ),
@@ -2009,7 +1966,7 @@ List<Place> torontoPOI = [
     imageUrl: mainLogoAWS,
     name: "Toronto Islands",
     details:
-      "A group of 15 small islands in Lake Ontario, south of mainland Toronto. They are the only group of islands in the western part of Lake Ontario, and provide shelter for Toronto Harbour.",
+        "A group of 15 small islands in Lake Ontario, south of mainland Toronto. They are the only group of islands in the western part of Lake Ontario, and provide shelter for Toronto Harbour.",
     latitude: 43.620500,
     longitude: -79.378300,
   ),
@@ -2017,7 +1974,7 @@ List<Place> torontoPOI = [
     imageUrl: mainLogoAWS,
     name: "St. Lawrence Market",
     details:
-      "A major public market in Toronto. It is one of two locations of the St. Lawrence Market Complex and has served as Toronto's social center since 1803.",
+        "A major public market in Toronto. It is one of two locations of the St. Lawrence Market Complex and has served as Toronto's social center since 1803.",
     latitude: 43.648700,
     longitude: -79.371500,
   ),
@@ -2025,12 +1982,11 @@ List<Place> torontoPOI = [
     imageUrl: mainLogoAWS,
     name: "Distillery District",
     details:
-      "A commercial and residential district in Toronto. It contains numerous cafes, restaurants, and shops housed within heritage buildings of the former Gooderham and Worts Distillery.",
+        "A commercial and residential district in Toronto. It contains numerous cafes, restaurants, and shops housed within heritage buildings of the former Gooderham and Worts Distillery.",
     latitude: 43.650800,
     longitude: -79.359600,
   ),
 ];
-
 
 List<Place> newYorkPOI = [
   Place(
