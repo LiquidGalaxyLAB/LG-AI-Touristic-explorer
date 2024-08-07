@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import requests
 import json
-from groq import Groq
 import wikipedia
 import re
 from requests.adapters import HTTPAdapter
@@ -147,6 +146,39 @@ def generatePOI():
             cleaned_string = removeMarkdown(response_data)
             parsed_data = json.loads(cleaned_string)
             return (parsed_data)
+        else:
+            return jsonify({'error': 'An error occurred with the external request'}), response.status_code
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({'error': 'An error occurred during generation'}), 500
+
+
+@app.route('/generateStory', methods=['GET'])
+def generateStory():
+    city_name = request.args.get('city')
+
+    if not city_name:
+        return jsonify({'error': 'City name is required'}), 400
+
+    prompt = f"Write a captivating and vivid story about {city_name}. Describe the city's landmarks, history, and unique aspects in an engaging and imaginative way. Include interesting characters or events that make the city come to life. The story should transport the reader to {city_name} and give them a sense of its charm and atmosphere. 100 words"
+
+    payload = {
+        "model": "gemma:2b",
+        "prompt": prompt,
+        "stream": False,
+    }
+
+    try:
+        response = requests.post(
+            "http://127.0.0.1:11434/api/generate", json=payload)
+
+        if response.status_code == 200:
+            response_data = response.text
+            cleaned_string = removeMarkdown(response_data)
+            parsed_data = json.loads(cleaned_string)
+            return jsonify({"response": parsed_data['response']})
+
         else:
             return jsonify({'error': 'An error occurred with the external request'}), response.status_code
 
