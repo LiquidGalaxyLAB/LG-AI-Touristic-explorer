@@ -1601,6 +1601,222 @@ List<Place> sanFranciscoPOI = [
   ),
 ];
 
+List<Place> seattlePOI = [
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Space Needle",
+	details:
+    	"An iconic observation tower in Seattle, Washington, offering panoramic views of the city and surrounding area. Built for the 1962 World's Fair.",
+	latitude: 47.6205,
+	longitude: -122.3493,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Pike Place Market",
+	details:
+    	"One of the oldest continuously operated public farmers' markets in the United States, located in Seattle. Known for its fresh produce, specialty foods, and unique shops.",
+	latitude: 47.6097,
+	longitude: -122.3425,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Chihuly Garden and Glass",
+	details:
+    	"An exhibit showcasing the studio glass of Dale Chihuly. Located at the Seattle Center, it includes a garden, a glasshouse, and interior exhibits.",
+	latitude: 47.6206,
+	longitude: -122.3505,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Museum of Pop Culture",
+	details:
+    	"A nonprofit museum dedicated to contemporary popular culture, founded by Microsoft co-founder Paul Allen. It features exhibits on music, science fiction, and pop culture.",
+	latitude: 47.6215,
+	longitude: -122.3480,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Seattle Aquarium",
+	details:
+    	"Located on Pier 59 on the Elliott Bay waterfront in Seattle. The aquarium features marine life native to the Pacific Northwest.",
+	latitude: 47.6076,
+	longitude: -122.3431,
+  ),
+];
+
+List<Place> chicagoPOI = [
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Millennium Park",
+	details:
+    	"A public park located in the Loop community area of Chicago. Known for its iconic Cloud Gate sculpture, also known as 'The Bean'.",
+	latitude: 41.8827,
+	longitude: -87.6233,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Willis Tower",
+	details:
+    	"Also known as the Sears Tower, it is a 110-story skyscraper in Chicago. It was the tallest building in the world for 25 years and remains one of the tallest in the United States.",
+	latitude: 41.8789,
+	longitude: -87.6359,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "The Art Institute of Chicago",
+	details:
+    	"One of the oldest and largest art museums in the United States. It houses a vast collection of artworks from around the world.",
+	latitude: 41.8796,
+	longitude: -87.6237,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Navy Pier",
+	details:
+    	"A 3,300-foot-long pier on the Chicago shoreline of Lake Michigan. It features attractions like restaurants, shops, and entertainment venues.",
+	latitude: 41.8917,
+	longitude: -87.6097,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Shedd Aquarium",
+	details:
+    	"An indoor public aquarium in Chicago. It was the largest indoor aquarium in the world when it opened and remains one of the largest in the United States.",
+	latitude: 41.8676,
+	longitude: -87.6140,
+  ),
+];
+
+List<Place> washingtonDCPOI = [
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Lincoln Memorial",
+	details:
+    	"A national monument honoring Abraham Lincoln, the 16th President of the United States. Located on the western end of the National Mall.",
+	latitude: 38.8893,
+	longitude: -77.0502,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "United States Capitol",
+	details:
+    	"The home of the United States Congress and the seat of the legislative branch of the U.S. federal government.",
+	latitude: 38.8899,
+	longitude: -77.0091,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Smithsonian National Air and Space Museum",
+	details:
+    	"A museum in Washington, D.C. dedicated to the history of aviation and space exploration. It houses the largest collection of historic aircraft and spacecraft in the world.",
+	latitude: 38.8881,
+	longitude: -77.0199,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Washington Monument",
+	details:
+    	"An obelisk on the National Mall in Washington, D.C. built to commemorate George Washington, the first President of the United States.",
+	latitude: 38.8895,
+	longitude: -77.0353,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "White House",
+	details:
+    	"The official residence and workplace of the President of the United States. Located at 1600 Pennsylvania Avenue NW in Washington, D.C.",
+	latitude: 38.8977,
+	longitude: -77.0365,
+  ),
+];
+
+List<Place> austinPOI = [
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Texas State Capitol",
+	details:
+    	"The capitol building and seat of government of the American state of Texas. Located in downtown Austin, it houses the offices and chambers of the Texas Legislature.",
+	latitude: 30.2747,
+	longitude: -97.7403,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Zilker Metropolitan Park",
+	details:
+    	"A recreational area in the heart of Austin, Texas. The park includes numerous attractions such as Barton Springs Pool and the Zilker Botanical Garden.",
+	latitude: 30.2664,
+	longitude: -97.7729,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "The University of Texas at Austin",
+	details:
+    	"A public research university and the flagship institution of the University of Texas System. Known for its vibrant campus life and academic excellence.",
+	latitude: 30.2849,
+	longitude: -97.7341,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Lady Bird Lake",
+	details:
+    	"A reservoir on the Colorado River in downtown Austin. It is a popular destination for outdoor activities such as kayaking, paddleboarding, and hiking.",
+	latitude: 30.2500,
+	longitude: -97.7393,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Barton Springs Pool",
+	details:
+    	"A recreational outdoor swimming pool filled with water from nearby natural springs. Located in Zilker Park, it is a popular spot for locals and visitors alike.",
+	latitude: 30.2641,
+	longitude: -97.7713,
+  ),
+];
+
+List<Place> mumbaiPOI = [
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Gateway of India",
+	details:
+    	"An arch-monument built in the early twentieth century in the city of Mumbai. It is located on the waterfront in the Apollo Bunder area.",
+	latitude: 18.9220,
+	longitude: 72.8347,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Chhatrapati Shivaji Maharaj Terminus",
+	details:
+    	"A historic railway station and a UNESCO World Heritage Site in Mumbai. It serves as the headquarters of the Central Railways.",
+	latitude: 18.9402,
+	longitude: 72.8356,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Marine Drive",
+	details:
+    	"A 3.6-kilometer-long boulevard in South Mumbai. It is known for its picturesque sunset views and Art Deco buildings.",
+	latitude: 18.9440,
+	longitude: 72.8231,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Siddhivinayak Temple",
+	details:
+    	"A Hindu temple dedicated to Lord Shri Ganesh. It is one of the richest temples in Mumbai and a significant pilgrimage site.",
+	latitude: 19.0176,
+	longitude: 72.8305,
+  ),
+  Place(
+	imageUrl: mainLogoAWS,
+	name: "Elephanta Caves",
+	details:
+    	"A network of sculpted caves located on Elephanta Island in Mumbai Harbour. The caves contain rock-cut stone sculptures depicting Hindu deities.",
+	latitude: 18.9633,
+	longitude: 72.9313,
+  ),
+];
+
+
 
 List<Place> newYorkPOI = [
   Place(
