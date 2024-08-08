@@ -84,8 +84,8 @@ class _CarouselCardState extends State<CarouselCard> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: size.height * .15,
-                            width: size.width * 0.15,
+                            height: size.height * .16,
+                            width: size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color.fromARGB(70, 106, 150, 118),
@@ -114,8 +114,8 @@ class _CarouselCardState extends State<CarouselCard> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: size.height * .15,
-                            width: size.width * 0.15,
+                            height: size.height * .16,
+                            width: size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color.fromARGB(70, 106, 150, 118),
@@ -131,6 +131,36 @@ class _CarouselCardState extends State<CarouselCard> {
                                 SizedBox(height: 17),
                                 Text(
                                   "Clean Balloon",
+                                  style: googleTextStyle(
+                                      35.sp, FontWeight.w700, fontGreen),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                           
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: size.height * .16,
+                            width: size.width * 0.13,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromARGB(70, 106, 150, 118),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 15),
+                                Icon(
+                                  Icons.restart_alt,
+                                  color: darkBackgroundColor,
+                                  size: 50,
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  "Orbit",
                                   style: googleTextStyle(
                                       35.sp, FontWeight.w700, fontGreen),
                                 ),
