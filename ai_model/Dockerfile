@@ -24,7 +24,7 @@ RUN /app/setup.sh
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install -y nvidia-cudnn nvidia-cuda-toolkit
+# RUN apt-get install -y nvidia-cudnn nvidia-cuda-toolkit
 
 COPY . /app
 
