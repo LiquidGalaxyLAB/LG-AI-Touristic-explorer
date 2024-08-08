@@ -39,12 +39,14 @@ class CityInformationScreen extends StatefulWidget {
   final String cityName;
   final String countryName;
   final LatLng coordinates;
+  final bool AIstatus;
   const CityInformationScreen(
       {required this.cityName,
       required this.countryName,
       required this.coordinates,
       this.cityGiven,
-      this.cityPOI});
+      this.cityPOI,
+      required this.AIstatus});
 
   @override
   State<CityInformationScreen> createState() => _CityInformationScreenState();
@@ -348,7 +350,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
               },
             ),
           ],
@@ -367,7 +368,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     var size = MediaQuery.of(context).size;
     if (isStatic) {
     } else {
-      if (!aiStatus) {
+      if (widget.AIstatus) {
+      } else {
         Future.delayed(Duration.zero, () => show(context));
       }
     }

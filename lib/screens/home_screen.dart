@@ -1175,7 +1175,7 @@ class _HomePageState extends State<HomePage> {
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
                         focusNode: textFocus,
-                        googleAPIKey: "",
+                        googleAPIKey: "AIzaSyBZbtg1kE7d_yKHoOPfDzWoaeY9gKymz3Y",
                         boxDecoration:
                             BoxDecoration(border: Border.all(width: 0)),
                         textStyle: GoogleFonts.raleway(
@@ -1269,6 +1269,7 @@ class _HomePageState extends State<HomePage> {
                                     cityName: cityName,
                                     countryName: secondName,
                                     coordinates: coordinates,
+                                    AIstatus: aiStatus,
                                   ),
                                 ));
                           } else {

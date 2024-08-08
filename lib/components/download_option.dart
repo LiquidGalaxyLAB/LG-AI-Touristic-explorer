@@ -106,7 +106,13 @@ class _DownloadWidgetState extends State<DownloadWidget> {
         var url = data[name]?[0]['link'] ?? "";
         await downloadKml(url, "$name$optionNew", name);
       } else if (optionNew == "historical") {
-        var url = data[name]?[1]['link'] ?? "";
+        var length = data[name]?.length;
+        var url;
+        if (length == 1) {
+          url = data[name]?[0]['link'] ?? "";
+        } else {
+          url = data[name]?[1]['link'] ?? "";
+        }
         await downloadKml(url, "$name$optionNew", name);
       }
       isDownloaded = await _checkKmlDownloaded(name, optionNew);
