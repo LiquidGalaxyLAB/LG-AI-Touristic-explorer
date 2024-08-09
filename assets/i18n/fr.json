@@ -1,0 +1,98 @@
+{
+    "drawer": {
+        "home": "Accueil",
+        "tasks": "Tâches Liquid Galaxy",
+        "manager": "Gestionnaire de Connexion",
+        "selected": "Langue Sélectionnée :",
+        "about": "À Propos"
+    },
+    "about": {
+        "description1": "LG-AI-Touristic-Explorer est une application Flutter immersive conçue pour donner vie aux villes à travers des visualisations captivantes et des récits engageants. En utilisant la puissance de l'IA et de Google Maps, l'application offre une expérience d'exploration unique qui plonge dans la géographie, l'histoire, la culture et les points d'intérêt d'une ville.",
+        "description2": "Ce projet a été créé dans le cadre de Google Summer of Code 24 sous le Liquid Galaxy Project. Découvrez l'essence d'une ville à travers des visuels époustouflants qui mettent en valeur son emplacement, son climat et ses merveilles architecturales. Imprégnez-vous de la riche histoire de la ville en explorant les jalons clés et les événements significatifs. Découvrez des faits et des histoires fascinants animés par la narration AI de Deepgram.",
+        "description3": "Profitez d'une intégration transparente avec Google Maps, vous permettant d'explorer la ville à la fois sur votre tablette et sur le Rig. L'application utilise le modèle LLM open-source Gemma de Google, exécuté localement avec Docker pour une inférence efficace.",
+        "contributor": "Contributeur :",
+        "mentor": "Mentor :",
+        "admin": "Admin de l'Organisation :",
+        "contact": "Informations de Contact du Contributeur :"
+    },
+    "home": {
+        "dialog": {
+            "title1": "Avertissement Important",
+            "title2": "Soyez conscient des hallucinations de l'IA.",
+            "description1": "L'état de l'art de la plupart des outils d'IA en 2024 peut parfois vous donner des réponses incorrectes, voire des soi-disant Hallucinations. Les hallucinations de l'IA sont des résultats incorrects ou trompeurs générés par les modèles d'IA. Ces erreurs peuvent être causées par divers facteurs, notamment des données d'entraînement insuffisantes, des hypothèses incorrectes faites par le modèle ou des biais dans les données utilisées pour entraîner le modèle.",
+            "description2": "Le projet Liquid Galaxy n'a aucun contrôle sur cela, et la responsabilité du contenu revient aux propriétaires des modèles de Langage Étendus utilisés.",
+            "button": "Je Comprends"
+        },
+        "tour": {
+            "skip": "PASSER",
+            "searchBarKey": "Recherchez des villes en utilisant cette barre de recherche",
+            "micKey": "Utilisez ce bouton pour utiliser la voix pour la recherche.",
+            "cityCardKey": "Ici, vous pouvez voir les détails de la ville sélectionnée.",
+            "drawerIconKey": "Ouvrez le tiroir de l'application depuis ici.",
+            "connectionLGStatusKey": "Cela montre le statut de connexion avec le Rig Liquid Galaxy.",
+            "connectionAIStatusKey": "Cela montre le statut de connexion avec le serveur IA.",
+            "tasksKey": "Cela contient différentes fonctions pour contrôler le Rig Liquid Galaxy.",
+            "connectionManagerKey": "Entrez les détails pour vous connecter au Rig Liquid Galaxy et au Serveur IA ici.",
+            "languageKey": "Vous pouvez changer la langue de l'application en utilisant ce menu déroulant.",
+            "aboutKey": "En savoir plus sur l'application.",
+            "helpKey": "Obtenez de l'aide concernant l'exécution de l'application."
+        },
+        "appbar": {
+            "gemma": "Fait avec",
+            "disconnected": "DÉCONNECTÉ",
+            "connected": "CONNECTÉ"
+        },
+        "body": {
+            "hintText": "Recherchez une ville",
+            "errorcity": "Ce n'est pas une ville, essayez encore",
+            "recommended": "Lieux Recommandés",
+            "outline": "Villes en Survol",
+            "historical": "Explorez l'Origine Historique"
+        }
+    },
+    "connectionManager": {
+        "hintTextIP": "Entrez l'IP du Maître",
+        "22": "22",
+        "lgscreens": "Nombre d'écrans LG",
+        "hintTextScreens": "Entrez le nombre d'écrans",
+        "hintTextUsername": "Entrez votre nom d'utilisateur",
+        "hintTextPassword": "Entrez votre mot de passe",
+        "hintTextAI": "Entrez l'IP du Serveur IA",
+        "hintTextPort": "Entrez le numéro du port",
+        "connect": "Se Connecter au"
+    },
+    "tasks": {
+        "relaunchRig": "Relancer",
+        "shutdownRig": "Éteindre",
+        "cleanKML": "Nettoyer",
+        "rebootRig": "Redémarrer",
+        "cleanLogos": "Nettoyer les Logos",
+        "showLogos": "Afficher les Logos"
+    },
+    "city": {
+        "factC": "Fait Culturel",
+        "factH": "Fait Historique",
+        "factG": "Fait Géographique",
+        "importantNoticeTitle": "Avertissement Important",
+        "connectToAIModelFirst": "Connectez-vous d'abord au Modèle IA",
+        "ensureConnectedToAI": "Avant de rechercher la ville, veuillez vous assurer que vous êtes connecté au modèle IA.",
+        "proceedWithSearch": "Une fois connecté, vous pouvez poursuivre votre recherche. S'il y a des problèmes, veuillez vérifier votre connexion et réessayer.",
+        "goBackButton": "Revenir",
+        "history": "Histoire",
+        "geography": "Géographie",
+        "culture": "Culture",
+        "extraVisual": "Visualisations Supplémentaires",
+        "poi": "Points d'Intérêt",
+        "extra": "Supplémentaire",
+        "errorNotLG": "Appareil non connecté au Rig Liquid Galaxy. Connectez-le et réessayez.",
+        "startOrbit": "Démarrer l'Orbite",
+        "stopOrbit": "Arrêter l'Orbite",
+        "narrate": "Raconter comme une Histoire !",
+        "startNarration": "Démarrer la Narration",
+        "stopNarration": "Arrêter la Narration",
+        "showin": "Afficher dans",
+        "clean": "Nettoyer",
+        "orbit": "Orbite",
+        "close": "Fermer"
+    }
+}
