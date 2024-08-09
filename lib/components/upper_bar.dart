@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
@@ -71,7 +72,7 @@ class UpperBar extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(top: 55.h),
                   child: Text(
-                    "Made with",
+                    translate('home.appbar.gemma'),
                     style: googleTextStyle(28.sp, FontWeight.w600, white),
                   ),
                 ),

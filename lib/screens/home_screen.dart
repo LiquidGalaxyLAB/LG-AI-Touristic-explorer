@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     tutorialCoachMark = TutorialCoachMark(
       targets: _createTargets(),
       colorShadow: Colors.black,
-      textSkip: "SKIP",
+      textSkip: translate('home.tour.skip'),
       // paddingFocus: 10,
       opacityShadow: 0.7,
       // imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
@@ -159,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Search for cities using this search bar",
+                      translate('home.tour.searchBarKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -202,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Use this button to use voice for search.",
+                      translate('home.tour.micKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -246,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Here you can see the details of the selected city.",
+                      translate('home.tour.cityCardKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -290,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Open the app drawer from here.",
+                      translate('home.tour.drawerIconKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -334,7 +335,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "This shows the connection status with the Liquid Galaxy Rig.",
+                      translate('home.tour.connectionLGStatusKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -378,7 +379,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "This shows the connection status with the AI server.",
+                      translate('home.tour.connectionAIStatusKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -422,7 +423,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "This contains different function to control the Liquid Galaxy Rig.",
+                      translate('home.tour.tasksKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -466,7 +467,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Enter the details to connect to the Liquid Galxy Rig and AI Server here.",
+                      translate('home.tour.connectionManagerKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -554,7 +555,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "You can change the language of the app using this dropdown.",
+                      translate('home.tour.languageKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -598,7 +599,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     child: Text(
-                      "Get to know more about the Application.",
+                      translate('home.tour.aboutKey'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -612,49 +613,49 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    targets.add(
-      TargetFocus(
-        shape: ShapeLightFocus.RRect,
-        identify: "helpKey",
-        keyTarget: helpKey,
-        alignSkip: Alignment.bottomRight,
-        color: Colors.black,
-        enableOverlayTab: true,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            builder: (context, controller) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(18.0),
-                    width: 400.w,
-                    decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(25.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      "Get Help regarding running the application.",
-                      textAlign: TextAlign.center,
-                      style:
-                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    // targets.add(
+    //   TargetFocus(
+    //     shape: ShapeLightFocus.RRect,
+    //     identify: "helpKey",
+    //     keyTarget: helpKey,
+    //     alignSkip: Alignment.bottomRight,
+    //     color: Colors.black,
+    //     enableOverlayTab: true,
+    //     contents: [
+    //       TargetContent(
+    //         align: ContentAlign.bottom,
+    //         builder: (context, controller) {
+    //           return Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             children: <Widget>[
+    //               Container(
+    //                 padding: const EdgeInsets.all(18.0),
+    //                 width: 400.w,
+    //                 decoration: BoxDecoration(
+    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   borderRadius: BorderRadius.circular(25.0),
+    //                   boxShadow: const [
+    //                     BoxShadow(
+    //                       color: Colors.black26,
+    //                       blurRadius: 10.0,
+    //                       offset: Offset(0, 4),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 child: Text(
+    //                   "Get Help regarding running the application.",
+    //                   textAlign: TextAlign.center,
+    //                   style:
+    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+    //                 ),
+    //               ),
+    //             ],
+    //           );
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );
 
     return targets;
   }
@@ -682,23 +683,21 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Important Notice",
+            title: Text(translate('home.dialog.title1'),
                 style:
                     googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text("Be aware of AI hallucinations.",
+                  Text(translate('home.dialog.title2'),
                       style: googleTextStyle(
                           35.sp, FontWeight.w500, Colors.black)),
                   const SizedBox(height: 10),
-                  Text(
-                      "The state of the art of most AI tools as of 2024 can sometimes give you incorrect answers, or even the so-called Hallucinations. AI hallucinations are incorrect or misleading results that AI models generate. These errors can be caused by a variety of factors, including insufficient training data, incorrect assumptions made by the model, or biases in the data used to train the model.",
+                  Text(translate('home.dialog.description1'),
                       style: googleTextStyle(
                           28.sp, FontWeight.w400, Colors.black)),
                   const SizedBox(height: 15),
-                  Text(
-                      "The Liquid Galaxy project has no control over this, and the contents responsibility is of the owners of the respective Large Language models used.",
+                  Text(translate('home.dialog.description2'),
                       style: GoogleFonts.raleway(
                         textStyle: TextStyle(
                             color: Colors.black,
@@ -721,7 +720,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text("Agree",
+                child: Text(translate('home.dialog.button'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
                 onPressed: () {
@@ -757,7 +756,7 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             children: [
               SizedBox(
-                height: 60.h,
+                height: 80.h,
               ),
               Column(
                 children: [
@@ -775,7 +774,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               SizedBox(
-                height: 70.h,
+                height: 50.h,
               ),
               ListTile(
                 title: Container(
@@ -787,7 +786,7 @@ class _HomePageState extends State<HomePage> {
                         width: 20.w,
                       ),
                       Text(
-                        'Home',
+                        translate('drawer.home'),
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -817,7 +816,7 @@ class _HomePageState extends State<HomePage> {
                         width: 20.w,
                       ),
                       Text(
-                        'Liquid Galaxy Tasks',
+                        translate('drawer.tasks'),
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -847,7 +846,7 @@ class _HomePageState extends State<HomePage> {
                         width: 20.w,
                       ),
                       Text(
-                        'Connection Manager',
+                        translate('drawer.manager'),
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -872,7 +871,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Text(
-                        'Language Selected :',
+                        translate('drawer.selected'),
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -881,19 +880,16 @@ class _HomePageState extends State<HomePage> {
                           width: 120.w,
                           child: DropdownButtonFormField(
                             key: languageKey,
+                            value: LocalizedApp.of(context)
+                                .delegate
+                                .currentLocale
+                                .toString()
+                                .toUpperCase(),
                             items: [
                               DropdownMenuItem(
                                 value: "EN",
                                 child: Text(
                                   "🇬🇧 EN",
-                                  style: googleTextStyle(
-                                      25.sp, FontWeight.w500, white),
-                                ),
-                              ),
-                              DropdownMenuItem(
-                                value: "FR",
-                                child: Text(
-                                  "🇫🇷 FR",
                                   style: googleTextStyle(
                                       25.sp, FontWeight.w500, white),
                                 ),
@@ -907,9 +903,25 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               DropdownMenuItem(
+                                value: "HI",
+                                child: Text(
+                                  "🇮🇳 HI",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
                                 value: "DE",
                                 child: Text(
                                   "🇩🇪 DE",
+                                  style: googleTextStyle(
+                                      25.sp, FontWeight.w500, white),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: "FR",
+                                child: Text(
+                                  "🇫🇷 FR",
                                   style: googleTextStyle(
                                       25.sp, FontWeight.w500, white),
                                 ),
@@ -946,16 +958,12 @@ class _HomePageState extends State<HomePage> {
                                       25.sp, FontWeight.w500, white),
                                 ),
                               ),
-                              DropdownMenuItem(
-                                value: "IN",
-                                child: Text(
-                                  "🇮🇳 IN",
-                                  style: googleTextStyle(
-                                      25.sp, FontWeight.w500, white),
-                                ),
-                              ),
                             ],
-                            onChanged: (String) {},
+                            onChanged: (locale) {
+                              String newLocale = locale!.toLowerCase();
+                              // print(newLocale);
+                              changeLocale(context, newLocale);
+                            },
                             dropdownColor: darkBackgroundColor,
                           ))
                     ],
@@ -980,7 +988,7 @@ class _HomePageState extends State<HomePage> {
                         width: 20.w,
                       ),
                       Text(
-                        'About',
+                        translate('drawer.about'),
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -1060,8 +1068,11 @@ class _HomePageState extends State<HomePage> {
                                   Text(
                                     key: connectionLGStatusKey,
                                     lgStatus
-                                        ? 'LG CONNECTED'
-                                        : 'LG DISCONNECTED',
+                                        ? 'LG ' +
+                                            translate('home.appbar.connected')
+                                        : 'LG ' +
+                                            translate(
+                                                'home.appbar.disconnected'),
                                     style: TextStyle(
                                         color: lgStatus
                                             ? const Color.fromARGB(
@@ -1086,8 +1097,11 @@ class _HomePageState extends State<HomePage> {
                                   Text(
                                     key: connectionAIStatusKey,
                                     aiStatus
-                                        ? 'AI SERVER CONNECTED'
-                                        : 'AI SERVER DISCONNECTED',
+                                        ? 'AI SERVER ' +
+                                            translate('home.appbar.connected')
+                                        : 'AI SERVER ' +
+                                            translate(
+                                                'home.appbar.disconnected'),
                                     style: TextStyle(
                                         color: aiStatus
                                             ? const Color.fromARGB(
@@ -1111,7 +1125,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.only(top: 55.h),
                           child: Text(
-                            "Made with",
+                            translate('home.appbar.gemma'),
                             style:
                                 googleTextStyle(28.sp, FontWeight.w600, white),
                           ),
@@ -1175,7 +1189,7 @@ class _HomePageState extends State<HomePage> {
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
                         focusNode: textFocus,
-                        googleAPIKey: "AIzaSyBZbtg1kE7d_yKHoOPfDzWoaeY9gKymz3Y",
+                        googleAPIKey: "",
                         boxDecoration:
                             BoxDecoration(border: Border.all(width: 0)),
                         textStyle: GoogleFonts.raleway(
@@ -1211,10 +1225,9 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          hintText: "Search for a city",
+                          hintText: translate('home.body.hintText'),
                           prefixIcon: GestureDetector(
                             onTap: () {
-                              print("Mic");
                             },
                             child: Container(
                                 key: micKey,
@@ -1279,7 +1292,7 @@ class _HomePageState extends State<HomePage> {
                               length: ToastLength.medium,
                               expandedHeight: 100,
                               child: Text(
-                                "It is not a city, try again",
+                                translate('home.body.errorcity'),
                                 style: googleTextStyle(
                                     32.sp, FontWeight.w500, white),
                               ),
@@ -1340,7 +1353,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.bottomLeft,
                 width: size.width * .82,
                 child: Text(
-                  "Recommended Locations",
+                  translate('home.body.recommended'),
                   style: googleTextStyle(48.sp, FontWeight.w600, white),
                 ),
               ),
@@ -1379,7 +1392,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.bottomLeft,
                 width: size.width * .82,
                 child: Text(
-                  "Outline Cities",
+                  translate('home.body.outline'),
                   style: googleTextStyle(48.sp, FontWeight.w600, white),
                 ),
               ),
@@ -1394,7 +1407,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.bottomLeft,
                 width: size.width * .82,
                 child: Text(
-                  "Explore Historical Origin",
+                  translate('home.body.historical'),
                   style: googleTextStyle(48.sp, FontWeight.w600, white),
                 ),
               ),

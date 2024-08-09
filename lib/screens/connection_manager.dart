@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
@@ -251,7 +252,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: 'Enter Master IP',
+                                        hintText: translate(
+                                            'connectionManager.hintTextIP'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -306,7 +308,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: '22',
+                                        hintText:
+                                            translate('connectionManager.22'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -343,7 +346,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "No. of LG screens",
+                                      translate('connectionManager.lgscreens'),
                                       style: googleTextStyle(
                                           35.sp, FontWeight.w600, Colors.white),
                                     ),
@@ -371,7 +374,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: 'Enter the number of screens',
+                                        hintText: translate(
+                                            'connectionManager.hintTextScreens'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -427,7 +431,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: 'Enter your username',
+                                        hintText: translate(
+                                            'connectionManager.hintTextUsername'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -495,7 +500,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                               size: 25,
                                             ),
                                           ),
-                                          hintText: 'Enter your password',
+                                          hintText: translate(
+                                              'connectionManager.hintTextPassword'),
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
@@ -565,7 +571,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "Connect to the",
+                                        translate('connectionManager.connect'),
                                         overflow: TextOverflow.clip,
                                         textAlign: TextAlign.center,
                                         style: googleTextStyle(
@@ -645,7 +651,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: "Enter AI Server's IP",
+                                        hintText: translate(
+                                            'connectionManager.hintTextAI'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -700,7 +707,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             size: 25,
                                           ),
                                         ),
-                                        hintText: 'Enter Port No.',
+                                        hintText: translate(
+                                            'connectionManager.hintTextPort'),
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
@@ -742,7 +750,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Connect to",
+                                  translate('connectionManager.connect'),
                                   overflow: TextOverflow.clip,
                                   textAlign: TextAlign.center,
                                   style: googleTextStyle(40.sp, FontWeight.w600,

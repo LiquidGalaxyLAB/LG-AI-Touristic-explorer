@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
@@ -100,7 +101,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                 ),
                                 SizedBox(height: 17),
                                 Text(
-                                  "Show in LG",
+                                  translate('city.showin') + " LG",
                                   style: googleTextStyle(
                                       35.sp, FontWeight.w700, fontGreen),
                                 ),
@@ -130,7 +131,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                 ),
                                 SizedBox(height: 17),
                                 Text(
-                                  "Clean Balloon",
+                                  translate('city.clean') + " Balloon",
                                   style: googleTextStyle(
                                       35.sp, FontWeight.w700, fontGreen),
                                 ),
@@ -139,9 +140,7 @@ class _CarouselCardState extends State<CarouselCard> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () async {
-                           
-                          },
+                          onTap: () async {},
                           child: Container(
                             alignment: Alignment.center,
                             height: size.height * .16,
@@ -160,7 +159,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                 ),
                                 SizedBox(height: 17),
                                 Text(
-                                  "Orbit",
+                                  translate('city.orbit'),
                                   style: googleTextStyle(
                                       35.sp, FontWeight.w700, fontGreen),
                                 ),
@@ -195,7 +194,7 @@ class _CarouselCardState extends State<CarouselCard> {
                           color: fontGreen,
                         ),
                         child: Text(
-                          'Close',
+                          translate('city.close'),
                           style: googleTextStyle(30.sp, FontWeight.w500, white),
                         ),
                       ),

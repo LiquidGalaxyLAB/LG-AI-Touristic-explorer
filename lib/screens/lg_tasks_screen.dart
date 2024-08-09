@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
@@ -108,7 +109,7 @@ class _LGTasksState extends State<LGTasks> {
                               borderRadius: BorderRadius.circular(60),
                             ),
                             child: Text(
-                              "Relaunch Rig",
+                              translate('tasks.relaunchRig') + " Rig",
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),
@@ -135,7 +136,7 @@ class _LGTasksState extends State<LGTasks> {
                                 color: Colors.yellow,
                                 borderRadius: BorderRadius.circular(60)),
                             child: Text(
-                              "Shutdown Rig",
+                              translate('tasks.shutdownRig') + " Rig",
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),
@@ -173,7 +174,7 @@ class _LGTasksState extends State<LGTasks> {
                                 color: const Color.fromARGB(255, 103, 244, 108),
                                 borderRadius: BorderRadius.circular(60)),
                             child: Text(
-                              "Clean KML",
+                              translate('tasks.cleanKML') + " KML",
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),
@@ -200,7 +201,7 @@ class _LGTasksState extends State<LGTasks> {
                                 color: const Color.fromARGB(255, 76, 232, 240),
                                 borderRadius: BorderRadius.circular(60)),
                             child: Text(
-                              "Reboot Rig",
+                              translate('tasks.rebootRig') + " Rig",
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),
@@ -238,7 +239,7 @@ class _LGTasksState extends State<LGTasks> {
                                 color: Colors.purple,
                                 borderRadius: BorderRadius.circular(60)),
                             child: Text(
-                              "Clean Logos",
+                              translate('tasks.cleanLogos'),
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),
@@ -247,7 +248,7 @@ class _LGTasksState extends State<LGTasks> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            await lg.setRefresh();
+                            await lg.logosLG(logosLG, factorLogo);
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -265,7 +266,7 @@ class _LGTasksState extends State<LGTasks> {
                                 color: const Color.fromARGB(255, 255, 145, 0),
                                 borderRadius: BorderRadius.circular(60)),
                             child: Text(
-                              "Set Refresh",
+                              translate('tasks.showLogos'),
                               textAlign: TextAlign.center,
                               style: googleTextStyle(
                                   45.sp, FontWeight.w700, darkBackgroundColor),

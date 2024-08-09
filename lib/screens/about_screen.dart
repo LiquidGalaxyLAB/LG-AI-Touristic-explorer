@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
@@ -59,11 +60,7 @@ class _AboutScreenState extends State<AboutScreen> {
   }
 
   _launchURL(Uri url) async {
-    // if (await canLaunchUrl(url)) {
     await launchUrl(url);
-    // } else {
-    //   throw 'Could not launch $url';
-    // }
   }
 
   Future<void> _onOpen(LinkableElement link) async {
@@ -92,11 +89,9 @@ class _AboutScreenState extends State<AboutScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                // margin: EdgeInsets.all(15),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  // color: darkSecondaryColor,
                 ),
                 padding: const EdgeInsets.fromLTRB(25, 40, 25, 35),
                 child: Row(
@@ -133,7 +128,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'LG-AI-Touristic-Explorer is an immersive Flutter application designed to bring cities to life through captivating visualizations and engaging storytelling. By using the power of AI and Google Maps, the app offers a unique exploration experience that delves into a city\'s geography, history, culture, and points of interest.',
+                        translate('about.description1'),
                         style: GoogleFonts.raleway(
                           textStyle: TextStyle(
                             letterSpacing: 1,
@@ -146,7 +141,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        'This project was created as a part of Google Summer of Code 24 under the Liquid Galaxy Project. Discover a city\'s essence through stunning visuals that highlight its location, climate, and architectural marvels. Immerse yourself in the city\'s rich history, exploring key milestones and significant events. Uncover fascinating facts and stories brought to life with the aid of Deepgram AI narration.',
+                        translate('about.description2'),
                         style: GoogleFonts.raleway(
                           textStyle: TextStyle(
                             letterSpacing: 1,
@@ -159,7 +154,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        'Experience seamless integration with Google Maps, enabling you to explore the city on both your tablet and the Rig. The app utilizes Google\'s Gemma open-source LLM model, running locally using Docker for efficient inference.',
+                        translate('about.description3'),
                         style: GoogleFonts.raleway(
                           textStyle: TextStyle(
                             letterSpacing: 1,
@@ -182,14 +177,13 @@ class _AboutScreenState extends State<AboutScreen> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Contributor: ',
+                            text: translate('about.contributor'),
                             style: googleTextStyle(22, FontWeight.w500,
                                 Colors.cyan), // Title style
                           ),
                           TextSpan(
                             text: 'Manas Dalvi',
-                            style: googleTextStyle(
-                                22, FontWeight.w500, white), // Name style
+                            style: googleTextStyle(22, FontWeight.w500, white),
                           ),
                         ],
                       ),
@@ -199,14 +193,13 @@ class _AboutScreenState extends State<AboutScreen> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Mentor: ',
+                            text: translate('about.mentor'),
                             style: googleTextStyle(22, FontWeight.w500,
                                 Colors.cyan), // Title style
                           ),
                           TextSpan(
                             text: 'Alfredo Bautista',
-                            style: googleTextStyle(
-                                22, FontWeight.w500, white), // Name style
+                            style: googleTextStyle(22, FontWeight.w500, white),
                           ),
                         ],
                       ),
@@ -216,21 +209,20 @@ class _AboutScreenState extends State<AboutScreen> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Organisation Admin: ',
+                            text: translate('about.admin'),
                             style: googleTextStyle(22, FontWeight.w500,
                                 Colors.cyan), // Title style
                           ),
                           TextSpan(
                             text: 'Andreu Ibanez',
-                            style: googleTextStyle(
-                                22, FontWeight.w500, white), // Name style
+                            style: googleTextStyle(22, FontWeight.w500, white),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Contributor Contact Information:',
+                      translate('about.contact'),
                       style: googleTextStyle(22, FontWeight.w500, Colors.white),
                     ),
                     SizedBox(height: 30),

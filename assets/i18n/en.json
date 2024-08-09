@@ -1,0 +1,98 @@
+{
+	"drawer": {
+		"home": "Home",
+		"tasks": "Liquid Galaxy Tasks",
+		"manager": "Connection Manager",
+		"selected": "Language Selected:",
+		"about": "About"
+	},
+	"about": {
+		"description1": "LG-AI-Touristic-Explorer is an immersive Flutter application designed to bring cities to life through captivating visualizations and engaging storytelling. By using the power of AI and Google Maps, the app offers a unique exploration experience that delves into a city's geography, history, culture, and points of interest.",
+		"description2": "This project was created as a part of Google Summer of Code 24 under the Liquid Galaxy Project. Discover a city's essence through stunning visuals that highlight its location, climate, and architectural marvels. Immerse yourself in the city's rich history, exploring key milestones and significant events. Uncover fascinating facts and stories brought to life with the aid of Deepgram AI narration.",
+		"description3": "Experience seamless integration with Google Maps, enabling you to explore the city on both your tablet and the Rig. The app utilizes Google's Gemma open-source LLM model, running locally using Docker for efficient inference.",
+		"contributor": "Contributor:",
+		"mentor": "Mentor:",
+		"admin": "Organisation Admin:",
+		"contact": "Contributor Contact Information:"
+	},
+	"home": {
+		"dialog": {
+			"title1": "Important Notice",
+			"title2": "Be aware of AI hallucinations.",
+			"description1": "The state of the art of most AI tools as of 2024 can sometimes give you incorrect answers, or even the so-called Hallucinations. AI hallucinations are incorrect or misleading results that AI models generate. These errors can be caused by a variety of factors, including insufficient training data, incorrect assumptions made by the model, or biases in the data used to train the model.",
+			"description2": "The Liquid Galaxy project has no control over this, and the contents responsibility is of the owners of the respective Large Language models used.",
+			"button": "I Understand"
+		},
+		"tour": {
+			"skip": "SKIP",
+			"searchBarKey": "Search for cities using this search bar",
+			"micKey": "Use this button to use voice for search.",
+			"cityCardKey": "Here you can see the details of the selected city.",
+			"drawerIconKey": "Open the app drawer from here.",
+			"connectionLGStatusKey": "This shows the connection status with the Liquid Galaxy Rig.",
+			"connectionAIStatusKey": "This shows the connection status with the AI server.",
+			"tasksKey": "This contains different function to control the Liquid Galaxy Rig.",
+			"connectionManagerKey": "Enter the details to connect to the Liquid Galaxy Rig and AI Server here.",
+			"languageKey": "You can change the language of the app using this dropdown.",
+			"aboutKey": "Get to know more about the Application.",
+			"helpKey": "Get Help regarding running the application."
+		},
+		"appbar": {
+			"gemma": "Made with",
+			"disconnected": "DISCONNECTED",
+			"connected": "CONNECTED"
+		},
+		"body": {
+			"hintText": "Search for a city",
+			"errorcity": "It is not a city, try again",
+			"recommended": "Recommended Locations",
+			"outline": "Outline Cities",
+			"historical": "Explore Historical Origin"
+		}
+	},
+	"connectionManager": {
+		"hintTextIP": "Enter Master IP",
+		"22": "22",
+		"lgscreens": "No. of LG screens",
+		"hintTextScreens": "Enter the number of screens",
+		"hintTextUsername": "Enter your username",
+		"hintTextPassword": "Enter your password",
+		"hintTextAI": "Enter AI Server's IP",
+		"hintTextPort": "Enter the port number",
+		"connect": "Connect to the"
+	},
+	"tasks": {
+		"relaunchRig": "Relaunch",
+		"shutdownRig": "Shutdown",
+		"cleanKML": "Clean",
+		"rebootRig": "Reboot",
+		"cleanLogos": "Clean Logos",
+		"showLogos": "Show Logos"
+	},
+	"city": {
+		"factC": "Cultural Fact",
+		"factH": "Historical Fact",
+		"factG": "Geographical Fact",
+		"importantNoticeTitle": "Important Notice",
+		"connectToAIModelFirst": "Connect to AI Model First",
+		"ensureConnectedToAI": "Before searching for the city, please ensure that you are connected to the AI model.",
+		"proceedWithSearch": "Once connected, you can proceed with your search. If there are any issues, please check your connection and try again.",
+		"goBackButton": "Go Back",
+		"history": "History",
+		"geography": "Geography",
+		"culture": "Culture",
+		"extraVisual": "Extra Visualisations",
+		"poi": "Points of Interest",
+		"extra": "Extra",
+		"errorNotLG": "Device not connected to Liquid Galaxy Rig. Connect it and try again.",
+		"startOrbit": "Start Orbit",
+		"stopOrbit": "Stop Orbit",
+		"narrate": "Narrate as Story!",
+		"startNarration": "Start Narration",
+		"stopNarration": "Stop Narration",
+		"showin": "Show in",
+		"clean": "Clean",
+		"orbit": "Orbit",
+		"close": "Close"
+	}
+}

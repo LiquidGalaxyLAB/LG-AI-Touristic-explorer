@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class ConnectionFlag extends StatelessWidget {
   ConnectionFlag({required this.lgStatus, required this.aiStatus});
@@ -12,8 +13,12 @@ class ConnectionFlag extends StatelessWidget {
         lgStatus ? const Color.fromARGB(255, 0, 255, 8) : Colors.red;
     Color colorAI =
         aiStatus ? const Color.fromARGB(255, 0, 255, 8) : Colors.red;
-    String label1 = lgStatus ? 'LG CONNECTED' : 'LG DISCONNECTED';
-    String label2 = aiStatus ? 'AI SERVER CONNECTED' : 'AI SERVER DISCONNECTED';
+    String label1 = lgStatus
+        ? 'LG ' + translate('home.appbar.connected')
+        : 'LG ' + translate('home.appbar.disconnected');
+    String label2 = aiStatus
+        ? 'AI SERVER ' + translate('home.appbar.connected')
+        : 'AI SERVER ' + translate('home.appbar.disconnected');
     return Container(
       padding: EdgeInsets.only(left: 77),
       height: 50,

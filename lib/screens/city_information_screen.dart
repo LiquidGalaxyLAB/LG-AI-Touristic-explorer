@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
@@ -130,7 +131,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     for (var culturalFact in city.culturalFacts) {
       cultureCarouselCards.add(CarouselCard(
         cityname: widget.cityName,
-        factTitle: "Cultural Fact",
+        factTitle: translate('city.factC'),
         factDesc: culturalFact.fact,
       ));
     }
@@ -138,7 +139,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     for (var geographicalFact in city.geographicalFacts) {
       geographyCarouselCards.add(CarouselCard(
         cityname: widget.cityName,
-        factTitle: "Geographical Fact",
+        factTitle: translate('city.factG'),
         factDesc: geographicalFact.fact,
       ));
     }
@@ -146,7 +147,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     for (var historicalFact in city.historicalFacts) {
       historyCarouselCards.add(CarouselCard(
         cityname: widget.cityName,
-        factTitle: "Historical Fact",
+        factTitle: translate('city.factH'),
         factDesc: historicalFact.fact,
       ));
     }
@@ -212,8 +213,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       await player.play(DeviceFileSource(file.path));
     }
   }
-
-  _stopNarration() {}
 
   var visualisationOptions = [];
   checkForExtra() {
@@ -306,23 +305,21 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Important Notice",
+          title: Text(translate('city.importantNoticeTitle'),
               style:
                   googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text("Connect to AI Model First",
+                Text(translate('city.connectToAIModelFirst'),
                     style:
                         googleTextStyle(35.sp, FontWeight.w500, Colors.black)),
                 const SizedBox(height: 10),
-                Text(
-                    "Before searching for the city, please ensure that you are connected to the AI model.",
+                Text(translate('city.ensureConnectedToAI'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w400, Colors.black)),
                 const SizedBox(height: 15),
-                Text(
-                    "Once connected, you can proceed with your search. If there are any issues, please check your connection and try again.",
+                Text(translate('city.proceedWithSearch'),
                     style: GoogleFonts.raleway(
                       textStyle: TextStyle(
                           color: Colors.black,
@@ -345,7 +342,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              child: Text("Go Back",
+              child: Text(translate('city.goBackButton'),
                   style: googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -447,7 +444,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             width: size.width * 0.12,
                                             height: 55,
                                             child: Text(
-                                              "History",
+                                              translate('city.history'),
                                               style: googleTextStyle(33.sp,
                                                   FontWeight.w500, white),
                                             ))),
@@ -474,7 +471,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             width: size.width * 0.12,
                                             height: 55,
                                             child: Text(
-                                              "Geography",
+                                              translate('city.geography'),
                                               style: googleTextStyle(33.sp,
                                                   FontWeight.w500, white),
                                             ))),
@@ -501,7 +498,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             width: size.width * 0.12,
                                             height: 55,
                                             child: Text(
-                                              "Culture",
+                                              translate('city.culture'),
                                               style: googleTextStyle(33.sp,
                                                   FontWeight.w500, white),
                                             ))),
@@ -700,7 +697,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Extra Visualisations",
+                                            translate('city.extraVisual'),
                                             style: googleTextStyle(48.sp,
                                                 FontWeight.w700, greenShade),
                                             overflow: TextOverflow.clip,
@@ -790,7 +787,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 color: isPOI ? greenShade : darkSecondaryColor,
                               ),
                               child: Text(
-                                "Points of Interest",
+                                translate('city.poi'),
                                 style: googleTextStyle(33.sp, FontWeight.w500,
                                     isPOI ? fontGreen : white),
                               ),
@@ -816,7 +813,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           : darkSecondaryColor,
                                     ),
                                     child: Text(
-                                      "Extra",
+                                      translate('city.extra'),
                                       style: googleTextStyle(
                                           30.sp,
                                           FontWeight.w500,
@@ -901,7 +898,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                         length: ToastLength.medium,
                                         expandedHeight: 100,
                                         child: Text(
-                                          "Device not connected to Liquid Galaxy Rig. Connect it and try again.",
+                                          translate('city.errorNotLG'),
                                           style: googleTextStyle(
                                               32.sp, FontWeight.w500, white),
                                         ),
@@ -917,7 +914,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                       color: darkSecondaryColor,
                                     ),
                                     child: Text(
-                                      "Start Orbit",
+                                      translate('city.startOrbit'),
                                       style: googleTextStyle(
                                           37.sp, FontWeight.w500, white),
                                     ),
@@ -957,7 +954,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                       color: Colors.amber,
                                     ),
                                     child: Text(
-                                      "Stop Orbit",
+                                      translate('city.stopOrbit'),
                                       style: googleTextStyle(
                                           37.sp, FontWeight.w600, Colors.black),
                                     ),
@@ -968,7 +965,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                               ? GestureDetector(
                                   onTap: () async {
                                     String content =
-                                        await generateStory("Mumbai");
+                                        await generateStory(widget.cityName);
                                     print(content);
                                     await textToVoice(content);
                                     setState(() {
@@ -985,7 +982,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                       color: darkSecondaryColor,
                                     ),
                                     child: Text(
-                                      "Narrate as Story!",
+                                      translate('city.narrate'),
                                       style: googleTextStyle(
                                           37.sp, FontWeight.w500, white),
                                     ),
@@ -1016,8 +1013,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     ),
                                     child: Text(
                                       isPlaying
-                                          ? "Stop Narration"
-                                          : "Start Narration",
+                                          ? translate('city.stopNarration')
+                                          : translate('city.startNarration'),
                                       style: googleTextStyle(
                                           37.sp, FontWeight.w500, white),
                                     ),

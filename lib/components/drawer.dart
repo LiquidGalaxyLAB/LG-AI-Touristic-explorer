@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/screens/about_screen.dart';
@@ -31,7 +32,7 @@ class _AppDrawerState extends State<AppDrawer> {
       child: ListView(
         children: [
           SizedBox(
-            height: 60.h,
+            height: 80.h,
           ),
           Column(
             children: [
@@ -49,7 +50,7 @@ class _AppDrawerState extends State<AppDrawer> {
             ],
           ),
           SizedBox(
-            height: 70.h,
+            height: 50.h,
           ),
           ListTile(
             title: Container(
@@ -61,7 +62,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     width: 20.w,
                   ),
                   Text(
-                    'Home',
+                    translate('drawer.home'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
@@ -90,7 +91,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     width: 20.w,
                   ),
                   Text(
-                    'Liquid Galaxy Tasks',
+                    translate('drawer.tasks'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
@@ -119,7 +120,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     width: 20.w,
                   ),
                   Text(
-                    'Connection Manager',
+                    translate('drawer.manager'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
@@ -144,7 +145,7 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Row(
                 children: [
                   Text(
-                    'Language Selected :',
+                    translate('drawer.selected'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
@@ -250,7 +251,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     width: 20.w,
                   ),
                   Text(
-                    'About',
+                    translate('drawer.about'),
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),
