@@ -153,19 +153,16 @@ class _AppDrawerState extends State<AppDrawer> {
                   Container(
                       width: 120.w,
                       child: DropdownButtonFormField(
+                        value: LocalizedApp.of(context)
+                            .delegate
+                            .currentLocale
+                            .toString()
+                            .toUpperCase(),
                         items: [
                           DropdownMenuItem(
                             value: "EN",
                             child: Text(
                               "🇬🇧 EN",
-                              style: googleTextStyle(
-                                  25.sp, FontWeight.w500, white),
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "FR",
-                            child: Text(
-                              "🇫🇷 FR",
                               style: googleTextStyle(
                                   25.sp, FontWeight.w500, white),
                             ),
@@ -179,9 +176,25 @@ class _AppDrawerState extends State<AppDrawer> {
                             ),
                           ),
                           DropdownMenuItem(
-                            value: "DE",
+                            value: "HI",
                             child: Text(
-                              "🇩🇪 DE",
+                              "🇮🇳 HI",
+                              style: googleTextStyle(
+                                  25.sp, FontWeight.w500, white),
+                            ),
+                          ),
+                          // DropdownMenuItem(
+                          //   value: "DE",
+                          //   child: Text(
+                          //     "🇩🇪 DE",
+                          //     style: googleTextStyle(
+                          //         25.sp, FontWeight.w500, white),
+                          //   ),
+                          // ),
+                          DropdownMenuItem(
+                            value: "FR",
+                            child: Text(
+                              "🇫🇷 FR",
                               style: googleTextStyle(
                                   25.sp, FontWeight.w500, white),
                             ),
@@ -195,7 +208,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             ),
                           ),
                           DropdownMenuItem(
-                            value: "JP",
+                            value: "JA",
                             child: Text(
                               "🇯🇵 JP",
                               style: googleTextStyle(
@@ -203,31 +216,20 @@ class _AppDrawerState extends State<AppDrawer> {
                             ),
                           ),
                           DropdownMenuItem(
-                            value: "CN",
+                            value: "ZH",
                             child: Text(
-                              "🇨🇳 CN",
-                              style: googleTextStyle(
-                                  25.sp, FontWeight.w500, white),
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "RU",
-                            child: Text(
-                              "🇷🇺 RU",
-                              style: googleTextStyle(
-                                  25.sp, FontWeight.w500, white),
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "IN",
-                            child: Text(
-                              "🇮🇳 IN",
+                              "🇨🇳 ZH",
                               style: googleTextStyle(
                                   25.sp, FontWeight.w500, white),
                             ),
                           ),
                         ],
-                        onChanged: (String) {},
+                        onChanged: (locale) {
+                          String newLocale = locale!.toLowerCase();
+                          print(newLocale);
+
+                          changeLocale(context, newLocale);
+                        },
                         dropdownColor: darkBackgroundColor,
                       ))
                 ],

@@ -17,7 +17,7 @@ Future<void> main() async {
         'es',
         'hi',
         'de'
-            'ar',
+        'ar',
         'fr',
         'it',
         'ja',

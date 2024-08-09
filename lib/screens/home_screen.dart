@@ -910,14 +910,14 @@ class _HomePageState extends State<HomePage> {
                                       25.sp, FontWeight.w500, white),
                                 ),
                               ),
-                              DropdownMenuItem(
-                                value: "DE",
-                                child: Text(
-                                  "🇩🇪 DE",
-                                  style: googleTextStyle(
-                                      25.sp, FontWeight.w500, white),
-                                ),
-                              ),
+                              // DropdownMenuItem(
+                              //   value: "DE",
+                              //   child: Text(
+                              //     "🇩🇪 DE",
+                              //     style: googleTextStyle(
+                              //         25.sp, FontWeight.w500, white),
+                              //   ),
+                              // ),
                               DropdownMenuItem(
                                 value: "FR",
                                 child: Text(
@@ -935,7 +935,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               DropdownMenuItem(
-                                value: "JP",
+                                value: "JA",
                                 child: Text(
                                   "🇯🇵 JP",
                                   style: googleTextStyle(
