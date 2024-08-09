@@ -1,0 +1,98 @@
+{
+    "drawer": {
+        "home": "ホーム",
+        "tasks": "Liquid Galaxy タスク",
+        "manager": "接続マネージャー",
+        "selected": "選択された言語:",
+        "about": "情報"
+    },
+    "about": {
+        "description1": "LG-AI-Touristic-Explorerは、魅力的なビジュアライゼーションとエンゲージングなストーリーテリングを通じて、都市を活気づける没入型のFlutterアプリケーションです。AIとGoogleマップの力を利用して、地理、歴史、文化、観光スポットに深く掘り下げたユニークな探索体験を提供します。",
+        "description2": "このプロジェクトは、Liquid Galaxy Projectの一環としてGoogle Summer of Code 24で作成されました。都市の位置、気候、建築の驚異を際立たせる見事なビジュアルを通じて、その本質を発見してください。主要なマイルストーンと重要なイベントを探索し、都市の豊かな歴史に没入してください。Deepgram AIナレーションの助けを借りて、興味深い事実やストーリーが生き生きと再現されます。",
+        "description3": "Googleマップとのシームレスな統合を体験し、タブレットとリグの両方で都市を探索することができます。アプリは、効率的な推論のためにDockerを使用してローカルで実行されるGoogleのGemmaオープンソースLLMモデルを利用しています。",
+        "contributor": "貢献者:",
+        "mentor": "メンター:",
+        "admin": "組織管理者:",
+        "contact": "貢献者連絡先情報:"
+    },
+    "home": {
+        "dialog": {
+            "title1": "重要なお知らせ",
+            "title2": "AIの幻覚に注意してください。",
+            "description1": "2024年の現代の多くのAIツールは、時折誤った答えや、いわゆる幻覚を引き起こすことがあります。AIの幻覚とは、AIモデルが生成する不正確または誤解を招く結果のことです。これらのエラーは、トレーニングデータの不足、モデルが行った誤った仮定、またはトレーニングに使用されたデータのバイアスなど、さまざまな要因によって引き起こされる可能性があります。",
+            "description2": "Liquid Galaxyプロジェクトはこれを制御することができず、内容の責任は使用されているそれぞれの大規模言語モデルの所有者にあります。",
+            "button": "理解しました"
+        },
+        "tour": {
+            "skip": "スキップ",
+            "searchBarKey": "この検索バーを使って都市を検索します",
+            "micKey": "このボタンを使用して音声で検索します。",
+            "cityCardKey": "ここで選択した都市の詳細を見ることができます。",
+            "drawerIconKey": "ここからアプリのドロワーを開きます。",
+            "connectionLGStatusKey": "Liquid Galaxy Rigとの接続状況を表示します。",
+            "connectionAIStatusKey": "AIサーバーとの接続状況を表示します。",
+            "tasksKey": "Liquid Galaxy Rigを制御するためのさまざまな機能が含まれています。",
+            "connectionManagerKey": "ここでLiquid Galaxy RigとAIサーバーに接続するための詳細を入力します。",
+            "languageKey": "このドロップダウンを使用してアプリの言語を変更できます。",
+            "aboutKey": "アプリケーションについてもっと知ることができます。",
+            "helpKey": "アプリケーションの実行に関するヘルプを取得します。"
+        },
+        "appbar": {
+            "gemma": "作成",
+            "disconnected": "切断されています",
+            "connected": "接続されています"
+        },
+        "body": {
+            "hintText": "都市を検索",
+            "errorcity": "これは都市ではありません、もう一度お試しください",
+            "recommended": "推奨される場所",
+            "outline": "主要な都市",
+            "historical": "歴史的起源を探る"
+        }
+    },
+    "connectionManager": {
+        "hintTextIP": "マスターIPを入力してください",
+        "22": "22",
+        "lgscreens": "LG画面の数",
+        "hintTextScreens": "画面の数を入力してください",
+        "hintTextUsername": "ユーザー名を入力してください",
+        "hintTextPassword": "パスワードを入力してください",
+        "hintTextAI": "AIサーバーのIPを入力してください",
+        "hintTextPort": "ポート番号を入力してください",
+        "connect": "接続"
+    },
+    "tasks": {
+        "relaunchRig": "再起動",
+        "shutdownRig": "シャットダウン",
+        "cleanKML": "クリーン",
+        "rebootRig": "再起動",
+        "cleanLogos": "ロゴをクリーン",
+        "showLogos": "ロゴを表示"
+    },
+    "city": {
+        "factC": "文化的事実",
+        "factH": "歴史的事実",
+        "factG": "地理的事実",
+        "importantNoticeTitle": "重要なお知らせ",
+        "connectToAIModelFirst": "まずAIモデルに接続してください",
+        "ensureConnectedToAI": "都市を検索する前に、AIモデルに接続されていることを確認してください。",
+        "proceedWithSearch": "接続後、検索を続行できます。問題が発生した場合は、接続を確認して再試行してください。",
+        "goBackButton": "戻る",
+        "history": "歴史",
+        "geography": "地理",
+        "culture": "文化",
+        "extraVisual": "追加のビジュアライゼーション",
+        "poi": "観光スポット",
+        "extra": "追加",
+        "errorNotLG": "デバイスがLiquid Galaxy Rigに接続されていません。接続して再試行してください。",
+        "startOrbit": "オービット開始",
+        "stopOrbit": "オービット停止",
+        "narrate": "ストーリーとしてナレーション!",
+        "startNarration": "ナレーション開始",
+        "stopNarration": "ナレーション停止",
+        "showin": "表示",
+        "clean": "クリーン",
+        "orbit": "オービット",
+        "close": "閉じる"
+    }
+}

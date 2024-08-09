@@ -943,17 +943,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               DropdownMenuItem(
-                                value: "CN",
+                                value: "ZH",
                                 child: Text(
-                                  "🇨🇳 CN",
-                                  style: googleTextStyle(
-                                      25.sp, FontWeight.w500, white),
-                                ),
-                              ),
-                              DropdownMenuItem(
-                                value: "RU",
-                                child: Text(
-                                  "🇷🇺 RU",
+                                  "🇨🇳 ZH",
                                   style: googleTextStyle(
                                       25.sp, FontWeight.w500, white),
                                 ),
@@ -961,7 +953,8 @@ class _HomePageState extends State<HomePage> {
                             ],
                             onChanged: (locale) {
                               String newLocale = locale!.toLowerCase();
-                              // print(newLocale);
+                              print(newLocale);
+
                               changeLocale(context, newLocale);
                             },
                             dropdownColor: darkBackgroundColor,
@@ -1227,8 +1220,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           hintText: translate('home.body.hintText'),
                           prefixIcon: GestureDetector(
-                            onTap: () {
-                            },
+                            onTap: () {},
                             child: Container(
                                 key: micKey,
                                 margin:

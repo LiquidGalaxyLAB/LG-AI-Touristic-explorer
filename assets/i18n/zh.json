@@ -1,0 +1,98 @@
+{
+    "drawer": {
+        "home": "主页",
+        "tasks": "Liquid Galaxy 任务",
+        "manager": "连接管理器",
+        "selected": "选择的语言：",
+        "about": "关于"
+    },
+    "about": {
+        "description1": "LG-AI-Touristic-Explorer 是一个沉浸式 Flutter 应用程序，旨在通过引人入胜的可视化和故事讲述使城市栩栩如生。通过利用 AI 和 Google 地图的力量，该应用程序提供了独特的探索体验，深入了解城市的地理、历史、文化和兴趣点。",
+        "description2": "该项目是 Google Summer of Code 24 的一部分，在 Liquid Galaxy 项目下创建。通过令人惊叹的视觉效果展示城市的本质，突出其位置、气候和建筑奇迹。沉浸在城市的丰富历史中，探索关键的里程碑和重要事件。借助 Deepgram AI 叙事，揭开引人入胜的事实和故事。",
+        "description3": "体验与 Google 地图的无缝集成，使您能够在平板电脑和 Rig 上探索城市。该应用程序使用 Google 的 Gemma 开源 LLM 模型，使用 Docker 本地运行以实现高效推理。",
+        "contributor": "贡献者：",
+        "mentor": "导师：",
+        "admin": "组织管理员：",
+        "contact": "贡献者联系方式："
+    },
+    "home": {
+        "dialog": {
+            "title1": "重要通知",
+            "title2": "注意 AI 幻觉。",
+            "description1": "截至 2024 年，大多数 AI 工具的最新技术有时会给出错误的答案，甚至是所谓的幻觉。AI 幻觉是 AI 模型生成的错误或误导性结果。这些错误可能是由于多种因素引起的，包括训练数据不足、模型做出的错误假设或用于训练模型的数据中的偏差。",
+            "description2": "Liquid Galaxy 项目对此没有控制权，内容责任归使用的各个大型语言模型的所有者。",
+            "button": "我明白了"
+        },
+        "tour": {
+            "skip": "跳过",
+            "searchBarKey": "使用此搜索栏搜索城市",
+            "micKey": "使用此按钮进行语音搜索。",
+            "cityCardKey": "您可以在这里查看所选城市的详细信息。",
+            "drawerIconKey": "从这里打开应用程序抽屉。",
+            "connectionLGStatusKey": "显示与 Liquid Galaxy Rig 的连接状态。",
+            "connectionAIStatusKey": "显示与 AI 服务器的连接状态。",
+            "tasksKey": "包含用于控制 Liquid Galaxy Rig 的不同功能。",
+            "connectionManagerKey": "在此输入连接到 Liquid Galaxy Rig 和 AI 服务器的详细信息。",
+            "languageKey": "您可以使用此下拉菜单更改应用程序的语言。",
+            "aboutKey": "了解更多关于应用程序的信息。",
+            "helpKey": "获取有关运行应用程序的帮助。"
+        },
+        "appbar": {
+            "gemma": "制作于",
+            "disconnected": "未连接",
+            "connected": "已连接"
+        },
+        "body": {
+            "hintText": "搜索城市",
+            "errorcity": "这不是一个城市，请重试",
+            "recommended": "推荐位置",
+            "outline": "概述城市",
+            "historical": "探索历史起源"
+        }
+    },
+    "connectionManager": {
+        "hintTextIP": "输入主机 IP",
+        "22": "22",
+        "lgscreens": "LG 屏幕数量",
+        "hintTextScreens": "输入屏幕数量",
+        "hintTextUsername": "输入您的用户名",
+        "hintTextPassword": "输入您的密码",
+        "hintTextAI": "输入 AI 服务器的 IP",
+        "hintTextPort": "输入端口号",
+        "connect": "连接到"
+    },
+    "tasks": {
+        "relaunchRig": "重新启动",
+        "shutdownRig": "关机",
+        "cleanKML": "清除",
+        "rebootRig": "重启",
+        "cleanLogos": "清除徽标",
+        "showLogos": "显示徽标"
+    },
+    "city": {
+        "factC": "文化事实",
+        "factH": "历史事实",
+        "factG": "地理事实",
+        "importantNoticeTitle": "重要通知",
+        "connectToAIModelFirst": "首先连接到 AI 模型",
+        "ensureConnectedToAI": "在搜索城市之前，请确保已连接到 AI 模型。",
+        "proceedWithSearch": "连接后，您可以继续搜索。如果遇到任何问题，请检查您的连接并重试。",
+        "goBackButton": "返回",
+        "history": "历史",
+        "geography": "地理",
+        "culture": "文化",
+        "extraVisual": "额外的可视化",
+        "poi": "兴趣点",
+        "extra": "额外",
+        "errorNotLG": "设备未连接到 Liquid Galaxy Rig。请连接并重试。",
+        "startOrbit": "开始轨道",
+        "stopOrbit": "停止轨道",
+        "narrate": "叙述为故事！",
+        "startNarration": "开始叙述",
+        "stopNarration": "停止叙述",
+        "showin": "显示在",
+        "clean": "清除",
+        "orbit": "轨道",
+        "close": "关闭"
+    }
+}

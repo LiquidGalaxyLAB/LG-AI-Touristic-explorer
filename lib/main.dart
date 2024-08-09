@@ -15,6 +15,13 @@ Future<void> main() async {
       supportedLocales: [
         'en',
         'es',
+        'hi',
+        'de'
+            'ar',
+        'fr',
+        'it',
+        'ja',
+        'zh'
       ]);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
