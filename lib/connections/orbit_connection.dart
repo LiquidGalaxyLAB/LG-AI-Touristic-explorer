@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:geocoding/geocoding.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
+import 'package:lg_ai_touristic_explorer/connections/gemini_service.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/place.dart';
 
@@ -26,8 +27,7 @@ Future<Map<String, double>> _getCoordinates(
 }
 
 Future<String> getPlaceIdFromName(String placeName) async {
-  String apiKey =
-      ""; 
+  String apiKey = "";
   final uri = Uri.parse(
       'https://maps.googleapis.com/maps/api/geocode/json?address=$placeName&key=$apiKey');
   final response = await http.get(uri);
@@ -44,11 +44,11 @@ Future<String> getPlaceIdFromName(String placeName) async {
       }
     }
   }
-  return mainLogoAWS; 
+  return mainLogoAWS;
 }
 
 fetchPhotoReferences(String placeId) async {
-  String apiKey = "AIzaSyBZbtg1kE7d_yKHoOPfDzWoaeY9gKymz3Y";
+  String apiKey = "";
   final url = Uri.parse(
       'https://maps.googleapis.com/maps/api/place/details/json?placeid=$placeId&key=$apiKey');
   final response = await http.get(url);
@@ -92,52 +92,41 @@ fetchPhoto(String photoReference, int height, int width, String apiKey) async {
   }
 }
 
-Future<List<Place>> generatePOI(String city, LatLng coordinates) async {
-  const url = 'http://127.0.0.1:8107/generatePOI';
-
-  final response = await http.post(
-    Uri.parse(url),
-    headers: {'Content-Type': 'application/json'},
-    body: jsonEncode({'text': city}),
-  );
-
-  if (response.statusCode == 200) {
-    String responseText = response.body;
+generatePOI(String city, LatLng coordinates) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final apiKey =
+      prefs.getString('geminiAPI') ?? "AIzaSyBhyqHh_jwh0wSPFVAZc3KdsxYhaoW-tWY";
+  final model = GenerativeModel(model: 'gemini-1.5-pro', apiKey: apiKey);
+  final prompt = """
+Create a JSON object that includes detailed information about the 4-5 most famous points of interest in the city $city. The JSON object should be structured as follows: {'points_of_interest': [{'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, {'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, ...]}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. IN FRENCH
+""";
+  try {
+    final content = [Content.text(prompt)];
+    final response = await model.generateContent(content,
+        generationConfig: GenerationConfig(maxOutputTokens: 8192));
+    String responseText = response.text!;
     String cleanedString = removeMarkdown(responseText);
+    print(cleanedString);
     final Map<String, dynamic> object = jsonDecode(cleanedString);
-
-    if (object.containsKey('response')) {
-      final dynamic responseObject = object['response'];
-      if (responseObject is String) {
-        final Map<String, dynamic> jsonObject = jsonDecode(responseObject);
-
-        for (var point in jsonObject['points_of_interest']) {
-          var coords = await _getCoordinates(point['name'], coordinates);
-          point['coordinates'] = coords;
-          var imageUrl = await getPlaceIdFromName(point['name']);
-          point['imageUrl'] = imageUrl;
-        }
-
-        final List<dynamic> pointsOfInterest = jsonObject['points_of_interest'];
-        final List<Place> places =
-            pointsOfInterest.map((poi) => Place.fromJson(poi)).toList();
-
-        for (var place in places) {
-          print('Name: ${place.name}');
-          print('Details: ${place.details}');
-          print('Latitude: ${place.latitude}');
-          print('Longitude: ${place.longitude}');
-          print('Image URL: ${place.imageUrl}'); 
-        }
-        return places;
-      } else {
-        throw Exception('Error: "response" is not a string');
-      }
-    } else {
-      throw Exception('Error: "response" key not found');
+    for (var point in object['points_of_interest']) {
+      var coords = await _getCoordinates(point['name'], coordinates);
+      point['coordinates'] = coords;
+      var imageUrl = await getPlaceIdFromName(point['name']);
+      point['imageUrl'] = imageUrl;
     }
-  } else {
-    throw Exception(
-        'Failed to fetch data. Status code: ${response.statusCode}');
+    final List<dynamic> pointsOfInterest = object['points_of_interest'];
+    final List<Place> places =
+        pointsOfInterest.map((poi) => Place.fromJson(poi)).toList();
+
+    for (var place in places) {
+      print('Name: ${place.name}');
+      print('Details: ${place.details}');
+      print('Latitude: ${place.latitude}');
+      print('Longitude: ${place.longitude}');
+      print('Image URL: ${place.imageUrl}');
+    }
+    return places;
+  } catch (e) {
+    throw Exception('Failed to fetch data');
   }
 }

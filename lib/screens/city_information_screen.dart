@@ -33,6 +33,7 @@ import '../constants/constants.dart';
 import '../constants/images.dart';
 import '../constants/text_styles.dart';
 import 'package:http/http.dart' as http;
+import 'package:lg_ai_touristic_explorer/connections/gemini_service.dart';
 
 class CityInformationScreen extends StatefulWidget {
   final City? cityGiven;
@@ -40,14 +41,13 @@ class CityInformationScreen extends StatefulWidget {
   final String cityName;
   final String countryName;
   final LatLng coordinates;
-  final bool AIstatus;
-  const CityInformationScreen(
-      {required this.cityName,
-      required this.countryName,
-      required this.coordinates,
-      this.cityGiven,
-      this.cityPOI,
-      required this.AIstatus});
+  const CityInformationScreen({
+    required this.cityName,
+    required this.countryName,
+    required this.coordinates,
+    this.cityGiven,
+    this.cityPOI,
+  });
 
   @override
   State<CityInformationScreen> createState() => _CityInformationScreenState();
@@ -299,62 +299,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool anim = true;
 
-  show(BuildContext context) async {
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(translate('city.importantNoticeTitle'),
-              style:
-                  googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(translate('city.connectToAIModelFirst'),
-                    style:
-                        googleTextStyle(35.sp, FontWeight.w500, Colors.black)),
-                const SizedBox(height: 10),
-                Text(translate('city.ensureConnectedToAI'),
-                    style:
-                        googleTextStyle(30.sp, FontWeight.w400, Colors.black)),
-                const SizedBox(height: 15),
-                Text(translate('city.proceedWithSearch'),
-                    style: GoogleFonts.raleway(
-                      textStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25.sp,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.italic),
-                    )),
-              ],
-            ),
-          ),
-          backgroundColor: Colors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          ),
-          actions: <Widget>[
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-              child: Text(translate('city.goBackButton'),
-                  style: googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     CameraPosition _kGooglePlex = CameraPosition(
@@ -363,13 +307,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     );
     late CameraPosition changedMapPosition;
     var size = MediaQuery.of(context).size;
-    if (isStatic) {
-    } else {
-      if (widget.AIstatus) {
-      } else {
-        Future.delayed(Duration.zero, () => show(context));
-      }
-    }
 
     return Scaffold(
       key: _scaffoldKey,
