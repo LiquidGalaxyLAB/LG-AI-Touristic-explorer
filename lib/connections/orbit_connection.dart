@@ -4,6 +4,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:lg_ai_touristic_explorer/connections/gemini_service.dart';
+import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,7 +28,9 @@ Future<Map<String, double>> _getCoordinates(
 }
 
 Future<String> getPlaceIdFromName(String placeName) async {
-  String apiKey = "";
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+   final apiKey =
+      prefs.getString('mapsAPI') ?? "";
   final uri = Uri.parse(
       'https://maps.googleapis.com/maps/api/geocode/json?address=$placeName&key=$apiKey');
   final response = await http.get(uri);
@@ -48,8 +51,9 @@ Future<String> getPlaceIdFromName(String placeName) async {
 }
 
 fetchPhotoReferences(String placeId) async {
-  String apiKey = "";
-  final url = Uri.parse(
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+   final apiKey =
+      prefs.getString('mapsAPI') ?? "";  final url = Uri.parse(
       'https://maps.googleapis.com/maps/api/place/details/json?placeid=$placeId&key=$apiKey');
   final response = await http.get(url);
 
@@ -92,13 +96,14 @@ fetchPhoto(String photoReference, int height, int width, String apiKey) async {
   }
 }
 
-generatePOI(String city, LatLng coordinates) async {
+generatePOI(String city, LatLng coordinates, String locale) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final apiKey =
-      prefs.getString('geminiAPI') ?? "AIzaSyBhyqHh_jwh0wSPFVAZc3KdsxYhaoW-tWY";
+      prefs.getString('geminiAPI') ?? "";
   final model = GenerativeModel(model: 'gemini-1.5-pro', apiKey: apiKey);
+  String language = getLanguageName(locale);
   final prompt = """
-Create a JSON object that includes detailed information about the 4-5 most famous points of interest in the city $city. The JSON object should be structured as follows: {'points_of_interest': [{'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, {'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, ...]}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. IN FRENCH
+Create a JSON object that includes detailed information about the 4-5 most famous points of interest in the city $city. The JSON object should be structured as follows: {'points_of_interest': [{'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, {'name': 'Name of the point of interest', 'details': 'Detailed information about the point of interest'}, ...]}. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. IN $language
 """;
   try {
     final content = [Content.text(prompt)];

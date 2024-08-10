@@ -49,7 +49,7 @@ class UpperBar extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(left: 5.w, top: 45.h),
+              padding: EdgeInsets.only(left: 65.w, top: 45.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -59,7 +59,6 @@ class UpperBar extends StatelessWidget {
                   ),
                   ConnectionFlag(
                     lgStatus: lgStatus,
-                    aiStatus: aiStatus,
                   ),
                 ],
               ),

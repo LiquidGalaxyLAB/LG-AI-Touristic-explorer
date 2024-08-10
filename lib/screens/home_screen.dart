@@ -13,10 +13,14 @@ import 'package:lg_ai_touristic_explorer/components/historical_cities.dart';
 import 'package:lg_ai_touristic_explorer/components/outline_cities.dart';
 import 'package:lg_ai_touristic_explorer/components/recommended_cities.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
+import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
+import 'package:lg_ai_touristic_explorer/connections/gemini_service.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
+import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/models/city.dart';
 import 'package:lg_ai_touristic_explorer/screens/about_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
@@ -38,7 +42,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool lgStatus = false;
-  bool aiStatus = false;
   late LGConnection lg;
   TextEditingController _textEditingController = TextEditingController();
   bool isCity = false;
@@ -50,23 +53,29 @@ class _HomePageState extends State<HomePage> {
     await lg.logosLG(logosLG, factorLogo);
   }
 
-  _connectToAIServer() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
-      String portAIServer = prefs.getString("portAIServer") ?? "8107";
-      String apiURL = "http://$ipAIServer:$portAIServer/hello";
-      http.Response response = await http.get(Uri.parse(apiURL));
-      if (response.statusCode == 200) {
-        setState(() {
-          aiStatus = true;
-        });
-      } else {}
-    } catch (e) {
-      print('Error checking AI server connection: $e');
-      return false;
-    }
+  String mapsAPIKey = "";
+  initKey() {
+    SharedPreferences.getInstance().then((value) {
+      mapsAPIKey = value.getString("mapsAPIKey") ?? "";
+    });
   }
+  // _connectToAIServer() async {
+  //   try {
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
+  //     String portAIServer = prefs.getString("portAIServer") ?? "8107";
+  //     String apiURL = "http://$ipAIServer:$portAIServer/hello";
+  //     http.Response response = await http.get(Uri.parse(apiURL));
+  //     if (response.statusCode == 200) {
+  //       setState(() {
+  //         aiStatus = true;
+  //       });
+  //     } else {}
+  //   } catch (e) {
+  //     print('Error checking AI server connection: $e');
+  //     return false;
+  //   }
+  // }
 
   late TutorialCoachMark tutorialCoachMark;
 
@@ -349,49 +358,49 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    targets.add(
-      TargetFocus(
-        shape: ShapeLightFocus.RRect,
-        identify: "connectionAIStatusKey",
-        keyTarget: connectionAIStatusKey,
-        alignSkip: Alignment.bottomRight,
-        color: Colors.black,
-        enableOverlayTab: true,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            builder: (context, controller) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(18.0),
-                    width: 400.w,
-                    decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(25.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      translate('home.tour.connectionAIStatusKey'),
-                      textAlign: TextAlign.center,
-                      style:
-                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    // targets.add(
+    //   TargetFocus(
+    //     shape: ShapeLightFocus.RRect,
+    //     identify: "connectionAIStatusKey",
+    //     keyTarget: connectionAIStatusKey,
+    //     alignSkip: Alignment.bottomRight,
+    //     color: Colors.black,
+    //     enableOverlayTab: true,
+    //     contents: [
+    //       TargetContent(
+    //         align: ContentAlign.bottom,
+    //         builder: (context, controller) {
+    //           return Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             children: <Widget>[
+    //               Container(
+    //                 padding: const EdgeInsets.all(18.0),
+    //                 width: 400.w,
+    //                 decoration: BoxDecoration(
+    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   borderRadius: BorderRadius.circular(25.0),
+    //                   boxShadow: const [
+    //                     BoxShadow(
+    //                       color: Colors.black26,
+    //                       blurRadius: 10.0,
+    //                       offset: Offset(0, 4),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 child: Text(
+    //                   translate('home.tour.connectionAIStatusKey'),
+    //                   textAlign: TextAlign.center,
+    //                   style:
+    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+    //                 ),
+    //               ),
+    //             ],
+    //           );
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );
 
     targets.add(
       TargetFocus(
@@ -670,7 +679,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     lg = LGConnection();
     _connectToLG();
-    _connectToAIServer();
   }
 
   bool agreed = false;
@@ -946,7 +954,6 @@ class _HomePageState extends State<HomePage> {
                             onChanged: (locale) {
                               String newLocale = locale!.toLowerCase();
                               print(newLocale);
-
                               changeLocale(context, newLocale);
                             },
                             dropdownColor: darkBackgroundColor,
@@ -1026,7 +1033,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 5.w, top: 45.h),
+                      padding: EdgeInsets.only(left: 65.w, top: 45.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -1036,7 +1043,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Container(
                             child: Container(
-                              padding: EdgeInsets.only(left: 77),
+                              padding: EdgeInsets.only(right: 0.w),
                               height: 50,
                               child: Row(
                                 children: [
@@ -1066,35 +1073,6 @@ class _HomePageState extends State<HomePage> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 19.sp),
                                   ),
-                                  SizedBox(
-                                    width: 15.0,
-                                  ),
-                                  Icon(
-                                    Icons.circle,
-                                    color: aiStatus
-                                        ? const Color.fromARGB(255, 0, 255, 8)
-                                        : Colors.red,
-                                    size: 14,
-                                  ),
-                                  SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  Text(
-                                    key: connectionAIStatusKey,
-                                    aiStatus
-                                        ? 'AI SERVER ' +
-                                            translate('home.appbar.connected')
-                                        : 'AI SERVER ' +
-                                            translate(
-                                                'home.appbar.disconnected'),
-                                    style: TextStyle(
-                                        color: aiStatus
-                                            ? const Color.fromARGB(
-                                                255, 0, 255, 8)
-                                            : Colors.red,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 19.sp),
-                                  )
                                 ],
                               ),
                             ),
@@ -1174,7 +1152,7 @@ class _HomePageState extends State<HomePage> {
                       child: GooglePlaceAutoCompleteTextField(
                         textEditingController: _textEditingController,
                         focusNode: textFocus,
-                        googleAPIKey: "",
+                        googleAPIKey: mapsAPIKey,
                         boxDecoration:
                             BoxDecoration(border: Border.all(width: 0)),
                         textStyle: GoogleFonts.raleway(
@@ -1266,7 +1244,6 @@ class _HomePageState extends State<HomePage> {
                                     cityName: cityName,
                                     countryName: secondName,
                                     coordinates: coordinates,
-                                   
                                   ),
                                 ));
                           } else {
@@ -1344,6 +1321,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 55.h,
               ),
+
               // SizedBox(
               //   // key: searchBarKey,
               //   child: ElevatedButton(

@@ -165,8 +165,13 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   getCityData() async {
     String cityName = widget.cityName;
     LatLng coordinates = widget.coordinates;
+    String locale = LocalizedApp.of(context)
+        .delegate
+        .currentLocale
+        .toString()
+        .toLowerCase();
     city = await getCityInformation(
-        "${cityName}, ${widget.countryName}", coordinates);
+        "${cityName}, ${widget.countryName}", coordinates, locale);
 
     List<Place> data = await generatePlaces();
     setState(() {
@@ -198,7 +203,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     await met();
     final url =
         Uri.parse("https://api.deepgram.com/v1/speak?model=aura-zeus-en");
-    String voiceApiKey = "";
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final apiKey = prefs.getString('deepgramAPI') ?? "";
+    String voiceApiKey = apiKey;
     final response = await http.post(url,
         headers: {
           "Content-Type": "application/json",
@@ -266,7 +273,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   Future<List<Place>> generatePlaces() async {
-    places = await generatePOI(widget.cityName, widget.coordinates);
+    String locale = LocalizedApp.of(context)
+        .delegate
+        .currentLocale
+        .toString()
+        .toLowerCase();
+    places = await generatePOI(widget.cityName, widget.coordinates, locale);
     print(places.toString());
     return places;
   }
@@ -901,8 +913,13 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           !isStoryGenerated
                               ? GestureDetector(
                                   onTap: () async {
-                                    String content =
-                                        await generateStory(widget.cityName);
+                                    String locale = LocalizedApp.of(context)
+                                        .delegate
+                                        .currentLocale
+                                        .toString()
+                                        .toLowerCase();
+                                    String content = await generateStory(
+                                        widget.cityName, locale);
                                     print(content);
                                     await textToVoice(content);
                                     setState(() {
