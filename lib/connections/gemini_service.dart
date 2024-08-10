@@ -15,13 +15,12 @@ String removeMarkdown(String responseText) {
 
 Future<String> generateStory(String cityName, String locale) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final apiKey =
-      prefs.getString('geminiAPI') ?? "";
+  final apiKey = prefs.getString('geminiAPI') ?? "";
   final model = GenerativeModel(model: 'gemini-1.5-pro', apiKey: apiKey);
   String language = getLanguageName(locale);
 
   final prompt = """
-Write a captivating and vivid story about $cityName. Describe the city's landmarks, history, and unique aspects in an engaging and imaginative way. Include interesting characters or events that make the city come to life. The story should transport the reader to $cityName and give them a sense of its charm and atmosphere. 100 words. IN $language
+Write a captivating and vivid story about $cityName. Describe the city's landmarks, history, and unique aspects in an engaging and imaginative way. Include interesting characters or events that make the city come to life. The story should transport the reader to $cityName and give them a sense of its charm and atmosphere. 100 words. 
 """;
   final content = [Content.text(prompt)];
   final response = await model.generateContent(content,
@@ -32,8 +31,7 @@ Write a captivating and vivid story about $cityName. Describe the city's landmar
 
 generateFacts(String factType, String cityName, String locale) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final apiKey =
-      prefs.getString('geminiAPI') ?? "";
+  final apiKey = prefs.getString('geminiAPI') ?? "";
   final model = GenerativeModel(model: 'gemini-1.5-pro', apiKey: apiKey);
   String language = getLanguageName(locale);
 

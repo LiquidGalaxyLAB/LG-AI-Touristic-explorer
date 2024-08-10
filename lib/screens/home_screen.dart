@@ -54,9 +54,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   String mapsAPIKey = "";
-  initKey() {
-    SharedPreferences.getInstance().then((value) {
-      mapsAPIKey = value.getString("mapsAPIKey") ?? "";
+  initKey() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final apiKey = prefs.getString('mapsAPI') ?? "";
+    setState(() {
+      mapsAPIKey = apiKey;
     });
   }
   // _connectToAIServer() async {
@@ -679,6 +681,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     lg = LGConnection();
     _connectToLG();
+    initKey();
   }
 
   bool agreed = false;
