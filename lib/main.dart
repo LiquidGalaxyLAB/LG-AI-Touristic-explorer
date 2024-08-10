@@ -12,17 +12,7 @@ Future<void> main() async {
   var delegate = await LocalizationDelegate.create(
       preferences: TranslatePreferences(),
       fallbackLocale: 'en',
-      supportedLocales: [
-        'en',
-        'es',
-        'hi',
-        'de'
-        'ar',
-        'fr',
-        'it',
-        'ja',
-        'zh'
-      ]);
+      supportedLocales: ['en', 'es', 'hi', 'fr', 'it', 'ja', 'zh']);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));

@@ -35,7 +35,6 @@ class CityCard extends StatelessWidget {
             cityName: cityName,
             countryName: countryName,
             coordinates: city.coordinates,
-            AIstatus: false,
           ),
         ));
         ///////////////
