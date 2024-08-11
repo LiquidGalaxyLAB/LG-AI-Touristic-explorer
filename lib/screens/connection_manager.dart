@@ -6,7 +6,7 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lg_ai_touristic_explorer/components/connection_flag.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
-import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
+
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
@@ -23,7 +23,6 @@ class ConnectionManager extends StatefulWidget {
 
 class _ConnectionManagerState extends State<ConnectionManager> {
   bool lgStatus = false;
-  bool aiStatus = false;
   bool passwordVisible = false;
   bool geminiVisible = false;
   bool deepgramVisible = false;
@@ -35,31 +34,12 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     });
   }
 
-  _connectToAIServer() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
-      String portAIServer = prefs.getString("portAIServer") ?? "8107";
-      String apiURL = "http://$ipAIServer:$portAIServer/hello";
-      http.Response response = await http.get(Uri.parse(apiURL));
-      if (response.statusCode == 200) {
-        setState(() {
-          aiStatus = true;
-        });
-      } else {}
-    } catch (e) {
-      print('Error checking AI server connection: $e');
-      return false;
-    }
-  }
-
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _loadSettings();
     _connectToLG();
-    _connectToAIServer();
   }
 
   final TextEditingController _ipController = TextEditingController();
@@ -139,10 +119,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
       ),
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(140.0),
-          child: UpperBar(
-              lgStatus: lgStatus,
-              aiStatus: aiStatus,
-              scaffoldKey: _scaffoldKey)),
+          child: UpperBar(lgStatus: lgStatus, scaffoldKey: _scaffoldKey)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -789,10 +766,6 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                         child: GestureDetector(
                           onTap: () async {
                             await _saveAPISettings();
-                            aiStatus = await checkAIServerConnection();
-                            setState(() {
-                              aiStatus = aiStatus;
-                            });
                           },
                           child: Container(
                             alignment: Alignment.center,

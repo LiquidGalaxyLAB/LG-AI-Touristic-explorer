@@ -10,12 +10,10 @@ class UpperBar extends StatelessWidget {
   const UpperBar({
     super.key,
     required this.lgStatus,
-    required this.aiStatus,
     required GlobalKey<ScaffoldState> scaffoldKey,
   }) : _scaffoldKey = scaffoldKey;
 
   final bool lgStatus;
-  final bool aiStatus;
   final GlobalKey<ScaffoldState> _scaffoldKey;
 
   @override

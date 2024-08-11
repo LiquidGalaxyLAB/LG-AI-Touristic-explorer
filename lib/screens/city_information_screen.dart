@@ -14,7 +14,7 @@ import 'package:lg_ai_touristic_explorer/components/carousel_card.dart';
 import 'package:lg_ai_touristic_explorer/components/download_option.dart';
 import 'package:lg_ai_touristic_explorer/components/drawer.dart';
 import 'package:lg_ai_touristic_explorer/components/upper_bar.dart';
-import 'package:lg_ai_touristic_explorer/connections/ai_model.dart';
+
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
 import 'package:lg_ai_touristic_explorer/models/city.dart';
@@ -55,7 +55,6 @@ class CityInformationScreen extends StatefulWidget {
 
 class _CityInformationScreenState extends State<CityInformationScreen> {
   bool lgStatus = false;
-  bool aiStatus = false;
   late LGConnection lg;
 
   List<Widget> historyCarouselCards = [
@@ -234,24 +233,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
-  _connectToAIServer() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
-      String portAIServer = prefs.getString("portAIServer") ?? "8107";
-      String apiURL = "http://$ipAIServer:$portAIServer/hello";
-      http.Response response = await http.get(Uri.parse(apiURL));
-      if (response.statusCode == 200) {
-        setState(() {
-          aiStatus = true;
-        });
-      } else {}
-    } catch (e) {
-      print('Error checking AI server connection: $e');
-      return false;
-    }
-  }
-
   bool isStatic = false;
   _checkGiven() {
     if (widget.cityGiven != null && widget.cityPOI != null) {
@@ -288,7 +269,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     super.initState();
     lg = LGConnection();
     _connectToLG();
-    _connectToAIServer();
     _checkGiven();
     // getCityData();
   }
@@ -326,10 +306,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       backgroundColor: darkBackgroundColor,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(140.0),
-          child: UpperBar(
-              lgStatus: lgStatus,
-              aiStatus: aiStatus,
-              scaffoldKey: _scaffoldKey)),
+          child: UpperBar(lgStatus: lgStatus, scaffoldKey: _scaffoldKey)),
       body: Container(
         child: Column(
           children: [

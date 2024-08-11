@@ -23,7 +23,6 @@ class AboutScreen extends StatefulWidget {
 class _AboutScreenState extends State<AboutScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool lgStatus = false;
-  bool aiStatus = false;
   late LGConnection lg;
 
   Future<void> _connectToLG() async {
@@ -33,30 +32,11 @@ class _AboutScreenState extends State<AboutScreen> {
     });
   }
 
-  _connectToAIServer() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String ipAIServer = prefs.getString("ipAIServer") ?? "127.0.0.1";
-      String portAIServer = prefs.getString("portAIServer") ?? "8107";
-      String apiURL = "http://$ipAIServer:$portAIServer/hello";
-      http.Response response = await http.get(Uri.parse(apiURL));
-      if (response.statusCode == 200) {
-        setState(() {
-          aiStatus = true;
-        });
-      } else {}
-    } catch (e) {
-      print('Error checking AI server connection: $e');
-      return false;
-    }
-  }
-
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _connectToLG();
-    _connectToAIServer();
   }
 
   _launchURL(Uri url) async {
@@ -79,8 +59,7 @@ class _AboutScreenState extends State<AboutScreen> {
       endDrawer: AppDrawer(size: size),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(140.0),
-        child: UpperBar(
-            lgStatus: lgStatus, aiStatus: aiStatus, scaffoldKey: _scaffoldKey),
+        child: UpperBar(lgStatus: lgStatus, scaffoldKey: _scaffoldKey),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(40, 40, 40, 20),
