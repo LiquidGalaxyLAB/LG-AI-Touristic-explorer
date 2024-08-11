@@ -25,6 +25,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
   bool lgStatus = false;
   bool aiStatus = false;
   bool passwordVisible = false;
+  bool geminiVisible = false;
+  bool deepgramVisible = false;
   late LGConnection lg;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
@@ -65,8 +67,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _sshPortController = TextEditingController();
   final TextEditingController _rigsController = TextEditingController();
-  final TextEditingController _ipAIServerController = TextEditingController();
-  final TextEditingController _portAIServerController = TextEditingController();
+  final TextEditingController _geminiAPIKey = TextEditingController();
+  final TextEditingController _deepgramAPIKey = TextEditingController();
 
   @override
   void dispose() {
@@ -75,8 +77,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     _passwordController.dispose();
     _sshPortController.dispose();
     _rigsController.dispose();
-    _ipAIServerController.dispose();
-    _portAIServerController.dispose();
+    _geminiAPIKey.dispose();
+    _deepgramAPIKey.dispose();
     super.dispose();
   }
 
@@ -88,8 +90,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
       _passwordController.text = prefs.getString('password') ?? '';
       _sshPortController.text = prefs.getString('sshPort') ?? '';
       _rigsController.text = prefs.getString('numberOfRigs') ?? '';
-      _ipAIServerController.text = prefs.getString('ipAIServer') ?? '';
-      _portAIServerController.text = prefs.getString('portAIServer') ?? '';
+      _geminiAPIKey.text = prefs.getString('geminiAPI') ?? '';
+      _deepgramAPIKey.text = prefs.getString('deepgramAPI') ?? '';
     });
   }
 
@@ -113,14 +115,14 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     }
   }
 
-  Future<void> _saveAISettings() async {
+  Future<void> _saveAPISettings() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (_ipAIServerController.text.isNotEmpty) {
-      await prefs.setString('ipAIServer', _ipAIServerController.text);
+    if (_geminiAPIKey.text.isNotEmpty) {
+      await prefs.setString('geminiAPI', _geminiAPIKey.text);
     }
-    if (_portAIServerController.text.isNotEmpty) {
-      await prefs.setString('portAIServer', _portAIServerController.text);
+    if (_deepgramAPIKey.text.isNotEmpty) {
+      await prefs.setString('deepgramAPI', _deepgramAPIKey.text);
     }
   }
 
@@ -190,7 +192,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               : greenShade.withOpacity(0.4),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Text(
-                        "AI Server",
+                        "Set API Keys",
                         style: googleTextStyle(
                             40.sp, FontWeight.w600, Colors.black),
                       ),
@@ -622,46 +624,73 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "AI Server IP Address",
+                                      "Gemini API Key",
                                       style: googleTextStyle(
                                           35.sp, FontWeight.w600, Colors.white),
                                     ),
                                     SizedBox(
                                       height: 25,
                                     ),
-                                    TextField(
-                                      keyboardType: TextInputType.number,
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
-                                      controller: _ipAIServerController,
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        prefixIcon: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 5.0,
-                                          ),
-                                          child: Icon(
-                                            Icons.computer,
-                                            color: Colors.cyan,
-                                            size: 25,
-                                          ),
-                                        ),
-                                        hintText: translate(
-                                            'connectionManager.hintTextAI'),
-                                        hintStyle: googleTextStyle(
+                                    Stack(children: [
+                                      TextField(
+                                        obscureText: !geminiVisible,
+                                        keyboardType: TextInputType.number,
+                                        style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
                                             darkBackgroundColor),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 30, horizontal: 30),
+                                        controller: _geminiAPIKey,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          prefixIcon: Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 5.0,
+                                            ),
+                                            child: Icon(
+                                              Icons.computer,
+                                              color: Colors.cyan,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          hintText: translate(
+                                              'connectionManager.hintTextAI'),
+                                          hintStyle: googleTextStyle(
+                                              25.sp,
+                                              FontWeight.w500,
+                                              darkBackgroundColor),
+                                          isDense: true,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 30, horizontal: 30),
+                                        ),
                                       ),
-                                    ),
+                                      Container(
+                                        alignment: Alignment.bottomRight,
+                                        padding: EdgeInsets.only(
+                                            top: 23.h, right: 20.w),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                geminiVisible = !geminiVisible;
+                                              });
+                                            },
+                                            icon: geminiVisible
+                                                ? Icon(
+                                                    size: 30,
+                                                    Icons.visibility_off,
+                                                    color: Colors.cyan,
+                                                  )
+                                                : Icon(
+                                                    size: 30,
+                                                    Icons.visibility,
+                                                    color: Colors.cyan,
+                                                  )),
+                                      ),
+                                    ]),
                                   ],
                                 ),
                               ),
@@ -679,46 +708,74 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "AI Server Port Number",
+                                      "Deepgram API Key",
                                       style: googleTextStyle(
                                           35.sp, FontWeight.w600, Colors.white),
                                     ),
                                     SizedBox(
                                       height: 25,
                                     ),
-                                    TextField(
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
-                                      controller: _portAIServerController,
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        prefixIcon: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 5.0,
-                                          ),
-                                          child: Icon(
-                                            Icons.settings_ethernet,
-                                            color: Colors.cyan,
-                                            size: 25,
-                                          ),
-                                        ),
-                                        hintText: translate(
-                                            'connectionManager.hintTextPort'),
-                                        hintStyle: googleTextStyle(
+                                    Stack(children: [
+                                      TextField(
+                                        style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
                                             darkBackgroundColor),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 30, horizontal: 30),
+                                        obscureText: !deepgramVisible,
+                                        controller: _deepgramAPIKey,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          prefixIcon: Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 5.0,
+                                            ),
+                                            child: Icon(
+                                              Icons.settings_ethernet,
+                                              color: Colors.cyan,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          hintText: translate(
+                                              'connectionManager.hintTextPort'),
+                                          hintStyle: googleTextStyle(
+                                              25.sp,
+                                              FontWeight.w500,
+                                              darkBackgroundColor),
+                                          isDense: true,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 30, horizontal: 30),
+                                        ),
+                                        keyboardType: TextInputType.number,
                                       ),
-                                      keyboardType: TextInputType.number,
-                                    ),
+                                      Container(
+                                        alignment: Alignment.bottomRight,
+                                        padding: EdgeInsets.only(
+                                            top: 23.h, right: 20.w),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                deepgramVisible =
+                                                    !deepgramVisible;
+                                              });
+                                            },
+                                            icon: deepgramVisible
+                                                ? Icon(
+                                                    size: 30,
+                                                    Icons.visibility_off,
+                                                    color: Colors.cyan,
+                                                  )
+                                                : Icon(
+                                                    size: 30,
+                                                    Icons.visibility,
+                                                    color: Colors.cyan,
+                                                  )),
+                                      ),
+                                    ]),
                                   ],
                                 ),
                               ),
@@ -731,7 +788,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: () async {
-                            await _saveAISettings();
+                            await _saveAPISettings();
                             aiStatus = await checkAIServerConnection();
                             setState(() {
                               aiStatus = aiStatus;
@@ -751,13 +808,6 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               children: [
                                 Text(
                                   translate('connectionManager.connect'),
-                                  overflow: TextOverflow.clip,
-                                  textAlign: TextAlign.center,
-                                  style: googleTextStyle(40.sp, FontWeight.w600,
-                                      darkBackgroundColor),
-                                ),
-                                Text(
-                                  "the AI Server",
                                   overflow: TextOverflow.clip,
                                   textAlign: TextAlign.center,
                                   style: googleTextStyle(40.sp, FontWeight.w600,
