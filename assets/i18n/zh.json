@@ -57,9 +57,9 @@
         "hintTextScreens": "输入屏幕数量",
         "hintTextUsername": "输入您的用户名",
         "hintTextPassword": "输入您的密码",
-        "hintTextAI": "输入 AI 服务器的 IP",
-        "hintTextPort": "输入端口号",
-        "connect": "连接到"
+        "hintGeminiAPI": "输入 Gemini API 密钥",
+        "hintDeepgramAPI": "输入 Deepgram API 密钥",
+        "connect": "保存"
     },
     "tasks": {
         "relaunchRig": "重新启动",

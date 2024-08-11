@@ -57,9 +57,9 @@
         "hintTextScreens": "画面の数を入力してください",
         "hintTextUsername": "ユーザー名を入力してください",
         "hintTextPassword": "パスワードを入力してください",
-        "hintTextAI": "AIサーバーのIPを入力してください",
-        "hintTextPort": "ポート番号を入力してください",
-        "connect": "接続"
+        "hintGeminiAPI": "Gemini API キーを入力してください",
+        "hintDeepgramAPI": "Deepgram API キーを入力してください",
+        "connect": "保存"
     },
     "tasks": {
         "relaunchRig": "再起動",

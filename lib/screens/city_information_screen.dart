@@ -188,7 +188,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   met() async {
     dir = await getApplicationDocumentsDirectory();
     file = File('${dir.path}/textToSpeech.wav');
-  }
+  } 
 
   _stop() {
     player.stop();

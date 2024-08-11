@@ -57,9 +57,9 @@
         "hintTextScreens": "स्क्रीन की संख्या दर्ज करें",
         "hintTextUsername": "अपना उपयोगकर्ता नाम दर्ज करें",
         "hintTextPassword": "अपना पासवर्ड दर्ज करें",
-        "hintTextAI": "AI सर्वर का IP दर्ज करें",
-        "hintTextPort": "पोर्ट नंबर दर्ज करें",
-        "connect": "से कनेक्ट करें"
+        "hintGeminiAPI": "Gemini API कुंजी दर्ज करें",
+        "hintDeepgramAPI": "Deepgram API कुंजी दर्ज करें",
+        "connect": "कनेक्ट"
     },
     "tasks": {
         "relaunchRig": "फिर से शुरू करें",

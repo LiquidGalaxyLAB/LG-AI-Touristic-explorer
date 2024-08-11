@@ -57,9 +57,9 @@
 		"hintTextScreens": "Inserisci il numero di schermi",
 		"hintTextUsername": "Inserisci il tuo nome utente",
 		"hintTextPassword": "Inserisci la tua password",
-		"hintTextAI": "Inserisci l'IP del Server AI",
-		"hintTextPort": "Inserisci il numero di porta",
-		"connect": "Connetti al"
+		"hintGeminiAPI": "Inserisci la chiave API di Gemini",
+		"hintDeepgramAPI": "Inserisci la chiave API di Deepgram",
+		"connect": "Salva"
 	},
 	"tasks": {
 		"relaunchRig": "Riavvia",

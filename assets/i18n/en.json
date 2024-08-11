@@ -57,9 +57,9 @@
 		"hintTextScreens": "Enter the number of screens",
 		"hintTextUsername": "Enter your username",
 		"hintTextPassword": "Enter your password",
-		"hintTextAI": "Enter AI Server's IP",
-		"hintTextPort": "Enter the port number",
-		"connect": "Connect to the"
+		"hintGeminiAPI": "Enter Gemini API Key",
+		"hintDeepgramAPI": "Enter Deepgram API Key",
+		"connect": "Save"
 	},
 	"tasks": {
 		"relaunchRig": "Relaunch",

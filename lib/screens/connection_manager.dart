@@ -635,7 +635,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             ),
                                           ),
                                           hintText: translate(
-                                              'connectionManager.hintTextAI'),
+                                              'connectionManager.hintGeminiAPI'),
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
@@ -718,7 +718,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             ),
                                           ),
                                           hintText: translate(
-                                              'connectionManager.hintTextPort'),
+                                              'connectionManager.hintDeepgramAPI'),
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
