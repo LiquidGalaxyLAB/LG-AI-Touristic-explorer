@@ -162,24 +162,36 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isURL = false;
   String img = "";
   getCityData() async {
-    String cityName = widget.cityName;
-    LatLng coordinates = widget.coordinates;
-    String locale = LocalizedApp.of(context)
-        .delegate
-        .currentLocale
-        .toString()
-        .toLowerCase();
-    city = await getCityInformation(
-        "${cityName}, ${widget.countryName}", coordinates, locale);
-
-    List<Place> data = await generatePlaces();
-    setState(() {
-      isLoading = false;
-      isPlaceGenerated = true;
-    });
-    initCards(city, data);
+    try {
+      String cityName = widget.cityName;
+      LatLng coordinates = widget.coordinates;
+      String locale = LocalizedApp.of(context)
+          .delegate
+          .currentLocale
+          .toString()
+          .toLowerCase();
+      city = await getCityInformation(
+          "${cityName}, ${widget.countryName}", coordinates, locale);
+      List<Place> data = await generatePlaces();
+      setState(() {
+        isLoading = false;
+        isPlaceGenerated = true;
+      });
+      initCards(city, data);
+    } catch (e) {
+      ToastService.showErrorToast(
+        context,
+        length: ToastLength.medium,
+        expandedHeight: 100,
+        child: Text(
+          'There was an error in generating data. Try Again',
+          style: googleTextStyle(32.sp, FontWeight.w500, white),
+        ),
+      );
+    }
   }
 
+  bool isStoryButtonTapped = false;
   bool isStoryGenerated = false;
   bool isPlaying = false;
   final player = AudioPlayer();
@@ -188,7 +200,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   met() async {
     dir = await getApplicationDocumentsDirectory();
     file = File('${dir.path}/textToSpeech.wav');
-  } 
+  }
 
   _stop() {
     player.stop();
@@ -213,7 +225,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         body: jsonEncode({"text": content}));
     if (response.statusCode == 200) {
       final bytes = response.bodyBytes;
-
+      print(bytes);
       await file.writeAsBytes(bytes);
 
       await player.play(DeviceFileSource(file.path));
@@ -890,6 +902,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           !isStoryGenerated
                               ? GestureDetector(
                                   onTap: () async {
+                                    setState(() {
+                                      isStoryButtonTapped = true;
+                                    });
                                     String locale = LocalizedApp.of(context)
                                         .delegate
                                         .currentLocale
@@ -912,11 +927,31 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                       borderRadius: BorderRadius.circular(20),
                                       color: darkSecondaryColor,
                                     ),
-                                    child: Text(
-                                      translate('city.narrate'),
-                                      style: googleTextStyle(
-                                          37.sp, FontWeight.w500, white),
-                                    ),
+                                    child: isStoryButtonTapped
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                translate(
+                                                    'city.storyGenerating'),
+                                                style: googleTextStyle(37.sp,
+                                                    FontWeight.w500, white),
+                                                textAlign: TextAlign.center,
+                                                overflow: TextOverflow.clip,
+                                              ),
+                                              10.pw,
+                                              CircularProgressIndicator(
+                                                color: Colors.white,
+                                              )
+                                            ],
+                                          )
+                                        : Text(
+                                            translate('city.narrate'),
+                                            style: googleTextStyle(
+                                                37.sp, FontWeight.w500, white),
+                                            textAlign: TextAlign.center,
+                                          ),
                                   ),
                                 )
                               : GestureDetector(

@@ -101,6 +101,7 @@
 		"showin": "Show in",
 		"clean": "Clean",
 		"orbit": "Orbit",
-		"close": "Close"
+		"close": "Close",
+		"storyGenerating": "Generating Story"
 	}
 }

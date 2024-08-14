@@ -101,6 +101,7 @@
         "showin": "显示在",
         "clean": "清除",
         "orbit": "轨道",
-        "close": "关闭"
+        "close": "关闭",
+        "storyGenerating": "生成故事"
     }
 }

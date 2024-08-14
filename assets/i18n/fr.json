@@ -101,6 +101,7 @@
         "showin": "Afficher dans",
         "clean": "Nettoyer",
         "orbit": "Orbite",
-        "close": "Fermer"
+        "close": "Fermer",
+        "storyGenerating": "Génération de l'histoire"
     }
 }

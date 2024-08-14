@@ -101,6 +101,7 @@
         "showin": "表示",
         "clean": "クリーン",
         "orbit": "オービット",
-        "close": "閉じる"
+        "close": "閉じる",
+        "storyGenerating": "ストーリーを生成中"
     }
 }
