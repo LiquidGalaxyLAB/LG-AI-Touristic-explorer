@@ -289,7 +289,7 @@ class LGConnection {
         "      <overlayXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <screenXY x=\"1\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <rotationXY x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
-        "      <size x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <size x=\"2.5\" y=\"2.5\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <gx:balloonVisibility>1</gx:balloonVisibility>\n" +
         "    </ScreenOverlay>\n" +
         "  </Document>\n" +

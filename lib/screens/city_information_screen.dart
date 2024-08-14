@@ -246,7 +246,42 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   bool isStatic = false;
-  _checkGiven() {
+
+  sendCityBalloon() async {
+    try {
+      bool present = checkIsExtra(widget.cityName);
+      if (present) {
+        var cityname = widget.cityName.replaceAll(" ", "").toLowerCase();
+        var description = data[cityname]?[0]['description'] ?? "";
+        print(description);
+        var imageUrl = mainLogoAWS;
+        if (placeImage.containsKey(cityname)) {
+          imageUrl = placeImage[cityname] ?? mainLogoAWS;
+        }
+        print(imageUrl);
+        await lg.sendStaticBalloon(
+            "orbitballoon", "", widget.cityName, 500, description, imageUrl);
+      } else {
+        var imageUrl = await getPlaceIdFromName(widget.cityName);
+        String locale = LocalizedApp.of(context)
+            .delegate
+            .currentLocale
+            .toString()
+            .toLowerCase();
+        String description =
+            await generateCityDescription(widget.cityName, locale);
+        print(description);
+        print(imageUrl);
+        await lg.sendStaticBalloon(
+            "orbitballoon", "", widget.cityName, 500, description, imageUrl);
+      }
+    } catch (e) {
+      print("An error occurred: $e");
+    }
+  }
+
+  _checkGiven() async {
+    await sendCityBalloon();
     if (widget.cityGiven != null && widget.cityPOI != null) {
       setState(() {
         isStatic = true;

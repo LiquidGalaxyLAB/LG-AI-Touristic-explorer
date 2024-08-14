@@ -29,7 +29,20 @@ Write a captivating and vivid story about $cityName. Describe the city's landmar
   return response.text!;
 }
 
-//
+Future<String> generateCityDescription(String cityName, String locale) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final apiKey = prefs.getString('geminiAPI') ?? "";
+  final model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
+  String language = getLanguageName(locale);
+
+  final prompt = '''
+Write a breif description of $cityName (25-30 words). IN $language 
+''';
+  final content = [Content.text(prompt)];
+  final response = await model.generateContent(content,
+      generationConfig: GenerationConfig(maxOutputTokens: 8192));
+  return response.text!;
+}
 
 // You’re a seasoned data analyst with extensive experience in gathering and organizing detailed information about cities around the globe. Your specialty lies in compiling factual and structured data with a rich depth of insight.Your task is to generate a JSON object that encapsulates comprehensive $factType information about a specific city, referred to as $cityName.
 // The JSON object should adhere to the following structure: {\"${factType}_facts\": [{{\"fact\":\"detailed information about fact\"}}, {{\"fact\":\"detailed information about fact\"}}, ...]}}. It is critical that all JSON keys remain in English and follow the specified format, maintaining consistency even when the facts themselves are presented in another language.
