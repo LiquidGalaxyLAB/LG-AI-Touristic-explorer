@@ -9,8 +9,7 @@
 	"about": {
 		"description1": "LG-AI-Touristic-Explorer è un'applicazione Flutter immersiva progettata per dare vita alle città attraverso visualizzazioni coinvolgenti e narrazione accattivante. Utilizzando il potere dell'AI e di Google Maps, l'app offre un'esperienza esplorativa unica che approfondisce la geografia, la storia, la cultura e i punti di interesse di una città.",
 		"description2": "Questo progetto è stato creato nell'ambito di Google Summer of Code 24 sotto il progetto Liquid Galaxy. Scopri l'essenza di una città attraverso straordinarie immagini che mettono in risalto la sua posizione, il clima e le meraviglie architettoniche. Immergiti nella ricca storia della città, esplorando le principali tappe e gli eventi significativi. Scopri fatti e storie affascinanti resi vivi grazie alla narrazione AI di Deepgram.",
-		"description3": "Vivi un'integrazione senza soluzione di continuità con Google Maps, che ti consente di esplorare la città sia sul tuo tablet che sul Rig. L'app utilizza il modello LLM open-source Gemma di Google, eseguito localmente utilizzando Docker per un'inferenza efficiente.",
-		"contributor": "Contributore:",
+		"description3": "Vivi un'integrazione senza soluzione di continuità con Google Maps, che ti consente di esplorare la città sia sul tablet che sul Rig. L'app utilizza l'API Gemini di Google per un'inferenza efficiente.",
 		"mentor": "Mentore:",
 		"admin": "Amministratore dell'Organizzazione:",
 		"contact": "Informazioni di Contatto del Contributore:"
@@ -67,7 +66,11 @@
 		"cleanKML": "Pulisci",
 		"rebootRig": "Riavvia",
 		"cleanLogos": "Pulisci Loghi",
-		"showLogos": "Mostra Loghi"
+		"showLogos": "Mostra Loghi",
+		"confirmation": "Sei sicuro di voler riavviare il Rig?",
+		"rebootConfirmationMessage": "Se premi conferma, il Rig verrà riavviato immediatamente.",
+		"cancel": "Annulla",
+		"confirm": "Sì"
 	},
 	"city": {
 		"factC": "Fatto Culturale",

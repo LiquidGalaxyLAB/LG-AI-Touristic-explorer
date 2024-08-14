@@ -9,7 +9,7 @@
 	"about": {
 		"description1": "LG-AI-Touristic-Explorer es una aplicación inmersiva de Flutter diseñada para dar vida a las ciudades a través de visualizaciones cautivadoras y narraciones atractivas. Utilizando el poder de la IA y Google Maps, la aplicación ofrece una experiencia de exploración única que profundiza en la geografía, historia, cultura y puntos de interés de una ciudad.",
 		"description2": "Este proyecto fue creado como parte de Google Summer of Code 24 bajo el Proyecto Liquid Galaxy. Descubre la esencia de una ciudad a través de impresionantes visuales que destacan su ubicación, clima y maravillas arquitectónicas. Sumérgete en la rica historia de la ciudad, explorando hitos clave y eventos significativos. Descubre hechos y relatos fascinantes traídos a la vida con la narración de Deepgram AI.",
-		"description3": "Experimenta una integración perfecta con Google Maps, lo que te permite explorar la ciudad tanto en tu tableta como en el Rig. La aplicación utiliza el modelo LLM de código abierto de Google llamado Gemma, ejecutándose localmente usando Docker para una inferencia eficiente.",
+		"description3": "Experimente una integración fluida con Google Maps, que le permite explorar la ciudad tanto en su tableta como en el Rig. La aplicación utiliza la API Gemini de Google para una inferencia eficiente.",
 		"contributor": "Colaborador:",
 		"mentor": "Mentor:",
 		"admin": "Administrador de la Organización:",
@@ -62,12 +62,16 @@
 		"connect": "Guardar"
 	},
 	"tasks": {
-		"relaunchRig": "Reiniciar",
+		"relaunchRig": "Relanzar",
 		"shutdownRig": "Apagar",
 		"cleanKML": "Limpiar",
 		"rebootRig": "Reiniciar",
 		"cleanLogos": "Limpiar Logos",
-		"showLogos": "Mostrar Logos"
+		"showLogos": "Mostrar Logos",
+		"confirmation": "¿Está seguro de que desea reiniciar el Rig?",
+		"rebootConfirmationMessage": "Si presiona confirmar, el Rig se reiniciará inmediatamente.",
+		"cancel": "Cancelar",
+		"confirm": "Sí"
 	},
 	"city": {
 		"factC": "Dato Cultural",

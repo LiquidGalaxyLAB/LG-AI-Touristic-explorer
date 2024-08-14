@@ -9,7 +9,7 @@
     "about": {
         "description1": "LG-AI-Touristic-Explorer 是一个沉浸式 Flutter 应用程序，旨在通过引人入胜的可视化和故事讲述使城市栩栩如生。通过利用 AI 和 Google 地图的力量，该应用程序提供了独特的探索体验，深入了解城市的地理、历史、文化和兴趣点。",
         "description2": "该项目是 Google Summer of Code 24 的一部分，在 Liquid Galaxy 项目下创建。通过令人惊叹的视觉效果展示城市的本质，突出其位置、气候和建筑奇迹。沉浸在城市的丰富历史中，探索关键的里程碑和重要事件。借助 Deepgram AI 叙事，揭开引人入胜的事实和故事。",
-        "description3": "体验与 Google 地图的无缝集成，使您能够在平板电脑和 Rig 上探索城市。该应用程序使用 Google 的 Gemma 开源 LLM 模型，使用 Docker 本地运行以实现高效推理。",
+        "description3": "体验与 Google 地图的无缝集成，使您能够在平板电脑和 Rig 上探索城市。该应用程序利用 Google 的 Gemini API 进行高效推理。",
         "contributor": "贡献者：",
         "mentor": "导师：",
         "admin": "组织管理员：",
@@ -67,7 +67,11 @@
         "cleanKML": "清除",
         "rebootRig": "重启",
         "cleanLogos": "清除徽标",
-        "showLogos": "显示徽标"
+        "showLogos": "显示徽标",
+        "confirmation": "您确定要重新启动 Rig 吗？",
+        "rebootConfirmationMessage": "如果按下确认，Rig 将立即重新启动。",
+        "cancel": "取消",
+        "confirm": "是的"
     },
     "city": {
         "factC": "文化事实",

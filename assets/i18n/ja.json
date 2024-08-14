@@ -9,7 +9,7 @@
     "about": {
         "description1": "LG-AI-Touristic-Explorerは、魅力的なビジュアライゼーションとエンゲージングなストーリーテリングを通じて、都市を活気づける没入型のFlutterアプリケーションです。AIとGoogleマップの力を利用して、地理、歴史、文化、観光スポットに深く掘り下げたユニークな探索体験を提供します。",
         "description2": "このプロジェクトは、Liquid Galaxy Projectの一環としてGoogle Summer of Code 24で作成されました。都市の位置、気候、建築の驚異を際立たせる見事なビジュアルを通じて、その本質を発見してください。主要なマイルストーンと重要なイベントを探索し、都市の豊かな歴史に没入してください。Deepgram AIナレーションの助けを借りて、興味深い事実やストーリーが生き生きと再現されます。",
-        "description3": "Googleマップとのシームレスな統合を体験し、タブレットとリグの両方で都市を探索することができます。アプリは、効率的な推論のためにDockerを使用してローカルで実行されるGoogleのGemmaオープンソースLLMモデルを利用しています。",
+        "description3": "Google マップとのシームレスな統合を体験し、タブレットとリグの両方で街を探索できます。アプリは Google の Gemini API を使用して効率的な推論を行います。",
         "contributor": "貢献者:",
         "mentor": "メンター:",
         "admin": "組織管理者:",
@@ -67,7 +67,11 @@
         "cleanKML": "クリーン",
         "rebootRig": "再起動",
         "cleanLogos": "ロゴをクリーン",
-        "showLogos": "ロゴを表示"
+        "showLogos": "ロゴを表示",
+        "confirmation": "リグを再起動してもよろしいですか?",
+        "rebootConfirmationMessage": "確認ボタンを押すと、リグがすぐに再起動されます。",
+        "cancel": "キャンセル",
+        "confirm": "はい"
     },
     "city": {
         "factC": "文化的事実",

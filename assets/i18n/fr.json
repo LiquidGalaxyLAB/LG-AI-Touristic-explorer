@@ -9,7 +9,7 @@
     "about": {
         "description1": "LG-AI-Touristic-Explorer est une application Flutter immersive conçue pour donner vie aux villes à travers des visualisations captivantes et des récits engageants. En utilisant la puissance de l'IA et de Google Maps, l'application offre une expérience d'exploration unique qui plonge dans la géographie, l'histoire, la culture et les points d'intérêt d'une ville.",
         "description2": "Ce projet a été créé dans le cadre de Google Summer of Code 24 sous le projet Liquid Galaxy. Découvrez l'essence d'une ville à travers des visuels époustouflants qui mettent en avant son emplacement, son climat et ses merveilles architecturales. Imprégnez-vous de l'histoire riche de la ville, en explorant les étapes clés et les événements marquants. Découvrez des faits et des histoires fascinants mis en lumière grâce à la narration IA de Deepgram.",
-        "description3": "Profitez d'une intégration transparente avec Google Maps, vous permettant d'explorer la ville à la fois sur votre tablette et sur le Rig. L'application utilise le modèle LLM open-source Gemma de Google, fonctionnant localement à l'aide de Docker pour une inférence efficace.",
+        "description3": "Découvrez une intégration transparente avec Google Maps, vous permettant d'explorer la ville à la fois sur votre tablette et le Rig. L'application utilise l'API Gemini de Google pour une inférence efficace.",
         "contributor": "Contributeur :",
         "mentor": "Mentor :",
         "admin": "Administrateur de l'organisation :",
@@ -67,7 +67,11 @@
         "cleanKML": "Nettoyer",
         "rebootRig": "Redémarrer",
         "cleanLogos": "Nettoyer les Logos",
-        "showLogos": "Afficher les Logos"
+        "showLogos": "Afficher les Logos",
+        "confirmation": "Êtes-vous sûr de vouloir redémarrer le Rig?",
+        "rebootConfirmationMessage": "Si vous appuyez sur confirmer, le Rig redémarrera immédiatement.",
+        "cancel": "Annuler",
+        "confirm": "Oui"
     },
     "city": {
         "factC": "Fait Culturel",
