@@ -75,6 +75,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         GestureDetector(
                           onTap: () async {
                             await lg.cleanRightBalloon();
+                            await lg.cleanVisualization();
                             await lg.sendStaticBalloon(
                                 "orbitballoon",
                                 widget.factTitle,
@@ -85,7 +86,7 @@ class _CarouselCardState extends State<CarouselCard> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: size.height * .16,
+                            height: size.height * .20,
                             width: size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -104,6 +105,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                   translate('city.showin') + " LG",
                                   style: googleTextStyle(
                                       35.sp, FontWeight.w700, fontGreen),
+                                  textAlign: TextAlign.center,
                                 ),
                               ],
                             ),
@@ -115,7 +117,7 @@ class _CarouselCardState extends State<CarouselCard> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: size.height * .16,
+                            height: size.height * .20,
                             width: size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -130,20 +132,31 @@ class _CarouselCardState extends State<CarouselCard> {
                                   size: 50,
                                 ),
                                 SizedBox(height: 17),
-                                Text(
-                                  translate('city.clean') + " Balloon",
-                                  style: googleTextStyle(
-                                      35.sp, FontWeight.w700, fontGreen),
+                                Center(
+                                  child: Text(
+                                    translate('city.clean') + " Balloon",
+                                    style: googleTextStyle(
+                                        35.sp, FontWeight.w700, fontGreen),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                         ),
                         GestureDetector(
-                          onTap: () async {},
+                          onTap: () async {
+                            await lg.sendStaticBalloon(
+                                "orbitballoon",
+                                widget.factTitle,
+                                widget.cityname,
+                                500,
+                                widget.factDesc,
+                                mainLogoAWS);
+                          },
                           child: Container(
                             alignment: Alignment.center,
-                            height: size.height * .16,
+                            height: size.height * .20,
                             width: size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -196,6 +209,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         child: Text(
                           translate('city.close'),
                           style: googleTextStyle(30.sp, FontWeight.w500, white),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),

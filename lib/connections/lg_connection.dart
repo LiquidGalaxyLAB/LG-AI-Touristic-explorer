@@ -15,7 +15,7 @@ class LGConnection {
 
   Future<void> initConnectionDetails() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _host = prefs.getString('ipAddress') ?? '192.168.56.101';
+    _host = prefs.getString('ipAddress') ?? '192.168.201.3';
     _port = prefs.getString('sshPort') ?? '22';
     _username = prefs.getString('username') ?? 'lg';
     _passwordOrKey = prefs.getString('password') ?? 'lg';

@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
       },
       onClickOverlay: (target) {
         print('onClickOverlay: ${target.identify}');
-        if (target.identify == "connectionAIStatusKey") {
+        if (target.identify == "connectionLGStatusKey") {
           _scaffoldKey.currentState!.openEndDrawer();
         }
         if (target.identify == "aboutKey") {
@@ -723,6 +723,7 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     agreed = true;
                   });
+                  Navigator.of(context).pop();
                 },
               ),
             ],
@@ -732,14 +733,18 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  bool confirm = true;
   FocusNode textFocus = FocusNode();
   String? dropDownValue = '';
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
-    if (agreed) {
+    if (agreed && confirm) {
       Future.delayed(Duration.zero, () => _showTour());
+      setState(() {
+        confirm = false;
+      });
     }
     return Scaffold(
         key: _scaffoldKey,
