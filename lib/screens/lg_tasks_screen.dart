@@ -67,7 +67,104 @@ class _LGTasksState extends State<LGTasks> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            await lg.relaunchLG();
+                            bool? confirmed = await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        translate('tasks.confirmationRelaunch'),
+                                        style: googleTextStyle(
+                                            50.sp,
+                                            FontWeight.w700,
+                                            Colors.blueAccent)),
+                                  ),
+                                  content: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
+                                    child: Text(
+                                        translate(
+                                            'tasks.relaunchConfirmationMessage'),
+                                        style: googleTextStyle(28.sp,
+                                            FontWeight.w400, Colors.black)),
+                                  ),
+                                  actions: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white60,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  false); // User cancelled the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.cancel'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.blueAccent)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.blueAccent,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  true); // User confirmed the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.confirm'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.white)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+
+                            if (confirmed == true) {
+                              await lg
+                                  .relaunchLG(); // Reboot the rig if user confirmed
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -95,7 +192,104 @@ class _LGTasksState extends State<LGTasks> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            await lg.shutdownLG();
+                            bool? confirmed = await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        translate('tasks.confirmationShutdown'),
+                                        style: googleTextStyle(
+                                            50.sp,
+                                            FontWeight.w700,
+                                            Colors.blueAccent)),
+                                  ),
+                                  content: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
+                                    child: Text(
+                                        translate(
+                                            'tasks.shutdownConfirmationMessage'),
+                                        style: googleTextStyle(28.sp,
+                                            FontWeight.w400, Colors.black)),
+                                  ),
+                                  actions: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white60,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  false); // User cancelled the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.cancel'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.blueAccent)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.blueAccent,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  true); // User confirmed the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.confirm'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.white)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+
+                            if (confirmed == true) {
+                              await lg
+                                  .shutdownLG(); // Reboot the rig if user confirmed
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -160,7 +354,104 @@ class _LGTasksState extends State<LGTasks> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            await lg.rebootLG();
+                            bool? confirmed = await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        translate('tasks.confirmationReboot'),
+                                        style: googleTextStyle(
+                                            50.sp,
+                                            FontWeight.w700,
+                                            Colors.blueAccent)),
+                                  ),
+                                  content: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
+                                    child: Text(
+                                        translate(
+                                            'tasks.rebootConfirmationMessage'),
+                                        style: googleTextStyle(28.sp,
+                                            FontWeight.w400, Colors.black)),
+                                  ),
+                                  actions: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white60,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  false); // User cancelled the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.cancel'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.blueAccent)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.blueAccent,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop(
+                                                  true); // User confirmed the action
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  translate('tasks.confirm'),
+                                                  style: googleTextStyle(
+                                                      32.sp,
+                                                      FontWeight.w500,
+                                                      Colors.white)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+
+                            if (confirmed == true) {
+                              await lg
+                                  .rebootLG(); // Reboot the rig if user confirmed
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
