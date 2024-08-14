@@ -1077,16 +1077,19 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.only(top: 55.h),
+                          padding: EdgeInsets.only(top: 20.h),
                           child: Text(
-                            translate('home.appbar.gemma'),
+                            translate('home.appbar.gemma') + ":",
                             style:
-                                googleTextStyle(28.sp, FontWeight.w600, white),
+                                googleTextStyle(35.sp, FontWeight.w600, white),
                           ),
                         ),
+                        SizedBox(
+                          width: 20.w,
+                        ),
                         Image.asset(
-                          "assets/images/gemma1.png",
-                          scale: 15,
+                          geminiLogo,
+                          scale: 13,
                           // color: Colors.white,
                         )
                       ],

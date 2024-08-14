@@ -55,98 +55,72 @@ class _AboutScreenState extends State<AboutScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: darkBackgroundColor,
+      backgroundColor: const Color.fromARGB(255, 0, 16, 44),
       endDrawer: AppDrawer(size: size),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(140.0),
         child: UpperBar(lgStatus: lgStatus, scaffoldKey: _scaffoldKey),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(40, 40, 40, 20),
+      body: Container(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: const EdgeInsets.fromLTRB(25, 40, 25, 35),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset(
-                      'assets/images/rame_173.png',
-                      scale: 2,
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Text('LG-AI-Touristic-Explorer',
-                        style: GoogleFonts.raleway(
-                          textStyle: TextStyle(
-                            color: white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                    SizedBox(
-                      width: 160.h,
-                    ),
-                  ],
-                ),
-              ),
+              SizedBox(height: 20.h),
+              Image.asset(splash),
               SizedBox(height: 30.h),
               Container(
-                  padding: const EdgeInsets.all(40),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: darkSecondaryColor,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        translate('about.description1'),
-                        style: GoogleFonts.raleway(
-                          textStyle: TextStyle(
-                            letterSpacing: 1,
-                            color: white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
+                padding: const EdgeInsets.fromLTRB(40, 40, 40, 20),
+                child: Container(
+                    padding: const EdgeInsets.all(40),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: darkSecondaryColor,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          translate('about.description1'),
+                          style: GoogleFonts.raleway(
+                            textStyle: TextStyle(
+                              letterSpacing: 1,
+                              color: white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
+                          textAlign: TextAlign.justify,
                         ),
-                        textAlign: TextAlign.justify,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        translate('about.description2'),
-                        style: GoogleFonts.raleway(
-                          textStyle: TextStyle(
-                            letterSpacing: 1,
-                            color: white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
+                        SizedBox(height: 20),
+                        Text(
+                          translate('about.description2'),
+                          style: GoogleFonts.raleway(
+                            textStyle: TextStyle(
+                              letterSpacing: 1,
+                              color: white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
+                          textAlign: TextAlign.justify,
                         ),
-                        textAlign: TextAlign.justify,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        translate('about.description3'),
-                        style: GoogleFonts.raleway(
-                          textStyle: TextStyle(
-                            letterSpacing: 1,
-                            color: white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
+                        SizedBox(height: 20),
+                        Text(
+                          translate('about.description3'),
+                          style: GoogleFonts.raleway(
+                            textStyle: TextStyle(
+                              letterSpacing: 1,
+                              color: white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
+                          textAlign: TextAlign.justify,
                         ),
-                        textAlign: TextAlign.justify,
-                      ),
-                    ],
-                  )),
-              SizedBox(height: 50),
+                      ],
+                    )),
+              ),
+              SizedBox(height: 40),
               Container(
                 width: size.width,
                 child: Column(
@@ -302,7 +276,6 @@ class _AboutScreenState extends State<AboutScreen> {
                   ],
                 ),
               ),
-              Image.asset(splash)
             ],
           ),
         ),

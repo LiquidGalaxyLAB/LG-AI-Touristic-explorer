@@ -2,7 +2,6 @@ const splash = 'assets/images/splash.png';
 const logo = 'assets/images/lg_logo.png';
 const drawerLogo = 'assets/images/drawer.png';
 const image = 'assets/images/image.png';
-const mainLogo = 'assets/images/rame_170.png';
 const homeIcon = 'assets/images/home.png';
 const aboutIcon = 'assets/images/about.png';
 const connectionIcon = 'assets/images/connection.png';
@@ -11,7 +10,7 @@ const settingsIcon = 'assets/images/settings.png';
 const downloadIcon = 'assets/images/download.png';
 const logosLG = "https://myapp33bucket.s3.amazonaws.com/splash.png";
 const mainLogoAWS = "https://myapp33bucket.s3.amazonaws.com/Frame+171.png";
-const gemmaLogo = "'assets/images/gemma.png";
+const geminiLogo = "assets/images/gemini.png";
 
 const atlantaImage =
     "https://upload.wikimedia.org/wikipedia/commons/7/70/Atlanta_cityscape.jpg";
