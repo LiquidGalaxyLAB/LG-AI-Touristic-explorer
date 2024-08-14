@@ -184,6 +184,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   bool isURL = false;
   String img = "";
+  bool retry = false;
+
   getCityData() async {
     try {
       String cityName = widget.cityName;
@@ -202,12 +204,162 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       });
       initCards(city, data);
     } catch (e) {
+      setState(() {
+        retry = true;
+      });
       ToastService.showErrorToast(
         context,
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'There was an error in generating data. Try Again',
+          'There was an error in generating data. Retry.',
+          style: googleTextStyle(32.sp, FontWeight.w500, white),
+        ),
+      );
+    }
+  }
+
+  retryCityData() async {
+    try {
+      String cityName = widget.cityName;
+      LatLng coordinates = widget.coordinates;
+      String locale = LocalizedApp.of(context)
+          .delegate
+          .currentLocale
+          .toString()
+          .toLowerCase();
+      city = await getCityInformation(
+          "${cityName}, ${widget.countryName}", coordinates, locale);
+      setState(() {
+        isLoading = false;
+      });
+      initCityCards(city);
+
+    } catch (e) {
+      setState(() {
+        retry = true;
+      });
+      ToastService.showErrorToast(
+        context,
+        length: ToastLength.medium,
+        expandedHeight: 100,
+        child: Text(
+          'There was an error in generating facts. Retry.',
+          style: googleTextStyle(32.sp, FontWeight.w500, white),
+        ),
+      );
+    }
+  }
+
+  retryPlacesData() async {
+    try {
+      List<Place> data = await generatePlaces();
+      setState(() {
+        isPlaceGenerated = true;
+      });
+      initPlaceCards(data);
+
+    } catch (e) {
+      setState(() {
+        retry = true;
+      });
+      ToastService.showErrorToast(
+        context,
+        length: ToastLength.medium,
+        expandedHeight: 100,
+        child: Text(
+          'There was an error in generating points of interest. Retry.',
+          style: googleTextStyle(32.sp, FontWeight.w500, white),
+        ),
+      );
+    }
+  }
+
+  void initCityCards(City city) {
+    print("GOT IT CITY CARDS");
+    historyCarouselCards.clear();
+    cultureCarouselCards.clear();
+    geographyCarouselCards.clear();
+
+    for (var culturalFact in city.culturalFacts) {
+      cultureCarouselCards.add(
+        CarouselCard(
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factC'),
+          factDesc: culturalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: "",
+        ),
+      );
+    }
+
+    for (var geographicalFact in city.geographicalFacts) {
+      geographyCarouselCards.add(CarouselCard(
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factG'),
+          factDesc: geographicalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: ""));
+    }
+
+    for (var historicalFact in city.historicalFacts) {
+      historyCarouselCards.add(CarouselCard(
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factH'),
+          factDesc: historicalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: ""));
+    }
+  }
+
+  void initPlaceCards(List<Place> pois) {
+    print("THIS IS PLACES DATA");
+    poiCarouselCards.clear();
+    for (Place places in pois) {
+      poiCarouselCards.add(CarouselCard(
+          isOrbitable: !true,
+          cityname: widget.cityName,
+          factTitle: places.name,
+          factDesc: places.details,
+          coordinates: LatLng(places.latitude, places.longitude),
+          imageURL: places.imageUrl));
+    }
+    setState(() {
+      retry = false;
+    });
+  }
+
+  Future<void> narrateStoryFunc() async {
+    try {
+      setState(() {
+        isStoryButtonTapped = true;
+      });
+      String locale = LocalizedApp.of(context)
+          .delegate
+          .currentLocale
+          .toString()
+          .toLowerCase();
+      String content = await generateStory(widget.cityName, locale);
+      print(content);
+      await textToVoice(content);
+      setState(() {
+        isStoryGenerated = true;
+        isPlaying = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        isStoryButtonTapped = false;
+      });
+      ToastService.showErrorToast(
+        context,
+        length: ToastLength.medium,
+        expandedHeight: 100,
+        child: Text(
+          'There was an error in generating the story. Retry.',
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -402,7 +554,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     ),
                                     8.pw,
                                     Container(
-                                      width: size.width * 0.30,
+                                      width: size.width * 0.285,
                                       child: Text(
                                         "${widget.cityName}, ${widget.countryName}",
                                         style: googleTextStyle(
@@ -410,6 +562,71 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                         overflow: TextOverflow.clip,
                                       ),
                                     ),
+                                    retry
+                                        ? IconButton(
+                                            onPressed: () async {
+                                              bool isCityNull = false;
+                                              bool isPlacesNull = false;
+                                              try {
+                                                if (city == null) ;
+                                              } catch (e) {
+                                                isCityNull = true;
+                                              }
+                                              try {
+                                                if (places == null) ;
+                                              } catch (e) {
+                                                isPlacesNull = true;
+                                              }
+                                              if (isCityNull && isPlacesNull) {
+                                                await retryCityData();
+                                                await retryPlacesData();
+                                                print(
+                                                    "Both city and places are null");
+                                              } else if (isCityNull) {
+                                                await retryCityData();
+                                                print("City is null");
+                                              } else if (isPlacesNull) {
+                                                await retryPlacesData();
+                                                print("Places is null");
+                                              } else {
+                                                setState(() {
+                                                  retry = false;
+                                                  isLoading = false;
+                                                  isPlaceGenerated = true;
+                                                });
+                                                print(
+                                                    "Both city and places are initialized");
+                                              }
+                                            },
+                                            icon: Container(
+                                                decoration: BoxDecoration(
+                                                  color: greenShade,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          8, 8, 12, 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.restart_alt,
+                                                        size: 40,
+                                                      ),
+                                                      4.pw,
+                                                      Text(
+                                                        'Retry',
+                                                        style: googleTextStyle(
+                                                            35.sp,
+                                                            FontWeight.w600,
+                                                            darkBackgroundColor),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )))
+                                        : Container()
                                   ],
                                 ),
                                 35.ph,
@@ -517,25 +734,30 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                 ? AnimatedSwitcher(
                                                     duration:
                                                         Duration(seconds: 1),
-                                                    child: Container(
-                                                      height:
-                                                          size.height * 0.45,
-                                                      width: size.width * 0.38,
-                                                      child: CarouselSlider(
-                                                          carouselController:
-                                                              carouselController,
-                                                          items:
-                                                              poiCarouselCards,
-                                                          options:
-                                                              CarouselOptions(
-                                                            enlargeCenterPage:
-                                                                true,
-                                                            height: 700,
-                                                            initialPage: 0,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            autoPlay: false,
-                                                          )),
+                                                    child: Skeletonizer(
+                                                      enabled:
+                                                          !isPlaceGenerated,
+                                                      child: Container(
+                                                        height:
+                                                            size.height * 0.45,
+                                                        width:
+                                                            size.width * 0.38,
+                                                        child: CarouselSlider(
+                                                            carouselController:
+                                                                carouselController,
+                                                            items:
+                                                                poiCarouselCards,
+                                                            options:
+                                                                CarouselOptions(
+                                                              enlargeCenterPage:
+                                                                  true,
+                                                              height: 700,
+                                                              initialPage: 0,
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              autoPlay: false,
+                                                            )),
+                                                      ),
                                                     ),
                                                   )
                                                 : isHistory
@@ -960,22 +1182,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           !isStoryGenerated
                               ? GestureDetector(
                                   onTap: () async {
-                                    setState(() {
-                                      isStoryButtonTapped = true;
-                                    });
-                                    String locale = LocalizedApp.of(context)
-                                        .delegate
-                                        .currentLocale
-                                        .toString()
-                                        .toLowerCase();
-                                    String content = await generateStory(
-                                        widget.cityName, locale);
-                                    print(content);
-                                    await textToVoice(content);
-                                    setState(() {
-                                      isStoryGenerated = true;
-                                      isPlaying = true;
-                                    });
+                                    await narrateStoryFunc();
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
