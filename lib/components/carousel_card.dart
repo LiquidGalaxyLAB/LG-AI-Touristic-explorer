@@ -2,21 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 
 class CarouselCard extends StatefulWidget {
   final String factTitle;
   final String cityname;
   final String factDesc;
+  final bool isOrbitable;
+  final LatLng coordinates;
+  final String imageURL;
   const CarouselCard({
     super.key,
     required this.factTitle,
     required this.factDesc,
     required this.cityname,
+    required this.isOrbitable,
+    required this.coordinates,
+    required this.imageURL,
   });
 
   @override
@@ -53,7 +61,7 @@ class _CarouselCardState extends State<CarouselCard> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
-              backgroundColor: greenShade,
+              backgroundColor: white,
               child: Container(
                 width: size.width * 0.5, // Adjust the width to make it a square
                 height:
@@ -72,6 +80,10 @@ class _CarouselCardState extends State<CarouselCard> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Visibility(
+                          child: Container(),
+                          visible: !widget.isOrbitable,
+                        ),
                         GestureDetector(
                           onTap: () async {
                             await lg.cleanRightBalloon();
@@ -82,12 +94,14 @@ class _CarouselCardState extends State<CarouselCard> {
                                 widget.cityname,
                                 500,
                                 widget.factDesc,
-                                mainLogoAWS);
+                                widget.imageURL);
                           },
                           child: Container(
                             alignment: Alignment.center,
                             height: size.height * .20,
-                            width: size.width * 0.13,
+                            width: widget.isOrbitable
+                                ? size.width * 0.15
+                                : size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color.fromARGB(70, 106, 150, 118),
@@ -118,7 +132,9 @@ class _CarouselCardState extends State<CarouselCard> {
                           child: Container(
                             alignment: Alignment.center,
                             height: size.height * .20,
-                            width: size.width * 0.13,
+                            width: widget.isOrbitable
+                                ? size.width * 0.15
+                                : size.width * 0.13,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color.fromARGB(70, 106, 150, 118),
@@ -144,42 +160,61 @@ class _CarouselCardState extends State<CarouselCard> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () async {
-                            await lg.sendStaticBalloon(
-                                "orbitballoon",
-                                widget.factTitle,
-                                widget.cityname,
-                                500,
-                                widget.factDesc,
-                                mainLogoAWS);
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: size.height * .20,
-                            width: size.width * 0.13,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Color.fromARGB(70, 106, 150, 118),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(height: 15),
-                                Icon(
-                                  Icons.restart_alt,
-                                  color: darkBackgroundColor,
-                                  size: 50,
+                        !widget.isOrbitable
+                            ? GestureDetector(
+                                onTap: () async {
+                                  try {
+                                    await lg.cleanVisualization();
+                                    await lg.cleanRightBalloon();
+                                    await lg.sendStaticBalloon(
+                                        "orbitballoon",
+                                        widget.factTitle,
+                                        widget.cityname,
+                                        500,
+                                        widget.factDesc,
+                                        mainLogoAWS);
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                  var kml = Orbit().buildKmlForPlace(
+                                      Orbit().generateOrbitContent(
+                                          widget.coordinates),
+                                      widget.coordinates,
+                                      widget.factTitle);
+                                  print(kml);
+                                  try {
+                                    await lg.buildOrbit(kml);
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: size.height * .20,
+                                  width: size.width * 0.13,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color.fromARGB(70, 106, 150, 118),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 15),
+                                      Icon(
+                                        Icons.restart_alt,
+                                        color: darkBackgroundColor,
+                                        size: 50,
+                                      ),
+                                      SizedBox(height: 17),
+                                      Text(
+                                        translate('city.orbit'),
+                                        style: googleTextStyle(
+                                            35.sp, FontWeight.w700, fontGreen),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                SizedBox(height: 17),
-                                Text(
-                                  translate('city.orbit'),
-                                  style: googleTextStyle(
-                                      35.sp, FontWeight.w700, fontGreen),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                              )
+                            : SizedBox()
                       ],
                     ),
                     SizedBox(height: 40),

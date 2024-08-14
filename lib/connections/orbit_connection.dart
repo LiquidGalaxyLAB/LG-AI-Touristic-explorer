@@ -106,7 +106,7 @@ generatePOI(String city, LatLng coordinates, String locale) async {
   print('Debug: Detected language: $language');
 
   final prompt = """
-Create a JSON object that includes detailed information about the 4-5 most famous points of interest in the city $city. The JSON object should be structured as follows: {"points_of_interest": [{"name": "Name of the point of interest", "details": "Detailed information about the point of interest"}, {"name": "Name of the point of interest", "details": "Detailed information about the point of interest"}, ...]} and The JSON KEYS AND NAME OF THE POINT OF INTEREST ("name") SHOULD BE IN ENGLISH ONLY EVEN IF THE LANGUAGE OF THE FACTS IS DIFFERENT. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. IN $language. Do not use quotation marks in any facts or text strings to prevent issues with the JSON format.
+Create a JSON object that includes detailed information about the 4-5 most famous points of interest in the city $city. The JSON object should be structured as follows: {"points_of_interest": [{"name": "Name of the point of interest", "details": "Detailed information about the point of interest"}, {"name": "Name of the point of interest", "details": "Detailed information about the point of interest"}, ...]} and The JSON KEYS AND NAME OF THE POINT OF INTEREST ("name") SHOULD BE IN ENGLISH ONLY EVEN IF THE LANGUAGE OF THE FACTS IS DIFFERENT. The response should strictly adhere to the specified JSON format, with no additional symbols, newline characters, or extraneous information. IN $language. Do not use quotation marks ("") in any facts or text strings to prevent issues with the JSON format.
 """;
   print('Debug: Generated prompt: $prompt');
 
@@ -129,6 +129,7 @@ Create a JSON object that includes detailed information about the 4-5 most famou
       point['coordinates'] = coords;
       print('Debug: Retrieved coordinates: $coords');
 
+      // var imageUrl = mainLogoAWS;
       var imageUrl = await getPlaceIdFromName(point['name']);
       point['imageUrl'] = imageUrl;
       print('Debug: Retrieved image URL: $imageUrl');

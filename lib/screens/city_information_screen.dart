@@ -59,34 +59,46 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   List<Widget> historyCarouselCards = [
     const CarouselCard(
+      isOrbitable: false,
       cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+      coordinates: LatLng(1, 1),
+      imageURL: "",
     )
   ];
   List<Widget> cultureCarouselCards = [
     const CarouselCard(
+      isOrbitable: false,
       cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+      coordinates: LatLng(1, 1),
+      imageURL: "",
     )
   ];
   List<Widget> geographyCarouselCards = [
     const CarouselCard(
+      isOrbitable: false,
       cityname: "city",
       factTitle: "Geographical Fact",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
-    )
+      coordinates: LatLng(1, 1),
+      imageURL: "",
+    ),
   ];
   List<Widget> poiCarouselCards = [
     const CarouselCard(
+      isOrbitable: true,
       cityname: "city",
       factTitle: "cityName",
       factDesc:
           "factfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfactfact",
+      coordinates: LatLng(1, 1),
+      imageURL: "",
     )
   ];
   CarouselController carouselController = CarouselController();
@@ -128,34 +140,45 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     poiCarouselCards.clear();
 
     for (var culturalFact in city.culturalFacts) {
-      cultureCarouselCards.add(CarouselCard(
-        cityname: widget.cityName,
-        factTitle: translate('city.factC'),
-        factDesc: culturalFact.fact,
-      ));
+      cultureCarouselCards.add(
+        CarouselCard(
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factC'),
+          factDesc: culturalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: "",
+        ),
+      );
     }
 
     for (var geographicalFact in city.geographicalFacts) {
       geographyCarouselCards.add(CarouselCard(
-        cityname: widget.cityName,
-        factTitle: translate('city.factG'),
-        factDesc: geographicalFact.fact,
-      ));
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factG'),
+          factDesc: geographicalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: ""));
     }
 
     for (var historicalFact in city.historicalFacts) {
       historyCarouselCards.add(CarouselCard(
-        cityname: widget.cityName,
-        factTitle: translate('city.factH'),
-        factDesc: historicalFact.fact,
-      ));
+          isOrbitable: !false,
+          cityname: widget.cityName,
+          factTitle: translate('city.factH'),
+          factDesc: historicalFact.fact,
+          coordinates: widget.coordinates,
+          imageURL: ""));
     }
     for (Place places in pois) {
       poiCarouselCards.add(CarouselCard(
-        cityname: widget.cityName,
-        factTitle: places.name,
-        factDesc: places.details,
-      ));
+          isOrbitable: !true,
+          cityname: widget.cityName,
+          factTitle: places.name,
+          factDesc: places.details,
+          coordinates: LatLng(places.latitude, places.longitude),
+          imageURL: places.imageUrl));
     }
   }
 

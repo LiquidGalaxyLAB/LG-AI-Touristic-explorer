@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/models/place.dart';
 
 class Orbit {
@@ -133,10 +134,11 @@ class Orbit {
     }
     return content;
   }
-  String buildKmlForPlace(String content, Place place) {
+
+  String buildKmlForPlace(String content, LatLng place, String name) {
     String placemark = '''
       <Placemark>
-        <name>${place.name}</name>
+        <name>${name}</name>
         <LookAt>
           <longitude>${place.longitude}</longitude>
           <latitude>${place.latitude}</latitude>
@@ -213,7 +215,7 @@ class Orbit {
     return kmlOrbit;
   }
 
-  String generateOrbitContent(Place place) {
+  String generateOrbitContent(LatLng place) {
     double heading = 0;
     int orbit = 0;
     String content = '';
@@ -260,7 +262,7 @@ class Orbit {
       heading += 10;
       orbit += 1;
     }
-    
+
     return content;
   }
 }
