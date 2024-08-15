@@ -5,7 +5,7 @@ class Place {
   final String details;
   final double latitude;
   final double longitude;
-  final String imageUrl; // New field
+   String imageUrl; // New field
 
   Place({
     required this.name,

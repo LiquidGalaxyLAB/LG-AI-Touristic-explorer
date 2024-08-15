@@ -463,6 +463,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         isStatic = true;
       });
       city = widget.cityGiven!;
+      await changeImageURL(widget.cityPOI!);
       places = widget.cityPOI!;
       checkForExtra();
       initCards(city, places);
@@ -515,6 +516,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool anim = true;
+
+  changeImageURL(List<Place> places) async {
+    for (var place in places) {
+      var imageUrl = await getPlaceIdFromName(place.name);
+      place.imageUrl = imageUrl;
+      print(' Name: ${place.name}' ' Image URL: ${place.imageUrl}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
