@@ -186,8 +186,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   String img = "";
   bool retry = false;
 
-  getCityData() async {
+  retryCityData() async {
     try {
+      print("retryCityData");
       String cityName = widget.cityName;
       LatLng coordinates = widget.coordinates;
       String locale = LocalizedApp.of(context)
@@ -197,46 +198,24 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           .toLowerCase();
       city = await getCityInformation(
           "${cityName}, ${widget.countryName}", coordinates, locale);
-      List<Place> data = await generatePlaces();
+
+      print("retryCityData");
+      initCityCards(city);
       setState(() {
         isLoading = false;
-        isPlaceGenerated = true;
       });
-      initCards(city, data);
-    } catch (e) {
-      setState(() {
-        retry = true;
-      });
-      ToastService.showErrorToast(
+      ToastService.showSuccessToast(
         context,
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'There was an error in generating data. Retry.',
+          'City Fact cards generated!',
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
-    }
-  }
-
-  retryCityData() async {
-    try {
-      String cityName = widget.cityName;
-      LatLng coordinates = widget.coordinates;
-      String locale = LocalizedApp.of(context)
-          .delegate
-          .currentLocale
-          .toString()
-          .toLowerCase();
-      city = await getCityInformation(
-          "${cityName}, ${widget.countryName}", coordinates, locale);
-      setState(() {
-        isLoading = false;
-      });
-      initCityCards(city);
-
     } catch (e) {
       setState(() {
+        isLoading = true;
         retry = true;
       });
       ToastService.showErrorToast(
@@ -258,9 +237,18 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         isPlaceGenerated = true;
       });
       initPlaceCards(data);
-
+      ToastService.showSuccessToast(
+        context,
+        length: ToastLength.medium,
+        expandedHeight: 100,
+        child: Text(
+          'Points of Interest generated!',
+          style: googleTextStyle(32.sp, FontWeight.w500, white),
+        ),
+      );
     } catch (e) {
       setState(() {
+        isPlaceGenerated = false;
         retry = true;
       });
       ToastService.showErrorToast(
@@ -313,6 +301,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           coordinates: widget.coordinates,
           imageURL: ""));
     }
+    if (isPlaceGenerated == true) {
+      setState(() {
+        retry = false;
+      });
+    }
   }
 
   void initPlaceCards(List<Place> pois) {
@@ -327,9 +320,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           coordinates: LatLng(places.latitude, places.longitude),
           imageURL: places.imageUrl));
     }
-    setState(() {
-      retry = false;
-    });
+    if (isLoading == false) {
+      setState(() {
+        retry = false;
+      });
+    }
   }
 
   Future<void> narrateStoryFunc() async {
@@ -437,6 +432,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         await lg.sendStaticBalloon(
             "orbitballoon", "", widget.cityName, 500, description, imageUrl);
       } else {
+        // var imageUrl = mainLogoAWS;
         var imageUrl = await getPlaceIdFromName(widget.cityName);
         String locale = LocalizedApp.of(context)
             .delegate
@@ -471,7 +467,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       });
     } else {
       checkForExtra();
-      getCityData();
+      // getCityData();
+      await retryCityData();
+      await retryPlacesData();
     }
   }
 
@@ -719,113 +717,93 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                 ),
                                 55.ph,
                                 // Carousel
-                                AnimatedSwitcher(
-                                  duration: Duration(seconds: 2),
-                                  child: Skeletonizer(
-                                      enabled: isLoading,
-                                      enableSwitchAnimation: true,
-                                      child: Container(
-                                        width: size.width * .45,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            isPOI
-                                                ? AnimatedSwitcher(
-                                                    duration:
-                                                        Duration(seconds: 1),
-                                                    child: Skeletonizer(
-                                                      enabled:
-                                                          !isPlaceGenerated,
-                                                      child: Container(
-                                                        height:
-                                                            size.height * 0.45,
-                                                        width:
-                                                            size.width * 0.38,
-                                                        child: CarouselSlider(
-                                                            carouselController:
-                                                                carouselController,
-                                                            items:
-                                                                poiCarouselCards,
-                                                            options:
-                                                                CarouselOptions(
-                                                              enlargeCenterPage:
-                                                                  true,
-                                                              height: 700,
-                                                              initialPage: 0,
-                                                              scrollDirection:
-                                                                  Axis.horizontal,
-                                                              autoPlay: false,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  )
-                                                : isHistory
-                                                    ? AnimatedSwitcher(
-                                                        duration: Duration(
-                                                            seconds: 1),
-                                                        child: Container(
-                                                          height: size.height *
-                                                              0.45,
-                                                          width:
-                                                              size.width * 0.38,
-                                                          child: CarouselSlider(
-                                                              items:
-                                                                  historyCarouselCards,
-                                                              options:
-                                                                  CarouselOptions(
-                                                                enlargeCenterPage:
-                                                                    true,
-                                                                height: 700,
-                                                                initialPage: 0,
-                                                                scrollDirection:
-                                                                    Axis.horizontal,
-                                                                autoPlayInterval:
-                                                                    const Duration(
-                                                                        milliseconds:
-                                                                            5000),
-                                                                autoPlay: false,
-                                                              )),
-                                                        ),
-                                                      )
-                                                    : AnimatedSwitcher(
-                                                        duration: Duration(
-                                                            seconds: 1),
-                                                        child: isCulture
-                                                            ? Container(
-                                                                height:
-                                                                    size.height *
-                                                                        0.45,
-                                                                width:
-                                                                    size.width *
-                                                                        0.38,
-                                                                child:
-                                                                    CarouselSlider(
-                                                                        items:
-                                                                            cultureCarouselCards,
-                                                                        options:
-                                                                            CarouselOptions(
-                                                                          enlargeCenterPage:
-                                                                              true,
-                                                                          height:
-                                                                              700,
-                                                                          initialPage:
-                                                                              0,
-                                                                          scrollDirection:
-                                                                              Axis.horizontal,
-                                                                          autoPlayInterval:
-                                                                              const Duration(milliseconds: 5000),
-                                                                          autoPlay:
-                                                                              false,
-                                                                        )),
-                                                              )
-                                                            : AnimatedSwitcher(
-                                                                duration:
-                                                                    Duration(
-                                                                        seconds:
-                                                                            1),
-                                                                child:
-                                                                    Container(
+                                isPOI
+                                    ? Padding(
+                                        padding: EdgeInsets.only(
+                                            left: size.width * 0.036),
+                                        child: AnimatedSwitcher(
+                                          duration: Duration(seconds: 2),
+                                          child: Skeletonizer(
+                                            enabled: !isPlaceGenerated,
+                                            child: Container(
+                                              height: size.height * 0.45,
+                                              width: size.width * 0.38,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: size.height * 0.45,
+                                                    width: size.width * 0.38,
+                                                    child: CarouselSlider(
+                                                        carouselController:
+                                                            carouselController,
+                                                        items: poiCarouselCards,
+                                                        options:
+                                                            CarouselOptions(
+                                                          enlargeCenterPage:
+                                                              true,
+                                                          height: 700,
+                                                          initialPage: 0,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          autoPlay: false,
+                                                        )),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : AnimatedSwitcher(
+                                        duration: Duration(seconds: 2),
+                                        child: Skeletonizer(
+                                            enabled: isLoading,
+                                            enableSwitchAnimation: true,
+                                            child: Container(
+                                              width: size.width * .45,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  isHistory
+                                                      ? AnimatedSwitcher(
+                                                          duration: Duration(
+                                                              seconds: 1),
+                                                          child: Container(
+                                                            height:
+                                                                size.height *
+                                                                    0.45,
+                                                            width: size.width *
+                                                                0.38,
+                                                            child:
+                                                                CarouselSlider(
+                                                                    items:
+                                                                        historyCarouselCards,
+                                                                    options:
+                                                                        CarouselOptions(
+                                                                      enlargeCenterPage:
+                                                                          true,
+                                                                      height:
+                                                                          700,
+                                                                      initialPage:
+                                                                          0,
+                                                                      scrollDirection:
+                                                                          Axis.horizontal,
+                                                                      autoPlayInterval:
+                                                                          const Duration(
+                                                                              milliseconds: 5000),
+                                                                      autoPlay:
+                                                                          false,
+                                                                    )),
+                                                          ),
+                                                        )
+                                                      : AnimatedSwitcher(
+                                                          duration: Duration(
+                                                              seconds: 1),
+                                                          child: isCulture
+                                                              ? Container(
                                                                   height:
                                                                       size.height *
                                                                           0.45,
@@ -835,7 +813,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                   child:
                                                                       CarouselSlider(
                                                                           items:
-                                                                              geographyCarouselCards,
+                                                                              cultureCarouselCards,
                                                                           options:
                                                                               CarouselOptions(
                                                                             enlargeCenterPage:
@@ -851,13 +829,43 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                             autoPlay:
                                                                                 false,
                                                                           )),
+                                                                )
+                                                              : AnimatedSwitcher(
+                                                                  duration:
+                                                                      Duration(
+                                                                          seconds:
+                                                                              1),
+                                                                  child:
+                                                                      Container(
+                                                                    height: size
+                                                                            .height *
+                                                                        0.45,
+                                                                    width: size
+                                                                            .width *
+                                                                        0.38,
+                                                                    child: CarouselSlider(
+                                                                        items: geographyCarouselCards,
+                                                                        options: CarouselOptions(
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          height:
+                                                                              700,
+                                                                          initialPage:
+                                                                              0,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlayInterval:
+                                                                              const Duration(milliseconds: 5000),
+                                                                          autoPlay:
+                                                                              false,
+                                                                        )),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                      ),
-                                          ],
-                                        ),
-                                      )),
-                                ),
+                                                        ),
+                                                ],
+                                              ),
+                                            )),
+                                      ),
                               ],
                             )
                           : Padding(
@@ -1050,6 +1058,16 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                   onTap: () async {
                                     if (lgStatus) {
                                       if (!isPlaceGenerated) {
+                                        ToastService.showErrorToast(
+                                          context,
+                                          length: ToastLength.medium,
+                                          expandedHeight: 100,
+                                          child: Text(
+                                            'Points of Interest not generated yet. Retry.',
+                                            style: googleTextStyle(
+                                                32.sp, FontWeight.w500, white),
+                                          ),
+                                        );
                                         print("not generated");
                                         // places = await generatePOI(
                                         //     widget.cityName, widget.coordinates);
