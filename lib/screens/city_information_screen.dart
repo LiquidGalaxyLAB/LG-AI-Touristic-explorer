@@ -209,7 +209,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'City Fact cards generated!',
+          translate('city.citySuccess'),
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -223,7 +223,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'There was an error in generating facts. Retry.',
+          translate('city.factError'),
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -242,7 +242,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'Points of Interest generated!',
+          translate('city.poiSuccess'),
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -256,7 +256,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'There was an error in generating points of interest. Retry.',
+          translate('city.poiError'),
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -359,7 +359,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         length: ToastLength.medium,
         expandedHeight: 100,
         child: Text(
-          'There was an error in generating the story. Retry.',
+          translate('city.storyError'),
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
@@ -1077,7 +1077,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           length: ToastLength.medium,
                                           expandedHeight: 100,
                                           child: Text(
-                                            'Points of Interest not generated yet. Retry.',
+                                            translate('city.poiNotGen'),
                                             style: googleTextStyle(
                                                 32.sp, FontWeight.w500, white),
                                           ),

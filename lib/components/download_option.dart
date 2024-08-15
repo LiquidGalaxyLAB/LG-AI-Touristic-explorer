@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
@@ -125,7 +126,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
           length: ToastLength.medium,
           expandedHeight: 100,
           child: Text(
-            'KML File Downloaded! Click again to visualize it.',
+            translate('city.downloadSuccess'),
             style: googleTextStyle(32.sp, FontWeight.w500, white),
           ),
         );
@@ -135,7 +136,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
           length: ToastLength.medium,
           expandedHeight: 100,
           child: Text(
-            'Error in Downloading KML File! Please try again.',
+            translate('city.downloadError'),
             style: googleTextStyle(32.sp, FontWeight.w500, white),
           ),
         );
