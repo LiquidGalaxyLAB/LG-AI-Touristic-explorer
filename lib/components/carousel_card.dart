@@ -9,6 +9,8 @@ import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 
 class CarouselCard extends StatefulWidget {
   final String factTitle;
@@ -86,15 +88,28 @@ class _CarouselCardState extends State<CarouselCard> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            await lg.cleanRightBalloon();
-                            await lg.cleanVisualization();
-                            await lg.sendStaticBalloon(
-                                "orbitballoon",
-                                widget.factTitle,
-                                widget.cityname,
-                                500,
-                                widget.factDesc,
-                                widget.imageURL);
+                            try {
+                              await lg.cleanRightBalloon();
+                              await lg.cleanVisualization();
+                              await lg.sendStaticBalloon(
+                                  "orbitballoon",
+                                  widget.factTitle,
+                                  widget.cityname,
+                                  500,
+                                  widget.factDesc,
+                                  widget.imageURL);
+                            } catch (e) {
+                              ToastService.showErrorToast(
+                                context,
+                                length: ToastLength.medium,
+                                expandedHeight: 100,
+                                child: Text(
+                                  translate('city.errorNotLG'),
+                                  style: googleTextStyle(
+                                      32.sp, FontWeight.w500, white),
+                                ),
+                              );
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -127,7 +142,20 @@ class _CarouselCardState extends State<CarouselCard> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            await lg.cleanRightBalloon();
+                            try {
+                              await lg.cleanRightBalloon();
+                            } catch (e) {
+                              ToastService.showErrorToast(
+                                context,
+                                length: ToastLength.medium,
+                                expandedHeight: 100,
+                                child: Text(
+                                  translate('city.errorNotLG'),
+                                  style: googleTextStyle(
+                                      32.sp, FontWeight.w500, white),
+                                ),
+                              );
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -174,6 +202,16 @@ class _CarouselCardState extends State<CarouselCard> {
                                         widget.factDesc,
                                         mainLogoAWS);
                                   } catch (e) {
+                                    ToastService.showErrorToast(
+                                      context,
+                                      length: ToastLength.medium,
+                                      expandedHeight: 100,
+                                      child: Text(
+                                        translate('city.errorNotLG'),
+                                        style: googleTextStyle(
+                                            32.sp, FontWeight.w500, white),
+                                      ),
+                                    );
                                     print(e);
                                   }
                                   var kml = Orbit().buildKmlForPlace(

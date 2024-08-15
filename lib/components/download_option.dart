@@ -4,11 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/connections/orbit_connection.dart';
+import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
 import 'package:lg_ai_touristic_explorer/models/flyto.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 
 import '../utils/cityKMLData.dart';
 
@@ -116,6 +119,27 @@ class _DownloadWidgetState extends State<DownloadWidget> {
         await downloadKml(url, "$name$optionNew", name);
       }
       isDownloaded = await _checkKmlDownloaded(name, optionNew);
+      if (isDownloaded) {
+        ToastService.showSuccessToast(
+          context,
+          length: ToastLength.medium,
+          expandedHeight: 100,
+          child: Text(
+            'KML File Downloaded! Click again to visualize it.',
+            style: googleTextStyle(32.sp, FontWeight.w500, white),
+          ),
+        );
+      } else {
+        ToastService.showErrorToast(
+          context,
+          length: ToastLength.medium,
+          expandedHeight: 100,
+          child: Text(
+            'Error in Downloading KML File! Please try again.',
+            style: googleTextStyle(32.sp, FontWeight.w500, white),
+          ),
+        );
+      }
       setState(() {});
     } else {
       String kmlName = "$name$optionNew";
