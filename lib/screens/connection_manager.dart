@@ -15,7 +15,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class ConnectionManager extends StatefulWidget {
-  const ConnectionManager({super.key});
+  bool discovery;
+  final GlobalKey<State<StatefulWidget>> apiKeysKey;
+  ConnectionManager(
+      {super.key, required this.discovery, required this.apiKeysKey});
 
   @override
   State<ConnectionManager> createState() => _ConnectionManagerState();
@@ -26,6 +29,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
   bool passwordVisible = false;
   bool geminiVisible = false;
   bool deepgramVisible = false;
+  bool mapsAPIVisible = false;
+
   late LGConnection lg;
   Future<void> _connectToLG() async {
     bool? result = await lg.connectToLG();
@@ -34,12 +39,21 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     });
   }
 
+  _checkOrigin() {
+    if (widget.discovery == true) {
+      setState(() {
+        isLGScreen = false;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     lg = LGConnection();
     _loadSettings();
     _connectToLG();
+    _checkOrigin();
   }
 
   final TextEditingController _ipController = TextEditingController();
@@ -49,6 +63,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
   final TextEditingController _rigsController = TextEditingController();
   final TextEditingController _geminiAPIKey = TextEditingController();
   final TextEditingController _deepgramAPIKey = TextEditingController();
+  //make one for googlemapsapi key
+  final TextEditingController _googleMapsAPIKey = TextEditingController();
 
   @override
   void dispose() {
@@ -59,6 +75,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     _rigsController.dispose();
     _geminiAPIKey.dispose();
     _deepgramAPIKey.dispose();
+    _googleMapsAPIKey.dispose();
+
     super.dispose();
   }
 
@@ -72,6 +90,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
       _rigsController.text = prefs.getString('numberOfRigs') ?? '';
       _geminiAPIKey.text = prefs.getString('geminiAPI') ?? '';
       _deepgramAPIKey.text = prefs.getString('deepgramAPI') ?? '';
+      _googleMapsAPIKey.text = prefs.getString('mapsAPI') ?? '';
     });
   }
 
@@ -103,6 +122,9 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     }
     if (_deepgramAPIKey.text.isNotEmpty) {
       await prefs.setString('deepgramAPI', _deepgramAPIKey.text);
+    }
+    if (_googleMapsAPIKey.text.isNotEmpty) {
+      await prefs.setString('mapsAPI', _googleMapsAPIKey.text);
     }
   }
 
@@ -582,6 +604,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                     ],
                   )
                 : Column(
+                    key: widget.apiKeysKey,
                     children: [
                       Container(
                         width: size.width * 0.9,
@@ -762,33 +785,133 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       ),
                       SizedBox(height: 60.h),
                       Container(
-                        alignment: Alignment.centerRight,
-                        child: GestureDetector(
-                          onTap: () async {
-                            await _saveAPISettings();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: size.width * 0.21,
-                            margin: EdgeInsets.only(right: 140.w),
-                            height: 120,
-                            decoration: BoxDecoration(
-                                color: greenShade,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  translate('connectionManager.connect'),
-                                  overflow: TextOverflow.clip,
-                                  textAlign: TextAlign.center,
-                                  style: googleTextStyle(40.sp, FontWeight.w600,
-                                      darkBackgroundColor),
+                        width: size.width * 0.9,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: darkSecondaryColor,
+                              ),
+                              width: size.width * 0.4,
+                              height: 200,
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "Google Maps API Key",
+                                      style: googleTextStyle(
+                                          35.sp, FontWeight.w600, Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Stack(children: [
+                                      TextField(
+                                        style: googleTextStyle(
+                                            25.sp,
+                                            FontWeight.w500,
+                                            darkBackgroundColor),
+                                        obscureText: !mapsAPIVisible,
+                                        controller: _googleMapsAPIKey,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          prefixIcon: Padding(
+                                            padding: const EdgeInsets.only(
+                                                // left: 5.0,
+                                                ),
+                                            child: Icon(
+                                              Icons.lock,
+                                              color: Colors.cyan,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          hintText: translate(
+                                              'connectionManager.hintTextMapsAPI'),
+                                          hintStyle: googleTextStyle(
+                                              25.sp,
+                                              FontWeight.w500,
+                                              darkBackgroundColor),
+                                          isDense: true,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 30, horizontal: 30),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.bottomRight,
+                                        padding: EdgeInsets.only(
+                                            top: 23.h, right: 20.w),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                mapsAPIVisible =
+                                                    !mapsAPIVisible;
+                                              });
+                                            },
+                                            icon: mapsAPIVisible
+                                                ? Icon(
+                                                    size: 30,
+                                                    Icons.visibility_off,
+                                                    color: Colors.cyan,
+                                                  )
+                                                : Icon(
+                                                    size: 30,
+                                                    Icons.visibility,
+                                                    color: Colors.cyan,
+                                                  )),
+                                      ),
+                                    ]),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                            Container(
+                              width: size.width * 0.4,
+                              height: 200,
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    await _saveAPISettings();
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: size.width * 0.21,
+                                    margin: EdgeInsets.only(right: 140.w),
+                                    height: 120,
+                                    decoration: BoxDecoration(
+                                        color: greenShade,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          translate(
+                                              'connectionManager.connect'),
+                                          overflow: TextOverflow.clip,
+                                          textAlign: TextAlign.center,
+                                          style: googleTextStyle(
+                                              40.sp,
+                                              FontWeight.w600,
+                                              darkBackgroundColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       )
                     ],

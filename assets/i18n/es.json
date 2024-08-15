@@ -32,7 +32,8 @@
 			"connectionLGStatusKey": "Esto muestra el estado de la conexión con el Rig de Liquid Galaxy.",
 			"connectionAIStatusKey": "Esto muestra el estado de la conexión con el servidor de IA.",
 			"tasksKey": "Aquí se encuentran diferentes funciones para controlar el Rig de Liquid Galaxy.",
-			"connectionManagerKey": "Introduce los detalles para conectarte al Rig de Liquid Galaxy y al Servidor de IA aquí.",
+			"connectionManagerKey": "Ingrese los detalles para conectarse al Rig de Liquid Galaxy y proporcione las claves API para todos los servicios aquí.",
+			"apiTour": "Ingrese las claves API antes de buscar las ciudades.",
 			"languageKey": "Puedes cambiar el idioma de la aplicación usando este menú desplegable.",
 			"aboutKey": "Conoce más sobre la aplicación.",
 			"helpKey": "Obtén ayuda sobre cómo ejecutar la aplicación."

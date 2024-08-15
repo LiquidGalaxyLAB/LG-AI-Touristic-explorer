@@ -32,7 +32,8 @@
             "connectionLGStatusKey": "显示与 Liquid Galaxy Rig 的连接状态。",
             "connectionAIStatusKey": "显示与 AI 服务器的连接状态。",
             "tasksKey": "包含用于控制 Liquid Galaxy Rig 的不同功能。",
-            "connectionManagerKey": "在此输入连接到 Liquid Galaxy Rig 和 AI 服务器的详细信息。",
+            "connectionManagerKey": "输入详细信息以连接到 Liquid Galaxy Rig，并在此处提供所有服务的 API 密钥。",
+            "apiTour": "在搜索城市之前输入 API 密钥。",
             "languageKey": "您可以使用此下拉菜单更改应用程序的语言。",
             "aboutKey": "了解更多关于应用程序的信息。",
             "helpKey": "获取有关运行应用程序的帮助。"

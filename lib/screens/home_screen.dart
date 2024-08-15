@@ -98,7 +98,11 @@ class _HomePageState extends State<HomePage> {
         }
         if (target.identify == "aboutKey") {
           // pop
-          Navigator.of(context).pop();
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ConnectionManager(
+                    discovery: true,
+                    apiKeysKey: apiKeysKey,
+                  )));
         }
       },
       onSkip: () {
@@ -116,7 +120,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey connectionAIStatusKey = GlobalKey();
   GlobalKey tasksKey = GlobalKey();
   GlobalKey connectionManagerKey = GlobalKey();
-  // GlobalKey apiKeysKey = GlobalKey();
+  GlobalKey apiKeysKey = GlobalKey();
   GlobalKey languageKey = GlobalKey();
   GlobalKey aboutKey = GlobalKey();
   GlobalKey helpKey = GlobalKey();
@@ -475,50 +479,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    // targets.add(
-    //   TargetFocus(
-    //     shape: ShapeLightFocus.RRect,
-    //     identify: "apiKeysKey",
-    //     keyTarget: apiKeysKey,
-    //     alignSkip: Alignment.bottomRight,
-    //     color: Colors.black,
-    //     enableOverlayTab: true,
-    //     contents: [
-    //       TargetContent(
-    //         align: ContentAlign.bottom,
-    //         builder: (context, controller) {
-    //           return Column(
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: <Widget>[
-    //               Container(
-    //                 padding: const EdgeInsets.all(18.0),
-    //                 width: 400.w,
-    //                 decoration: BoxDecoration(
-    //                   color: darkBackgroundColor.withOpacity(0.5),
-    //                   borderRadius: BorderRadius.circular(25.0),
-    //                   boxShadow: const [
-    //                     BoxShadow(
-    //                       color: Colors.black26,
-    //                       blurRadius: 10.0,
-    //                       offset: Offset(0, 4),
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 child: Text(
-    //                   "Enter the API key of Deepgram.",
-    //                   textAlign: TextAlign.center,
-    //                   style:
-    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-    //                 ),
-    //               ),
-    //             ],
-    //           );
-    //         },
-    //       ),
-    //     ],
-    //   ),
-    // );
-
     targets.add(
       TargetFocus(
         shape: ShapeLightFocus.RRect,
@@ -594,6 +554,50 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Text(
                       translate('home.tour.aboutKey'),
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "apiKeysKey",
+        keyTarget: apiKeysKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: darkBackgroundColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      translate('home.tour.apiTour'),
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -854,7 +858,10 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ConnectionManager(),
+                    builder: (context) => ConnectionManager(
+                      discovery: false,
+                      apiKeysKey: apiKeysKey,
+                    ),
                   ));
                 },
               ),
@@ -1144,6 +1151,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       // padding: const EdgeInsets.all(8.0),
                       child: GooglePlaceAutoCompleteTextField(
+                        showError: false,
                         textEditingController: _textEditingController,
                         focusNode: textFocus,
                         googleAPIKey: mapsAPIKey,

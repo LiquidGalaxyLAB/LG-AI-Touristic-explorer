@@ -23,6 +23,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  GlobalKey apiKeysKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     String? dropDownValue = '';
@@ -129,7 +130,10 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ConnectionManager(),
+                builder: (context) => ConnectionManager(
+                  discovery: false,
+                  apiKeysKey: apiKeysKey,
+                ),
               ));
             },
           ),

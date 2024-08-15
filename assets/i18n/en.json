@@ -32,10 +32,11 @@
 			"connectionLGStatusKey": "This shows the connection status with the Liquid Galaxy Rig.",
 			"connectionAIStatusKey": "This shows the connection status with the AI server.",
 			"tasksKey": "This contains different function to control the Liquid Galaxy Rig.",
-			"connectionManagerKey": "Enter the details to connect to the Liquid Galaxy Rig and AI Server here.",
+			"connectionManagerKey": "Enter the details to connect to the Liquid Galaxy Rig and provide the API keys for all the services here.",
 			"languageKey": "You can change the language of the app using this dropdown.",
 			"aboutKey": "Get to know more about the Application.",
-			"helpKey": "Get Help regarding running the application."
+			"helpKey": "Get Help regarding running the application.",
+			"apiTour":"Enter the API keys before searching for the cities."
 		},
 		"appbar": {
 			"gemma": "Made with",
@@ -59,7 +60,8 @@
 		"hintTextPassword": "Enter your password",
 		"hintGeminiAPI": "Enter Gemini API Key",
 		"hintDeepgramAPI": "Enter Deepgram API Key",
-		"connect": "Save"
+		"connect": "Save",
+		"hintTextMapsAPI": "Enter Google Maps API Key"
 	},
 	"tasks": {
 		"relaunchRig": "Relaunch",
