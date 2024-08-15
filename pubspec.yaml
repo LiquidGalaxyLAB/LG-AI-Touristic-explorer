@@ -56,7 +56,7 @@ dependencies:
   toasty_box: ^1.0.4
   flutter_translate: ^4.1.0
   google_generative_ai: ^0.4.4
-
+  provider: ^6.1.2
   
 dev_dependencies:
   flutter_test:

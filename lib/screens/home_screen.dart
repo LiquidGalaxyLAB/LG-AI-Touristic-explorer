@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   GlobalKey searchBarKey = GlobalKey();
-  GlobalKey micKey = GlobalKey();
+  // GlobalKey micKey = GlobalKey();
   GlobalKey cityCardKey = GlobalKey();
   GlobalKey drawerIconKey = GlobalKey();
   GlobalKey connectionLGStatusKey = GlobalKey();
@@ -172,48 +172,48 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    targets.add(
-      TargetFocus(
-        identify: "micKey",
-        keyTarget: micKey,
-        alignSkip: Alignment.bottomRight,
-        color: Colors.black,
-        enableOverlayTab: true,
-        contents: [
-          TargetContent(
-            align: ContentAlign.right,
-            builder: (context, controller) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(18.0),
-                    width: 400.w,
-                    decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(25.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      translate('home.tour.micKey'),
-                      textAlign: TextAlign.center,
-                      style:
-                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    // targets.add(
+    //   TargetFocus(
+    //     identify: "micKey",
+    //     keyTarget: micKey,
+    //     alignSkip: Alignment.bottomRight,
+    //     color: Colors.black,
+    //     enableOverlayTab: true,
+    //     contents: [
+    //       TargetContent(
+    //         align: ContentAlign.right,
+    //         builder: (context, controller) {
+    //           return Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             children: <Widget>[
+    //               Container(
+    //                 padding: const EdgeInsets.all(18.0),
+    //                 width: 400.w,
+    //                 decoration: BoxDecoration(
+    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   borderRadius: BorderRadius.circular(25.0),
+    //                   boxShadow: const [
+    //                     BoxShadow(
+    //                       color: Colors.black26,
+    //                       blurRadius: 10.0,
+    //                       offset: Offset(0, 4),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 child: Text(
+    //                   translate('home.tour.micKey'),
+    //                   textAlign: TextAlign.center,
+    //                   style:
+    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+    //                 ),
+    //               ),
+    //             ],
+    //           );
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );
 
     targets.add(
       TargetFocus(
@@ -1191,16 +1191,27 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           hintText: translate('home.body.hintText'),
+                          // prefixIcon: GestureDetector(
+                          //   onTap: () {},
+                          //   child: Container(
+                          //       key: micKey,
+                          //       margin:
+                          //           EdgeInsets.fromLTRB(26.w, 12.h, 26.w, 12.h),
+                          //       child: const Icon(
+                          //         Icons.mic_rounded,
+                          //         size: 30,
+                          //         color: darkBackgroundColor,
+                          //       )),
+                          // ),
                           prefixIcon: GestureDetector(
                             onTap: () {},
                             child: Container(
-                                key: micKey,
                                 margin:
-                                    EdgeInsets.fromLTRB(26.w, 12.h, 26.w, 12.h),
+                                    EdgeInsets.fromLTRB(1.w, 12.h, 26.w, 12.h),
                                 child: const Icon(
                                   Icons.mic_rounded,
                                   size: 30,
-                                  color: darkBackgroundColor,
+                                  color: white,
                                 )),
                           ),
                           isDense: true,
