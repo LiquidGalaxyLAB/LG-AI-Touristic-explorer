@@ -265,4 +265,82 @@ class Orbit {
 
     return content;
   }
+
+  String buildPlacemarks(List<Place> places) {
+    String placemarks = '';
+    for (var place in places) {
+      placemarks += '''
+      <Placemark>
+        <name>${place.name}</name>
+        <LookAt>
+          <longitude>${place.longitude}</longitude>
+          <latitude>${place.latitude}</latitude>
+          <altitude>0</altitude>
+          <heading>0</heading>
+          <tilt>0</tilt>
+          <range>1000</range>
+          <gx:altitudeMode>relativeToGround</gx:altitudeMode>
+        </LookAt>
+        <styleUrl>#m_ylw-pushpin</styleUrl>
+        <Point>
+          <gx:drawOrder>1</gx:drawOrder>
+          <coordinates>${place.longitude},${place.latitude},0</coordinates>
+        </Point>
+      </Placemark>
+    ''';
+    }
+
+    String kmlPlacemarks = '''
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <StyleMap id="m_ylw-pushpin">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#s_ylw-pushpin</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#s_ylw-pushpin_hl</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://myapp33bucket.s3.amazonaws.com/pin.png</href>
+        </Icon>
+        <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff00ff00</color>
+        <scale>1.7</scale>
+      </LabelStyle>
+      <ListStyle>
+      </ListStyle>
+    </Style>
+    <Style id="s_ylw-pushpin_hl">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.3</scale>
+        <Icon>
+          <href>https://myapp33bucket.s3.amazonaws.com/pin.png</href>
+        </Icon>
+        <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff00ff00</color>
+        <scale>1.7</scale>
+      </LabelStyle>
+      <ListStyle>
+      </ListStyle>
+    </Style>
+    $placemarks
+  </Document>
+</kml>
+  ''';
+
+    return kmlPlacemarks;
+  }
 }

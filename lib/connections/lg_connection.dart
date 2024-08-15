@@ -238,6 +238,22 @@ class LGConnection {
     }
   }
 
+  buildKML(String content) async {
+    String localPath = await _localPath;
+    File localFile = File('$localPath/data.kml');
+    localFile.writeAsString(content);
+    try {
+      connectToLG();
+      await _client!.run('echo "" > /tmp/query.txt');
+      await _client!.run("echo '$content' > /var/www/html/data.kml");
+      await _client!.execute(
+          "echo '\nhttp://lg1:81/data.kml' >> /var/www/html/kmls.txt");
+    } catch (e) {
+      print('Error in building orbit');
+      return Future.error(e);
+    }
+  }
+
   startOrbit() async {
     try {
       return await _client!.execute('echo "playtour=Orbit" > /tmp/query.txt');

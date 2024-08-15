@@ -308,7 +308,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
-  void initPlaceCards(List<Place> pois) {
+  void initPlaceCards(List<Place> pois) async {
     print("THIS IS PLACES DATA");
     poiCarouselCards.clear();
     for (Place places in pois) {
@@ -324,6 +324,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       setState(() {
         retry = false;
       });
+    }
+    try {
+      await lg.buildKML(Orbit().buildPlacemarks(places));
+    } catch (e) {
+      print("Not connected to the LG Rig");
     }
   }
 
