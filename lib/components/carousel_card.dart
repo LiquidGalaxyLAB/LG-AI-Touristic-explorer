@@ -90,6 +90,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         GestureDetector(
                           onTap: () async {
                             try {
+                              print(widget.imageURL);
                               await lg.cleanRightBalloon();
                               await lg.cleanVisualization();
                               await lg.sendStaticBalloon(
@@ -173,7 +174,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                 SizedBox(height: 15),
                                 Icon(
                                   Icons.cleaning_services_outlined,
-                                  color: darkBackgroundColor,
+                                  color: Theme.of(context).primaryColor,
                                   size: 50,
                                 ),
                                 SizedBox(height: 17),
@@ -203,7 +204,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                         widget.cityname,
                                         500,
                                         widget.factDesc,
-                                        mainLogoAWS);
+                                        widget.imageURL);
                                   } catch (e) {
                                     ToastService.showErrorToast(
                                       context,
@@ -224,7 +225,11 @@ class _CarouselCardState extends State<CarouselCard> {
                                       widget.factTitle);
                                   print(kml);
                                   try {
-                                    await lg.buildOrbit(kml);
+                                    for (var i = 0; i < 2; i++) {
+                                      await lg.buildOrbit(kml);
+                                      await Future.delayed(
+                                          Duration(seconds: 1));
+                                    }
                                   } catch (e) {
                                     print(e);
                                   }
