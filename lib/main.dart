@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/screens/splash_screen.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:lg_ai_touristic_explorer/utils/theme_changer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,16 +19,20 @@ Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
+  ThemeChanger themeChanger = await ThemeChanger.create();
   SystemChrome.setPreferredOrientations(
           [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight])
       .then((_) {
-    runApp(LocalizedApp(
-      delegate,
-      ScreenUtilInit(
-        designSize: const Size(1920, 1080),
-        minTextAdapt: true,
-        splitScreenMode: false,
-        child: ThisApp(),
+    runApp(ChangeNotifierProvider(
+      create: (_) => themeChanger,
+      child: LocalizedApp(
+        delegate,
+        ScreenUtilInit(
+          designSize: const Size(1920, 1080),
+          minTextAdapt: true,
+          splitScreenMode: false,
+          child: ThisApp(),
+        ),
       ),
     ));
   });
@@ -38,6 +45,7 @@ class ThisApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChanger = Provider.of<ThemeChanger>(context);
     var localizationDelegate = LocalizedApp.of(context).delegate;
     return LocalizationProvider(
       state: LocalizationProvider.of(context).state,
@@ -52,6 +60,7 @@ class ThisApp extends StatelessWidget {
           supportedLocales: localizationDelegate.supportedLocales,
           locale: localizationDelegate.currentLocale,
           title: "LG-AI-Touristic-Explorer",
+          theme: themeChanger.getTheme(),
           home: SplashScreen()),
     );
   }

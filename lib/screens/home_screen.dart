@@ -26,6 +26,8 @@ import 'package:lg_ai_touristic_explorer/screens/city_information_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
 import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:lg_ai_touristic_explorer/utils/theme_changer.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:toasty_box/toast_enums.dart';
@@ -147,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -190,7 +192,7 @@ class _HomePageState extends State<HomePage> {
     //                 padding: const EdgeInsets.all(18.0),
     //                 width: 400.w,
     //                 decoration: BoxDecoration(
-    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
     //                   borderRadius: BorderRadius.circular(25.0),
     //                   boxShadow: const [
     //                     BoxShadow(
@@ -234,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -278,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -322,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -366,7 +368,7 @@ class _HomePageState extends State<HomePage> {
     //                 padding: const EdgeInsets.all(18.0),
     //                 width: 400.w,
     //                 decoration: BoxDecoration(
-    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
     //                   borderRadius: BorderRadius.circular(25.0),
     //                   boxShadow: const [
     //                     BoxShadow(
@@ -410,7 +412,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -454,7 +456,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -498,7 +500,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -542,7 +544,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -586,7 +588,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(18.0),
                     width: 400.w,
                     decoration: BoxDecoration(
-                      color: darkBackgroundColor.withOpacity(0.5),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(25.0),
                       boxShadow: const [
                         BoxShadow(
@@ -630,7 +632,7 @@ class _HomePageState extends State<HomePage> {
     //                 padding: const EdgeInsets.all(18.0),
     //                 width: 400.w,
     //                 decoration: BoxDecoration(
-    //                   color: darkBackgroundColor.withOpacity(0.5),
+    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
     //                   borderRadius: BorderRadius.circular(25.0),
     //                   boxShadow: const [
     //                     BoxShadow(
@@ -743,6 +745,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    final themeChanger = Provider.of<ThemeChanger>(context);
     Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
     if (agreed && confirm) {
       Future.delayed(Duration.zero, () => _showTour());
@@ -752,10 +755,10 @@ class _HomePageState extends State<HomePage> {
     }
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: darkBackgroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
         endDrawer: Drawer(
           width: size.width * .35,
-          backgroundColor: darkSecondaryColor,
+          backgroundColor: Theme.of(context).secondaryHeaderColor,
           child: ListView(
             children: [
               SizedBox(
@@ -954,7 +957,7 @@ class _HomePageState extends State<HomePage> {
                               print(newLocale);
                               changeLocale(context, newLocale);
                             },
-                            dropdownColor: darkBackgroundColor,
+                            dropdownColor: Theme.of(context).primaryColor,
                           ))
                     ],
                   ),
@@ -1005,7 +1008,7 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               child: AppBar(
                 automaticallyImplyLeading: false,
-                backgroundColor: darkSecondaryColor,
+                backgroundColor: Theme.of(context).secondaryHeaderColor,
                 toolbarHeight: 150,
                 elevation: 0,
                 title: Row(
@@ -1140,7 +1143,7 @@ class _HomePageState extends State<HomePage> {
                     height: 75,
                     padding: EdgeInsets.fromLTRB(0, 0, 125.w, 0),
                     decoration: BoxDecoration(
-                      color: darkSecondaryColor,
+                      color: Theme.of(context).secondaryHeaderColor,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Container(
@@ -1200,7 +1203,7 @@ class _HomePageState extends State<HomePage> {
                           //       child: const Icon(
                           //         Icons.mic_rounded,
                           //         size: 30,
-                          //         color: darkBackgroundColor,
+                          //         color: Theme.of(context).primaryColor,
                           //       )),
                           // ),
                           prefixIcon: GestureDetector(
@@ -1283,9 +1286,9 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(10),
                             child: Row(
                               children: [
-                                const Icon(
+                                Icon(
                                   Icons.location_on,
-                                  color: darkBackgroundColor,
+                                  color: Theme.of(context).primaryColor,
                                 ),
                                 const SizedBox(
                                   width: 15,
@@ -1299,8 +1302,11 @@ class _HomePageState extends State<HomePage> {
                                       prediction
                                               .structuredFormatting!.mainText ??
                                           "",
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w600, darkSecondaryColor),
+                                      style: googleTextStyle(
+                                          25.sp,
+                                          FontWeight.w600,
+                                          Theme.of(context)
+                                              .secondaryHeaderColor),
                                     ),
                                     SizedBox(height: 2.h),
                                     Text(

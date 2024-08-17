@@ -75,7 +75,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     padding: const EdgeInsets.all(40),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: darkSecondaryColor,
+                      color: Theme.of(context).secondaryHeaderColor,
                     ),
                     child: Column(
                       children: [
@@ -132,7 +132,7 @@ class _AboutScreenState extends State<AboutScreen> {
                           TextSpan(
                             text: translate('about.contributor'),
                             style: googleTextStyle(22, FontWeight.w500,
-                                Colors.cyan), // Title style
+                                Theme.of(context).hintColor), // Title style
                           ),
                           TextSpan(
                             text: 'Manas Dalvi',
@@ -148,7 +148,7 @@ class _AboutScreenState extends State<AboutScreen> {
                           TextSpan(
                             text: translate('about.mentor'),
                             style: googleTextStyle(22, FontWeight.w500,
-                                Colors.cyan), // Title style
+                                Theme.of(context).hintColor), // Title style
                           ),
                           TextSpan(
                             text: 'Alfredo Bautista',
@@ -164,7 +164,7 @@ class _AboutScreenState extends State<AboutScreen> {
                           TextSpan(
                             text: translate('about.admin'),
                             style: googleTextStyle(22, FontWeight.w500,
-                                Colors.cyan), // Title style
+                                Theme.of(context).hintColor), // Title style
                           ),
                           TextSpan(
                             text: 'Andreu Ibanez',

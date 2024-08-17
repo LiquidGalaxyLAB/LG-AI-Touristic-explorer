@@ -135,7 +135,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: darkBackgroundColor,
+      backgroundColor: Theme.of(context).primaryColor,
       endDrawer: AppDrawer(
         size: size,
       ),
@@ -164,8 +164,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
                           color: isLGScreen
-                              ? greenShade
-                              : greenShade.withOpacity(0.4),
+                              ? Theme.of(context).cardColor
+                              : Theme.of(context).cardColor.withOpacity(0.4),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Text(
                         "LG Rig",
@@ -187,8 +187,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
                           color: !isLGScreen
-                              ? greenShade
-                              : greenShade.withOpacity(0.4),
+                              ? Theme.of(context).cardColor
+                              : Theme.of(context).cardColor.withOpacity(0.4),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Text(
                         "Set API Keys",
@@ -215,7 +215,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -233,8 +233,10 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                     ),
                                     TextField(
                                       keyboardType: TextInputType.number,
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
+                                      style: googleTextStyle(
+                                          25.sp,
+                                          FontWeight.w500,
+                                          Theme.of(context).primaryColor),
                                       controller: _ipController,
                                       decoration: InputDecoration(
                                         filled: true,
@@ -249,7 +251,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           ),
                                           child: Icon(
                                             Icons.computer,
-                                            color: Colors.cyan,
+                                            color: Theme.of(context).hintColor,
                                             size: 25,
                                           ),
                                         ),
@@ -258,7 +260,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 30, horizontal: 30),
@@ -272,7 +274,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -289,8 +291,10 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                       height: 25,
                                     ),
                                     TextField(
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
+                                      style: googleTextStyle(
+                                          25.sp,
+                                          FontWeight.w500,
+                                          Theme.of(context).primaryColor),
                                       controller: _sshPortController,
                                       decoration: InputDecoration(
                                         filled: true,
@@ -305,7 +309,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           ),
                                           child: Icon(
                                             Icons.settings_ethernet,
-                                            color: Colors.cyan,
+                                            color: Theme.of(context).hintColor,
                                             size: 25,
                                           ),
                                         ),
@@ -314,7 +318,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 30, horizontal: 30),
@@ -338,7 +342,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -355,8 +359,10 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                       height: 25,
                                     ),
                                     TextField(
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
+                                      style: googleTextStyle(
+                                          25.sp,
+                                          FontWeight.w500,
+                                          Theme.of(context).primaryColor),
                                       controller: _rigsController,
                                       decoration: InputDecoration(
                                         filled: true,
@@ -371,7 +377,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           ),
                                           child: Icon(
                                             Icons.memory,
-                                            color: Colors.cyan,
+                                            color: Theme.of(context).hintColor,
                                             size: 25,
                                           ),
                                         ),
@@ -380,7 +386,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 30, horizontal: 30),
@@ -395,7 +401,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -412,8 +418,10 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                       height: 25,
                                     ),
                                     TextField(
-                                      style: googleTextStyle(25.sp,
-                                          FontWeight.w500, darkBackgroundColor),
+                                      style: googleTextStyle(
+                                          25.sp,
+                                          FontWeight.w500,
+                                          Theme.of(context).primaryColor),
                                       controller: _usernameController,
                                       decoration: InputDecoration(
                                         filled: true,
@@ -428,7 +436,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           ),
                                           child: Icon(
                                             Icons.person,
-                                            color: Colors.cyan,
+                                            color: Theme.of(context).hintColor,
                                             size: 25,
                                           ),
                                         ),
@@ -437,7 +445,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         hintStyle: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 30, horizontal: 30),
@@ -460,7 +468,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -482,7 +490,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         controller: _passwordController,
                                         decoration: InputDecoration(
                                           filled: true,
@@ -497,7 +505,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             ),
                                             child: Icon(
                                               Icons.lock,
-                                              color: Colors.cyan,
+                                              color:
+                                                  Theme.of(context).hintColor,
                                               size: 25,
                                             ),
                                           ),
@@ -506,7 +515,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
-                                              darkBackgroundColor),
+                                              Theme.of(context).primaryColor),
                                           isDense: true,
                                           contentPadding: EdgeInsets.symmetric(
                                               vertical: 30, horizontal: 30),
@@ -527,12 +536,14 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                                 ? Icon(
                                                     size: 30,
                                                     Icons.visibility_off,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )
                                                 : Icon(
                                                     size: 30,
                                                     Icons.visibility,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )),
                                       ),
                                     ]),
@@ -565,7 +576,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                   width: size.width * 0.21,
                                   height: 175,
                                   decoration: BoxDecoration(
-                                      color: greenShade,
+                                      color: Theme.of(context).cardColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(
@@ -578,7 +589,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             40.sp,
                                             FontWeight.w600,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                       ),
                                       Text(
                                         "Liquid Galaxy Rig",
@@ -587,7 +598,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             40.sp,
                                             FontWeight.w600,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                       ),
                                     ],
                                   ),
@@ -615,7 +626,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -638,7 +649,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         controller: _geminiAPIKey,
                                         decoration: InputDecoration(
                                           filled: true,
@@ -653,7 +664,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             ),
                                             child: Icon(
                                               Icons.computer,
-                                              color: Colors.cyan,
+                                              color:
+                                                  Theme.of(context).hintColor,
                                               size: 25,
                                             ),
                                           ),
@@ -662,7 +674,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
-                                              darkBackgroundColor),
+                                              Theme.of(context).primaryColor),
                                           isDense: true,
                                           contentPadding: EdgeInsets.symmetric(
                                               vertical: 30, horizontal: 30),
@@ -682,12 +694,14 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                                 ? Icon(
                                                     size: 30,
                                                     Icons.visibility_off,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )
                                                 : Icon(
                                                     size: 30,
                                                     Icons.visibility,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )),
                                       ),
                                     ]),
@@ -699,7 +713,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -720,7 +734,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         obscureText: !deepgramVisible,
                                         controller: _deepgramAPIKey,
                                         decoration: InputDecoration(
@@ -736,7 +750,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                             ),
                                             child: Icon(
                                               Icons.settings_ethernet,
-                                              color: Colors.cyan,
+                                              color:
+                                                  Theme.of(context).hintColor,
                                               size: 25,
                                             ),
                                           ),
@@ -745,7 +760,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
-                                              darkBackgroundColor),
+                                              Theme.of(context).primaryColor),
                                           isDense: true,
                                           contentPadding: EdgeInsets.symmetric(
                                               vertical: 30, horizontal: 30),
@@ -767,12 +782,14 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                                 ? Icon(
                                                     size: 30,
                                                     Icons.visibility_off,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )
                                                 : Icon(
                                                     size: 30,
                                                     Icons.visibility,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )),
                                       ),
                                     ]),
@@ -793,7 +810,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: darkSecondaryColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                               ),
                               width: size.width * 0.4,
                               height: 200,
@@ -814,7 +831,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                         style: googleTextStyle(
                                             25.sp,
                                             FontWeight.w500,
-                                            darkBackgroundColor),
+                                            Theme.of(context).primaryColor),
                                         obscureText: !mapsAPIVisible,
                                         controller: _googleMapsAPIKey,
                                         decoration: InputDecoration(
@@ -830,7 +847,8 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                                 ),
                                             child: Icon(
                                               Icons.lock,
-                                              color: Colors.cyan,
+                                              color:
+                                                  Theme.of(context).hintColor,
                                               size: 25,
                                             ),
                                           ),
@@ -839,7 +857,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           hintStyle: googleTextStyle(
                                               25.sp,
                                               FontWeight.w500,
-                                              darkBackgroundColor),
+                                              Theme.of(context).primaryColor),
                                           isDense: true,
                                           contentPadding: EdgeInsets.symmetric(
                                               vertical: 30, horizontal: 30),
@@ -860,12 +878,14 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                                 ? Icon(
                                                     size: 30,
                                                     Icons.visibility_off,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )
                                                 : Icon(
                                                     size: 30,
                                                     Icons.visibility,
-                                                    color: Colors.cyan,
+                                                    color: Theme.of(context)
+                                                        .hintColor,
                                                   )),
                                       ),
                                     ]),
@@ -888,7 +908,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                     margin: EdgeInsets.only(right: 140.w),
                                     height: 120,
                                     decoration: BoxDecoration(
-                                        color: greenShade,
+                                        color: Theme.of(context).cardColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(20))),
                                     child: Column(
@@ -903,7 +923,7 @@ class _ConnectionManagerState extends State<ConnectionManager> {
                                           style: googleTextStyle(
                                               40.sp,
                                               FontWeight.w600,
-                                              darkBackgroundColor),
+                                              Theme.of(context).primaryColor),
                                         ),
                                       ],
                                     ),

@@ -75,7 +75,8 @@ class _CarouselCardState extends State<CarouselCard> {
                     SizedBox(height: 20),
                     Text(
                       widget.factTitle,
-                      style: googleTextStyle(50.sp, FontWeight.w700, fontGreen),
+                      style: googleTextStyle(50.sp, FontWeight.w700,
+                          Theme.of(context).dividerColor),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 40),
@@ -126,14 +127,14 @@ class _CarouselCardState extends State<CarouselCard> {
                                 SizedBox(height: 15),
                                 Icon(
                                   Icons.public,
-                                  color: darkBackgroundColor,
+                                  color: Theme.of(context).primaryColor,
                                   size: 50,
                                 ),
                                 SizedBox(height: 17),
                                 Text(
                                   translate('city.showin') + " LG",
-                                  style: googleTextStyle(
-                                      35.sp, FontWeight.w700, fontGreen),
+                                  style: googleTextStyle(35.sp, FontWeight.w700,
+                                      Theme.of(context).dividerColor),
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -180,7 +181,9 @@ class _CarouselCardState extends State<CarouselCard> {
                                   child: Text(
                                     translate('city.clean') + " Balloon",
                                     style: googleTextStyle(
-                                        35.sp, FontWeight.w700, fontGreen),
+                                        35.sp,
+                                        FontWeight.w700,
+                                        Theme.of(context).dividerColor),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -239,14 +242,16 @@ class _CarouselCardState extends State<CarouselCard> {
                                       SizedBox(height: 15),
                                       Icon(
                                         Icons.restart_alt,
-                                        color: darkBackgroundColor,
+                                        color: Theme.of(context).primaryColor,
                                         size: 50,
                                       ),
                                       SizedBox(height: 17),
                                       Text(
                                         translate('city.orbit'),
                                         style: googleTextStyle(
-                                            35.sp, FontWeight.w700, fontGreen),
+                                            35.sp,
+                                            FontWeight.w700,
+                                            Theme.of(context).dividerColor),
                                       ),
                                     ],
                                   ),
@@ -277,7 +282,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: fontGreen,
+                          color: Theme.of(context).dividerColor,
                         ),
                         child: Text(
                           translate('city.close'),
@@ -295,7 +300,7 @@ class _CarouselCardState extends State<CarouselCard> {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: greenShade,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadiusDirectional.circular(25)),
         child: Container(
           width: size.width * 0.35,
@@ -304,7 +309,8 @@ class _CarouselCardState extends State<CarouselCard> {
             children: [
               Text(
                 widget.factTitle,
-                style: googleTextStyle(40.sp, FontWeight.w700, fontGreen),
+                style: googleTextStyle(
+                    40.sp, FontWeight.w700, Theme.of(context).dividerColor),
               ),
               SizedBox(height: 20),
               Container(

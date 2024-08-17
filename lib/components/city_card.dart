@@ -78,7 +78,7 @@ class CityCard extends StatelessWidget {
           right: 18,
           child: Container(
               decoration: BoxDecoration(
-                  color: darkSecondaryColor,
+                  color: Theme.of(context).secondaryHeaderColor,
                   borderRadius: BorderRadius.circular(12)),
               width: 35,
               height: 35,

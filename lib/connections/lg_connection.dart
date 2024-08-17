@@ -15,7 +15,7 @@ class LGConnection {
 
   Future<void> initConnectionDetails() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _host = prefs.getString('ipAddress') ?? '192.168.201.3';
+    _host = prefs.getString('ipAddress') ?? '192.168.56.102';
     _port = prefs.getString('sshPort') ?? '22';
     _username = prefs.getString('username') ?? 'lg';
     _passwordOrKey = prefs.getString('password') ?? 'lg';
@@ -246,8 +246,8 @@ class LGConnection {
       connectToLG();
       await _client!.run('echo "" > /tmp/query.txt');
       await _client!.run("echo '$content' > /var/www/html/data.kml");
-      await _client!.execute(
-          "echo '\nhttp://lg1:81/data.kml' >> /var/www/html/kmls.txt");
+      await _client!
+          .execute("echo '\nhttp://lg1:81/data.kml' >> /var/www/html/kmls.txt");
     } catch (e) {
       print('Error in building orbit');
       return Future.error(e);
@@ -290,14 +290,14 @@ class LGConnection {
         "  <Document>\n" +
         "    <name>historic.kml</name>\n" +
         "    <ScreenOverlay>\n" +
-        "      <name><![CDATA[<div style=\"text-align: center; font-size: 20px; font-weight: bold; vertical-align: middle;\">$cityName</div>]]></name>\n" +
+        "      <name><![CDATA[<div style=\"text-align: center; font-size: 40px; font-weight: bold; vertical-align: middle;\">$cityName</div>]]></name>\n" +
         "      <description>\n" +
         "        <![CDATA[\n" +
-        "        <div style=\"width: 280px; padding: 10px; font-family: Arial, sans-serif; background-color: #15151a; border: 2px solid #cccccc; border-radius: 10px;\">\n" +
-        "          <img src=\"$imageURL\" alt=\"picture\" width=\"250\" height=\"250\" style=\"margin-bottom: 10px;\"/>\n" +
-        "          <h1 style=\"margin: 0; font-size: 18px; color: white; text-align: center;\">$placeName</h1>\n" +
-        "          <div style=\"background-color: #2E2E2E; color: white; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;\">\n" +
-        "            <p style=\"font-size: 14px; margin: 0;\">$description</p>\n" +
+        "        <div style=\"width: 560px; padding: 20px; font-family: Arial, sans-serif; background-color: #15151a; border: 2px solid #cccccc; border-radius: 20px;\">\n" +
+        "          <img src=\"$imageURL\" alt=\"picture\" width=\"500\" height=\"500\" style=\" display:block; margin-left: 20px; margin-top: 20px; margin-bottom: 20px; border-radius: 20px;\"/>\n" +
+        "          <h1 style=\"margin: 0; font-size: 36px; color: white; text-align: center;\">$placeName</h1>\n" +
+        "          <div style=\"background-color: #2E2E2E; color: white; padding: 20px; margin-top: 20px; border-radius: 20px; text-align: center;\">\n" +
+        "            <p style=\"font-size: 28px; margin: 0;\">$description</p>\n" +
         "          </div>\n" +
         "        </div>\n" +
         "        ]]>\n" +
@@ -305,7 +305,7 @@ class LGConnection {
         "      <overlayXY x=\"1\" y=\"0.5\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <screenXY x=\"1\" y=\"0.5\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <rotationXY x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
-        "      <size x=\"2.5\" y=\"2.5\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
+        "      <size x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\n" +
         "      <gx:balloonVisibility>1</gx:balloonVisibility>\n" +
         "    </ScreenOverlay>\n" +
         "  </Document>\n" +
@@ -314,6 +314,8 @@ class LGConnection {
       connectToLG();
       await _client!.execute(sentence);
     } catch (e) {
+      print("checked");
+
       return Future.error(e);
     }
   }

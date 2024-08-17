@@ -29,7 +29,7 @@ class _AppDrawerState extends State<AppDrawer> {
     String? dropDownValue = '';
     return Drawer(
       width: widget.size.width * .35,
-      backgroundColor: darkSecondaryColor,
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       child: ListView(
         children: [
           SizedBox(
@@ -58,7 +58,7 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(homeIcon),
+                  Image.asset(homeIcon, color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -87,7 +87,7 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(tasksIcon),
+                  Image.asset(tasksIcon,color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -116,7 +116,7 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(connectionIcon),
+                  Image.asset(connectionIcon,color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -234,7 +234,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
                           changeLocale(context, newLocale);
                         },
-                        dropdownColor: darkBackgroundColor,
+                        dropdownColor: Theme.of(context).primaryColor,
                       ))
                 ],
               ),
@@ -252,7 +252,7 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(aboutIcon),
+                  Image.asset(aboutIcon,color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),

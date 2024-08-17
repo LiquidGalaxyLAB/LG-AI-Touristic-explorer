@@ -43,7 +43,7 @@ class _LGTasksState extends State<LGTasks> {
 
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: darkBackgroundColor,
+      backgroundColor: Theme.of(context).primaryColor,
       endDrawer: AppDrawer(
         size: size,
       ),
@@ -185,8 +185,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.relaunchRig') + " Rig",
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
@@ -309,8 +309,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.shutdownRig') + " Rig",
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
@@ -347,8 +347,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.cleanKML') + " KML",
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
@@ -471,8 +471,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.rebootRig') + " Rig",
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
@@ -509,8 +509,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.cleanLogos'),
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
@@ -536,8 +536,8 @@ class _LGTasksState extends State<LGTasks> {
                             child: Text(
                               translate('tasks.showLogos'),
                               textAlign: TextAlign.center,
-                              style: googleTextStyle(
-                                  45.sp, FontWeight.w700, darkBackgroundColor),
+                              style: googleTextStyle(45.sp, FontWeight.w700,
+                                  Theme.of(context).primaryColor),
                             ),
                           ),
                         ),

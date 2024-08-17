@@ -21,7 +21,7 @@ class UpperBar extends StatelessWidget {
     return Container(
       child: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: darkSecondaryColor,
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         toolbarHeight: 150,
         elevation: 0,
         title: Row(
