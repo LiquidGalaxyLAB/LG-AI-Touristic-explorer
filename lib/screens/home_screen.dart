@@ -787,7 +787,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Image.asset(homeIcon),
+                      Image.asset(homeIcon, color: Theme.of(context).hintColor),
                       SizedBox(
                         width: 20.w,
                       ),
@@ -817,7 +817,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Image.asset(tasksIcon),
+                      Image.asset(tasksIcon,
+                          color: Theme.of(context).hintColor),
                       SizedBox(
                         width: 20.w,
                       ),
@@ -847,7 +848,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Image.asset(connectionIcon),
+                      Image.asset(connectionIcon,
+                          color: Theme.of(context).hintColor),
                       SizedBox(
                         width: 20.w,
                       ),
@@ -971,12 +973,139 @@ class _HomePageState extends State<HomePage> {
                 endIndent: 50,
               ),
               ListTile(
+                title: Container(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Theme: ',
+                        style: googleTextStyle(
+                            30.sp, FontWeight.w500, Colors.white),
+                      ),
+                      15.pw,
+                      Container(
+                          width: 100.w,
+                          child: DropdownButtonFormField(
+                            value: themeChanger.getCurrentThemeProfile(),
+                            items: [
+                              DropdownMenuItem(
+                                  value: "primary",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color: Colors.blue,
+                                        )),
+                                  )),
+                              DropdownMenuItem(
+                                  value: "profile1",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color: Colors.purple,
+                                        )),
+                                  )),
+                              DropdownMenuItem(
+                                  value: "profile3",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color:
+                                              Color.fromARGB(255, 34, 82, 59),
+                                        )),
+                                  )),
+                              DropdownMenuItem(
+                                  value: "profile2",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color: Color(0xff152337),
+                                        )),
+                                  )),
+                            ],
+                            onChanged: (themeString) {
+                              ThemeData selectedTheme;
+                              switch (themeString) {
+                                case 'primary':
+                                  selectedTheme =
+                                      primary; // Assuming `primary` is defined in your constants
+                                  break;
+                                case 'profile1':
+                                  selectedTheme =
+                                      profile1; // Assuming `profile1` is defined in your constants
+                                  break;
+                                case 'profile2':
+                                  selectedTheme =
+                                      profile2; // Add `profile2` to your constants
+                                  break;
+                                case 'profile3':
+                                  selectedTheme =
+                                      profile3; // Add `profile2` to your constants
+                                  break;
+                                default:
+                                  selectedTheme = primary; // Default fallback
+                                  break;
+                              }
+
+                              // Update the theme using ThemeChanger
+                              themeChanger.toggleTheme(selectedTheme);
+                            },
+                            dropdownColor: Theme.of(context).primaryColor,
+                          )),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white.withOpacity(0.5),
+                indent: 50,
+                thickness: 0.5,
+                endIndent: 50,
+              ),
+              ListTile(
                 key: aboutKey,
                 title: Container(
                   padding: const EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Image.asset(aboutIcon),
+                      Image.asset(aboutIcon,
+                          color: Theme.of(context).hintColor),
                       SizedBox(
                         width: 20.w,
                       ),

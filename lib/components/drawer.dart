@@ -8,6 +8,8 @@ import 'package:lg_ai_touristic_explorer/screens/connection_manager.dart';
 import 'package:lg_ai_touristic_explorer/screens/home_screen.dart';
 import 'package:lg_ai_touristic_explorer/screens/lg_tasks_screen.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
+import 'package:lg_ai_touristic_explorer/utils/theme_changer.dart';
+import 'package:provider/provider.dart';
 import '../constants/text_styles.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -26,7 +28,7 @@ class _AppDrawerState extends State<AppDrawer> {
   GlobalKey apiKeysKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    String? dropDownValue = '';
+    final themeChanger = Provider.of<ThemeChanger>(context);
     return Drawer(
       width: widget.size.width * .35,
       backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -87,7 +89,7 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(tasksIcon,color: Theme.of(context).hintColor),
+                  Image.asset(tasksIcon, color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -116,7 +118,8 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(connectionIcon,color: Theme.of(context).hintColor),
+                  Image.asset(connectionIcon,
+                      color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -187,14 +190,6 @@ class _AppDrawerState extends State<AppDrawer> {
                                   25.sp, FontWeight.w500, white),
                             ),
                           ),
-                          // DropdownMenuItem(
-                          //   value: "DE",
-                          //   child: Text(
-                          //     "🇩🇪 DE",
-                          //     style: googleTextStyle(
-                          //         25.sp, FontWeight.w500, white),
-                          //   ),
-                          // ),
                           DropdownMenuItem(
                             value: "FR",
                             child: Text(
@@ -235,7 +230,7 @@ class _AppDrawerState extends State<AppDrawer> {
                           changeLocale(context, newLocale);
                         },
                         dropdownColor: Theme.of(context).primaryColor,
-                      ))
+                      )),
                 ],
               ),
             ),
@@ -252,7 +247,129 @@ class _AppDrawerState extends State<AppDrawer> {
               padding: const EdgeInsets.only(left: 80),
               child: Row(
                 children: [
-                  Image.asset(aboutIcon,color: Theme.of(context).hintColor),
+                  Text(
+                    'Theme: ',
+                    style:
+                        googleTextStyle(30.sp, FontWeight.w500, Colors.white),
+                  ),
+                  15.pw,
+                  Container(
+                      width: 100.w,
+                      child: DropdownButtonFormField(
+                        value: themeChanger.getCurrentThemeProfile(),
+                        items: [
+                          DropdownMenuItem(
+                              value: "primary",
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: 35,
+                                    height: 35,
+                                    // borderradius
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      // borderthickness
+                                      border: Border.all(
+                                          color: Colors.black, width: 2),
+                                      color: Colors.blue,
+                                    )),
+                              )),
+                          DropdownMenuItem(
+                              value: "profile1",
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: 35,
+                                    height: 35,
+                                    // borderradius
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      // borderthickness
+                                      border: Border.all(
+                                          color: Colors.black, width: 2),
+                                      color: Colors.purple,
+                                    )),
+                              )),
+                          DropdownMenuItem(
+                              value: "profile2",
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: 35,
+                                    height: 35,
+                                    // borderradius
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      // borderthickness
+                                      border: Border.all(
+                                          color: Colors.black, width: 2),
+                                      color: Color(0xff152337),
+                                    )),
+                              )),
+                          DropdownMenuItem(
+                              value: "profile3",
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: 35,
+                                    height: 35,
+                                    // borderradius
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      // borderthickness
+                                      border: Border.all(
+                                          color: Colors.black, width: 2),
+                                      color: Color.fromARGB(255, 34, 82, 59),
+                                    )),
+                              )),
+                        ],
+                        onChanged: (themeString) {
+                          ThemeData selectedTheme;
+                          switch (themeString) {
+                            case 'primary':
+                              selectedTheme =
+                                  primary; // Assuming `primary` is defined in your constants
+                              break;
+                            case 'profile1':
+                              selectedTheme =
+                                  profile1; // Assuming `profile1` is defined in your constants
+                              break;
+                            case 'profile2':
+                              selectedTheme =
+                                  profile2; // Add `profile2` to your constants
+                              break;
+                            case 'profile3':
+                              selectedTheme =
+                                  profile3; // Add `profile2` to your constants
+                              break;
+
+                            default:
+                              selectedTheme = primary; // Default fallback
+                              break;
+                          }
+
+                          // Update the theme using ThemeChanger
+                          themeChanger.toggleTheme(selectedTheme);
+                        },
+                        dropdownColor: Theme.of(context).primaryColor,
+                      )),
+                ],
+              ),
+            ),
+            onTap: () {},
+          ),
+          Divider(
+            color: Colors.white.withOpacity(0.5),
+            indent: 50,
+            thickness: 0.5,
+            endIndent: 50,
+          ),
+          ListTile(
+            title: Container(
+              padding: const EdgeInsets.only(left: 80),
+              child: Row(
+                children: [
+                  Image.asset(aboutIcon, color: Theme.of(context).hintColor),
                   SizedBox(
                     width: 20.w,
                   ),

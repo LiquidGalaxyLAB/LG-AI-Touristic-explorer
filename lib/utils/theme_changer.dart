@@ -18,6 +18,10 @@ class ThemeChanger with ChangeNotifier {
       selectedTheme = 'primary';
     } else if (theme == profile1) {
       selectedTheme = 'profile1';
+    } else if (theme == profile2) {
+      selectedTheme = 'profile2';
+    } else if (theme == profile3) {
+      selectedTheme = 'profile3';
     }
     prefs.setString('theme', selectedTheme);
   }
@@ -34,9 +38,27 @@ class ThemeChanger with ChangeNotifier {
       initialTheme = primary;
     } else if (theme == 'profile1') {
       initialTheme = profile1;
+    } else if (theme == 'profile2') {
+      initialTheme = profile2;
+    } else if (theme == 'profile3') {
+      initialTheme = profile3;
     } else {
       initialTheme = primary;
     }
     return ThemeChanger(initialTheme);
+  }
+
+  String getCurrentThemeProfile() {
+    if (_themeData == primary) {
+      return 'primary';
+    } else if (_themeData == profile1) {
+      return 'profile1';
+    } else if (_themeData == profile2) {
+      return 'profile2';
+    }else if (_themeData == profile3) {
+      return 'profile3';
+    } else {
+      return 'primary';
+    }
   }
 }
