@@ -121,6 +121,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         tilt: tilt,
         heading: heading);
     await lg.flyTo(city.getCommand());
+    await sendCityBalloon();
   }
 
   late List<Place> places;
@@ -132,13 +133,31 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isPresent = false;
   bool isPOI = false;
   bool isRunning = false;
-  void initCards(City city, List<Place> pois) {
+
+  void initCards(City city, List<Place> pois) async {
     print("GOT IT");
     historyCarouselCards.clear();
     cultureCarouselCards.clear();
     geographyCarouselCards.clear();
     poiCarouselCards.clear();
+    var imageUrl = mainLogoAWS;
+    try {
+      bool present = checkIsExtra(widget.cityName);
+      if (present) {
+        var cityname = widget.cityName.replaceAll(" ", "").toLowerCase();
 
+        if (placeImage.containsKey(cityname)) {
+          imageUrl = placeImage[cityname] ?? mainLogoAWS;
+        }
+        print(imageUrl);
+      } else {
+        // var imageUrl = mainLogoAWS;
+        //TODO
+        imageUrl = await getPlaceIdFromName(widget.cityName);
+      }
+    } catch (e) {
+      print("An error occurred: $e");
+    }
     for (var culturalFact in city.culturalFacts) {
       cultureCarouselCards.add(
         CarouselCard(
@@ -147,7 +166,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factC'),
           factDesc: culturalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: "",
+          imageURL: imageUrl,
         ),
       );
     }
@@ -159,7 +178,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factG'),
           factDesc: geographicalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: ""));
+          imageURL: imageUrl));
     }
 
     for (var historicalFact in city.historicalFacts) {
@@ -169,7 +188,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factH'),
           factDesc: historicalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: ""));
+          imageURL: imageUrl));
     }
     for (Place places in pois) {
       poiCarouselCards.add(CarouselCard(
@@ -179,6 +198,15 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factDesc: places.details,
           coordinates: LatLng(places.latitude, places.longitude),
           imageURL: places.imageUrl));
+    }
+    sendPOIS();
+  }
+
+  sendPOIS() async {
+    try {
+      await lg.buildKML(Orbit().buildPlacemarks(places));
+    } catch (e) {
+      print("error sending datat");
     }
   }
 
@@ -263,11 +291,29 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     }
   }
 
-  void initCityCards(City city) {
+  void initCityCards(City city) async {
     print("GOT IT CITY CARDS");
     historyCarouselCards.clear();
     cultureCarouselCards.clear();
     geographyCarouselCards.clear();
+    var imageUrl = mainLogoAWS;
+    try {
+      bool present = checkIsExtra(widget.cityName);
+      if (present) {
+        var cityname = widget.cityName.replaceAll(" ", "").toLowerCase();
+
+        if (placeImage.containsKey(cityname)) {
+          imageUrl = placeImage[cityname] ?? mainLogoAWS;
+        }
+        print(imageUrl);
+      } else {
+        // var imageUrl = mainLogoAWS;
+        //TODO
+        imageUrl = await getPlaceIdFromName(widget.cityName);
+      }
+    } catch (e) {
+      print("An error occurred: $e");
+    }
 
     for (var culturalFact in city.culturalFacts) {
       cultureCarouselCards.add(
@@ -277,7 +323,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factC'),
           factDesc: culturalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: "",
+          imageURL: imageUrl,
         ),
       );
     }
@@ -289,7 +335,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factG'),
           factDesc: geographicalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: ""));
+          imageURL: imageUrl));
     }
 
     for (var historicalFact in city.historicalFacts) {
@@ -299,7 +345,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           factTitle: translate('city.factH'),
           factDesc: historicalFact.fact,
           coordinates: widget.coordinates,
-          imageURL: ""));
+          imageURL: imageUrl));
     }
     if (isPlaceGenerated == true) {
       setState(() {
@@ -326,7 +372,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       });
     }
     try {
-      await lg.buildKML(Orbit().buildPlacemarks(places));
+      sendPOIS();
     } catch (e) {
       print("Not connected to the LG Rig");
     }
@@ -421,23 +467,28 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   bool isStatic = false;
-
+  String cityImage = mainLogoAWS;
   sendCityBalloon() async {
     try {
       bool present = checkIsExtra(widget.cityName);
       if (present) {
         var cityname = widget.cityName.replaceAll(" ", "").toLowerCase();
         var description = data[cityname]?[0]['description'] ?? "";
+
         print(description);
         var imageUrl = mainLogoAWS;
         if (placeImage.containsKey(cityname)) {
           imageUrl = placeImage[cityname] ?? mainLogoAWS;
         }
+
         print(imageUrl);
+        await lg.sendStaticBalloon(
+            "orbitballoon", "", widget.cityName, 500, description, imageUrl);
         await lg.sendStaticBalloon(
             "orbitballoon", "", widget.cityName, 500, description, imageUrl);
       } else {
         // var imageUrl = mainLogoAWS;
+        //TODO
         var imageUrl = await getPlaceIdFromName(widget.cityName);
         String locale = LocalizedApp.of(context)
             .delegate
@@ -457,12 +508,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   _checkGiven() async {
-    await sendCityBalloon();
     if (widget.cityGiven != null && widget.cityPOI != null) {
       setState(() {
         isStatic = true;
       });
       city = widget.cityGiven!;
+      // TODO
       await changeImageURL(widget.cityPOI!);
       places = widget.cityPOI!;
       checkForExtra();
@@ -496,7 +547,6 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     lg = LGConnection();
     _connectToLG();
     _checkGiven();
-    // getCityData();
   }
 
   clean() async {
@@ -537,7 +587,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: AppDrawer(size: size),
-      backgroundColor: darkBackgroundColor,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(140.0),
           child: UpperBar(lgStatus: lgStatus, scaffoldKey: _scaffoldKey)),
@@ -612,7 +662,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                             },
                                             icon: Container(
                                                 decoration: BoxDecoration(
-                                                  color: greenShade,
+                                                  color: Theme.of(context)
+                                                      .cardColor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100),
@@ -633,7 +684,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                         style: googleTextStyle(
                                                             35.sp,
                                                             FontWeight.w600,
-                                                            darkBackgroundColor),
+                                                            Theme.of(context)
+                                                                .primaryColor),
                                                       ),
                                                     ],
                                                   ),
@@ -661,8 +713,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               color: isHistory && !isPOI
-                                                  ? darkSecondaryColor
-                                                  : darkSecondaryColor
+                                                  ? Theme.of(context)
+                                                      .secondaryHeaderColor
+                                                  : Theme.of(context)
+                                                      .secondaryHeaderColor
                                                       .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
@@ -688,8 +742,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               color: isGeography && !isPOI
-                                                  ? darkSecondaryColor
-                                                  : darkSecondaryColor
+                                                  ? Theme.of(context)
+                                                      .secondaryHeaderColor
+                                                  : Theme.of(context)
+                                                      .secondaryHeaderColor
                                                       .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
@@ -715,8 +771,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               color: isCulture && !isPOI
-                                                  ? darkSecondaryColor
-                                                  : darkSecondaryColor
+                                                  ? Theme.of(context)
+                                                      .secondaryHeaderColor
+                                                  : Theme.of(context)
+                                                      .secondaryHeaderColor
                                                       .withOpacity(0.4),
                                             ),
                                             alignment: Alignment.center,
@@ -924,7 +982,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: greenShade,
+                                            color: Theme.of(context).cardColor,
                                           ),
                                           child: Icon(
                                               Icons.arrow_back_ios_rounded)),
@@ -938,8 +996,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                         children: [
                                           Text(
                                             translate('city.extraVisual'),
-                                            style: googleTextStyle(48.sp,
-                                                FontWeight.w700, greenShade),
+                                            style: googleTextStyle(
+                                                48.sp,
+                                                FontWeight.w700,
+                                                Theme.of(context).cardColor),
                                             overflow: TextOverflow.clip,
                                           ),
                                           30.ph,
@@ -1010,7 +1070,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                           //       googleTextStyle(40.sp, FontWeight.w600, white),
                           // ),
                           GestureDetector(
-                            onTap: () {
+                            onTap: () async {
+                              sendPOIS();
                               setState(() {
                                 isPOI = !isPOI;
                                 isExtra = false;
@@ -1024,12 +1085,18 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                   : size.width * 0.495,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: isPOI ? greenShade : darkSecondaryColor,
+                                color: isPOI
+                                    ? Theme.of(context).cardColor
+                                    : Theme.of(context).secondaryHeaderColor,
                               ),
                               child: Text(
                                 translate('city.poi'),
-                                style: googleTextStyle(33.sp, FontWeight.w500,
-                                    isPOI ? fontGreen : white),
+                                style: googleTextStyle(
+                                    33.sp,
+                                    FontWeight.w500,
+                                    isPOI
+                                        ? Theme.of(context).dividerColor
+                                        : white),
                               ),
                             ),
                           ),
@@ -1049,15 +1116,18 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: isExtra
-                                          ? greenShade
-                                          : darkSecondaryColor,
+                                          ? Theme.of(context).cardColor
+                                          : Theme.of(context)
+                                              .secondaryHeaderColor,
                                     ),
                                     child: Text(
                                       translate('city.extra'),
                                       style: googleTextStyle(
                                           30.sp,
                                           FontWeight.w500,
-                                          isExtra ? fontGreen : white),
+                                          isExtra
+                                              ? Theme.of(context).dividerColor
+                                              : white),
                                     ),
                                   ),
                                 )
@@ -1083,31 +1153,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           ),
                                         );
                                         print("not generated");
-                                        // places = await generatePOI(
-                                        //     widget.cityName, widget.coordinates);
-                                        // print(places.toString());
-                                        // isPlaceGenerated = true;
-                                        // for (var i = 0; i < 2; i++) {
-                                        //   String placesdata =
-                                        //       Orbit().generateOrbit(places);
-                                        //   String content =
-                                        //       Orbit().buildOrbit(placesdata, places);
-                                        //   print(content);
-                                        //   await lg.buildOrbit(content);
-                                        //   await Future.delayed(Duration(seconds: 1));
-                                        // }
-                                        // for (int i = 0; i < places.length; i++) {
-                                        //   await lg.openBalloon(
-                                        //       "orbitballoon",
-                                        //       places[i].name,
-                                        //       widget.cityName,
-                                        //       500,
-                                        //       places[i].details,
-                                        //       places[i].latitude,
-                                        //       places[i].longitude);
-                                        //   await wait20Seconds();
-                                        // }
                                       } else {
+                                        await lg.cleanOrbit();
                                         setState(() {
                                           isPOI = true;
                                           isRunning = true;
@@ -1161,7 +1208,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     width: size.width * 0.24,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: darkSecondaryColor,
+                                      color: Theme.of(context)
+                                          .secondaryHeaderColor,
                                     ),
                                     child: Text(
                                       translate('city.startOrbit'),
@@ -1222,7 +1270,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                     width: size.width * 0.24,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: darkSecondaryColor,
+                                      color: Theme.of(context)
+                                          .secondaryHeaderColor,
                                     ),
                                     child: isStoryButtonTapped
                                         ? Row(
