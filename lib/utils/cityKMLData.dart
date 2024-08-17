@@ -165,7 +165,7 @@ var data = {
     },
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=13cYEQH_rJ4SvRh8sXkSBfwrdEGAQ3Gqv",
+          "https://drive.google.com/uc?export=download&id=1noJnKdQP7vU-nZt5u2RwrY4-an27kOlr",
       "type": "historicalMap",
       "description":
           "Austin. Founded in 1839, Austin has a rich history tied to its origins as a frontier town. It became the capital of the Republic of Texas in 1846 and later the state capital of Texas. Over the years, Austin has grown into a vibrant cultural and economic hub, known for its tech industry, festivals like SXSW, and eclectic food scene."
@@ -271,7 +271,7 @@ var data = {
     },
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1PuqvLZCK8W4525o1uh5vTEBozdFh0Yx1",
+          "https://drive.google.com/uc?export=download&id=1tcaIfzH0eDuw7sRGq1I2h2df6h5S5IQ-",
       "type": "historicalMap",
       "description":
           "Los Angeles. Founded in 1781, Los Angeles has grown from a small Spanish pueblo into a major global city. It played a crucial role in the development of the film industry and became a center of cultural and artistic innovation. The city has a rich multicultural heritage and continues to evolve as a dynamic metropolis."
@@ -314,7 +314,7 @@ var data = {
     },
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1tcaIfzH0eDuw7sRGq1I2h2df6h5S5IQ-",
+          "https://drive.google.com/uc?export=download&id=1_N1XzyCPjOTRGhEo0I0I8uw4SoEwr3mK",
       "type": "historicalMap",
       "description":
           "Founded in 1896, Miami has a history shaped by immigration, development, and cultural diversity. It grew rapidly during the Florida land boom of the 1920s and became a major center for tourism and international trade. Miami’s unique blend of cultures has influenced its architecture, cuisine, and vibrant social scene."
@@ -389,7 +389,7 @@ var data = {
     },
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1SqqllW1AGMm9w8D0-HZqLe9dfF01CsWk",
+          "https://drive.google.com/uc?export=download&id=1UHDL7j_dUdiazajLAd8fdNLqfkC7L7IK",
       "type": "historicalMap",
       "description":
           "San Francisco. Founded in 1776, San Francisco has a rich history shaped by the Gold Rush, earthquakes, and waves of immigration. The city has been a hub of innovation and counterculture, with a legacy that includes the Summer of Love, Silicon Valley, and the LGBTQ+ rights movement. San Francisco continues to evolve as a dynamic global city."
@@ -405,7 +405,7 @@ var data = {
     },
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1UHDL7j_dUdiazajLAd8fdNLqfkC7L7IK",
+          "https://drive.google.com/uc?export=download&id=1SqqllW1AGMm9w8D0-HZqLe9dfF01CsWk",
       "type": "historicalMap",
       "description":
           "Seattle. Founded in 1851, Seattle grew rapidly due to its strategic location for trade and shipping. It became a center for timber, fishing, and later technology, with companies like Microsoft and Amazon headquartered in the region. Seattle’s cultural diversity and natural beauty have shaped its identity as a dynamic urban center."
@@ -450,7 +450,7 @@ var data = {
   "baltimore": [
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1noJnKdQP7vU-nZt5u2RwrY4-an27kOlr",
+          "https://drive.google.com/uc?export=download&id=1xUqvuyrCUT1i-fRN29izDavFAnNo_pkj",
       "type": "historicalMap",
       "description":
           "Baltimore. Founded in 1729, Baltimore played a key role in American history as a major seaport and industrial center. It was a key player in the War of 1812 and later became a hub of immigration and manufacturing. Baltimore’s diverse neighborhoods and rich cultural heritage have shaped its identity as a dynamic urban center."
@@ -459,7 +459,7 @@ var data = {
   "chicago": [
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1xUqvuyrCUT1i-fRN29izDavFAnNo_pkj",
+          "https://drive.google.com/uc?export=download&id=1pCQ3Kjkl7jZ3t0-_XZavy8vNA80N0KEl",
       "type": "historicalMap",
       "description":
           "Chicago. Founded in the 1830s, Chicago grew rapidly due to its strategic location for trade and transportation. It became a major center for industry, finance, and culture, known for its architecture, jazz music, and deep-dish pizza. Chicago’s history includes the Great Fire of 1871 and its rebirth as a modern metropolis."
@@ -468,7 +468,7 @@ var data = {
   "detroit": [
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1pCQ3Kjkl7jZ3t0-_XZavy8vNA80N0KEl",
+          "https://drive.google.com/uc?export=download&id=1PuqvLZCK8W4525o1uh5vTEBozdFh0Yx1",
       "type": "historicalMap",
       "description":
           "Detroit. Founded in 1701, Detroit became a major industrial center known for its automotive industry and Motown sound. The city played a crucial role in World War II production and later faced economic challenges and urban decay. Detroit’s cultural diversity and resilience have shaped its ongoing revitalization efforts."
@@ -477,7 +477,7 @@ var data = {
   "mumbai": [
     {
       "link":
-          "https://drive.google.com/uc?export=download&id=1_N1XzyCPjOTRGhEo0I0I8uw4SoEwr3mK",
+          "https://drive.google.com/uc?export=download&id=13cYEQH_rJ4SvRh8sXkSBfwrdEGAQ3Gqv",
       "type": "historicalMap",
       "description":
           "Mumbai, formerly known as Bombay, is the financial and entertainment capital of India. It has a rich history as a trading port and cultural melting pot, influenced by its colonial past and diverse population. Mumbai is known for Bollywood films, historic landmarks like the Gateway of India, and vibrant street life."
