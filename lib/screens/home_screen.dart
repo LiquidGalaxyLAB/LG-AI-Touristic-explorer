@@ -1036,8 +1036,41 @@ class _HomePageState extends State<HomePage> {
                                           // borderthickness
                                           border: Border.all(
                                               color: Colors.black, width: 2),
-                                          color:
-                                              Color.fromARGB(255, 34, 82, 59),
+                                          color: Colors.green,
+                                        )),
+                                  )),
+                              DropdownMenuItem(
+                                  value: "profile4",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color: Colors.pink,
+                                        )),
+                                  )),
+                              DropdownMenuItem(
+                                  value: "profile5",
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        // borderradius
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          // borderthickness
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          color: Colors.teal,
                                         )),
                                   )),
                               DropdownMenuItem(
@@ -1054,7 +1087,7 @@ class _HomePageState extends State<HomePage> {
                                           // borderthickness
                                           border: Border.all(
                                               color: Colors.black, width: 2),
-                                          color: Color(0xff152337),
+                                          color: Colors.grey,
                                         )),
                                   )),
                             ],
@@ -1077,12 +1110,19 @@ class _HomePageState extends State<HomePage> {
                                   selectedTheme =
                                       profile3; // Add `profile2` to your constants
                                   break;
+                                case 'profile4':
+                                  selectedTheme =
+                                      profile4; // Add `profile2` to your constants
+                                  break;
+                                case 'profile5':
+                                  selectedTheme =
+                                      profile5; // Add `profile2` to your constants
+                                  break;
                                 default:
                                   selectedTheme = primary; // Default fallback
                                   break;
                               }
 
-                              // Update the theme using ThemeChanger
                               themeChanger.toggleTheme(selectedTheme);
                             },
                             dropdownColor: Theme.of(context).primaryColor,

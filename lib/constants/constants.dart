@@ -29,6 +29,21 @@ var profile3 = ThemeData(
     cardColor: const Color.fromARGB(255, 210, 235, 204), // Light green
     dividerColor: const Color(0xff23473a), // Darker olive
     hintColor: Color.fromARGB(255, 95, 255, 116)); // Lighter green
+
+var profile4 = ThemeData(
+  primaryColor: Color.fromARGB(255, 25, 0, 50), // Dark purple
+  secondaryHeaderColor: Color.fromARGB(255, 75, 0, 130), // Neon purple
+  cardColor: Color.fromARGB(255, 255, 201, 243), // Bright cyan
+  dividerColor: const Color(0xff330066), // Deep purple
+  hintColor: Color.fromARGB(255, 255, 108, 194), // Neon pink
+);
+
+var profile5 = ThemeData(
+    primaryColor: Color.fromARGB(255, 0, 51, 51), // Dark Teal
+    secondaryHeaderColor: Color.fromARGB(255, 0, 102, 102), // Darker Teal
+    cardColor: Color.fromARGB(255, 146, 226, 226), // Medium Teal
+    dividerColor: Color.fromARGB(255, 0, 38, 38), // Very Dark Teal
+    hintColor: Color.fromARGB(255, 77, 255, 255)); // Light Teal
 const white = Color.fromARGB(255, 255, 255, 255);
 const factorLogo = 1621 / 2560;
 String getLanguageName(String localeCode) {
