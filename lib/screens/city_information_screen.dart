@@ -133,6 +133,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   bool isPresent = false;
   bool isPOI = false;
   bool isRunning = false;
+  int historicalLength = 0;
+  int culturalLength = 0;
+  int geographicalLength = 0;
+  int poiLength = 0;
 
   void initCards(City city, List<Place> pois) async {
     print("GOT IT");
@@ -199,6 +203,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           coordinates: LatLng(places.latitude, places.longitude),
           imageURL: places.imageUrl));
     }
+    setState(() {
+      historicalLength = city.historicalFacts.length;
+      culturalLength = city.culturalFacts.length;
+      geographicalLength = city.geographicalFacts.length;
+      poiLength = pois.length;
+    });
     sendPOIS();
   }
 
@@ -231,6 +241,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       initCityCards(city);
       setState(() {
         isLoading = false;
+        isHistory = true;
+        isCulture = false;
+        isPOI = false;
+        isGeography = false;
       });
       ToastService.showSuccessToast(
         context,
@@ -241,6 +255,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
+      setState(() {
+        retry = false;
+      });
     } catch (e) {
       setState(() {
         isLoading = true;
@@ -274,6 +291,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           style: googleTextStyle(32.sp, FontWeight.w500, white),
         ),
       );
+      setState(() {
+        retry = false;
+      });
     } catch (e) {
       setState(() {
         isPlaceGenerated = false;
@@ -347,8 +367,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           coordinates: widget.coordinates,
           imageURL: imageUrl));
     }
+    setState(() {
+      historicalLength = city.historicalFacts.length;
+      culturalLength = city.culturalFacts.length;
+      geographicalLength = city.geographicalFacts.length;
+    });
     if (isPlaceGenerated == true) {
       setState(() {
+        isLoading = false;
         retry = false;
       });
     }
@@ -366,6 +392,9 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
           coordinates: LatLng(places.latitude, places.longitude),
           imageURL: places.imageUrl));
     }
+    setState(() {
+      poiLength = pois.length;
+    });
     if (isLoading == false) {
       setState(() {
         retry = false;
@@ -489,14 +518,15 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       } else {
         // var imageUrl = mainLogoAWS;
         //TODO
-        var imageUrl = await getPlaceIdFromName(widget.cityName);
+        var imageUrl = await getPlaceIdFromName(
+            "${widget.cityName} ${widget.countryName}");
         String locale = LocalizedApp.of(context)
             .delegate
             .currentLocale
             .toString()
             .toLowerCase();
-        String description =
-            await generateCityDescription(widget.cityName, locale);
+        String description = await generateCityDescription(
+            "${widget.cityName} ${widget.countryName}", locale);
         print(description);
         print(imageUrl);
         await lg.sendStaticBalloon(
@@ -680,7 +710,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                       ),
                                                       4.pw,
                                                       Text(
-                                                        'Retry',
+                                                        translate('city.retry'),
                                                         style: googleTextStyle(
                                                             35.sp,
                                                             FontWeight.w600,
@@ -816,7 +846,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                           enlargeCenterPage:
                                                               true,
                                                           height: 700,
-                                                          initialPage: 0,
+                                                          initialPage: poiLength-1,
                                                           scrollDirection:
                                                               Axis.horizontal,
                                                           autoPlay: false,
@@ -860,7 +890,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                       height:
                                                                           700,
                                                                       initialPage:
-                                                                          0,
+                                                                          historicalLength-1,
                                                                       scrollDirection:
                                                                           Axis.horizontal,
                                                                       autoPlayInterval:
@@ -893,7 +923,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                             height:
                                                                                 700,
                                                                             initialPage:
-                                                                                0,
+                                                                                culturalLength-1,
                                                                             scrollDirection:
                                                                                 Axis.horizontal,
                                                                             autoPlayInterval:
@@ -923,7 +953,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                           height:
                                                                               700,
                                                                           initialPage:
-                                                                              0,
+                                                                              geographicalLength-1,
                                                                           scrollDirection:
                                                                               Axis.horizontal,
                                                                           autoPlayInterval:
@@ -1154,13 +1184,12 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                         );
                                         print("not generated");
                                       } else {
-                                        await lg.cleanOrbit();
+                                        await cleanBefore();
                                         setState(() {
                                           isPOI = true;
                                           isRunning = true;
                                         });
                                         print("generated");
-                                        await lg.cleanVisualization();
                                         for (var i = 0; i < 2; i++) {
                                           String placesdata =
                                               Orbit().generateOrbit(places);
@@ -1168,8 +1197,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                               .buildOrbit(placesdata, places);
                                           print(content);
                                           await lg.buildOrbit(content);
-                                          await Future.delayed(
-                                              Duration(seconds: 1));
+                                          if (i == 0) {
+                                            await Future.delayed(
+                                                Duration(seconds: 1));
+                                          }
                                         }
                                         for (int i = 0;
                                             i < places.length;
@@ -1343,5 +1374,10 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> cleanBefore() async {
+    await lg.cleanOrbit();
+    await lg.cleanVisualization();
   }
 }

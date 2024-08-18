@@ -26,7 +26,6 @@ Future<Map<String, double>> _getCoordinates(
     };
   }
 }
-
 Future<String> getPlaceIdFromName(String placeName) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
    final apiKey =
@@ -128,7 +127,7 @@ Create a JSON object that includes detailed information about the 4-5 most famou
       var coords = await _getCoordinates(point['name'], coordinates);
       point['coordinates'] = coords;
       print('Debug: Retrieved coordinates: $coords');
-
+      //TODO
       // var imageUrl = mainLogoAWS;
       var imageUrl = await getPlaceIdFromName(point['name']);
       point['imageUrl'] = imageUrl;

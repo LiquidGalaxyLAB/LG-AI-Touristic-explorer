@@ -978,7 +978,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Text(
-                        'Theme: ',
+                        translate('drawer.theme')+": ",
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -1398,7 +1398,9 @@ class _HomePageState extends State<HomePage> {
                           print(prediction.types);
                           for (var type in prediction.types!) {
                             if (type == "locality" ||
-                                type == "administrative_area_level_3") {
+                                type == "administrative_area_level_3" ||
+                                type == "political" ||
+                                type == "country") {
                               isCity = true;
                               textFocus.unfocus();
                               break;

@@ -248,7 +248,7 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Row(
                 children: [
                   Text(
-                    'Theme: ',
+                    translate('drawer.theme') + ": ",
                     style:
                         googleTextStyle(30.sp, FontWeight.w500, Colors.white),
                   ),

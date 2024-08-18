@@ -36,7 +36,7 @@ Future<String> generateCityDescription(String cityName, String locale) async {
   String language = getLanguageName(locale);
 
   final prompt = '''
-Write a breif description of $cityName (25-30 words). IN $language 
+Write a breif description of this city $cityName (25-30 words). IN $language 
 ''';
   final content = [Content.text(prompt)];
   final response = await model.generateContent(content,
