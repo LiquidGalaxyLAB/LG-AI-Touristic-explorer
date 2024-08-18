@@ -4,7 +4,8 @@
 		"tasks": "Tareas de Liquid Galaxy",
 		"manager": "Administrador de Conexiones",
 		"selected": "Idioma Seleccionado:",
-		"about": "Acerca de"
+		"about": "Acerca de",
+		"theme": "Tema"
 	},
 	"about": {
 		"description1": "LG-AI-Touristic-Explorer es una aplicación inmersiva de Flutter diseñada para dar vida a las ciudades a través de visualizaciones cautivadoras y narraciones atractivas. Utilizando el poder de la IA y Google Maps, la aplicación ofrece una experiencia de exploración única que profundiza en la geografía, historia, cultura y puntos de interés de una ciudad.",
@@ -111,6 +112,7 @@
 		"clean": "Limpiar",
 		"orbit": "Órbita",
 		"close": "Cerrar",
-		"storyGenerating": "Generando historia"
+		"storyGenerating": "Generando historia",
+		"retry": "Reintentar"
 	}
 }

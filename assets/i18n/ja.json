@@ -4,7 +4,8 @@
         "tasks": "Liquid Galaxy タスク",
         "manager": "接続マネージャー",
         "selected": "選択された言語:",
-        "about": "情報"
+        "about": "情報",
+        "theme": "テーマ"
     },
     "about": {
         "description1": "LG-AI-Touristic-Explorerは、魅力的なビジュアライゼーションとエンゲージングなストーリーテリングを通じて、都市を活気づける没入型のFlutterアプリケーションです。AIとGoogleマップの力を利用して、地理、歴史、文化、観光スポットに深く掘り下げたユニークな探索体験を提供します。",
@@ -111,6 +112,7 @@
         "clean": "クリーン",
         "orbit": "オービット",
         "close": "閉じる",
-        "storyGenerating": "ストーリーを生成中"
+        "storyGenerating": "ストーリーを生成中",
+        "retry": "再試行"
     }
 }

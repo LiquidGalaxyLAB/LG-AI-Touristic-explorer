@@ -4,7 +4,8 @@
 		"tasks": "Liquid Galaxy Tasks",
 		"manager": "Connection Manager",
 		"selected": "Language Selected:",
-		"about": "About"
+		"about": "About",
+		"theme": "Theme"
 	},
 	"about": {
 		"description1": "LG-AI-Touristic-Explorer is an immersive Flutter application designed to bring cities to life through captivating visualizations and engaging storytelling. By using the power of AI and Google Maps, the app offers a unique exploration experience that delves into a city's geography, history, culture, and points of interest.",
@@ -36,7 +37,7 @@
 			"languageKey": "You can change the language of the app using this dropdown.",
 			"aboutKey": "Get to know more about the Application.",
 			"helpKey": "Get Help regarding running the application.",
-			"apiTour":"Enter the API keys before searching for the cities."
+			"apiTour": "Enter the API keys before searching for the cities."
 		},
 		"appbar": {
 			"gemma": "Made with",
@@ -112,6 +113,7 @@
 		"clean": "Clean",
 		"orbit": "Orbit",
 		"close": "Close",
-		"storyGenerating": "Generating Story"
+		"storyGenerating": "Generating Story",
+		"retry": "Retry"
 	}
 }
