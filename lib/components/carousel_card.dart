@@ -7,6 +7,7 @@ import 'package:lg_ai_touristic_explorer/connections/lg_connection.dart';
 import 'package:lg_ai_touristic_explorer/constants/constants.dart';
 import 'package:lg_ai_touristic_explorer/constants/images.dart';
 import 'package:lg_ai_touristic_explorer/constants/text_styles.dart';
+import 'package:lg_ai_touristic_explorer/models/flyto.dart';
 import 'package:lg_ai_touristic_explorer/models/orbit.dart';
 import 'package:lg_ai_touristic_explorer/utils/common.dart';
 import 'package:toasty_box/toast_enums.dart';
@@ -51,6 +52,7 @@ class _CarouselCardState extends State<CarouselCard> {
     _connectToLG();
   }
 
+  bool isStarted = false;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -90,6 +92,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         GestureDetector(
                           onTap: () async {
                             try {
+                              print("Show in ");
                               print(widget.imageURL);
                               await lg.cleanRightBalloon();
                               await lg.cleanVisualization();
@@ -100,6 +103,19 @@ class _CarouselCardState extends State<CarouselCard> {
                                   500,
                                   widget.factDesc,
                                   widget.imageURL);
+                              double longitude = widget.coordinates.longitude;
+                              double latitude = widget.coordinates.latitude;
+                              double range = widget.isOrbitable ? 1500 : 600;
+                              print(range);
+                              double tilt = 60;
+                              double heading = 0;
+                              FlyToView city = FlyToView(
+                                  longitude: longitude,
+                                  latitude: latitude,
+                                  range: range,
+                                  tilt: tilt,
+                                  heading: heading);
+                              await lg.flyTo(city.getCommand());
                             } catch (e) {
                               ToastService.showErrorToast(
                                 context,
@@ -145,6 +161,7 @@ class _CarouselCardState extends State<CarouselCard> {
                         GestureDetector(
                           onTap: () async {
                             try {
+                              print("Clean ");
                               await lg.cleanRightBalloon();
                             } catch (e) {
                               ToastService.showErrorToast(
@@ -193,73 +210,178 @@ class _CarouselCardState extends State<CarouselCard> {
                           ),
                         ),
                         !widget.isOrbitable
-                            ? GestureDetector(
-                                onTap: () async {
-                                  try {
-                                    await lg.cleanVisualization();
-                                    await lg.cleanRightBalloon();
-                                    await lg.sendStaticBalloon(
-                                        "orbitballoon",
-                                        widget.factTitle,
-                                        widget.cityname,
-                                        500,
-                                        widget.factDesc,
-                                        widget.imageURL);
-                                  } catch (e) {
-                                    ToastService.showErrorToast(
-                                      context,
-                                      length: ToastLength.medium,
-                                      expandedHeight: 100,
-                                      child: Text(
-                                        translate('city.errorNotLG'),
-                                        style: googleTextStyle(
-                                            32.sp, FontWeight.w500, white),
+                            ? Container(
+                                height: size.height * .20,
+                                width: size.width * 0.13,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () async {
+                                        try {
+                                          String filename = widget.factTitle
+                                              .toLowerCase()
+                                              .replaceAll(" ", "");
+                                          await lg.cleanBeforeOrbit();
+
+                                          var kml = Orbit().buildKmlForPlace(
+                                              Orbit().generateOrbitContent(
+                                                  widget.coordinates),
+                                              widget.coordinates,
+                                              widget.factTitle,
+                                              filename);
+                                          print(kml);
+                                          await lg.buildOrbit(kml, filename);
+                                          await Future.delayed(
+                                              const Duration(seconds: 1));
+                                          await lg.playOrbit(filename);
+                                          await Future.delayed(
+                                              const Duration(seconds: 1));
+                                          await lg.sendStaticBalloon(
+                                              "orbitballoon",
+                                              widget.factTitle,
+                                              widget.cityname,
+                                              500,
+                                              widget.factDesc,
+                                              widget.imageURL);
+                                        } catch (e) {
+                                          ToastService.showErrorToast(
+                                            context,
+                                            length: ToastLength.medium,
+                                            expandedHeight: 100,
+                                            child: Text(
+                                              translate('city.errorNotLG'),
+                                              style: googleTextStyle(32.sp,
+                                                  FontWeight.w500, white),
+                                            ),
+                                          );
+                                        }
+                                        // setState(() {
+                                        //   isStarted = true;
+                                        // });
+                                        // print(isStarted);
+                                        // setState(() {});
+                                        // try {
+                                        //
+                                        //   await lg.cleanRightBalloon();
+                                        //   await lg.sendStaticBalloon(
+                                        //       "orbitballoon",
+                                        //       widget.factTitle,
+                                        //       widget.cityname,
+                                        //       500,
+                                        //       widget.factDesc,
+                                        //       widget.imageURL);
+                                        // } catch (e) {
+                                        //
+                                        //   print(e);
+                                        // }
+                                        // var kml = Orbit().buildKmlForPlace(
+                                        //     Orbit().generateOrbitContent(
+                                        //         widget.coordinates),
+                                        //     widget.coordinates,
+                                        //     widget.factTitle);
+                                        // print(kml);
+                                        // try {
+                                        //   for (var i = 0; i < 2; i++) {
+                                        //     await lg.buildOrbit(kml,);
+                                        //     await Future.delayed(
+                                        //         Duration(seconds: 1));
+                                        //   }
+                                        //   await lg.startOrbit();
+                                        // } catch (e) {
+                                        //   print(e);
+                                        // }
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: size.height * .09,
+                                        width: size.width * 0.13,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color:
+                                              Color.fromARGB(70, 106, 150, 118),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              translate('city.orbit'),
+                                              style: googleTextStyle(
+                                                  35.sp,
+                                                  FontWeight.w700,
+                                                  Theme.of(context)
+                                                      .dividerColor),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    );
-                                    print(e);
-                                  }
-                                  var kml = Orbit().buildKmlForPlace(
-                                      Orbit().generateOrbitContent(
-                                          widget.coordinates),
-                                      widget.coordinates,
-                                      widget.factTitle);
-                                  print(kml);
-                                  try {
-                                    for (var i = 0; i < 2; i++) {
-                                      await lg.buildOrbit(kml);
-                                      await Future.delayed(
-                                          Duration(seconds: 1));
-                                    }
-                                  } catch (e) {
-                                    print(e);
-                                  }
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: size.height * .20,
-                                  width: size.width * 0.13,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color.fromARGB(70, 106, 150, 118),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 15),
-                                      Icon(
-                                        Icons.restart_alt,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 50,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        setState(() {
+                                          isStarted = false;
+                                        });
+                                        print(isStarted);
+                                        if (lgStatus) {
+                                          // if (isStarted) {
+                                          await lg.stopOrbit();
+                                          // await lg.stopOrbit();
+                                          // await lg.cleanOrbit();
+                                          // } else {
+                                          //   ToastService.showErrorToast(
+                                          //     context,
+                                          //     length: ToastLength.medium,
+                                          //     expandedHeight: 100,
+                                          //     child: Text(
+                                          //       "Orbit not started",
+                                          //       style: googleTextStyle(32.sp,
+                                          //           FontWeight.w500, white),
+                                          //     ),
+                                          //   );
+                                          // }
+                                        } else {
+                                          ToastService.showErrorToast(
+                                            context,
+                                            length: ToastLength.medium,
+                                            expandedHeight: 100,
+                                            child: Text(
+                                              translate('city.errorNotLG'),
+                                              style: googleTextStyle(32.sp,
+                                                  FontWeight.w500, white),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: size.height * .09,
+                                        width: size.width * 0.13,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color:
+                                              Color.fromARGB(70, 106, 150, 118),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Stop Orbit",
+                                              style: googleTextStyle(
+                                                  35.sp,
+                                                  FontWeight.w700,
+                                                  Theme.of(context)
+                                                      .dividerColor),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      SizedBox(height: 17),
-                                      Text(
-                                        translate('city.orbit'),
-                                        style: googleTextStyle(
-                                            35.sp,
-                                            FontWeight.w700,
-                                            Theme.of(context).dividerColor),
-                                      ),
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               )
                             : SizedBox()
@@ -278,7 +400,8 @@ class _CarouselCardState extends State<CarouselCard> {
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        await lg.cleanBeforeOrbit();
                         Navigator.of(context).pop();
                       },
                       child: Container(
