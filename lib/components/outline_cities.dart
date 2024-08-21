@@ -108,16 +108,16 @@ class OutlineCities extends StatelessWidget {
           SizedBox(
             width: 40.0,
           ),
-          CityCard(
-            cityName: "Toronto",
-            countryName: "Canada",
-            imageName: torontoImage,
-            city: toronto,
-            cityPOI: torontoPOI,
-          ),
-          SizedBox(
-            width: 40.0,
-          ),
+          // CityCard(
+          //   cityName: "Toronto",
+          //   countryName: "Canada",
+          //   imageName: torontoImage,
+          //   city: toronto,
+          //   cityPOI: torontoPOI,
+          // ),
+          // SizedBox(
+          //   width: 40.0,
+          // ),
         ],
       ),
     );

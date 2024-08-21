@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey apiKeysKey = GlobalKey();
   GlobalKey languageKey = GlobalKey();
   GlobalKey aboutKey = GlobalKey();
-  GlobalKey helpKey = GlobalKey();
+  GlobalKey themeKey = GlobalKey();
 
   List<TargetFocus> _createTargets() {
     List<TargetFocus> targets = [];
@@ -173,49 +173,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-
-    // targets.add(
-    //   TargetFocus(
-    //     identify: "micKey",
-    //     keyTarget: micKey,
-    //     alignSkip: Alignment.bottomRight,
-    //     color: Colors.black,
-    //     enableOverlayTab: true,
-    //     contents: [
-    //       TargetContent(
-    //         align: ContentAlign.right,
-    //         builder: (context, controller) {
-    //           return Column(
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: <Widget>[
-    //               Container(
-    //                 padding: const EdgeInsets.all(18.0),
-    //                 width: 400.w,
-    //                 decoration: BoxDecoration(
-    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
-    //                   borderRadius: BorderRadius.circular(25.0),
-    //                   boxShadow: const [
-    //                     BoxShadow(
-    //                       color: Colors.black26,
-    //                       blurRadius: 10.0,
-    //                       offset: Offset(0, 4),
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 child: Text(
-    //                   translate('home.tour.micKey'),
-    //                   textAlign: TextAlign.center,
-    //                   style:
-    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-    //                 ),
-    //               ),
-    //             ],
-    //           );
-    //         },
-    //       ),
-    //     ],
-    //   ),
-    // );
 
     targets.add(
       TargetFocus(
@@ -349,50 +306,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    // targets.add(
-    //   TargetFocus(
-    //     shape: ShapeLightFocus.RRect,
-    //     identify: "connectionAIStatusKey",
-    //     keyTarget: connectionAIStatusKey,
-    //     alignSkip: Alignment.bottomRight,
-    //     color: Colors.black,
-    //     enableOverlayTab: true,
-    //     contents: [
-    //       TargetContent(
-    //         align: ContentAlign.bottom,
-    //         builder: (context, controller) {
-    //           return Column(
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: <Widget>[
-    //               Container(
-    //                 padding: const EdgeInsets.all(18.0),
-    //                 width: 400.w,
-    //                 decoration: BoxDecoration(
-    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
-    //                   borderRadius: BorderRadius.circular(25.0),
-    //                   boxShadow: const [
-    //                     BoxShadow(
-    //                       color: Colors.black26,
-    //                       blurRadius: 10.0,
-    //                       offset: Offset(0, 4),
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 child: Text(
-    //                   translate('home.tour.connectionAIStatusKey'),
-    //                   textAlign: TextAlign.center,
-    //                   style:
-    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-    //                 ),
-    //               ),
-    //             ],
-    //           );
-    //         },
-    //       ),
-    //     ],
-    //   ),
-    // );
-
     targets.add(
       TargetFocus(
         shape: ShapeLightFocus.RRect,
@@ -447,7 +360,7 @@ class _HomePageState extends State<HomePage> {
         enableOverlayTab: true,
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             builder: (context, controller) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -512,6 +425,50 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Text(
                       translate('home.tour.languageKey'),
+                      textAlign: TextAlign.center,
+                      style:
+                          googleTextStyle(40.sp, FontWeight.w600, Colors.white),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    targets.add(
+      TargetFocus(
+        shape: ShapeLightFocus.RRect,
+        identify: "themeKey",
+        keyTarget: themeKey,
+        alignSkip: Alignment.bottomRight,
+        color: Colors.black,
+        enableOverlayTab: true,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, controller) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(18.0),
+                    width: 400.w,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "You can change the theme of the application.",
                       textAlign: TextAlign.center,
                       style:
                           googleTextStyle(40.sp, FontWeight.w600, Colors.white),
@@ -613,50 +570,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    // targets.add(
-    //   TargetFocus(
-    //     shape: ShapeLightFocus.RRect,
-    //     identify: "helpKey",
-    //     keyTarget: helpKey,
-    //     alignSkip: Alignment.bottomRight,
-    //     color: Colors.black,
-    //     enableOverlayTab: true,
-    //     contents: [
-    //       TargetContent(
-    //         align: ContentAlign.bottom,
-    //         builder: (context, controller) {
-    //           return Column(
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: <Widget>[
-    //               Container(
-    //                 padding: const EdgeInsets.all(18.0),
-    //                 width: 400.w,
-    //                 decoration: BoxDecoration(
-    //                   color: Theme.of(context).primaryColor.withOpacity(0.5),
-    //                   borderRadius: BorderRadius.circular(25.0),
-    //                   boxShadow: const [
-    //                     BoxShadow(
-    //                       color: Colors.black26,
-    //                       blurRadius: 10.0,
-    //                       offset: Offset(0, 4),
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 child: Text(
-    //                   "Get Help regarding running the application.",
-    //                   textAlign: TextAlign.center,
-    //                   style:
-    //                       googleTextStyle(40.sp, FontWeight.w600, Colors.white),
-    //                 ),
-    //               ),
-    //             ],
-    //           );
-    //         },
-    //       ),
-    //     ],
-    //   ),
-    // );
-
     return targets;
   }
 
@@ -671,88 +584,100 @@ class _HomePageState extends State<HomePage> {
     lg = LGConnection();
     _connectToLG();
     initKey();
+    _checkFirstLoad();
+  }
+
+  Future<void> _checkFirstLoad() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstLoad = prefs.getBool('keyIsFirstLoaded') ?? true;
+
+    if (isFirstLoad) {
+      await showDialogIfFirstLoaded(context);
+      if (agreed) {
+        await _showTour();
+      }
+      // Update the flag to false after first load actions
+      prefs.setBool('keyIsFirstLoaded', false);
+    }
   }
 
   bool agreed = false;
   showDialogIfFirstLoaded(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isFirstLoaded = prefs.getBool("keyIsFirstLoaded");
-    if (isFirstLoaded == null) {
-      showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(translate('home.dialog.title1'),
-                style:
-                    googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  Text(translate('home.dialog.title2'),
-                      style: googleTextStyle(
-                          35.sp, FontWeight.w500, Colors.black)),
-                  const SizedBox(height: 10),
-                  Text(translate('home.dialog.description1'),
-                      style: googleTextStyle(
-                          28.sp, FontWeight.w400, Colors.black)),
-                  const SizedBox(height: 15),
-                  Text(translate('home.dialog.description2'),
-                      style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25.sp,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.italic),
-                      )),
-                ],
-              ),
-            ),
-            backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15.0)),
-            ),
-            actions: <Widget>[
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: Text(translate('home.dialog.button'),
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // bool? isFirstLoaded = prefs.getBool("keyIsFirstLoaded");
+    // if (isFirstLoaded == null) {
+    await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(translate('home.dialog.title1'),
+              style:
+                  googleTextStyle(50.sp, FontWeight.w700, Colors.blueAccent)),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(translate('home.dialog.title2'),
                     style:
-                        googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  prefs.setBool("keyIsFirstLoaded", false);
-                  setState(() {
-                    agreed = true;
-                  });
-                  Navigator.of(context).pop();
-                },
+                        googleTextStyle(35.sp, FontWeight.w500, Colors.black)),
+                const SizedBox(height: 10),
+                Text(translate('home.dialog.description1'),
+                    style:
+                        googleTextStyle(28.sp, FontWeight.w400, Colors.black)),
+                const SizedBox(height: 15),
+                Text(translate('home.dialog.description2'),
+                    style: GoogleFonts.raleway(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic),
+                    )),
+              ],
+            ),
+          ),
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
-            ],
-          );
-        },
-      );
-    }
+              child: Text(translate('home.dialog.button'),
+                  style: googleTextStyle(30.sp, FontWeight.w500, Colors.white)),
+              onPressed: () {
+                // prefs.setBool("keyIsFirstLoaded", false);
+                setState(() {
+                  agreed = true;
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+    // }
   }
 
   bool confirm = true;
   FocusNode textFocus = FocusNode();
-  String? dropDownValue = '';
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final themeChanger = Provider.of<ThemeChanger>(context);
-    Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
-    if (agreed && confirm) {
-      Future.delayed(Duration.zero, () => _showTour());
-      setState(() {
-        confirm = false;
-      });
-    }
+    // Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
+    // if (agreed && confirm) {
+    //   Future.delayed(Duration.zero, () => _showTour());
+    //   setState(() {
+    //     confirm = false;
+    //   });
+    // }
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: Theme.of(context).primaryColor,
@@ -978,7 +903,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Text(
-                        translate('drawer.theme')+": ",
+                        translate('drawer.theme') + ": ",
                         style: googleTextStyle(
                             30.sp, FontWeight.w500, Colors.white),
                       ),
@@ -986,6 +911,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                           width: 100.w,
                           child: DropdownButtonFormField(
+                            key: themeKey,
                             value: themeChanger.getCurrentThemeProfile(),
                             items: [
                               DropdownMenuItem(
