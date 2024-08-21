@@ -49,16 +49,6 @@ class HistoricalCities extends StatelessWidget {
             width: 40.0,
           ),
           CityCard(
-            cityName: "New York",
-            countryName: "USA",
-            imageName: newYorkImage,
-            city: newYork,
-            cityPOI: newYorkPOI,
-          ),
-          SizedBox(
-            width: 40.0,
-          ),
-          CityCard(
             cityName: "Paris",
             countryName: "France",
             imageName: parisImage,

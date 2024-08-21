@@ -484,17 +484,17 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   }
 
   var visualisationOptions = [];
-  checkForExtra() {
-    bool present = checkIsExtra(widget.cityName);
-    setState(() {
-      isPresent = present;
-    });
-    if (isPresent) {
-      setState(() {
-        visualisationOptions = getVisualisationOptions(widget.cityName);
-      });
-    }
-  }
+  // checkForExtra() {
+  //   bool present = checkIsExtra(widget.cityName);
+  //   setState(() {
+  //     isPresent = present;
+  //   });
+  //   if (isPresent) {
+  //     setState(() {
+  //       visualisationOptions = getVisualisationOptions(widget.cityName);
+  //     });
+  //   }
+  // }
 
   bool isStatic = false;
   String cityImage = mainLogoAWS;
@@ -547,14 +547,14 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
       // TODO
       await changeImageURL(widget.cityPOI!);
       places = widget.cityPOI!;
-      checkForExtra();
+      // checkForExtra();
       initCards(city, places);
       setState(() {
         isLoading = false;
         isPlaceGenerated = true;
       });
     } else {
-      checkForExtra();
+      // checkForExtra();
       // getCityData();
       await retryCityData();
       await retryPlacesData();
@@ -1195,8 +1195,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                           isRunning = true;
                                         });
                                         print("generated");
-                                        await Future.delayed(
-                                            Duration(seconds: 1));
+                                        // await Future.delayed(
+                                        //     Duration(seconds: 1));
                                         String filename = widget.cityName
                                             .toLowerCase()
                                             .replaceAll(" ", "");

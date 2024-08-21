@@ -109,8 +109,6 @@ class LGConnection {
     }
   }
 
-  
-
   flyTo(String command) async {
     try {
       print(command);
@@ -234,6 +232,7 @@ class LGConnection {
     File localFile = File('$localPath/$filename.kml');
     print('$localPath/$filename.kml');
     localFile.writeAsString(content);
+
     try {
       connectToLG();
       await _client!.execute("echo '$content' > /var/www/html/$filename.kml");
@@ -248,7 +247,6 @@ class LGConnection {
       return Future.error(e);
     }
   }
-  
 
   buildKML(String content) async {
     String localPath = await _localPath;
@@ -276,13 +274,14 @@ class LGConnection {
     }
   }
 
-  playOrbit(String filename)async {
+  playOrbit(String filename) async {
     try {
       connectToLG();
       print("playing orbit");
       print(filename);
       print('echo "playtour=$filename" > /tmp/query.txt');
-      return await _client!.execute('echo "playtour=$filename" > /tmp/query.txt');
+      return await _client!
+          .execute('echo "playtour=$filename" > /tmp/query.txt');
     } catch (e) {
       print('Could not connect to host LG');
       return Future.error(e);

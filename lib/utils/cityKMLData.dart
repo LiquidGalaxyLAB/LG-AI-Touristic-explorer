@@ -2109,15 +2109,7 @@ List<Place> newYorkPOI = [
         "A hybrid cable-stayed/suspension bridge connecting the boroughs of Manhattan and Brooklyn, it is an iconic part of the New York City skyline.",
     latitude: 40.7061,
     longitude: -73.9969,
-  ),
-  Place(
-    imageUrl: mainLogoAWS,
-    name: "Metropolitan Museum of Art",
-    details:
-        "The largest art museum in the United States, it has an extensive collection of art from around the world, spanning 5,000 years.",
-    latitude: 40.7794,
-    longitude: -73.9632,
-  ),
+  )
 ];
 List<Place> parisPOI = [
   Place(

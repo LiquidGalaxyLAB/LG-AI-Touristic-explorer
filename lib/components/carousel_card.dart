@@ -223,8 +223,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                           String filename = widget.factTitle
                                               .toLowerCase()
                                               .replaceAll(" ", "");
-                                          await lg.cleanBeforeOrbit();
-
+                                          await lg.cleanBeforeOrbit();;
                                           var kml = Orbit().buildKmlForPlace(
                                               Orbit().generateOrbitContent(
                                                   widget.coordinates),
@@ -234,7 +233,7 @@ class _CarouselCardState extends State<CarouselCard> {
                                           print(kml);
                                           await lg.buildOrbit(kml, filename);
                                           await Future.delayed(
-                                              const Duration(seconds: 1));
+                                              const Duration(seconds: 2));
                                           await lg.playOrbit(filename);
                                           await Future.delayed(
                                               const Duration(seconds: 1));
@@ -401,7 +400,7 @@ class _CarouselCardState extends State<CarouselCard> {
                     SizedBox(height: 20),
                     GestureDetector(
                       onTap: () async {
-                        await lg.cleanBeforeOrbit();
+                        // await lg.cleanBeforeOrbit();
                         Navigator.of(context).pop();
                       },
                       child: Container(
