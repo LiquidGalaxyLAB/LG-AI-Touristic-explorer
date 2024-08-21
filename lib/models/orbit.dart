@@ -2,7 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lg_ai_touristic_explorer/models/place.dart';
 
 class Orbit {
-  String buildOrbit(String content, List<Place> places) {
+  String buildOrbit(String content, List<Place> places, String filename) {
     String placemarks = '';
     for (var place in places) {
       placemarks += '''
@@ -74,7 +74,7 @@ class Orbit {
     </Style>
     $placemarks
     <gx:Tour>
-      <name>Orbit</name>
+      <name>$filename</name>
       <gx:Playlist> 
         $content
       </gx:Playlist>
@@ -104,7 +104,7 @@ class Orbit {
                   <range>${range}</range>
                   <gx:fovy>60</gx:fovy> 
                   <altitude>$altitude</altitude> 
-                  <gx:altitudeMode>absolute</gx:altitudeMode>
+                  <gx:altitudeMode>relativeToGround</gx:altitudeMode>
               </LookAt>
             </gx:FlyTo>
           ''';
@@ -122,7 +122,7 @@ class Orbit {
                   <range>${range}</range>
                   <gx:fovy>60</gx:fovy> 
                   <altitude>$altitude</altitude> 
-                  <gx:altitudeMode>absolute</gx:altitudeMode>
+                  <gx:altitudeMode>relativeToGround</gx:altitudeMode>
               </LookAt>
             </gx:FlyTo>
           ''';
@@ -135,7 +135,8 @@ class Orbit {
     return content;
   }
 
-  String buildKmlForPlace(String content, LatLng place, String name) {
+  String buildKmlForPlace(
+      String content, LatLng place, String name, String filename) {
     String placemark = '''
       <Placemark>
         <name>${name}</name>
@@ -204,7 +205,7 @@ class Orbit {
     </Style>
     $placemark
     <gx:Tour>
-      <name>Orbit</name>
+      <name>$filename</name>
       <gx:Playlist> 
         $content
       </gx:Playlist>
@@ -235,7 +236,7 @@ class Orbit {
                 <range>$range</range>
                 <gx:fovy>60</gx:fovy> 
                 <altitude>$altitude</altitude> 
-                <gx:altitudeMode>absolute</gx:altitudeMode>
+                <gx:altitudeMode>relativeToGround</gx:altitudeMode>
             </LookAt>
           </gx:FlyTo>
         ''';
@@ -255,7 +256,7 @@ class Orbit {
                 <range>$range</range>
                 <gx:fovy>60</gx:fovy> 
                 <altitude>$altitude</altitude> 
-                <gx:altitudeMode>absolute</gx:altitudeMode>
+                <gx:altitudeMode>relativeToGround</gx:altitudeMode>
             </LookAt>
           </gx:FlyTo>
         ''';

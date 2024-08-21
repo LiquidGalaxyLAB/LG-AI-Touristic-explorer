@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dartssh2/dartssh2.dart';
 import 'package:path_provider/path_provider.dart';
@@ -91,16 +92,24 @@ class LGConnection {
   cleanVisualization() async {
     try {
       connectToLG();
-
-      // var a = await _client!.execute('> /var/www/html/kmls.txt');
-      // return a;
-      await stopOrbit();
-      await _client!.execute("echo '' > /var/www/html/kmls.txt");
+      await _client!.execute('echo "" > /var/www/html/kmls.txt');
     } catch (e) {
       print('Could not connect to host LG');
       return Future.error(e);
     }
   }
+
+  cleanBeforeOrbit() async {
+    try {
+      connectToLG();
+      await _client!.execute(
+          'echo "exittour=true" > /tmp/query.txt && > /var/www/html/kmls.txt');
+    } catch (e) {
+      print('Could not connect to host LG');
+    }
+  }
+
+  
 
   flyTo(String command) async {
     try {
@@ -198,8 +207,8 @@ class LGConnection {
                   <ScreenOverlay>
                       <name>Logo</name>
                       <Icon><href>$imageUrl</href> </Icon>
-                      <overlayXY x="0" y="0.5" xunits="fraction" yunits="fraction"/>
-                      <screenXY x="0" y="0.5" xunits="fraction" yunits="fraction"/>
+                      <overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+                      <screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
                       <rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
                       <size x="900" y="${900 * factor}" xunits="pixels" yunits="pixels"/>
                   </ScreenOverlay>
@@ -220,23 +229,26 @@ class LGConnection {
     return directory.path;
   }
 
-  buildOrbit(String content) async {
+  buildOrbit(String content, String filename) async {
     String localPath = await _localPath;
-    File localFile = File('$localPath/Orbit.kml');
+    File localFile = File('$localPath/$filename.kml');
+    print('$localPath/$filename.kml');
     localFile.writeAsString(content);
     try {
       connectToLG();
-      await _client!.run('echo "" > /tmp/query.txt');
-      await _client!.run("echo '$content' > /var/www/html/Orbit.kml");
+      await _client!.execute("echo '$content' > /var/www/html/$filename.kml");
+      print("content added");
       await _client!.execute(
-          "echo '\nhttp://lg1:81/Orbit.kml' >> /var/www/html/kmls.txt");
+          "echo '\nhttp://lg1:81/$filename.kml' >> /var/www/html/kmls.txt");
+      print("kml added");
 
-      return await _client!.execute('echo "playtour=Orbit" > /tmp/query.txt');
+      // await startOrbit();
     } catch (e) {
       print('Error in building orbit');
       return Future.error(e);
     }
   }
+  
 
   buildKML(String content) async {
     String localPath = await _localPath;
@@ -256,7 +268,21 @@ class LGConnection {
 
   startOrbit() async {
     try {
+      connectToLG();
       return await _client!.execute('echo "playtour=Orbit" > /tmp/query.txt');
+    } catch (e) {
+      print('Could not connect to host LG');
+      return Future.error(e);
+    }
+  }
+
+  playOrbit(String filename)async {
+    try {
+      connectToLG();
+      print("playing orbit");
+      print(filename);
+      print('echo "playtour=$filename" > /tmp/query.txt');
+      return await _client!.execute('echo "playtour=$filename" > /tmp/query.txt');
     } catch (e) {
       print('Could not connect to host LG');
       return Future.error(e);
@@ -265,6 +291,7 @@ class LGConnection {
 
   stopOrbit() async {
     try {
+      connectToLG();
       return await _client!.execute('echo "exittour=true" > /tmp/query.txt');
     } catch (e) {
       print('Could not connect to host LG');
@@ -274,6 +301,7 @@ class LGConnection {
 
   cleanOrbit() async {
     try {
+      connectToLG();
       return await _client!.execute('echo "" > /tmp/query.txt');
     } catch (e) {
       print('Could not connect to host LG');
@@ -369,53 +397,6 @@ class LGConnection {
       await runKMLFile(kmlName);
     }
   }
-//  '''
-// <?xml version="1.0" encoding="UTF-8"?>
-// <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
-// <Document>
-// 	<name>$name.kml</name>
-// 	<Style id="purple_paddle">
-// 		<BalloonStyle>
-// 			<text>\$[description]</text>
-//       <bgColor>2b2b2b1e</bgColor>
-// 		</BalloonStyle>
-// 	</Style>
-// 	<Placemark id="0A7ACC68BF23CB81B354">
-// 		<name>$track</name>
-// 		<Snippet maxLines="0"></Snippet>
-// 		<description><![CDATA[
-// <div style="display: flex; justify-content: center;">
-//   <div style="width: 400px; padding: 10px; font-family: Arial, sans-serif;">
-//     <div style="background-color: #2b2b2b; padding: 10px; border-radius: 10px; text-align: center;">
-//       <img src="https://myapp33bucket.s3.amazonaws.com/Frame+171.png" alt="picture" width="350" height="100" />
-//     </div>
-//     <div style="background-color: #2b2b2b; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
-//       <h1 style="color: #3399CC; font-size: 24px; font-weight: bold; margin: 0;">$track</h1>
-//       <h1 style="color: #3399CC; font-size: 18px; margin: 5px 0;">$time</h1>
-//     </div>
-//     <div style="background-color: #2b2b2b; padding: 10px; margin-top: 10px; border-radius: 10px; text-align: center;">
-//       <h2 style="color: #3399CC; font-size: 16px; font-weight: bold; margin: 0;">$description</h2>
-//     </div>
-//   </div>
-// </div>
-// ]]></description>
-// 		<LookAt>
-// 			<longitude>${cityLng}</longitude>
-// 			<latitude>${cityLat}</latitude>
-// 			<altitude>0</altitude>
-// 			<heading>0</heading>
-// 			<tilt>0</tilt>
-// 			<range>24000</range>
-// 		</LookAt>
-// 		<styleUrl>#purple_paddle</styleUrl>
-// 		<gx:balloonVisibility>1</gx:balloonVisibility>
-// 		<Point>
-// 			<coordinates>${cityLat},${cityLng},0</coordinates>
-// 		</Point>
-// 	</Placemark>
-// </Document>
-// </kml>
-// ''';
 
   openBalloon(String name, String track, String time, int height,
       String description, double cityLat, double cityLng) async {

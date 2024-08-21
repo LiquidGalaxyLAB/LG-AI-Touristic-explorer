@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -582,6 +583,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   clean() async {
     await lg.cleanRightBalloon();
     await lg.cleanVisualization();
+    await lg.cleanOrbit();
   }
 
   Future<void> wait20Seconds() async {
@@ -591,6 +593,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
   @override
   void dispose() {
     clean();
+    completer?.complete();
     super.dispose();
   }
 
@@ -846,7 +849,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                           enlargeCenterPage:
                                                               true,
                                                           height: 700,
-                                                          initialPage: poiLength-1,
+                                                          initialPage:
+                                                              poiLength - 1,
                                                           scrollDirection:
                                                               Axis.horizontal,
                                                           autoPlay: false,
@@ -890,7 +894,8 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                       height:
                                                                           700,
                                                                       initialPage:
-                                                                          historicalLength-1,
+                                                                          historicalLength -
+                                                                              1,
                                                                       scrollDirection:
                                                                           Axis.horizontal,
                                                                       autoPlayInterval:
@@ -923,7 +928,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                             height:
                                                                                 700,
                                                                             initialPage:
-                                                                                culturalLength-1,
+                                                                                culturalLength - 1,
                                                                             scrollDirection:
                                                                                 Axis.horizontal,
                                                                             autoPlayInterval:
@@ -953,7 +958,7 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                                                           height:
                                                                               700,
                                                                           initialPage:
-                                                                              geographicalLength-1,
+                                                                              geographicalLength - 1,
                                                                           scrollDirection:
                                                                               Axis.horizontal,
                                                                           autoPlayInterval:
@@ -1184,41 +1189,29 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                         );
                                         print("not generated");
                                       } else {
-                                        await cleanBefore();
+                                        await lg.cleanBeforeOrbit();
                                         setState(() {
                                           isPOI = true;
                                           isRunning = true;
                                         });
                                         print("generated");
-                                        for (var i = 0; i < 2; i++) {
-                                          String placesdata =
-                                              Orbit().generateOrbit(places);
-                                          String content = Orbit()
-                                              .buildOrbit(placesdata, places);
-                                          print(content);
-                                          await lg.buildOrbit(content);
-                                          if (i == 0) {
-                                            await Future.delayed(
-                                                Duration(seconds: 1));
-                                          }
-                                        }
-                                        for (int i = 0;
-                                            i < places.length;
-                                            i++) {
-                                          print(i);
-                                          carouselController.nextPage();
-                                          print(isRunning);
-                                          if (isRunning) {
-                                            await lg.sendStaticBalloon(
-                                                "orbitballoon",
-                                                places[i].name,
-                                                widget.cityName,
-                                                500,
-                                                places[i].details,
-                                                places[i].imageUrl);
-                                            await wait20Seconds();
-                                          }
-                                        }
+                                        await Future.delayed(
+                                            Duration(seconds: 1));
+                                        String filename = widget.cityName
+                                            .toLowerCase()
+                                            .replaceAll(" ", "");
+                                        String placesdata =
+                                            Orbit().generateOrbit(places);
+                                        String content = Orbit().buildOrbit(
+                                            placesdata, places, filename);
+                                        print(content);
+                                        await lg.buildOrbit(content, filename);
+                                        await Future.delayed(
+                                            Duration(seconds: 3));
+                                        await lg.playOrbit(filename);
+                                        await Future.delayed(
+                                            Duration(seconds: 2));
+                                        await sendStaticPlaceBalloon();
                                       }
                                     } else {
                                       ToastService.showErrorToast(
@@ -1253,8 +1246,11 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
                                   onTap: () async {
                                     if (lgStatus) {
                                       await lg.stopOrbit();
+                                      carouselController
+                                          .animateToPage(poiLength - 1);
                                       setState(() {
                                         isRunning = false;
+                                        completer?.complete();
                                       });
                                       await lg.cleanRightBalloon();
                                       double longitude =
@@ -1376,8 +1372,27 @@ class _CityInformationScreenState extends State<CityInformationScreen> {
     );
   }
 
+  Future<void> sendStaticPlaceBalloon() async {
+    completer = Completer<void>();
+    for (int i = 0; i < places.length; i++) {
+      print(i);
+      print(isRunning);
+      if (!isRunning || completer?.isCompleted == true) {
+        break;
+      }
+      carouselController.nextPage();
+      await lg.sendStaticBalloon("orbitballoon", places[i].name,
+          widget.cityName, 500, places[i].details, places[i].imageUrl);
+      await Future.any([
+        wait20Seconds(),
+        completer!.future,
+      ]);
+    }
+  }
+
+  Completer<void>? completer;
+
   Future<void> cleanBefore() async {
-    await lg.cleanOrbit();
     await lg.cleanVisualization();
   }
 }
