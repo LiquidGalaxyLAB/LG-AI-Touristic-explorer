@@ -5,7 +5,26 @@
 
 # LG AI Touristic Explorer
 
-## Introduction
+
+
+## Table of Contents
+
+- [About](#about)
+   - [Project Overview](#project-overview)
+   - [Key Objectives](#key-objectives)
+
+- [Features](#features)
+
+- [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+     
+   - [Installation](#installation)
+
+- [Screenshots](#screenshots)
+
+- [Future Enhancements](#future-enhancements)
+
+## About
 
 ### Project Overview
 The **LG AI Touristic Explorer** is a Flutter application designed to offer an immersive exploration of cities. Its primary aim is to provide users with detailed insights into a city's historical, cultural, and geographical aspects, along with comprehensive information about various points of interest. The app can narrate stories about the city, enhancing the user experience with a deeper understanding of the location. It also features KML visualizations for select cities, multilingual support, and customizable color themes. The information is powered by Google's Gemini API, with narration handled by the Deepgram API.
