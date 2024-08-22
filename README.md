@@ -110,6 +110,17 @@ The **LG AI Touristic Explorer** is a Flutter application designed to offer an i
    Follow the provided guidelines to connect and configure your Liquid Galaxy rig. -->
 
 ## Screenshots
+| **Homepage** | **City Information** |
+|:--:|:--:|
+| ![main](https://github.com/Manas-33/Manas-33/blob/9df809b67cf6e0d33a19ee042a4f7ed01b66d491/Screenshot_1724325514.png) | ![information](https://github.com/Manas-33/Manas-33/blob/9df809b67cf6e0d33a19ee042a4f7ed01b66d491/Screenshot_1724325536.png) |
+
+| **LG Tasks** | **Connection Manager** |
+|:--:|:--:|
+| ![tasks](https://github.com/Manas-33/Manas-33/blob/9df809b67cf6e0d33a19ee042a4f7ed01b66d491/Screenshot_1724325562.png) | ![connection](https://github.com/Manas-33/Manas-33/blob/1e4dfca5043eaa4751c771b45cd6c91a86b0d650/Screenshot_1724324417.png) |
+
+| **Drawer** | **Carousel Card** |
+|:--:|:--:|
+| ![drawer](https://github.com/Manas-33/Manas-33/blob/c6750348852d33e0c8dc3d67110a8d8d94a14998/Screenshot_1724323985.png) | ![card](https://github.com/Manas-33/Manas-33/blob/c6750348852d33e0c8dc3d67110a8d8d94a14998/Screenshot_1724323899.png) |
 
 
 
